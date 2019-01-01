@@ -114,7 +114,6 @@ enum PROMPT_SPRITESHEET
 	player_1_wins,
 	player_2_match_win,
 	player_2_wins,
-	round,
 	select_attack,
 	stop
 };
@@ -132,7 +131,7 @@ enum MAIN_SPRITESHEET
 	arms_walk_right_1,
 	arms_walk_right_2,
 	arms_walk_right_3,
-	fighter_idle_1,
+	fighter_idle_1_image,
 	fighter_idle_2,
 	fighter_idle_3,
 	fighter_walk_left_1,

@@ -22,11 +22,8 @@
     <Filter Include="Header Files\Commands">
       <UniqueIdentifier>{ce39a474-6ec0-4331-9517-69032fd45449}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\ECS\Game Components">
-      <UniqueIdentifier>{1cdd381c-bd51-4cf4-bcfd-8438b3113d64}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\ECS\Script Components">
-      <UniqueIdentifier>{7923bef0-bad6-4173-8f16-f2543934a57f}</UniqueIdentifier>
+    <Filter Include="Header Files\Data">
+      <UniqueIdentifier>{23ab70a0-9518-4887-a112-a492eb839f2b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -192,6 +189,9 @@
     <ClInclude Include="BitmapFont.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CharacterDataReader.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -244,6 +244,9 @@
     </ClCompile>
     <ClCompile Include="ControllerCommands.cpp">
       <Filter>Header Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterDataReader.cpp">
+      <Filter>Header Files\Data</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

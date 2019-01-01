@@ -53,7 +53,7 @@ public:
 		if (entity->has_component<PlayerComponent>())
 		{
 			tag = entity->get_component<PlayerComponent>().player_name;
-			hit_box = entity->get_component<PlayerComponent>().player_identity.hit_box;
+			hit_box = entity->get_component<PlayerComponent>().player_identity->hit_box;
 		}
 	}
 

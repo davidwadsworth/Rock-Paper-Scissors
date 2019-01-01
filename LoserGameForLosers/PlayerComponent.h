@@ -13,8 +13,9 @@ public:
 	int num_wins;
 	Attack* chosen_attack;
 	std::string player_name;
+	ATTACKS attack_id = Nothing;
 	bool is_priority_player;
-	Character player_identity;
+	Character* player_identity;
 	int direction;
 	bool attack_used;
 
@@ -23,15 +24,14 @@ public:
 	{
 		player_name = "NOT GOOD";
 		is_priority_player = false;
-		player_identity = Character();
+		player_identity = new Character();
 		num_wins = 0;
 
 	}
 
-	PlayerComponent(const bool has_priority, const Character character) : is_priority_player(has_priority), direction(1)
+	PlayerComponent(const bool has_priority, Character* character) : is_priority_player(has_priority), direction(1), player_identity(character)
 	{
-		player_identity = character;
-		player_name = character.id;
+		player_name = character->id;
 
 		num_wins = 0;
 	}
@@ -41,7 +41,7 @@ public:
 
 	void init() override
 	{
-		chosen_attack = &player_identity.attacks[Nothing];
+		chosen_attack = player_identity->attacks[Nothing];
 		attack_used = false;
 	}
 
@@ -52,15 +52,16 @@ public:
 
 	float get_velocity()
 	{
-		auto velocity = player_identity.velocity;
+		auto velocity = player_identity->velocity;
 		if (is_priority_player)
-			velocity = player_identity.velocity + PLAYER_PRIORITY_INCREMENT;
+			velocity = player_identity->velocity + PLAYER_PRIORITY_INCREMENT;
 		return velocity;
 	}	
 
 	void choose_attack(ATTACKS att_id)
 	{
-		chosen_attack = &player_identity.attacks[att_id];
+		attack_id = att_id;
+		chosen_attack = player_identity->attacks[att_id];
 	}
 
 	void change_priority()
@@ -72,19 +73,19 @@ public:
 	{
 		auto winner = entity;
 
-		if (this->chosen_attack->attack_id == Whip)
+		if (this->attack_id == Whip)
 		{
-			if (other->get_component<PlayerComponent>().chosen_attack->attack_id == Jump_Kick)
+			if (other->get_component<PlayerComponent>().attack_id == Jump_Kick)
 				winner = other;
 		}
-		if (this->chosen_attack->attack_id == Jump_Kick)
+		if (this->attack_id == Jump_Kick)
 		{
-			if (other->get_component<PlayerComponent>().chosen_attack->attack_id == Grab)
+			if (other->get_component<PlayerComponent>().attack_id == Grab)
 				winner = other;
 		}
-		if (this->chosen_attack->attack_id == Grab)
+		if (this->attack_id == Grab)
 		{
-			if (other->get_component<PlayerComponent>().chosen_attack->attack_id == Whip)
+			if (other->get_component<PlayerComponent>().attack_id == Whip)
 				winner = other;
 		}
 		if (attack_used)

@@ -1,0 +1,124 @@
+Dad Beat (name pending)
+key for game ints
+
+Options struct:
+--------------------------------------------------------------------------
+
+Links:
+0 = free_play,
+1 = volume,
+2 = new game,
+3 = attack,
+
+
+Alignment:
+0 = left,
+1 = right,
+2 = center,
+3 = top,
+4 = bot
+
+----------------------------------------------------------------------------
+
+Controllers struct:
+----------------------------------------------------------------------------
+
+Commands:
+0 = move left,
+1 = move right,
+2 = idle,
+3 = choose whip,
+4 = choose jump kick,
+5 = choose grab,
+6 = pause
+7 = cursor up,
+8 = cursor down,
+9 = cursor left,
+10 = cursor right,
+11 = cursor select,
+12 = go to menu
+
+Keys:
+0 = up,
+1 = down,
+2 = left,
+3 = right,
+4 = action 1,
+5 = action 2,
+6 = action 3,
+7 = start,
+8 = extra 1,
+9 = extra 2
+
+------------------------------------------------------------------------------
+
+Prompt Order:
+------------------------------------------------------------------------------
+
+Pos: | Type: 	  | Description:
+----------------------------------
+0    : number	  : zero
+1    : number	  : one
+2    : number	  : two
+3    : number  	  : three
+4    : number	  : four
+5    : number	  : five
+6    : number 	  : six
+7    : number	  : seven
+8    : number 	  : eight
+9    : number	  : nine
+10   : prompt 	  : fight
+11   : prompt 	  : miss
+12   : prompt 	  : player 1 match win
+13   : prompt 	  : player 1 wins
+14   : prompt 	  : player 2 match win
+15   : Prompt 	  : player 2 wins
+16   : prompt 	  : round
+17   : prompt     : select attack
+18   : prompt     : stop
+
+-------------------------------------------------------------------------------
+
+Main Texture Order:
+-------------------------------------------------------------------------------
+
+Pos: | Type:      | Description:
+----------------------------------
+0 	 : background : cave
+1    : background : city
+2    : background : grassy
+3 	 : background : suburb
+4 	 : cursor     : box
+5    : player	  : arms idle 1
+6    : player	  : arms idle 2
+7    : player	  : arms idle 3
+8    : player	  : arms walk left 1
+9    : player	  : arms walk left 2
+10   : player	  : arms walk left 3
+11   : player	  : arms walk right 1
+12   : player	  : arms walk right 2
+13   : player	  : arms walk right 3
+14   : player	  : fighter idle 1
+15   : player	  : fighter idle 2
+16   : player	  : fighter idle 3
+17   : player	  : fighter walk left 1
+18   : player	  : fighter walk left 2
+19   : player	  : fighter walk left 3
+20   : player	  : fighter walk right 1
+21   : player	  : fighter walk right 2
+22   : player	  : fighter walk right 3
+23   : player	  : square idle 1
+24   : player	  : square idle 2
+25   : player     : square idle 3
+26   : player  	  : square walk left 1
+27   : player  	  : square walk left 2
+28   : player  	  : square walk left 3
+29   : player  	  : square walk right 1
+30   : player  	  : square walk right 2
+31   : player  	  : square walk right 3
+32   : textbox 	  : center
+33   : textbox    : top left corner
+34   : textbox    : top side
+35   : textbox    : bottom speech arrow
+
+

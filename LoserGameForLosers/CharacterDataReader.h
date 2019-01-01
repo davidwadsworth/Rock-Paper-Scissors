@@ -10,9 +10,11 @@
 
 class CharacterDataReader
 {
+	const char * path_;
 public:
-	CharacterDataReader();
+	CharacterDataReader(const char * path) 
+		: path_(path)
+	{}
 	~CharacterDataReader() {}
-
-	Character * load(CHARACTER character, const char * path);
+	Character * load(int character_id);
 };

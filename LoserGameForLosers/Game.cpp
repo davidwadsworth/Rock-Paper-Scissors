@@ -2,6 +2,7 @@
 #include "Menu.h"
 #include "Combat.h"
 #include "GameState.h"
+#include "CharacterDataReader.h"
 
 
 Manager manager;
@@ -16,14 +17,10 @@ GameState * current_state = nullptr;
 BitmapTexture tex;
 BitmapFont font;
 
+CharacterDataReader * char_data;
 
 bool Game::is_running = false;
 
-// needs to be moved to a .txt so I can update it while running
-std::vector<Character> characters{  Character(),
-									Character(0.6, Attack(0.7, 0.2, Whip), Attack(0.1, 1, Jump_Kick), Attack(0.2, 0.1, Grab), Attack(0, -0.2, Nothing), "arms", 0.9, "LongArms_full.png"),
-									Character(0.9, Attack(0.6, 0, Whip), Attack(0.2, 0.9, Jump_Kick), Attack(0.2, 0.5, Grab), Attack(0, -0.1, Nothing), "square", 0.8, "square_full.png"),
-									Character(0.7, Attack(0.6, 0, Whip), Attack(0.3, 0.9, Jump_Kick), Attack(0.2, 0.2, Grab), Attack(0, -0.3, Nothing), "brunis", 1, "Brunis_full.png") };
 
 
 //State variables
@@ -44,13 +41,16 @@ void Game::init(const char * window_title)
 		Game::is_running = true;
 	}
 
-	Game::game_settings->player1 = characters[1];
-	Game::game_settings->player2 = characters[2];
+	char_data = new CharacterDataReader("data_characters.xml");
+
+	Game::game_settings->player1 = char_data->load(square);
+	Game::game_settings->player2 = char_data->load(arms);
+
 
 	// needs to be moved to a single png, so I can gloat about effieciancy
 	Game::assets->add_texture("background", "western industrial.jpg");
-	Game::assets->add_texture("player left", Game::game_settings->player1.file_path);
-	Game::assets->add_texture("player right", Game::game_settings->player2.file_path);
+	Game::assets->add_texture("player left", "square_full.png");
+	Game::assets->add_texture("player right", "LongArms_full.png");
 
 	Game::assets->set_bit_map_font("lazyfont.png");
 
@@ -58,18 +58,18 @@ void Game::init(const char * window_title)
 	Game::assets->add_texture("box", "textbox.png");
 	Game::assets->add_texture("cursor", "cursor.png");
 
-	Game::assets->add_texture("round", "Round.png");
+	Game::assets->add_texture("round", "prompt_round.png");
 	Game::assets->add_texture("number", "numbers.png");
-	Game::assets->add_texture("select attack", "selectattack.png");
-	Game::assets->add_texture("miss", "miss.png");
-	Game::assets->add_texture("stop", "stop.png" );
-	Game::assets->add_texture("fight", "fight.png");
+	Game::assets->add_texture("select attack", "prompt_select_attack.png");
+	Game::assets->add_texture("miss", "prompt_miss.png");
+	Game::assets->add_texture("stop", "prompt_stop.png" );
+	Game::assets->add_texture("fight", "prompt_fight.png");
 
-	Game::assets->add_texture("player 1 wins", "player1wins.png");
-	Game::assets->add_texture("player 2 wins", "player2wins.png");
+	Game::assets->add_texture("player 1 wins", "prompt_player_1_wins.png");
+	Game::assets->add_texture("player 2 wins", "prompt_player_2_wins.png");
 
-	Game::assets->add_texture("player 1 match win", "player1matchwin.png");
-	Game::assets->add_texture("player 2 match win", "player2matchwin.png");
+	Game::assets->add_texture("player 1 match win", "prompt_player_1_match_win.png");
+	Game::assets->add_texture("player 2 match win", "prompt_player_2_match_win.png");
 
 	current_state = new Menu(&manager);
 	state_id = STATE_MENU;
