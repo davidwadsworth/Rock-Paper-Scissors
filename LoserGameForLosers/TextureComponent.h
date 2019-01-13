@@ -7,9 +7,11 @@ class TextureComponent : public Component
 
 public:
 
+	int atlas_id;
 	SDL_Texture * texture;
 
-	TextureComponent(std::string tex)
+	TextureComponent(int tex)
+		: atlas_id(tex)
 	{
 		set_texture(tex);
 	}
@@ -17,7 +19,7 @@ public:
 	~TextureComponent() {}
 
 
-	void set_texture(std::string tex)
+	void set_texture(int tex)
 	{
 		texture = Game::assets->get_texture(tex);
 	}

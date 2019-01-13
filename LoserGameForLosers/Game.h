@@ -6,6 +6,7 @@
 
 #include "AssetManager.h"
 #include "GameSettings.h"
+#include "DataManager.h"
 
 class Game
 {
@@ -24,6 +25,8 @@ public:
 	static SDL_Event event;
 	static AssetManager* assets;
 	static GameSettings* game_settings;
+	static DataManager* data;
+
 	SDL_Window *window;
 
 	enum group_labels : std::size_t

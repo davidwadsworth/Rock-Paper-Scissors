@@ -7,50 +7,39 @@
 class SpriteComponent : public Component
 {
 	TransformComponent * transform_;
-	SDL_Rect src_rect_, dest_rect_;
+	SDL_Rect dest_rect_;
 	int frames_ = 1;
 	int speed_ = 200;
-	ANIMATIONS current_animation_;
+	int animation_frames_ = 3;
+	int atlas_id_;
 	float angle_ = 0;
+	int sprite_id_;
 	SDL_Texture * texture_;
+	SpriteAddress * address_;
+	Animation* current_animation;
 public:
 
 	bool animated = false;
 	int anim_index = 0;
 
-	std::vector<Animation> animations;
+	std::vector<Animation*> animations;
 
 	SDL_RendererFlip sprite_flip = SDL_FLIP_NONE;
 
-	SpriteComponent() = default;
 
-	SpriteComponent(const float angle, const SDL_RendererFlip flp, const bool is_animated )
-	{
-		angle_ = angle;
-		sprite_flip = flp;
-		animated = is_animated;
-
-	}
-
-	SpriteComponent(const bool is_animated)
-	{
-		animated = is_animated;
-	}
+	explicit SpriteComponent(int sprite_id, const float angle, const SDL_RendererFlip flp, const bool is_animated)
+		: sprite_id_(sprite_id), angle_(angle), sprite_flip(flp), animated(is_animated)
+	{}
 
 	~SpriteComponent()
-	{
-	}
- 
-
+	{}
 
 	void init() override
 	{
 		transform_ = &entity->get_component<TransformComponent>();
 
 		texture_ = entity->get_component<TextureComponent>().texture;
-		src_rect_.x = src_rect_.y = 0;
-		src_rect_.w = transform_->width;
-		src_rect_.h = transform_->height;
+		atlas_id_ = entity->get_component<TextureComponent>().atlas_id;
 
 		if (sprite_flip == SDL_FLIP_HORIZONTAL)
 		{
@@ -59,9 +48,9 @@ public:
 
 		if (animated)
 		{
-			const auto idle = Animation(0, 3, speed_);
-			const auto walk_right = Animation(1, 3, speed_);
-			const auto walk_left = Animation(2, 3, speed_);
+			auto idle = new Animation(sprite_id_, animation_frames_, speed_, atlas_id_);
+			auto walk_right = new Animation(sprite_id_ + animation_frames_, animation_frames_, speed_, atlas_id_);
+			auto walk_left = new Animation(sprite_id_ + animation_frames_ * 2, animation_frames_, speed_, atlas_id_);
 
 			animations.push_back(idle);
 			animations.push_back(walk_right);
@@ -74,10 +63,8 @@ public:
 	{
 		if (animated)
 		{
-			src_rect_.x = src_rect_.w * static_cast<int>((SDL_GetTicks() / speed_) % frames_);
+			address_ = current_animation->animation_addresses[static_cast<int>((SDL_GetTicks() / speed_) % frames_];
 		}
-			
-		src_rect_.y = anim_index * transform_->height;
 
 		dest_rect_.x = static_cast<int>(transform_->position.x);
 		dest_rect_.y = static_cast<int>(transform_->position.y);
@@ -87,12 +74,11 @@ public:
 
 	void draw() override
 	{
-		TextureManager::draw(texture_, src_rect_, dest_rect_, angle_, sprite_flip);
+		TextureManager::draw(texture_, address_, &dest_rect_, angle_, sprite_flip);
 	}
 
-	void play(const ANIMATIONS animation)
+	void play(const int animation)
 	{
-		current_animation_ = animation;
 		frames_ = animations[animation].frames;
 		anim_index = animations[animation].index;
 		speed_ = animations[animation].speed;

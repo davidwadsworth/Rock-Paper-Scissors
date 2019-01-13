@@ -5,10 +5,10 @@
 
 class ChangeStateCommand : public Command
 {
-	game_states state_;
+	int state_;
 public:
-	explicit ChangeStateCommand(game_states new_state)
-		: state_(new_state)
+	explicit ChangeStateCommand(const char * new_state)
+		: state_(atoi(new_state))
 	{}
 
 	void execute(Entity* entity) override

@@ -10,17 +10,17 @@ AssetManager::AssetManager(Manager* man) : manager_(man)
 AssetManager::~AssetManager()
 = default;
 
-void AssetManager::create_option_box(Choices choices, bool is_boxed, std::vector<std::string> textures)
+void AssetManager::create_option_box(Options* choices, int atlas_id, int cursor_id, float text_scaling = 1.0f, bool is_boxed = false, int box_thickness = 1, int box_id = main_textbox_center)
 {
 	auto& option_box(manager_->add_entity());
-	option_box.add_component<OptionsComponent>(&choices);
-	option_box.add_component<MultiTextureComponent>(textures);
+	option_box.add_component<OptionsComponent>(choices);
+	option_box.add_component<TextureComponent>(atlas_id);
 	
 	if (is_boxed)
-		option_box.add_component<BoxComponent>(1);
+		option_box.add_component<BoxComponent>(box_thickness, box_id);
 	
-	option_box.add_component<GlyphAtlasComponent>(1.0f);
-	option_box.add_component<CursorComponent>(0, SDL_FLIP_NONE);
+	option_box.add_component<GlyphAtlasComponent>(text_scaling);
+	option_box.add_component<CursorComponent>(cursor_id);
 	option_box.add_component<ControllerComponent>("options");
 	option_box.add_group(Game::group_cursors);
 }
@@ -43,32 +43,32 @@ void AssetManager::create_prompt(SDL_Rect* dest, SDL_Rect* src, int sc, const ch
 	prompt.add_group(Game::group_prompts);
 }
 
-void AssetManager::add_texture(std::string id, const char * path)
+void AssetManager::add_texture( const char * path)
 {
-	textures_.emplace(id, TextureManager::load_texture(path));
+	textures_.push_back(TextureManager::load_texture(path));
 }
 
-SDL_Texture * AssetManager::get_texture(const std::string id)
+SDL_Texture * AssetManager::get_texture(const int id)
 {
 	return textures_[id];
 }
 
-void AssetManager::add_font(std::string id, std::string path, int fontSize)
+void AssetManager::add_font(std::string path, int fontSize)
 {
-	fonts_.emplace(id, TTF_OpenFont(path.c_str(), fontSize));
+	fonts_.push_back(TTF_OpenFont(path.c_str(), fontSize));
 }
 
-void AssetManager::add_music(std::string id, const char * path)
+void AssetManager::add_music(const char * path)
 {
-	music_.emplace(id, Mix_LoadMUS(path));
+	music_.push_back(Mix_LoadMUS(path));
 }
 
-void AssetManager::add_sound(std::string id, const char * path)
+void AssetManager::add_sound(const char * path)
 {
-	sounds_.emplace(id, Mix_LoadWAV(path));
+	sounds_.push_back(Mix_LoadWAV(path));
 }
 
-TTF_Font * AssetManager::get_font(std::string id)
+TTF_Font * AssetManager::get_font(const int id)
 {
 	return fonts_[id];
 }
@@ -87,12 +87,12 @@ BitmapFont* AssetManager::get_bitmap_font()
 	return &bitmap_font_;
 }
 
-Mix_Music * AssetManager::get_music(std::string id)
+Mix_Music * AssetManager::get_music(const int id)
 {
 	return music_[id];
 }
 
-Mix_Chunk * AssetManager::get_sound(std::string id)
+Mix_Chunk * AssetManager::get_sound(const int id)
 {
 	return sounds_[id];
 }

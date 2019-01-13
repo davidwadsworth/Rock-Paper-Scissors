@@ -25,9 +25,30 @@ public:
 class MoveCommand : public Command
 {
 public:
-	MoveCommand( const float v_scale, const ANIMATIONS anim_id) :
-		x_before_(0), velocity_scale_(v_scale), anim_id_(anim_id)
-	{}
+	MoveCommand(const char * move_info)
+	{
+		std::string move_str(move_info);
+		std::string v_sc, a_id;
+		bool split = false;
+
+		for (int i = 0; i < move_str.size(); i++)
+		{
+			if (move_str.at[i] == ',')
+			{
+				split = true;
+				i++;
+			}
+
+			if (!split)
+				v_sc += move_str.at[i];
+			else
+				a_id += move_str.at[i];
+		}
+
+		velocity_scale_ = atof(v_sc.c_str);
+		anim_id_ = atoi(a_id.c_str);
+
+	}
 
 	~MoveCommand()
 	{}
@@ -49,17 +70,16 @@ public:
 
 
 private:
-	float x_before_;
 	float velocity_scale_;
-	ANIMATIONS anim_id_;
+	int anim_id_;
 };
 
 
 class SelectAttackCommand : public Command
 {
 public:
-	SelectAttackCommand(const ATTACKS att_id )
-		: was_pressed_(false), attack_id_(att_id)
+	SelectAttackCommand(const char * att_id)
+		: was_pressed_(false), attack_id_(atoi(att_id))
 	{}
 
 	~SelectAttackCommand()
@@ -79,9 +99,8 @@ public:
 	}
 
 private:
-	std::vector<std::string> attacks = {"whip", "jump kick", "grab"};
 	bool was_pressed_;
-	ATTACKS attack_id_;
+	int attack_id_;
 };
 
 class PauseGameCommand : public Command
@@ -104,8 +123,8 @@ private:
 class MoveCursorXCommand : public Command
 {
 public:
-	MoveCursorXCommand(const int x)
-		: was_pressed_(false), x_increment_(x), count_(0), frequency_(CURSOR_FREQUENCY)
+	MoveCursorXCommand(const char * x)
+		: was_pressed_(false), x_increment_(atof(x)), count_(0), frequency_(CURSOR_FREQUENCY)
 	{}
 
 	void execute(Entity * entity) override
@@ -142,8 +161,8 @@ private:
 class MoveCursorYCommand : public Command
 {
 public:
-	MoveCursorYCommand( const int y)
-		: was_pressed_(false), y_increment_(y), count_(0), frequency_(CURSOR_FREQUENCY)
+	MoveCursorYCommand(const char * y)
+		: was_pressed_(false), y_increment_(atof(y)), count_(0), frequency_(CURSOR_FREQUENCY)
 	{}
 
 	void execute(Entity * entity) override
@@ -200,30 +219,4 @@ private:
 
 };
 
-
-class GoToMenuCommand : public Command
-{
-public:
-	GoToMenuCommand()
-		:was_pressed_(false)
-	{}
-
-	void execute(Entity* entity) override
-	{
-		was_pressed_ = true;
-	}
-	void idle(Entity* entity) override
-	{
-		if (was_pressed_)
-		{
-			if (Game::state_id != STATE_MENU)
-				Game::set_next_state(STATE_MENU);
-			was_pressed_ = false;
-		}
-
-	}
-private:
-	bool was_pressed_;
-
-};
 

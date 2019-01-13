@@ -6,11 +6,11 @@
 
 struct Label
 {
-	Label(const SDL_Rect pos, std::string text)
+	Label(SDL_Rect* pos, std::string text)
 	: position(pos), text(std::move(text))
 	{}
 
-	SDL_Rect position;
+	SDL_Rect* position;
 	std::string text;
 };
 
@@ -33,7 +33,7 @@ public:
 	{
 		if (entity->has_component<OptionsComponent>())
 		{
-			for (auto& x_link : entity->get_component<OptionsComponent>().current_options->option_links)
+			for (auto& x_link : entity->get_component<OptionsComponent>().current_options->choices)
 			{
 				for (auto& y_link : x_link)
 				{
@@ -47,7 +47,7 @@ public:
 	{
 		for(auto& label : labels_)
 		{
-			bitmap_font_->render_text(label->position.x, label->position.y, scale_, label->text);
+			bitmap_font_->render_text(label->position->x, label->position->y, scale_, label->text);
 		}
 	}
 };

@@ -11,10 +11,7 @@ Menu::Menu(Manager * manager)
 	screen.add_component<MenuComponent>();
 	screen.add_group(Game::group_background);
 
-	Game::assets->create_option_box(Choices
-	({ { Option(0, "Play Game"), Option(1, "Option 2"), Option(2, "Option 3"), Option(3, "Option 4") } },
-		LinkBuilder(5, Vector2D(1, 0), Vector2D(SCREEN_WIDTH / 3, SCREEN_HEIGHT / 2 - SCREEN_HEIGHT / 64), "lazy")
-	), true, { "box", "cursor", "bitmap" });
+	Game::assets->create_option_box(Game::data->get_options(0), true);
 }
 
 

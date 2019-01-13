@@ -7,37 +7,33 @@
 #include "AssetManager.h"
 #include "Constants.h"
 
-
 class BackgroundComponent : public Component
 {
 private:
 	TransformComponent * transform_;
-	SDL_Rect src_rect_, dest_rect_, left_dest_rect_, right_dest_rect_;
+	SDL_Rect dest_rect_, left_dest_rect_, right_dest_rect_;
 	int rotations_ = 0;
 	SDL_Texture * texture_;
+	int sprite_id_, atlas_id_;
 	SDL_RendererFlip sprite_flip_ = SDL_FLIP_NONE;
+	SpriteAddress * background_address_;
 public:
 
-	BackgroundComponent() = default;
-
-	BackgroundComponent(const int rots, const SDL_RendererFlip flp)
-	{
-		rotations_ = rots;
-		sprite_flip_ = flp;
-	}
+	explicit BackgroundComponent(int sprite_id, const int rots, const SDL_RendererFlip flp)
+		: sprite_id_(sprite_id), rotations_(rots), sprite_flip_(flp)
+	{}
 
 	~BackgroundComponent()
-	{
-	}
+	{}
 
 	void init() override
 	{
 		transform_ = &entity->get_component<TransformComponent>();
 
 		texture_ = entity->get_component<TextureComponent>().texture;
-		src_rect_.x = src_rect_.y = 0;
-		src_rect_.w = transform_->width;
-		src_rect_.h = transform_->height;
+		atlas_id_ = entity->get_component<TextureComponent>().atlas_id;
+
+		background_address_ = Game::data->get_sprite_address(atlas_id_, sprite_id_);
 	}
 
 	void update() override
@@ -60,8 +56,8 @@ public:
 
 	void draw() override
 	{
-		TextureManager::draw(texture_, src_rect_, dest_rect_, rotations_, sprite_flip_);
-		TextureManager::draw(texture_, src_rect_, left_dest_rect_, rotations_, sprite_flip_);
-		TextureManager::draw(texture_, src_rect_, right_dest_rect_, rotations_, sprite_flip_);
+		TextureManager::draw(texture_, background_address_, &dest_rect_, rotations_, sprite_flip_);
+		TextureManager::draw(texture_, background_address_, &left_dest_rect_, rotations_, sprite_flip_);
+		TextureManager::draw(texture_, background_address_, &right_dest_rect_, rotations_, sprite_flip_);
 	}
 };

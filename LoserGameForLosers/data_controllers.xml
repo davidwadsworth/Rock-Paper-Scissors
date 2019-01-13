@@ -1,31 +1,31 @@
 <Controllers>
 	<Controller id="menu_nav" >
-		<Input command="7" key="0" />
-		<Input command="8" key="1" />
-		<Input command="9" key="2" />
-		<Input command="10" key="3" />
-		<Input command="11" key="4" />
+		<Input key="0" command="3" command_value="-1"/>
+		<Input key="1" command="3" command_value="1" />
+		<Input key="2" command="4" command_value="-1" />
+		<Input key="3" command="4" command_value="1" />
+		<Input key="4" command="5" command_value="0" />
 	</Controller>
 	<Controller id="debug">
-		<Input command="0" key="2" />
-		<Input command="1" key="3" />
-		<Input command="2" key="-23" />
-		<Input command="3" key="4" />
-		<Input command="4" key="5" />
-		<Input command="5" key="6" />
-		<Input command="6" key="7" />
+		<Input key="2" command="0" command_value="-1,1" />
+		<Input key="3" command="0" command_value="1,2" />
+		<Input key="-23" command="0" command_value="0,0" />
+		<Input key="4" command="1" command_value="0" />
+		<Input key="5" command="1" command_value="1" />
+		<Input key="6" command="1" command_value="2" />
+		<Input key="7" command="2" command_value="1" />
 	</Controller>
 	<Controller id="no_input" >
 	</Controller>
 	<Controller id="select_attack" >
-		<Input command="3" key="4" />
-		<Input command="4" key="5" />
-		<Input command="5" key="6" />
+		<Input key="4" command="1" command_value="0" />
+		<Input key="5" command="1" command_value="1" />
+		<Input key="6" command="1" command_value="2" />
 	</Controller>
 	<Controller id="combat" >
-		<Input command="0" key="2" />
-		<Input command="1" key="3" />
-		<Input command="2" key="-23" />
-		<Input command="6" key="7" />
+		<Input key="2" command="0" command_value="-1,1" />
+		<Input key="3" command="0" command_value="1,2" />
+		<Input key="-23" command="0" command_value="0,0" />
+		<Input key="7" command="2" command_value="1" />
 	</Controller>
 </Controllers>

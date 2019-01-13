@@ -9,11 +9,15 @@ class MenuComponent : public Component
 private:
 	TransformComponent * transform_{};
 	SDL_Texture * texture_{};
-	SDL_Rect src_rect_{}, dest_rect_{};
+	SDL_Rect dest_rect_{0,0, SCREEN_WIDTH, SCREEN_HEIGHT};
+	SpriteAddress * menu_address_;
+	int atlas_id_, sprite_id_;
 
 public:
 
-	MenuComponent() = default;
+	explicit MenuComponent(int sprite_id)
+		: sprite_id_(sprite_id)
+	{}
 
 	~MenuComponent()
 	{}
@@ -23,13 +27,13 @@ public:
 		transform_ = &entity->get_component<TransformComponent>();
 
 		texture_ = entity->get_component<TextureComponent>().texture;
-		src_rect_.x = src_rect_.y = 0;
-		src_rect_.w = dest_rect_.w = transform_->width;
-		src_rect_.h = dest_rect_.h = transform_->height;
+		atlas_id_ = entity->get_component<TextureComponent>().atlas_id;
+
+		menu_address_ = Game::data->get_sprite_address(atlas_id_, sprite_id_);
 	}
 
 	void draw() override
 	{
-		TextureManager::draw(texture_, src_rect_, dest_rect_, 0, SDL_FLIP_NONE);
+		TextureManager::draw(texture_, menu_address_, &dest_rect_, 0, SDL_FLIP_NONE);
 	}
 };

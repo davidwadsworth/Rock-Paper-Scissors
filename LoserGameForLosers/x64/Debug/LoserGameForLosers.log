@@ -1,2 +1,16 @@
-﻿  Game.cpp
-  LoserGameForLosers.vcxproj -> C:\Users\dwads\Documents\GitHub\Rock-Paper-Scissors\x64\Debug\LoserGameForLosers.exe
+﻿  stdafx.cpp
+c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers\constants.h(36): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers\constants.h(40): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers\constants.h(51): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers\options.h(16): error C2065: 'Link': undeclared identifier
+c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers\options.h(16): error C2059: syntax error: '>'
+c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers\options.h(16): error C2439: 'Options::choices': member could not be initialized
+  c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers\options.h(16): note: see declaration of 'Options::choices'
+c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers\animation.h(22): error C2653: 'Game': is not a class or namespace name
+c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers\animation.h(22): error C2065: 'data': undeclared identifier
+c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers\animation.h(31): error C2653: 'Game': is not a class or namespace name
+c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers\animation.h(31): error C2065: 'data': undeclared identifier
+c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers\spritecomponent.h(9): error C2143: syntax error: missing ';' before '*'
+c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers\spritecomponent.h(9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers\spritecomponent.h(9): error C2238: unexpected token(s) preceding ';'
+c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers\spritecomponent.h(66): fatal error C1075: '{': no matching token found

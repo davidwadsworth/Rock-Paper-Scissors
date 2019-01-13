@@ -3,26 +3,28 @@
 #include "ECS.h"
 #include "SDL.h"
 #include "Game.h"
-
+#include "DrawCall.h"
 
 class BoxComponent : public Component
 {
-	SDL_Texture * texture_;
+	SDL_Texture * texture_; 
+	std::vector<DrawCall*> draw_calls_;
+	int scale_;
+	int atlas_id_, corner_id_, side_id_, center_id_;
+	SpriteAddress * corner_address_, *side_address_, *center_address_;
 public:
 	SDL_Rect box_rect{};
 
 	BoxComponent()
 		= default;
 
-	BoxComponent(const int scale)
-		: scale_(scale)
-	{
-	}
+	BoxComponent(const int scale, int corner_id, int side_id, int center_id)
+		: scale_(scale), corner_id_(corner_id), side_id_(side_id), center_id_(center_id)
+	{}
 
-	BoxComponent(SDL_Rect box_rect, const int scale)
-		: box_rect(box_rect), scale_(scale)
-	{
-	}
+	BoxComponent(SDL_Rect box_rect, const int scale, int corner_id, int side_id, int center_id)
+		: box_rect(box_rect), scale_(scale), corner_id_(corner_id), side_id_(side_id), center_id_(center_id)
+	{}
 
 	~BoxComponent()
 	{}
@@ -31,11 +33,16 @@ public:
 	{
 		if(entity->has_component<OptionsComponent>())
 		{
-			build_box(entity->get_component<OptionsComponent>().current_options->option_rect);
+			build_box(entity->get_component<OptionsComponent>().current_options->box);
 		}
 		else { build_box(box_rect); }
 
-		texture_ = entity->get_component<MultiTextureComponent>().texture_map["box"];
+		texture_ = entity->get_component<TextureComponent>().texture;
+		atlas_id_ = entity->get_component<TextureComponent>().atlas_id;
+
+		corner_address_ = Game::data->get_sprite_address(atlas_id_, corner_id_);
+		side_address_ = Game::data->get_sprite_address(atlas_id_, side_id_);
+		center_address_ = Game::data->get_sprite_address(atlas_id_, center_id_);
 	}
 
 	void build_box(const SDL_Rect box)
@@ -49,52 +56,40 @@ public:
 		const auto bot_y = box.y + box_h;
 
 		//Top Left Corner
-		box_rects_.push_back(SDL_Rect{ 0 , 0, BOX_SIZE, BOX_SIZE });
-		box_rects_.push_back(SDL_Rect{ left_x, top_y, scaled_size, scaled_size });
+		draw_calls_.push_back(new DrawCall(corner_address_, new SDL_Rect{ left_x, top_y, scaled_size, scaled_size }, 0, SDL_FLIP_NONE) );
 
 		//Top Right Corner
-		box_rects_.push_back(SDL_Rect{ BOX_SIZE * 2, 0, BOX_SIZE, BOX_SIZE });;
-		box_rects_.push_back(SDL_Rect{ right_x, top_y, scaled_size, scaled_size });
-
-		//Bot Left Corner
-		box_rects_.push_back(SDL_Rect{ 0, BOX_SIZE * 2, BOX_SIZE, BOX_SIZE });
-		box_rects_.push_back(SDL_Rect{ left_x, bot_y, scaled_size, scaled_size });
+		draw_calls_.push_back(new DrawCall(corner_address_, new SDL_Rect{ right_x, top_y, scaled_size, scaled_size }, 90, SDL_FLIP_NONE));
 
 		//Bot Right Corner
-		box_rects_.push_back(SDL_Rect{ BOX_SIZE * 2, BOX_SIZE * 2, BOX_SIZE, BOX_SIZE });
-		box_rects_.push_back(SDL_Rect{ right_x, bot_y, scaled_size, scaled_size });
+		draw_calls_.push_back(new DrawCall(corner_address_, new SDL_Rect{ right_x, bot_y, scaled_size, scaled_size }, 180, SDL_FLIP_NONE));
+
+		//Bot Left Corner
+		draw_calls_.push_back(new DrawCall(corner_address_, new SDL_Rect{ left_x, bot_y, scaled_size, scaled_size }, 270, SDL_FLIP_NONE));
 
 		//Top Side
-		box_rects_.push_back(SDL_Rect{ BOX_SIZE, 0, BOX_SIZE, BOX_SIZE });
-		box_rects_.push_back(SDL_Rect{left_x + scaled_size, top_y, box_w - scaled_size, scaled_size  });
-
-		//Left Side
-		box_rects_.push_back(SDL_Rect{ 0, BOX_SIZE, BOX_SIZE, BOX_SIZE });
-		box_rects_.push_back(SDL_Rect{ left_x, top_y + scaled_size, scaled_size, box_h - scaled_size });
+		draw_calls_.push_back(new DrawCall(side_address_, new SDL_Rect{ left_x + scaled_size, top_y, box_w - scaled_size, scaled_size }, 0, SDL_FLIP_NONE));
 
 		//Right Side
-		box_rects_.push_back(SDL_Rect{ BOX_SIZE * 2, BOX_SIZE, BOX_SIZE, BOX_SIZE });
-		box_rects_.push_back(SDL_Rect{ right_x, top_y + scaled_size, scaled_size, box_h - scaled_size });
+		draw_calls_.push_back(new DrawCall(side_address_, new SDL_Rect{ right_x, top_y + scaled_size, scaled_size, box_h - scaled_size }, 90, SDL_FLIP_NONE));
 
 		//Bot Side
-		box_rects_.push_back(SDL_Rect{ BOX_SIZE, BOX_SIZE * 2, BOX_SIZE, BOX_SIZE });
-		box_rects_.push_back(SDL_Rect{ left_x + scaled_size, bot_y, box_w - scaled_size, scaled_size });
+		draw_calls_.push_back(new DrawCall(side_address_, new SDL_Rect{ left_x + scaled_size, bot_y, box_w - scaled_size, scaled_size }, 180, SDL_FLIP_NONE));
+
+		//Left Side
+		draw_calls_.push_back(new DrawCall(side_address_, new SDL_Rect{ left_x, top_y + scaled_size, scaled_size, box_h - scaled_size }, 270, SDL_FLIP_NONE));
 
 		//Body
-		box_rects_.push_back(SDL_Rect{ BOX_SIZE, BOX_SIZE, BOX_SIZE, BOX_SIZE });
-		box_rects_.push_back(SDL_Rect{ left_x + scaled_size, top_y + scaled_size,box_w - scaled_size, box_h - scaled_size });
+		draw_calls_.push_back(new DrawCall(center_address_, new SDL_Rect{ left_x + scaled_size, top_y + scaled_size,box_w - scaled_size, box_h - scaled_size }, 0, SDL_FLIP_NONE));
 	}
 
 
 	void draw() override
 	{
-		for (auto i = 0; i < box_rects_.size(); i += 2)
+		for (auto d : draw_calls_)
 		{
-			TextureManager::draw(texture_, box_rects_[i], box_rects_[i + 1], 0, SDL_FLIP_NONE);
+			TextureManager::draw(texture_, d->sprite_address, d->dest, d->rotation, d->flip);
 		}
 	}
 
-private:
-	std::vector<SDL_Rect> box_rects_;
-	int scale_;
 };

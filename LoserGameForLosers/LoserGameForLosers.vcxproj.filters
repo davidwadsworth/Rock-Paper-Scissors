@@ -99,26 +99,11 @@
     <ClInclude Include="Character.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TTFComponent.h">
-      <Filter>Header Files\ECS</Filter>
-    </ClInclude>
     <ClInclude Include="Controller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ControllerConstants.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Options.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="OptionsComponent.h">
       <Filter>Header Files\ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="OptionLinks.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="OptionsConstants.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MenuComponent.h">
       <Filter>Header Files\ECS</Filter>
@@ -177,9 +162,6 @@
     <ClInclude Include="TextureComponent.h">
       <Filter>Header Files\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="MultiTextureComponent.h">
-      <Filter>Header Files\ECS</Filter>
-    </ClInclude>
     <ClInclude Include="CombatProcessor.h">
       <Filter>Header Files\Processes</Filter>
     </ClInclude>
@@ -189,8 +171,47 @@
     <ClInclude Include="BitmapFont.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterDataReader.h">
+    <ClInclude Include="Atlas.h">
       <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="DataManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Data.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterData.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="AtlasData.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionsData.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Options.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Link.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerData.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandBuilder.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Commands.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Links.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawCall.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -245,7 +266,19 @@
     <ClCompile Include="ControllerCommands.cpp">
       <Filter>Header Files\Commands</Filter>
     </ClCompile>
-    <ClCompile Include="CharacterDataReader.cpp">
+    <ClCompile Include="CharacterData.cpp">
+      <Filter>Header Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="AtlasData.cpp">
+      <Filter>Header Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionsData.cpp">
+      <Filter>Header Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="DataManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerData.cpp">
       <Filter>Header Files\Data</Filter>
     </ClCompile>
   </ItemGroup>

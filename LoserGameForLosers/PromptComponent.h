@@ -6,22 +6,24 @@
 class PromptComponent : public Component
 {
 	SDL_Texture * tex_;
-	SDL_Rect src_rect_, dest_rect_;
+	SDL_Rect dest_rect_;
 	TransformComponent * transform_;
+	int atlas_id_, sprite_id_;
+	SpriteAddress * prompt_address;
 public:
 
-	PromptComponent(int src_x, int src_y, int src_w, int src_h)
-	{
-		src_rect_.x = src_x;
-		src_rect_.y = src_y;
-		src_rect_.w = src_w;
-		src_rect_.h = src_h;
-	}
+	PromptComponent(int sprite_id)
+		: sprite_id_(sprite_id)
+	{}
 
 	void init() override
 	{
 		transform_ = &entity->get_component<TransformComponent>();
 		tex_ = entity->get_component<TextureComponent>().texture;
+		atlas_id_ = entity->get_component<TextureComponent>().atlas_id;
+
+
+		prompt_address = Game::data->get_sprite_address[atlas_id_, sprite_id_];
 	}
 
 	void update() override
@@ -34,6 +36,6 @@ public:
 
 	void draw() override
 	{
-		TextureManager::draw(tex_, src_rect_, dest_rect_, 0, SDL_FLIP_NONE);
+		TextureManager::draw(tex_, prompt_address, &dest_rect_, 0, SDL_FLIP_NONE);
 	}
 };

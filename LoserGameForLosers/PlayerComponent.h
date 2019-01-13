@@ -13,7 +13,7 @@ public:
 	int num_wins;
 	Attack* chosen_attack;
 	std::string player_name;
-	ATTACKS attack_id = Nothing;
+	int attack_id = Nothing;
 	bool is_priority_player;
 	Character* player_identity;
 	int direction;
@@ -58,7 +58,7 @@ public:
 		return velocity;
 	}	
 
-	void choose_attack(ATTACKS att_id)
+	void choose_attack(int att_id)
 	{
 		attack_id = att_id;
 		chosen_attack = player_identity->attacks[att_id];

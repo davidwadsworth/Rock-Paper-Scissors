@@ -4,12 +4,6 @@ key for game ints
 Options struct:
 --------------------------------------------------------------------------
 
-Links:
-0 = free_play,
-1 = volume,
-2 = new game,
-3 = attack,
-
 
 Alignment:
 0 = left,
@@ -24,19 +18,14 @@ Controllers struct:
 ----------------------------------------------------------------------------
 
 Commands:
-0 = move left,
-1 = move right,
-2 = idle,
-3 = choose whip,
-4 = choose jump kick,
-5 = choose grab,
-6 = pause
-7 = cursor up,
-8 = cursor down,
-9 = cursor left,
-10 = cursor right,
-11 = cursor select,
-12 = go to menu
+0 = move x command
+1 = select attack command
+2 = pause command
+3 = move cursor y command
+4 = move cursor x command
+5 = cursor select command
+6 = change state command
+default = nothing command
 
 Keys:
 0 = up,
