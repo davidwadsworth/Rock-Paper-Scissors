@@ -2,6 +2,7 @@
 #include "Menu.h"
 #include "Combat.h"
 #include "GameState.h"
+#include "Constants.h"
 
 
 
@@ -40,17 +41,18 @@ void Game::init(const char * window_title)
 	data->load_atlas_data("data_prompts-0.xml");
 	data->load_character_data("data_characters.xml");
 	data->load_controller_data("data_controllers.xml");
+	data->load_options_data("data_options.xml");
 
 	Game::game_settings->player1 = data->get_character(square);
 	Game::game_settings->player2 = data->get_character(arms);
 
-	Game::assets->add_texture(data->get_atlas(0)->path);
-	Game::assets->add_texture(data->get_atlas(1)->path);
+	Game::assets->add_texture(data->get_atlas(atlas_texture_sheet_main)->path.c_str());
+	Game::assets->add_texture(data->get_atlas(atlas_texture_sheet_prompts)->path.c_str());
 
 	Game::assets->set_bit_map_font("lazyfont.png");
 
-	current_state = new Menu(&manager);
-	state_id = STATE_MENU;
+	current_state = new Combat(&manager);
+	state_id = STATE_COMBAT;
 }
 
 // Stolen verbatim from @LazyFooProductions
@@ -99,30 +101,10 @@ void Game::update()
 	current_state->logic();
 }
 
-auto& player_group = manager.get_group(Game::group_players);
-auto& background_group = manager.get_group(Game::group_background);
-auto& prompt_group = manager.get_group(Game::group_prompts);
-auto& cursor_group = manager.get_group(Game::group_cursors);
-
 void Game::render()
 {
 	SDL_RenderClear(renderer);
-	for (auto& b : background_group)
-	{
-		b->draw();
-	}
-	for (auto& p : player_group)
-	{
-		p->draw();
-	}
-	for (auto& pr : prompt_group)
-	{
-		pr->draw();
-	}
-	for (auto& c : cursor_group)
-	{
-		c->draw();
-	}
+	current_state->render();
 	SDL_RenderPresent(renderer);
 }
 

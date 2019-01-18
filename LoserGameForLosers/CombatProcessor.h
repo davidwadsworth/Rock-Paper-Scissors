@@ -18,7 +18,7 @@ struct CombatProcessor
 
 	void create_combat()
 	{
-		round_count_++;
+	/*	round_count_++;
 		current_task = 0;
 		tasks.clear();
 		tasks.push_back(new Skip());
@@ -45,12 +45,12 @@ struct CombatProcessor
 		tasks.push_back(new DisplayPrompt("miss", "miss.png"));
 		tasks.push_back(new Delay(1000));
 		tasks.push_back(new ClearPrompts());
-		tasks.push_back(new CleanUp(player_left_, player_right_, this));
+		tasks.push_back(new CleanUp(player_left_, player_right_, this));*/
 	}
 
 	void debug_end_round()
 	{
-		current_task = 0;
+		/*current_task = 0;
 		tasks.clear();
 		tasks.push_back(new Skip());
 		tasks.push_back(new ClearPrompts());
@@ -59,12 +59,12 @@ struct CombatProcessor
 		tasks.push_back(new DisplayPrompt("miss", "miss.png"));
 		tasks.push_back(new Delay(1000));
 		tasks.push_back(new ClearPrompts());
-		tasks.push_back(new CleanUp(player_left_, player_right_, this));
+		tasks.push_back(new CleanUp(player_left_, player_right_, this));*/
 	}
 
 	void end_of_round(Entity * winner)
 	{
-		tasks.clear();
+		/*tasks.clear();
 		current_task = 0;
 		tasks.push_back(new Skip());
 		tasks.push_back(new DrawAttackLines(player_left_, player_right_, 1000));
@@ -78,7 +78,7 @@ struct CombatProcessor
 		}
 		tasks.push_back(new Delay(2000));
 		tasks.push_back(new ClearPrompts());
-		tasks.push_back(new CleanUp(player_left_, player_right_, this));
+		tasks.push_back(new CleanUp(player_left_, player_right_, this));*/
 	}
 	
 	void go_to_menu()
@@ -91,7 +91,7 @@ struct CombatProcessor
 	}
 
 	void match_winner()
-	{
+	{/*
 		tasks.clear();
 		current_task = 0;
 		tasks.push_back(new Skip());
@@ -103,7 +103,7 @@ struct CombatProcessor
 		tasks.push_back(new ClearPrompts());
 		tasks.push_back(new Delay(500));
 		tasks.push_back(new ChangeStateProcess(STATE_MENU));
-
+*/
 	}
 
 	void next_process()

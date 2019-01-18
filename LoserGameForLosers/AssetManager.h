@@ -20,10 +20,9 @@ public:
 	explicit AssetManager(Manager* man);
 	~AssetManager();
 
-	void create_option_box(Options* choices, int atlas_id, int cursor_id, float text_scaling = 1.0f, bool is_boxed = false, int box_thickness = 1, int box_id = main_textbox_center);
+	void create_option_box(Options* choices, int atlas_id, int cursor_id, float text_scaling = 1.0f, bool is_boxed = false, int box_thickness = 1, int box_corner_id = main_textbox_corner, int box_side_id = main_textbox_side, int box_center_id = main_textbox_center);
 
-	void create_prompt(SDL_Rect* dest, int sc, const char * texture);
-	void create_prompt(SDL_Rect* dest, SDL_Rect* src, int sc, const char * texture);
+	void create_prompt(int atlas_id, int sprite_id, SDL_Rect * dest);
 
 	//Textures
 	void add_texture(const char* path);

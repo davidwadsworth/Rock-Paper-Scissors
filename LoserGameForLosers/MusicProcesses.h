@@ -6,7 +6,7 @@ class PlaySound : public Process
 	float work_complete_;
 	Mix_Chunk * sound;
 public:
-	PlaySound(std::string id)
+	PlaySound(int id)
 		: work_complete_(0)
 	{
 		sound = Game::assets->get_sound(id);
@@ -27,7 +27,7 @@ class PlayMusic : public Process
 	float work_complete_;
 	Mix_Music * music;
 public:
-	PlayMusic(std::string id)
+	PlayMusic(int id)
 		: work_complete_(0)
 	{
 		music = Game::assets->get_music(id);

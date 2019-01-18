@@ -1,7 +1,5 @@
 #pragma once
 #include "Command.h"
-#include "Game.h"
-#include "GameState.h"
 
 class ChangeStateCommand : public Command
 {
@@ -11,11 +9,7 @@ public:
 		: state_(atoi(new_state))
 	{}
 
-	void execute(Entity* entity) override
-	{
-		if (Game::state_id != state_)
-			Game::set_next_state(state_);
-	}
+	void execute(Entity* entity) override;
 
 	void idle(Entity* entity) override{}
 

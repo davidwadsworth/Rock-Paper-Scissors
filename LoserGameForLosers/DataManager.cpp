@@ -14,7 +14,7 @@ Atlas * DataManager::get_atlas(int atlas_id)
 
 SpriteAddress * DataManager::get_sprite_address(int atlas_id, int sprite_address_id)
 {
-	return atlases_[atlas_id]->adresses[sprite_address_id];
+	return atlases_[atlas_id]->addresses[sprite_address_id];
 }
 
 void DataManager::load_character_data( const char * path)

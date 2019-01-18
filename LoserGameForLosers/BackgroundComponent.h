@@ -19,8 +19,8 @@ private:
 	SpriteAddress * background_address_;
 public:
 
-	explicit BackgroundComponent(int sprite_id, const int rots, const SDL_RendererFlip flp)
-		: sprite_id_(sprite_id), rotations_(rots), sprite_flip_(flp)
+	explicit BackgroundComponent(int sprite_id)
+		: sprite_id_(sprite_id)
 	{}
 
 	~BackgroundComponent()
@@ -31,9 +31,10 @@ public:
 		transform_ = &entity->get_component<TransformComponent>();
 
 		texture_ = entity->get_component<TextureComponent>().texture;
-		atlas_id_ = entity->get_component<TextureComponent>().atlas_id;
 
-		background_address_ = Game::data->get_sprite_address(atlas_id_, sprite_id_);
+		auto atlas = entity->get_component<TextureComponent>().atlas;
+
+		background_address_ = atlas->addresses[sprite_id_];
 	}
 
 	void update() override

@@ -5,17 +5,13 @@
 
 class OptionsComponent: public Component
 {
-	const char * screen_id_;
-
 	int y_pos_;
 	int x_pos_;
 	
 public:
-
 	Options * current_options;
 
 	OptionsComponent()
-		:screen_id_("main")
 	{}
 
 	explicit OptionsComponent(Options* choices)

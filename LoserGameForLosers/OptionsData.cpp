@@ -26,37 +26,36 @@ std::vector<Options*> OptionsData::load()
 		int padding = atoi(options_node->first_attribute("padding")->value());
 		float alignment_x = atof(options_node->first_attribute("alignment_x")->value());
 		float alignment_y = atof(options_node->first_attribute("alignment_y")->value());
+		float x = atof(options_node->first_attribute("x")->value()) * SCREEN_WIDTH;
+		float y = atof(options_node->first_attribute("y")->value()) * SCREEN_HEIGHT;
 		const char * font = options_node->first_attribute("font")->value();
 
 		auto options = new Options(id);
 
+		std::vector<Link *> y_position;
 		for (rapidxml::xml_node<> * x_position_node = options_node->first_node("X_Position"); x_position_node; x_position_node = x_position_node->next_sibling())
 		{
-			std::vector<Link *> y_position;
-			for (rapidxml::xml_node<> * y_position_node = x_position_node->first_node("Y_Position"); x_position_node; y_position_node = y_position_node->next_sibling())
+			y_position.clear();
+			for (rapidxml::xml_node<> * y_position_node = x_position_node->first_node("Y_Position"); y_position_node; y_position_node = y_position_node->next_sibling())
 			{
-				for (rapidxml::xml_node<> * link_node = y_position_node->first_node("Link"); link_node; link_node = link_node->next_sibling())
+				for (rapidxml::xml_node<> * option_node = y_position_node->first_node("Option"); option_node; option_node = option_node->next_sibling())
 				{
-					const char * text = link_node->first_attribute("text")->value();
-
+					const char * text = option_node->first_attribute("text")->value();
 						
-					int command_id = atoi(link_node->first_attribute("command")->value());
-					const char * command_value = link_node->first_attribute("command_value")->value();
+					int command_id = atoi(option_node->first_attribute("command")->value());
+					const char * command_value = option_node->first_attribute("command_value")->value();
 					
 					auto command = c_builder->create_command(command_id, command_value);
 
-					int link_id = atoi(link_node->first_attribute("link_template")->value());
+					int link_id = atoi(option_node->first_attribute("link")->value());
 
 					auto link = l_builder->create_link(link_id, padding, Vector2D(alignment_x, alignment_y), text, command, font);
 
 					y_position.push_back(link);
 				}
-				
 			}
 			options->choices.push_back(y_position);
 		}
-		float x = atof(options_node->first_attribute("x")->value()) * SCREEN_WIDTH;
-		float y = atof(options_node->first_attribute("y")->value()) * SCREEN_HEIGHT;
 
 		options->choices[0][0]->set_position(Vector2D(x, y));
 

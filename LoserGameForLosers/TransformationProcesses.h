@@ -6,26 +6,12 @@
 class FadeInImage : public Process
 {
 	Uint8 alpha_;
+	int atlas_id_;
 	Entity * asset_;
 public:
-	FadeInImage(Entity * entity)
-		: alpha_(0), asset_(entity)
+	FadeInImage(int atlas_id)
+		: alpha_(0), atlas_id_(atlas_id)
 	{}
-
-	FadeInImage(std::string image_id, SDL_Rect dest)
-		: alpha_(0)
-	{
-	}
-
-	FadeInImage(std::string image_id, SDL_Rect dest, int round_number)
-		: alpha_(0)
-	{
-		auto x = (round_number % 3) * NUMBER_WIDTH;
-		auto y = (round_number / 3) * NUMBER_HEIGHT;
-
-		SDL_Rect src = { x, y, NUMBER_WIDTH, NUMBER_HEIGHT };
-
-	}
 
 	bool do_work() override;
 
@@ -62,20 +48,20 @@ public:
 	float work_done() override { return 255 / std::abs(alpha_ - 255); }
 };
 
-class DisplayPrompt : public Process
+class CreatePrompt: public Process
 {
-	std::string prompt_id_, prompt_path_;
-	SDL_Rect prompt_dest{ 0, 0, SCREEN_WIDTH, 160 };
+	int atlas_id_, sprite_id_;
+	Vector2D position_;
 public:
-	DisplayPrompt(std::string prompt_id, std::string prompt_path)
-		: prompt_id_(std::move(prompt_id)), prompt_path_(std::move(prompt_path))
-	{
-		Game::assets->add_texture(prompt_id, prompt_path.c_str());
-	}
+	CreatePrompt(int atlas_id, int sprite_id, Vector2D image_position)
+		: atlas_id_(atlas_id), sprite_id_(sprite_id), position_(image_position)
+	{}
 
 	bool do_work() override
 	{
-		Game::assets->create_prompt(&prompt_dest, 1, prompt_id_.c_str());
+		auto sprite_address = Game::data->get_sprite_address(atlas_id_, sprite_id_);
+		auto dest = new SDL_Rect{ static_cast<int>(position_.x), static_cast<int>(position_.y), sprite_address->original_width, sprite_address->original_height };
+		Game::assets->create_prompt(atlas_id_, sprite_id_, dest);
 		return true;
 	}
 
@@ -85,34 +71,6 @@ public:
 	}
 };
 
-class DisplayRound : public Process
-{
-	std::string round_id, number_id, round_path, number_path;
-	SDL_Rect num_src{};
-	SDL_Rect round_dest{ 0, 0, 600, 160 };
-	SDL_Rect num_dest{ 700, 0, 100, 160 };
-
-public:
-	DisplayRound(std::string rnd_id, std::string num_id, std::string rnd_path, std::string num_path, int round_number)
-		: round_id(std::move(rnd_id)), number_id(std::move(num_id)), round_path(rnd_path), number_path(num_path)
-	{
-		Game::assets->add_texture(round_id, round_path.c_str());
-		Game::assets->add_texture(number_id, number_path.c_str());
-		auto x = (round_number % 3) * NUMBER_WIDTH;
-		auto y = (round_number / 3) * NUMBER_HEIGHT;
-
-		num_src = { x, y, 100, 160 };
-	}
-
-	bool do_work() override
-	{
-		Game::assets->create_prompt(&round_dest, 1, round_id.c_str());
-		Game::assets->create_prompt(&num_dest, &num_src, 1, number_id.c_str());
-		return true;
-	}
-
-	float work_done() override { return 1; }
-};
 
 class ClearPrompts : public Process
 {

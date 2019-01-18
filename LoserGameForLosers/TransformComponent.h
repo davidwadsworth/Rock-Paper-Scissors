@@ -29,7 +29,8 @@ public:
 		position.y = 320;
 	}
 
-	TransformComponent(const float x, const float y)
+	TransformComponent(const float x, const float y, const int sc)
+		: scale(sc)
 	{
 		position.x = x;
 		position.y = y;

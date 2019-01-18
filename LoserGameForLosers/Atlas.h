@@ -14,11 +14,11 @@ struct SpriteAddress
 
 struct Atlas
 {
-	const char * path;
+	std::string path;
 	int width, height;
-	std::vector<SpriteAddress *> adresses;
+	std::vector<SpriteAddress *> addresses;
 
-	Atlas(const char * path, int width, int height)
+	Atlas(std::string path, int width, int height)
 		: path(path), width(width), height(height)
 	{}
 
@@ -35,7 +35,7 @@ struct Atlas
 		address->original_height = h;
 		address->rotation = 0;
 
-		adresses.push_back(address);
+		addresses.push_back(address);
 		current_address_ = address;
 	}
 

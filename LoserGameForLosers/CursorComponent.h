@@ -7,13 +7,13 @@ class CursorComponent : public Component
 	SDL_Rect* dest_;
 	SDL_Texture * texture_;
 	float angle_;
-	int sprite_id_, atlas_id_;
+	int cursor_id_;
 	SDL_RendererFlip cursor_flip_;
 	SpriteAddress * cursor_address_;
 public:
 
 	CursorComponent(int sprite_id)
-		: angle_(0), cursor_flip_(SDL_FLIP_NONE), sprite_id_(sprite_id)
+		: angle_(0), cursor_flip_(SDL_FLIP_NONE), cursor_id_(sprite_id)
 	{}
 
 	~CursorComponent()
@@ -29,12 +29,11 @@ public:
 		}
 
 		texture_ = entity->get_component<TextureComponent>().texture;
-		atlas_id_ = entity->get_component<TextureComponent>().atlas_id;
+		auto atlas = entity->get_component<TextureComponent>().atlas;
 
-		cursor_address_ = Game::data->get_sprite_address(atlas_id_, sprite_id_);
+		cursor_address_ = atlas->addresses[cursor_id_];
 
 	}
-
 
 	void update() override
 	{

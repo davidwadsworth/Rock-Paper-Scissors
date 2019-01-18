@@ -8,7 +8,7 @@ class PromptComponent : public Component
 	SDL_Texture * tex_;
 	SDL_Rect dest_rect_;
 	TransformComponent * transform_;
-	int atlas_id_, sprite_id_;
+	int sprite_id_;
 	SpriteAddress * prompt_address;
 public:
 
@@ -20,10 +20,10 @@ public:
 	{
 		transform_ = &entity->get_component<TransformComponent>();
 		tex_ = entity->get_component<TextureComponent>().texture;
-		atlas_id_ = entity->get_component<TextureComponent>().atlas_id;
+		
+		auto atlas = entity->get_component<TextureComponent>().atlas;
 
-
-		prompt_address = Game::data->get_sprite_address[atlas_id_, sprite_id_];
+		prompt_address = atlas->addresses[sprite_id_];
 	}
 
 	void update() override

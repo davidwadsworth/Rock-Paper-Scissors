@@ -10,40 +10,31 @@ AssetManager::AssetManager(Manager* man) : manager_(man)
 AssetManager::~AssetManager()
 = default;
 
-void AssetManager::create_option_box(Options* choices, int atlas_id, int cursor_id, float text_scaling = 1.0f, bool is_boxed = false, int box_thickness = 1, int box_id = main_textbox_center)
+void AssetManager::create_option_box(Options* choices, int atlas_id, int cursor_id, float text_scaling, bool is_boxed, int box_thickness, int box_corner_id, int box_side_id, int box_center_id )
 {
 	auto& option_box(manager_->add_entity());
 	option_box.add_component<OptionsComponent>(choices);
 	option_box.add_component<TextureComponent>(atlas_id);
 	
 	if (is_boxed)
-		option_box.add_component<BoxComponent>(box_thickness, box_id);
+		option_box.add_component<BoxComponent>(box_thickness, box_corner_id, box_side_id, box_center_id);
 	
 	option_box.add_component<GlyphAtlasComponent>(text_scaling);
 	option_box.add_component<CursorComponent>(cursor_id);
-	option_box.add_component<ControllerComponent>("options");
+	option_box.add_component<ControllerComponent>(controller_opions_nav);
 	option_box.add_group(Game::group_cursors);
 }
 
-void AssetManager::create_prompt(SDL_Rect * dest, int sc, const char * texture)
+void AssetManager::create_prompt(int atlas_id, int prompt_id, SDL_Rect * dest)
 {
 	auto& prompt(manager_->add_entity());
-	prompt.add_component<TransformComponent>(dest->x, dest->y, dest->h, dest->w, sc);
-	prompt.add_component<TextureComponent>(texture);
-	prompt.add_component<PromptComponent>(dest->x, dest->y, dest->w, dest->h);
+	prompt.add_component<TransformComponent>(dest->x, dest->y, dest->h, dest->w, 1);
+	prompt.add_component<TextureComponent>(atlas_id);
+	prompt.add_component<PromptComponent>(prompt_id);
 	prompt.add_group(Game::group_prompts);
 }
 
-void AssetManager::create_prompt(SDL_Rect* dest, SDL_Rect* src, int sc, const char * texture)
-{
-	auto& prompt(manager.add_entity());
-	prompt.add_component<TransformComponent>(dest->x, dest->y, dest->h, dest->w, sc);
-	prompt.add_component<TextureComponent>(texture);
-	prompt.add_component<PromptComponent>(src->x, src->y, src->w, src->h);
-	prompt.add_group(Game::group_prompts);
-}
-
-void AssetManager::add_texture( const char * path)
+void AssetManager::add_texture(const char * path)
 {
 	textures_.push_back(TextureManager::load_texture(path));
 }

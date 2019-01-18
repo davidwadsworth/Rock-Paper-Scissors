@@ -40,6 +40,7 @@ public:
 
 	void set_position(Vector2D position) override { }
 
+	Command * get_command() override { return command_; }
 	std::string get_text() override { return text_; }
 	SDL_Rect* get_link_dimensions() override { return link_dimensions_; }
 	SDL_Rect* get_box_dimensions() override { return box_dimensions_; }

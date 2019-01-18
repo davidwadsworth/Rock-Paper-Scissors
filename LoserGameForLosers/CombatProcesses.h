@@ -169,8 +169,8 @@ public:
 		player_left_->get_component<SpriteComponent>().play(Idle);
 		player_right_->get_component<SpriteComponent>().play(Idle);
 
-		player_left_->get_component<ControllerComponent>().change_controller("nothing");
-		player_right_->get_component<ControllerComponent>().change_controller("nothing");
+		player_left_->get_component<ControllerComponent>().change_controller(controller_no_input);
+		player_right_->get_component<ControllerComponent>().change_controller(controller_no_input);
 		work_complete_ = 1;
 		return true;
 	}

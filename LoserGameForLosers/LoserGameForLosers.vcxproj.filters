@@ -171,9 +171,6 @@
     <ClInclude Include="BitmapFont.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Atlas.h">
-      <Filter>Header Files\Data</Filter>
-    </ClInclude>
     <ClInclude Include="DataManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -211,6 +208,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DrawCall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Atlas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -280,6 +280,9 @@
     </ClCompile>
     <ClCompile Include="ControllerData.cpp">
       <Filter>Header Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkCommands.cpp">
+      <Filter>Header Files\Commands</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

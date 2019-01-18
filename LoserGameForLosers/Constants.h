@@ -135,7 +135,7 @@ enum MAIN_SPRITESHEET
 	main_player_arms_walk_right_1,
 	main_player_arms_walk_right_2,
 	main_player_arms_walk_right_3,
-	main_player_fighter_idle_1_image,
+	main_player_fighter_idle_1,
 	main_player_fighter_idle_2,
 	main_player_fighter_idle_3,
 	main_player_fighter_walk_left_1,
@@ -143,7 +143,8 @@ enum MAIN_SPRITESHEET
 	main_player_fighter_walk_left_3,
 	main_player_fighter_walk_right_1,
 	main_player_fighter_walk_right_2,
-	main_player_fighter_walk_right_3, fighter_idle_1,
+	main_player_fighter_walk_right_3, 
+	main_player_square_idle_1,
 	main_player_square_idle_2,
 	main_player_square_idle_3,
 	main_player_square_walk_left_1,
@@ -156,4 +157,19 @@ enum MAIN_SPRITESHEET
 	main_textbox_corner,
 	main_textbox_side,
 	main_textbox_speech_arrow
+};
+
+enum CONTROLLER_DATA
+{
+	controller_opions_nav,
+	controller_combat_debug,
+	controller_no_input,
+	controller_combat_select_attack,
+	controller_combat_fight
+};
+
+enum ATLAS_ORDER
+{
+	atlas_texture_sheet_main,
+	atlas_texture_sheet_prompts
 };

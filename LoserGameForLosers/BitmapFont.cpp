@@ -208,7 +208,7 @@ void BitmapFont::render_text(int x, int y, float sc, std::string text)
 				int ascii = (unsigned char)text[i];
 
 				//Show the character
-				TextureManager::draw(map_bitmap_->get_texture(), map_chars_[ascii], SDL_Rect{ curX, curY, static_cast<int>(map_chars_[ascii].w * sc), static_cast<int>(map_chars_[ascii].h * sc) }, 0, SDL_FLIP_NONE);
+				TextureManager::old_draw(map_bitmap_->get_texture(), map_chars_[ascii], SDL_Rect{ curX, curY, static_cast<int>(map_chars_[ascii].w * sc), static_cast<int>(map_chars_[ascii].h * sc) });
 
 				//Move over the width of the character with one pixel of padding
 				curX += map_chars_[ascii].w + 1;

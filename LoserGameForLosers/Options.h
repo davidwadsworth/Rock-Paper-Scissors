@@ -1,6 +1,6 @@
 #pragma once
 #include "Command.h"
-
+#include "Link.h"
 
 struct Options
 {

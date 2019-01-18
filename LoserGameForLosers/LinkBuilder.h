@@ -14,9 +14,10 @@ public:
 		switch (link_id)
 		{
 		case 0:
-			link = new CursorLeftLink(padding, alignment, asset, command, font );
+			link = new CursorLeftLink(padding, alignment, asset, command, font);
 			break;
 		default:
+			link = new CursorLeftLink(padding, alignment, asset, command, font);
 			break;
 		}
 

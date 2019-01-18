@@ -10,7 +10,7 @@ class BoxComponent : public Component
 	SDL_Texture * texture_; 
 	std::vector<DrawCall*> draw_calls_;
 	int scale_;
-	int atlas_id_, corner_id_, side_id_, center_id_;
+	int corner_id_, side_id_, center_id_;
 	SpriteAddress * corner_address_, *side_address_, *center_address_;
 public:
 	SDL_Rect box_rect{};
@@ -38,11 +38,12 @@ public:
 		else { build_box(box_rect); }
 
 		texture_ = entity->get_component<TextureComponent>().texture;
-		atlas_id_ = entity->get_component<TextureComponent>().atlas_id;
 
-		corner_address_ = Game::data->get_sprite_address(atlas_id_, corner_id_);
-		side_address_ = Game::data->get_sprite_address(atlas_id_, side_id_);
-		center_address_ = Game::data->get_sprite_address(atlas_id_, center_id_);
+		auto atlas = entity->get_component<TextureComponent>().atlas;
+
+		corner_address_ = atlas->addresses[corner_id_];
+		side_address_ = atlas->addresses[side_id_];
+		center_address_ = atlas->addresses[center_id_];
 	}
 
 	void build_box(const SDL_Rect box)

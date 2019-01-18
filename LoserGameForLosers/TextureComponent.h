@@ -1,5 +1,6 @@
 #pragma once
 #include "ECS.h"
+#include "Game.h"
 
 class TextureComponent : public Component
 {
@@ -7,21 +8,21 @@ class TextureComponent : public Component
 
 public:
 
-	int atlas_id;
+	Atlas* atlas;
 	SDL_Texture * texture;
 
-	TextureComponent(int tex)
-		: atlas_id(tex)
+	TextureComponent(int sheet_id)
 	{
-		set_texture(tex);
+		set_texture(sheet_id);
 	}
 
 	~TextureComponent() {}
 
 
-	void set_texture(int tex)
+	void set_texture(int sheet_id)
 	{
-		texture = Game::assets->get_texture(tex);
+		texture = Game::assets->get_texture(sheet_id);
+		atlas = Game::data->get_atlas(sheet_id);
 	}
 
 	void set_alpha(Uint8 alpha)

@@ -12,11 +12,11 @@ struct Animation
 	Animation(): index(0), frames(0), speed(0), rotations(0), flip(SDL_FLIP_NONE)
 	{}
 
-	Animation(const int index, const int frames, const int speed, int atlas_id )
+	Animation(const int index, const int frames, const int speed)
 		: index(index), frames(frames), speed(speed)
 	{}
 
-	Animation(const int index, const int frames, const int speed, int atlas_id, const int rots, const SDL_RendererFlip flp)
+	Animation(const int index, const int frames, const int speed, const int rots, const SDL_RendererFlip flp)
 		: index(index), frames(frames), speed(speed), rotations(rots), flip(flp)
 	{}
 
