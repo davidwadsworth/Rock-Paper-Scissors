@@ -4,12 +4,11 @@
 class CursorComponent : public Component
 {
 	OptionsComponent * options_;
-	SDL_Rect* dest_;
-	SDL_Texture * texture_;
+	SDL_Rect *dest_;
+	TextureComponent * texture_;
 	float angle_;
-	int cursor_id_;
+	int cursor_id_, cursor_slot_;
 	SDL_RendererFlip cursor_flip_;
-	SpriteAddress * cursor_address_;
 public:
 
 	CursorComponent(int sprite_id)
@@ -24,24 +23,17 @@ public:
 		if (entity->has_component<OptionsComponent>())
 		{
 			options_ = &entity->get_component<OptionsComponent>();
-
 			dest_ = options_->get_current_link()->get_cursor_dimensions();
 		}
 
-		texture_ = entity->get_component<TextureComponent>().texture;
-		auto atlas = entity->get_component<TextureComponent>().atlas;
+		texture_ = &entity->get_component<TextureComponent>();
 
-		cursor_address_ = atlas->addresses[cursor_id_];
-
+		auto current_cursor_id = texture_->new_tex(cursor_id_, dest_);
+		cursor_slot_ = texture_->create_texture_slot(current_cursor_id);
 	}
 
 	void update() override
 	{
 		dest_ = options_->get_current_link()->get_cursor_dimensions();
-	}
-
-	void draw() override
-	{
-		TextureManager::draw(texture_, cursor_address_, dest_, angle_, cursor_flip_);
 	}
 };

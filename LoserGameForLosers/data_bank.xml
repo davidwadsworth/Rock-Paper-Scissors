@@ -1,0 +1,160 @@
+
+<Bank id="Rock Paper Scisors">
+	<Type id="Texture Sheets" edit="n">
+		<TextureAtlas imagePath="atlas_main_textures-0.png" width="2048" height="1926">
+		    <sprite n="attack_belt_extension.png" x="2033" y="1218" w="14" h="64" r="y"/>
+		    <sprite n="attack_belt_hit.png" x="869" y="1858" w="64" h="54"/>
+		    <sprite n="attack_belt_miss.png" x="1063" y="1858" w="55" h="46"/>
+		    <sprite n="attack_hand_extension.png" x="1753" y="760" w="64" h="13"/>
+		    <sprite n="atttack_hand_hit.png" x="803" y="1858" w="64" h="64"/>
+		    <sprite n="atttack_hand_miss.png" x="999" y="1858" w="62" h="44" oX="0" oY="11" oW="64" oH="64"/>
+		    <sprite n="atttack_leg_extension.png" x="2032" y="837" w="13" h="64" r="y"/>
+		    <sprite n="atttack_leg_hit.png" x="935" y="1858" w="62" h="55" oX="0" oY="0" oW="64" oH="64"/>
+		    <sprite n="atttack_leg_miss.png" x="1120" y="1858" w="57" h="39" oX="0" oY="4" oW="64" oH="64"/>
+		    <sprite n="background_cave.png" x="1" y="1" w="800" h="640"/>
+		    <sprite n="background_city.png" x="1" y="643" w="800" h="640"/>
+		    <sprite n="background_hills.png" x="1" y="1285" w="800" h="640"/>
+		    <sprite n="background_suburban.png" x="803" y="1" w="800" h="640"/>
+		    <sprite n="cursor.png" x="1900" y="1774" w="32" h="32"/>
+		    <sprite n="menu_title_screen.png" x="803" y="643" w="800" h="640"/>
+		    <sprite n="number_0.png" x="1753" y="667" w="160" h="91" oX="0" oY="0" oW="100" oH="160" r="y"/>
+		    <sprite n="number_1.png" x="1605" y="1218" w="152" h="71" oX="12" oY="4" oW="100" oH="160" r="y"/>
+		    <sprite n="number_2.png" x="1332" y="1580" w="93" h="147" oX="0" oY="2" oW="100" oH="160"/>
+		    <sprite n="number_3.png" x="1428" y="1711" w="92" h="146" oX="1" oY="11" oW="100" oH="160"/>
+		    <sprite n="number_4.png" x="1888" y="571" w="159" h="94" oX="6" oY="1" oW="100" oH="160" r="y"/>
+		    <sprite n="number_5.png" x="1906" y="760" w="141" h="75" oX="11" oY="6" oW="100" oH="160" r="y"/>
+		    <sprite n="number_6.png" x="1427" y="1556" w="87" h="153" oX="2" oY="6" oW="100" oH="160"/>
+		    <sprite n="number_7.png" x="1759" y="1208" w="142" h="90" oX="7" oY="9" oW="100" oH="160" r="y"/>
+		    <sprite n="number_8.png" x="1522" y="1711" w="74" h="152" oX="11" oY="6" oW="100" oH="160"/>
+		    <sprite n="number_9.png" x="1516" y="1556" w="75" h="153" oX="5" oY="0" oW="100" oH="160"/>
+		    <sprite n="player_arms_idle_1.png" x="1903" y="1218" w="128" h="90" oX="0" oY="0" oW="128" oH="128" r="y"/>
+		    <sprite n="player_arms_idle_2.png" x="1598" y="1816" w="125" h="90" oX="0" oY="3" oW="128" oH="128" r="y"/>
+		    <sprite n="player_arms_idle_3.png" x="1915" y="667" w="128" h="91" oX="0" oY="0" oW="128" oH="128" r="y"/>
+		    <sprite n="player_arms_walk_left_1.png" x="1947" y="1310" w="94" h="125" oX="1" oY="3" oW="128" oH="128"/>
+		    <sprite n="player_arms_walk_left_2.png" x="1535" y="1426" w="94" h="128" oX="1" oY="0" oW="128" oH="128"/>
+		    <sprite n="player_arms_walk_left_3.png" x="1631" y="1421" w="90" h="128" oX="0" oY="0" oW="128" oH="128"/>
+		    <sprite n="player_arms_walk_right_1.png" x="1723" y="1421" w="94" h="128" oX="1" oY="0" oW="128" oH="128"/>
+		    <sprite n="player_arms_walk_right_2.png" x="1940" y="1437" w="94" h="125" oX="1" oY="3" oW="128" oH="128"/>
+		    <sprite n="player_arms_walk_right_3.png" x="1593" y="1556" w="90" h="128" oX="0" oY="0" oW="128" oH="128"/>
+		    <sprite n="player_fighter_idle_1.png" x="1598" y="1686" w="100" h="128" oX="0" oY="0" oW="128" oH="128"/>
+		    <sprite n="player_fighter_idle_2.png" x="1725" y="1811" w="125" h="103" oX="0" oY="3" oW="128" oH="128" r="y"/>
+		    <sprite n="player_fighter_idle_3.png" x="1804" y="1681" w="94" h="128" oX="0" oY="0" oW="128" oH="128"/>
+		    <sprite n="player_fighter_walk_left_1.png" x="1808" y="1551" w="90" h="128" oX="0" oY="0" oW="128" oH="128"/>
+		    <sprite n="player_fighter_walk_left_2.png" x="1852" y="1811" w="128" h="100" oX="0" oY="0" oW="128" oH="128" r="y"/>
+		    <sprite n="player_fighter_walk_left_3.png" x="1324" y="1729" w="102" h="128" oX="0" oY="0" oW="128" oH="128"/>
+		    <sprite n="player_fighter_walk_right_1.png" x="1817" y="1310" w="128" h="100" oX="0" oY="0" oW="128" oH="128" r="y"/>
+		    <sprite n="player_fighter_walk_right_2.png" x="1900" y="1682" w="128" h="90" oX="0" oY="0" oW="128" oH="128" r="y"/>
+		    <sprite n="player_fighter_walk_right_3.png" x="1700" y="1681" w="102" h="128" oX="0" oY="0" oW="128" oH="128"/>
+		    <sprite n="player_square_idle_1.png" x="1906" y="1097" w="128" h="119" oX="0" oY="0" oW="128" oH="128" r="y"/>
+		    <sprite n="player_square_idle_2.png" x="1900" y="1564" w="120" h="116" oX="3" oY="12" oW="128" oH="128"/>
+		    <sprite n="player_square_idle_3.png" x="1563" y="1291" w="122" h="128" oX="0" oY="0" oW="128" oH="128"/>
+		    <sprite n="player_square_walk_left_1.png" x="1906" y="967" w="123" h="128" oX="2" oY="0" oW="128" oH="128"/>
+		    <sprite n="player_square_walk_left_2.png" x="1819" y="1412" w="119" h="124" oX="0" oY="4" oW="128" oH="128"/>
+		    <sprite n="player_square_walk_left_3.png" x="1687" y="1300" w="128" h="119" oX="0" oY="0" oW="128" oH="128" r="y"/>
+		    <sprite n="player_square_walk_right_1.png" x="1409" y="1426" w="124" h="128" oX="0" oY="0" oW="128" oH="128"/>
+		    <sprite n="player_square_walk_right_2.png" x="1906" y="837" w="124" h="128" oX="0" oY="0" oW="128" oH="128"/>
+		    <sprite n="player_square_walk_right_3.png" x="1685" y="1551" w="121" h="128" oX="0" oY="0" oW="128" oH="128"/>
+		    <sprite n="prompt_fight.png" x="1751" y="777" w="153" h="429" oX="194" oY="7" oW="800" oH="160" r="y"/>
+		    <sprite n="prompt_miss.png" x="803" y="1726" w="519" h="130" oX="112" oY="12" oW="800" oH="160"/>
+		    <sprite n="prompt_player_1_match_win.png" x="803" y="1285" w="758" h="139" oX="31" oY="13" oW="800" oH="160"/>
+		    <sprite n="prompt_player_1_wins.png" x="1888" y="1" w="154" h="568" oX="125" oY="5" oW="800" oH="160" r="y"/>
+		    <sprite n="prompt_player_2_match_win.png" x="1605" y="1" w="146" h="774" oX="5" oY="14" oW="800" oH="160" r="y"/>
+		    <sprite n="prompt_player_2_wins.png" x="803" y="1426" w="604" h="152" oX="86" oY="8" oW="800" oH="160"/>
+		    <sprite n="prompt_round.png" x="803" y="1580" w="527" h="144" oX="60" oY="1" oW="600" oH="160"/>
+		    <sprite n="prompt_select_attack.png" x="1753" y="1" w="133" h="664" oX="53" oY="5" oW="800" oH="160" r="y"/>
+		    <sprite n="prompt_stop.png" x="1605" y="777" w="144" h="439" oX="145" oY="0" oW="800" oH="160" r="y"/>
+		    <sprite n="textbox_default_center.png" x="1409" y="1556" w="10" h="10"/>
+		    <sprite n="textbox_default_corner.png" x="1751" y="1208" w="6" h="6" oX="4" oY="4" oW="10" oH="10"/>
+		    <sprite n="textbox_default_side.png" x="1687" y="1291" w="10" h="6" oX="0" oY="4" oW="10" oH="10"/>
+		    <sprite n="textbox_default_speech_arrow.png" x="1409" y="1568" w="10" h="10"/>
+		</TextureAtlas></Type>
+	<Type id="Input Maps" edit="n">
+		<IMap id="menu_nav" >
+			<Input key="0" command="3" command_value="-1"/>
+			<Input key="1" command="3" command_value="1" />
+			<Input key="2" command="4" command_value="-1" />
+			<Input key="3" command="4" command_value="1" />
+			<Input key="4" command="5" command_value="0" />
+		</IMap>
+		<IMap id="debug">
+			<Input key="2" command="0" command_value="-1,1" />
+			<Input key="3" command="0" command_value="1,2" />
+			<Input key="-23" command="0" command_value="0,0" />
+			<Input key="4" command="1" command_value="0" />
+			<Input key="5" command="1" command_value="1" />
+			<Input key="6" command="1" command_value="2" />
+		</IMap>
+		<IMap id="no_input" >
+		</IMap>
+		<IMap id="select_attack" >
+			<Input key="4" command="1" command_value="0" />
+			<Input key="5" command="1" command_value="1" />
+			<Input key="6" command="1" command_value="2" />
+		</IMap>
+		<IMap id="combat" >
+			<Input key="2" command="0" command_value="-1,1" />
+			<Input key="3" command="0" command_value="1,2" />
+			<Input key="-23" command="0" command_value="0,0" />
+			<Input key="7" command="2" command_value="1" />
+		</IMap>
+		<IMap id="fix stupid rotation bug">
+			<Input key="0" command="6" command_value="0,1" />
+			<Input key="1" command="6" command_value="0,-1" />
+			<Input key="2" command="6" command_value="1,0" />
+			<Input key="3" command="6" command_value="-1,0" />
+		</IMap></Type>
+	<Type id="Options Maps" edit="n">
+		<Options id="start_menu" padding="5" alignment_x="0.0" alignment_y="0.0" x="0.333333" y="0.484375" font="lazyfont">
+			<X_Position>
+				<Y_Position>
+					<Option text="Play Game" command="6" command_value="6" link="0" />
+					<Option text="Option 2" command="-1" command_value="0" link="0" />
+					<Option text="Option 3" command="-1" command_value="0" link="0" />
+					<Option text="Option 4" command="-1" command_value="0" link="0" />
+				</Y_Position>
+			</X_Position>
+		</Options></Type>
+	<Type id="Controller Maps" edit="y">
+		<Controller>
+			<Key code="26"/>
+			<Key code="22"/>
+			<Key code="4"/>
+			<Key code="7"/>
+			<Key code="30"/>
+			<Key code="31"/>
+			<Key code="32"/>
+			<Key code="32"/>
+		</Controller>
+		<Controller>
+			<Key code="82"/>
+			<Key code="81"/>
+			<Key code="80"/>
+			<Key code="79"/>
+			<Key code="12"/>
+			<Key code="18"/>
+			<Key code="19"/>
+			<Key code="15"/>
+		</Controller></Type>
+	<Type id="Character Info" edit="y">
+			<Character id="fighter" velocity="1.0" hitbox="0.5">
+				<Attack hitbox="1.5" distance="0" id="0" />
+				<Attack hitbox="0.8" distance="2.0" id="1" />
+				<Attack hitbox="0.8" distance="0.5" id="2"/>
+				<Attack hitbox="0.0" distance="-0.5" id="3" />
+			</Character>
+			
+			<Character id="square" velocity="0.7" hitbox="0.9">
+				<Attack hitbox="1.5" distance="0" id="0" />
+				<Attack hitbox="1.1" distance="1.5" id="1" />
+				<Attack hitbox="1.2" distance="0.5" id="2" />
+				<Attack hitbox="0.0" distance="-0.3" id="3" />
+			</Character>
+			
+			<Character id="arms" velocity="0.9" hitbox="0.6">
+				<Attack hitbox="2.3" distance="0" id="0" />
+				<Attack hitbox="0.6" distance="2.0" id="1" />
+				<Attack hitbox="1.0" distance="0.5" id="2" />
+				<Attack hitbox="0.0" distance="-0.6" id="3" />
+			</Character></Type>
+	<Type id="Game Settings" edit="y"></Type>
+</Bank>

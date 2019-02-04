@@ -9,7 +9,8 @@ struct SpriteAddress
 		: id(id)
 	{}
 	std::string id;
-	int x, y, width, height, x_offset, y_offset, original_width, original_height, rotation;
+	SDL_Rect src;
+	int x_offset, y_offset, original_width, original_height, rotation;
 };
 
 struct Atlas
@@ -25,10 +26,10 @@ struct Atlas
 	void add_address(std::string id, int x, int y, int w, int h)
 	{
 		auto address = new SpriteAddress(id);
-		address->x = x;
-		address->y = y;
-		address->width = w;
-		address->height = h;
+		address->src.x = x;
+		address->src.y = y;
+		address->src.w = w;
+		address->src.h = h;
 		address->x_offset = 0;
 		address->y_offset = 0;
 		address->original_width = w;
@@ -47,9 +48,9 @@ struct Atlas
 		current_address_->original_height = oh;
 	}
 
-	void add_rotation(int r)
+	void is_rotated()
 	{
-		current_address_->rotation = r;
+		current_address_->rotation = 90;
 	}
 private:
 	SpriteAddress * current_address_;

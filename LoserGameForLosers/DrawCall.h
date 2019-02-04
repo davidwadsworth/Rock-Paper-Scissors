@@ -1,16 +1,14 @@
 #pragma once
 #include "SDL.h"
+#include "Atlas.h"
 
 struct DrawCall
 {
 public:
-	DrawCall(SpriteAddress* sprite, SDL_Rect* dest, int rotation, SDL_RendererFlip flip)
-		: sprite_address(sprite), dest(dest), rotation(rotation), flip(flip)
-	{}
-	~DrawCall() {}
-
-	SpriteAddress* sprite_address;
-	SDL_Rect *dest;
-	int rotation;
-	SDL_RendererFlip flip;
+	int id;
+	SDL_Texture * tex;
+	SDL_Rect *src, *dest;
+	SDL_Point * rotation_point;
+	int rotation = 0;
+	SDL_RendererFlip flip = SDL_FLIP_NONE;
 };

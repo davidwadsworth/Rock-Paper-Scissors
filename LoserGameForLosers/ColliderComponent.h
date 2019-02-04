@@ -88,25 +88,22 @@ public:
 
 	void update() override
 	{
-		collider.x = static_cast<int>(transform->position.x);
-		projectile_point = transform->position.x + transform->width * transform->scale * (1 - hit_box);
+		collider.x = transform->position.x;
+		projectile_point = transform->position.x + std::round(SPRITE_LENGTH * transform->scale * (1 - hit_box));
 		if (flipped_)
 		{
-			collider.x = transform->position.x + transform->width * transform->scale * (1 - hit_box);
-			projectile_point = transform->position.x + transform->width * transform->scale * (1 - hit_box);
+			collider.x = transform->position.x + std::round(SPRITE_LENGTH * transform->scale * (1 - hit_box));
+			projectile_point = transform->position.x + SPRITE_LENGTH * transform->scale * (1 - hit_box);
 		}
-		collider.y = static_cast<int>(transform->position.y);
-		collider.w = transform->width * transform->scale * hit_box;
-		collider.h = transform->height * transform->scale;
+		collider.y = transform->position.y;
+		collider.w = std::round(SPRITE_LENGTH * transform->scale * hit_box);
+		collider.h = std::round(SPRITE_LENGTH * transform->scale);
 
 	}
 
 	void draw() override
 	{
-		if (draw_attack)
-		{
-			draw_collision();
-		}
+		SDL_RenderDrawRect(Game::renderer, &collider);
 	}
 
 };

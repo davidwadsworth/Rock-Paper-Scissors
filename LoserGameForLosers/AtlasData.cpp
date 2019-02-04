@@ -42,9 +42,8 @@ Atlas * AtlasData::load()
 
 		if (sprite_node->first_attribute("r"))
 		{
-			atlas_builder->add_rotation(90);
+			atlas_builder->is_rotated();
 		}
-	
 	}
 
 	return atlas_builder;

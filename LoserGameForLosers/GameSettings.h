@@ -8,6 +8,7 @@ public:
 	Character* player1 = new Character();
 	Character* player2 = new Character();
 	int background = main_background_city;
+	int max_range = 4;
 
 	GameSettings()
 	{}

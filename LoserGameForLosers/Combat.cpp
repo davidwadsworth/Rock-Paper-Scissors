@@ -4,8 +4,7 @@
 
 Background * bg_logic;
 
-CombatProcessor *processor = nullptr;
-
+// probably should be somewhere else idk
 std::vector<SDL_Scancode> keys = { SDL_SCANCODE_UP, SDL_SCANCODE_DOWN, SDL_SCANCODE_LEFT, SDL_SCANCODE_RIGHT, SDL_SCANCODE_I, SDL_SCANCODE_O, SDL_SCANCODE_P, SDL_SCANCODE_L };
 
 Combat::Combat(Manager * manager)
@@ -20,26 +19,28 @@ Combat::Combat(Manager * manager)
 	background.add_component<BackgroundComponent>(Game::game_settings->background);
 	background.add_group(Game::group_background);
 
-	player_left.add_component<TransformComponent>(SPRITE_LEFT_EDGE_OF_SCREEN, SPRITE_BOTTOM_OF_SCREEN, SPRITE_LENGTH, SPRITE_LENGTH, SPRITE_SCALING);
+	//Replace this with a loaded in solution
+	std::vector<Animation *> player_1_anim = { new Animation(main_player_arms_idle_1, 3, 200), new Animation(main_player_arms_walk_left_1, 3, 200), new Animation(main_player_arms_walk_right_1, 3, 200) };
+	std::vector<Animation *> player_2_anim = { new Animation(main_player_fighter_idle_1, 3, 200), new Animation(main_player_fighter_walk_left_1, 3, 200), new Animation(main_player_fighter_walk_right_1, 3, 200) };
+
+	player_left.add_component<TransformComponent>(SPRITE_LEFT_EDGE_OF_SCREEN, SPRITE_BOTTOM_OF_SCREEN, SPRITE_SCALING);
 	player_left.add_component<TextureComponent>(atlas_texture_sheet_main);
 	player_left.add_component<PlayerComponent>(true, Game::game_settings->player1);
-	player_left.add_component<SpriteComponent>(main_player_arms_idle_1, true);
+	player_left.add_component<SpriteComponent>(player_1_anim);
 	player_left.add_component<ControllerComponent>(controller_combat_debug);
 	player_left.add_component<ColliderComponent>();
 	player_left.add_group(Game::group_players);
 
-	player_right.add_component<TransformComponent>(SPRITE_RIGHT_EDGE_OF_SCREEN, SPRITE_BOTTOM_OF_SCREEN, SPRITE_LENGTH, SPRITE_LENGTH, SPRITE_SCALING);
+	player_right.add_component<TransformComponent>(SPRITE_RIGHT_EDGE_OF_SCREEN, SPRITE_BOTTOM_OF_SCREEN, SPRITE_SCALING);
 	player_right.add_component<TextureComponent>(atlas_texture_sheet_main);
 	player_right.add_component<PlayerComponent>(false, Game::game_settings->player2);
-	player_right.add_component<SpriteComponent>(main_player_square_idle_1, true, 0, SDL_FLIP_HORIZONTAL);
+	player_right.add_component<SpriteComponent>(player_2_anim, SDL_FLIP_HORIZONTAL);
 	player_right.add_component<ControllerComponent>(controller_combat_debug, keys);
 	player_right.add_component<ColliderComponent>();
 	player_right.add_group(Game::group_players);
 
-	bg_logic = new Background(&player_left, &player_right, &background, PLAYER_MAX_RANGE);
-	/*processor = new CombatProcessor(&player_left, &player_right, &background);
+	bg_logic = new Background(&player_left, &player_right, &background, Game::game_settings->max_range);
 
-	processor->create_combat();*/
 }
 
 Combat::~Combat()
@@ -66,9 +67,6 @@ void Combat::logic()
 
 	manager.refresh();
 	manager.update();
-
-	/*if (processor->tasks[processor->current_task]->do_work())
-		processor->next_process();*/
 }
 
 

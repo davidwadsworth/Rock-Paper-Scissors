@@ -47,7 +47,6 @@ void Game::init(const char * window_title)
 	Game::game_settings->player2 = data->get_character(arms);
 
 	Game::assets->add_texture(data->get_atlas(atlas_texture_sheet_main)->path.c_str());
-	Game::assets->add_texture(data->get_atlas(atlas_texture_sheet_prompts)->path.c_str());
 
 	Game::assets->set_bit_map_font("lazyfont.png");
 

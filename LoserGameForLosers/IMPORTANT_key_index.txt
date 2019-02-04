@@ -1,7 +1,4 @@
-Dad Beat (name pending)
-key for game ints
-
-Options struct:
+Options:
 --------------------------------------------------------------------------
 
 
@@ -14,7 +11,7 @@ Alignment:
 
 ----------------------------------------------------------------------------
 
-Controllers struct:
+Controllers:
 ----------------------------------------------------------------------------
 
 Commands:
@@ -39,75 +36,135 @@ Keys:
 8 = extra 1,
 9 = extra 2
 
-------------------------------------------------------------------------------
-
-Prompt Order:
-------------------------------------------------------------------------------
-
-Pos: | Type: 	  | Description:
-----------------------------------
-0    : number	  : zero
-1    : number	  : one
-2    : number	  : two
-3    : number  	  : three
-4    : number	  : four
-5    : number	  : five
-6    : number 	  : six
-7    : number	  : seven
-8    : number 	  : eight
-9    : number	  : nine
-10   : prompt 	  : fight
-11   : prompt 	  : miss
-12   : prompt 	  : player 1 match win
-13   : prompt 	  : player 1 wins
-14   : prompt 	  : player 2 match win
-15   : Prompt 	  : player 2 wins
-16   : prompt 	  : round
-17   : prompt     : select attack
-18   : prompt     : stop
-
 -------------------------------------------------------------------------------
 
-Main Texture Order:
+Texture Order:
 -------------------------------------------------------------------------------
 
 Pos: | Type:      | Description:
 ----------------------------------
-0 	 : background : cave
-1    : background : city
-2    : background : grassy
-3 	 : background : suburb
-4 	 : cursor     : box
-5    : player	  : arms idle 1
-6    : player	  : arms idle 2
-7    : player	  : arms idle 3
-8    : player	  : arms walk left 1
-9    : player	  : arms walk left 2
-10   : player	  : arms walk left 3
-11   : player	  : arms walk right 1
-12   : player	  : arms walk right 2
-13   : player	  : arms walk right 3
-14   : player	  : fighter idle 1
-15   : player	  : fighter idle 2
-16   : player	  : fighter idle 3
-17   : player	  : fighter walk left 1
-18   : player	  : fighter walk left 2
-19   : player	  : fighter walk left 3
-20   : player	  : fighter walk right 1
-21   : player	  : fighter walk right 2
-22   : player	  : fighter walk right 3
-23   : player	  : square idle 1
-24   : player	  : square idle 2
-25   : player     : square idle 3
-26   : player  	  : square walk left 1
-27   : player  	  : square walk left 2
-28   : player  	  : square walk left 3
-29   : player  	  : square walk right 1
-30   : player  	  : square walk right 2
-31   : player  	  : square walk right 3
-32   : textbox 	  : center
-33   : textbox    : top left corner
-34   : textbox    : top side
-35   : textbox    : bottom speech arrow
+000	 : attack	  : belt extension
+001	 : attack	  : belt hit
+002	 : attack	  : belt miss
+003	 : attack	  : hand extension
+004	 : attack 	  : hand hit
+005	 : attack	  : hand miss
+006	 : attack	  : leg extension
+007	 : attack	  : leg hit
+008	 : attack	  : leg miss
+009  : background : cave
+010  : background : city
+011  : background : hills
+012	 : background : suburb
+013	 : cursor     : box
+014	 : menu		  : title
+015	 : number	  : 0
+016	 : number	  : 1
+017	 : number	  : 2
+018	 : number	  : 3
+019	 : number	  : 4
+020	 : number	  : 5
+021	 : number	  : 6
+022	 : number	  : 7
+023	 : number	  : 8
+024	 : number	  : 9
+025  : player	  : arms idle 1
+026  : player	  : arms idle 2
+027  : player	  : arms idle 3
+028  : player	  : arms walk left 1
+029  : player	  : arms walk left 2
+030  : player	  : arms walk left 3
+031  : player	  : arms walk right 1
+032  : player	  : arms walk right 2
+033  : player	  : arms walk right 3
+034  : player	  : fighter idle 1
+035  : player	  : fighter idle 2
+036  : player	  : fighter idle 3
+037  : player	  : fighter walk left 1
+038  : player	  : fighter walk left 2
+039  : player	  : fighter walk left 3
+040  : player	  : fighter walk right 1
+041  : player	  : fighter walk right 2
+042  : player	  : fighter walk right 3
+043  : player	  : square idle 1
+044  : player	  : square idle 2
+045  : player     : square idle 3
+046  : player  	  : square walk left 1
+047  : player  	  : square walk left 2
+048  : player  	  : square walk left 3
+049  : player  	  : square walk right 1
+050  : player  	  : square walk right 2
+051  : player  	  : square walk right 3
+052	 : prompt	  : fight
+053	 : prompt	  : miss
+054	 : prompt	  : player 1 match win
+055	 : prompt	  : player 1 wins
+056	 : prompt	  : player 2 match win
+057	 : prompt	  : player 2 wins
+058	 : prompt	  : round
+059	 : prompt 	  : select attack
+060	 : prompt	  : stop
+061  : textbox 	  : default center
+062  : textbox    : default corner
+063  : textbox    : default side
+064  : textbox    : default speech arrow
 
 
+-------------------------------------------------------------------------------
+
+Data ID Key:
+-------------------------------------------------------------------------------
+
+first three are a type key and the last digit represents the command to be done
+
+Banks:
+--------------------------
+00 = Textures
+01 = Input Maps
+02 = Options Maps
+03 = Controller Maps
+04 = Character info
+05 = Game Settings
+
+
+Textures Type
+---------------------------
+00 = Player Textures
+01 = Background Textures
+02 = Prompt Textures
+03 = Projectile Textures
+04 = Cursor Textures
+05 = BitMap Textures
+06 = Box Textures
+07 = Number Textures
+08 = Menu Textures
+
+Player Textures Animations
+---------------------------
+00 = player idle
+01 = player walk left
+02 = player walk right
+
+
+Projectile Textures Animations
+---------------------------
+00 = belt
+01 = foot
+02 = hand
+
+
+Commands:
+---------------------------
+0 = create new
+1 = update
+2 = remove 
+
+00 - textures
+00 - player textures
+00 - player id (arms)
+if longer 
+02 - animation id
+last two
+00 - order
+if odd
+0 - command

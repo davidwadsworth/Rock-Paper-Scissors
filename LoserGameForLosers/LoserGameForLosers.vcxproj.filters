@@ -54,9 +54,6 @@
     <ClInclude Include="ECS.h">
       <Filter>Header Files\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="SpriteComponent.h">
-      <Filter>Header Files\ECS</Filter>
-    </ClInclude>
     <ClInclude Include="Components.h">
       <Filter>Header Files\ECS</Filter>
     </ClInclude>
@@ -103,9 +100,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="OptionsComponent.h">
-      <Filter>Header Files\ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuComponent.h">
       <Filter>Header Files\ECS</Filter>
     </ClInclude>
     <ClInclude Include="ColliderComponent.h">
@@ -212,6 +206,12 @@
     </ClInclude>
     <ClInclude Include="Atlas.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuComponent.h">
+      <Filter>Header Files\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteComponent.h">
+      <Filter>Header Files\ECS</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

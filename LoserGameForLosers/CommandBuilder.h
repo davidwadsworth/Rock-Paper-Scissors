@@ -30,6 +30,12 @@ public:
 		case 5:
 			command = new ChangeStateCommand(command_value);
 			break;
+		case 6:
+			command = new ChangeRotationPoint(command_value);
+			break;
+		case 7:
+			command = new ChangeControllerCommand(command_value);
+			break;
 		default:
 			command = new NothingCommand();
 			break;

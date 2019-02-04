@@ -11,16 +11,15 @@ class BackgroundComponent : public Component
 {
 private:
 	TransformComponent * transform_;
+	TextureComponent* texture_;
 	SDL_Rect dest_rect_, left_dest_rect_, right_dest_rect_;
 	int rotations_ = 0;
-	SDL_Texture * texture_;
-	int sprite_id_, atlas_id_;
+	int background_id_;
 	SDL_RendererFlip sprite_flip_ = SDL_FLIP_NONE;
-	SpriteAddress * background_address_;
 public:
 
 	explicit BackgroundComponent(int sprite_id)
-		: sprite_id_(sprite_id)
+		: background_id_(sprite_id)
 	{}
 
 	~BackgroundComponent()
@@ -30,11 +29,15 @@ public:
 	{
 		transform_ = &entity->get_component<TransformComponent>();
 
-		texture_ = entity->get_component<TextureComponent>().texture;
+		texture_ = &entity->get_component<TextureComponent>();
 
-		auto atlas = entity->get_component<TextureComponent>().atlas;
+		auto mid_bg_id = texture_->new_tex(background_id_, &dest_rect_);
+		auto left_bg_id = texture_->new_tex(background_id_, &left_dest_rect_);
+		auto right_bg_id = texture_->new_tex(background_id_, &right_dest_rect_);
 
-		background_address_ = atlas->addresses[sprite_id_];
+		texture_->create_texture_slot(mid_bg_id);
+		texture_->create_texture_slot(left_bg_id);
+		texture_->create_texture_slot(right_bg_id);
 	}
 
 	void update() override
@@ -53,12 +56,5 @@ public:
 		right_dest_rect_.y = dest_rect_.y;
 		right_dest_rect_.w = dest_rect_.w;
 		right_dest_rect_.h = dest_rect_.h;
-	}
-
-	void draw() override
-	{
-		TextureManager::draw(texture_, background_address_, &dest_rect_, rotations_, sprite_flip_);
-		TextureManager::draw(texture_, background_address_, &left_dest_rect_, rotations_, sprite_flip_);
-		TextureManager::draw(texture_, background_address_, &right_dest_rect_, rotations_, sprite_flip_);
 	}
 };

@@ -168,4 +168,49 @@ private:
 
 };
 
+class ChangeRotationPoint : public Command
+{
+	SDL_Point increment_;
+public:
+	ChangeRotationPoint(const char * increment_info)
+	{
+		std::string move_str(increment_info);
+		std::string x, y;
+		bool split = false;
 
+		for (int i = 0; i < move_str.size(); i++)
+		{
+			if (move_str[i] == ',')
+			{
+				split = true;
+				i++;
+			}
+
+			if (!split)
+				x += move_str[i];
+			else
+				y += move_str[i];
+		}
+
+		increment_.x = atoi(x.c_str());
+		increment_.y = atoi(y.c_str());
+	}
+
+	void execute(Entity * entity) override;
+
+	void idle(Entity* entity) override {}
+};
+
+
+class ChangeControllerCommand : public Command
+{
+	int controller_id_;
+public:
+	ChangeControllerCommand(const char * controller_id)
+		: controller_id_(atoi(controller_id) )
+	{}
+
+	void execute(Entity * entity) override;
+
+	void idle(Entity* entity) override {}
+};

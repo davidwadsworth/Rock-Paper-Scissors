@@ -7,6 +7,7 @@ struct Animation
 	int frames;
 	int speed;
 	int rotations;
+	std::vector<int> call_ids;
 	SDL_RendererFlip flip;
 
 	Animation(): index(0), frames(0), speed(0), rotations(0), flip(SDL_FLIP_NONE)

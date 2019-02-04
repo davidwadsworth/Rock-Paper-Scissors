@@ -60,3 +60,17 @@ void MakeSelection::idle(Entity * entity)
 		was_pressed_ = false;
 	}
 }
+
+void ChangeRotationPoint::execute(Entity * entity)
+{
+	auto sprite = &entity->get_component<SpriteComponent>();
+	sprite->rotation_point.x += increment_.x;
+	sprite->rotation_point.y += increment_.y;
+	std::cout << "( " << sprite->rotation_point.x << ", " << sprite->rotation_point.y << ")" << std::endl;
+}
+
+void ChangeControllerCommand::execute(Entity * entity)
+{
+	entity->get_component<ControllerComponent>().change_controller(controller_id_);
+	std::cout << "Changed controller" << std::endl;
+}

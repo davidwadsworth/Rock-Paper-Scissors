@@ -43,8 +43,8 @@ void Background::screen_change()
 	}
 	if (Collision::aabb(p2_col_c_->collider, RIGHT_EDGE))
 	{
-		if (p2_tc_->position.x > RIGHT_EDGE.x + RIGHT_EDGE.w - static_cast<float>(p2_tc_->width) * p2_tc_->scale)
-			p2_tc_->position.x = RIGHT_EDGE.x + RIGHT_EDGE.w - static_cast<float>(p2_tc_->width) * p2_tc_->scale;
+		if (p2_tc_->position.x > RIGHT_EDGE.x + RIGHT_EDGE.w - SPRITE_LENGTH * p2_tc_->scale)
+			p2_tc_->position.x = RIGHT_EDGE.x + RIGHT_EDGE.w - SPRITE_LENGTH * p2_tc_->scale;
 
 		if (p2_tc_->player_velocity.x > 0)
 		{
@@ -63,8 +63,7 @@ void Background::screen_change()
 			scale_inc += p2_vec;
 		}
 	}
-	/*std::cout << "p1 ext vel : " << external_velocity_p1 << ", p2 ext vel : " << external_velocity_p2 << ", scroll_inc : " << scroll_inc << ", scale_inc " << scale_inc << std::endl;
-*/
+	
 	p1_tc_->external_velocity.x = external_velocity_p1;
 	p2_tc_->external_velocity.x = external_velocity_p2;
 
@@ -83,18 +82,17 @@ void Background::scroll_screen(float scroll_increment)
 void Background::scale_screen(float scale_increment)
 {
 	// the difference between scale bounds / the possible distance traveled by a single character * stretch speed
-	const auto player_sc_range = (SPRITE_SCALING - SPRITE_SCALING_TARGET) / static_cast<float>(SCREEN_WIDTH - SPRITE_SCALED) * scale_increment * p1_tc_->scale / SPRITE_SCALING;
-	const auto background_sc_range = (BACKGROUND_SCALING - BACKGROUND_SCALING_TARGET) / static_cast<float>(SCREEN_WIDTH - SPRITE_SCALED) * scale_increment * bg_tc_->scale / BACKGROUND_SCALING;
+	const auto player_sc_range = (SPRITE_SCALING - SPRITE_SCALING_TARGET) / static_cast<float>(SCREEN_WIDTH - SPRITE_LENGTH * p1_tc_->scale)* scale_increment * p1_tc_->scale / SPRITE_SCALING;
+	const auto background_sc_range = (BACKGROUND_SCALING - BACKGROUND_SCALING_TARGET) / static_cast<float>(SCREEN_WIDTH - SPRITE_LENGTH * bg_tc_->scale) * scale_increment * bg_tc_->scale / BACKGROUND_SCALING;
 
 	p1_tc_->scale = std::min(std::max(SPRITE_SCALING_TARGET, p1_tc_->scale + player_sc_range), SPRITE_SCALING);
-	p1_tc_->position.y = SCREEN_HEIGHT - p1_tc_->height * p1_tc_->scale;
+	p1_tc_->position.y = SCREEN_HEIGHT - SPRITE_LENGTH * p1_tc_->scale;
 
 	auto scaling_offset_x = p2_tc_->scale - p1_tc_->scale;
 
 	p2_tc_->scale = p1_tc_->scale;
-	p2_tc_->position.x = p2_tc_->position.x + scaling_offset_x * p2_tc_->width;
-	p2_tc_->position.y = SCREEN_HEIGHT - p1_tc_->height * p1_tc_->scale;
-
+	p2_tc_->position.x += scaling_offset_x * SPRITE_LENGTH;
+	p2_tc_->position.y = p1_tc_->position.y;
 
 	auto previous_scale = bg_tc_->scale;
 
