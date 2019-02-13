@@ -6,8 +6,8 @@
 class TransformComponent : public Component
 {
 public:
+	Vector2D position;
 	Vector2D net_velocity, player_velocity, external_velocity;
-	Vector2D position, position_offset;
 
 	int height = 32;
 	int width = 32;
@@ -24,10 +24,12 @@ public:
 
 	explicit TransformComponent(int sc)
 		: scale(sc)
-	{}
+	{
+		position.x = 400;
+		position.y = 320;
+	}
 
-	TransformComponent(const float x, const float y, const int sc)
-		: scale(sc)
+	TransformComponent(const float x, const float y)
 	{
 		position.x = x;
 		position.y = y;
@@ -52,7 +54,7 @@ public:
 
 	void update() override
 	{
-		position.x += net_velocity.x * speed;
+		position.x += net_velocity.x * static_cast<float>(speed);
 		position.y += net_velocity.y * speed;
 	}
 };

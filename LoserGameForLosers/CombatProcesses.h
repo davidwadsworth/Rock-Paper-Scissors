@@ -8,81 +8,81 @@
 
 class CombatProcessor;
 
-//class ResetGame : public Process
-//{
-//	float work_complete_;
-//	TransformComponent * left_transform_, *right_transform_, *background_transform_;
-//public:
-//	ResetGame(Entity* player_left, Entity * player_right, Entity * background)
-//		: work_complete_(0)
-//	{
-//		left_transform_ = &player_left->get_component<TransformComponent>();
-//		right_transform_ = &player_right->get_component<TransformComponent>();
-//		background_transform_ = &background->get_component<TransformComponent>();
-//	}
-//
-//	bool do_work() override
-//	{
-//		left_transform_->scale = SPRITE_SCALING;
-//		right_transform_->scale = SPRITE_SCALING;
-//		background_transform_->scale = BACKGROUND_SCALING;
-//
-//		left_transform_->position = Vector{SPRITE_LEFT_EDGE_OF_SCREEN, SPRITE_BOTTOM_OF_SCREEN};
-//		right_transform_->position = SDL_Point{ SPRITE_RIGHT_EDGE_OF_SCREEN, SPRITE_BOTTOM_OF_SCREEN };
-//		background_transform_->position = SDL_Point{ BACKGROUND_X_OFFSET, BACKGROUND_Y_OFFSET };
-//
-//		work_complete_ = 1;
-//		return true;
-//	}
-//
-//	float work_done() override { return work_complete_; }
-//};
+class ResetGame : public Process
+{
+	float work_complete_;
+	TransformComponent * left_transform_, *right_transform_, *background_transform_;
+public:
+	ResetGame(Entity* player_left, Entity * player_right, Entity * background)
+		: work_complete_(0)
+	{
+		left_transform_ = &player_left->get_component<TransformComponent>();
+		right_transform_ = &player_right->get_component<TransformComponent>();
+		background_transform_ = &background->get_component<TransformComponent>();
+	}
 
-//class DrawAttackLines : public Process
-//{
-//	ColliderComponent * left_collider_,* right_collider_;
-//	Timer * delay_time;
-//	int total_delay_;
-//public:
-//	DrawAttackLines(Entity * player_left, Entity * player_right, int delay)
-//		: total_delay_(delay)
-//	{
-//		left_collider_ = &player_left->get_component<ColliderComponent>();
-//		right_collider_ = &player_right->get_component<ColliderComponent>();
-//		
-//		delay_time = new Timer();
-//	}
-//	~DrawAttackLines() {}
-//
-//	bool do_work() override
-//	{
-//		if (!delay_time->is_started())
-//		{
-//			delay_time->start();
-//			left_collider_->draw_attack = true;
-//			right_collider_->draw_attack = true;
-//
-//			left_collider_->set_color(255, 0, 0);
-//			right_collider_->set_color(0, 0, 255);
-//		}
-//
-//
-//		if (delay_time->get_ticks() >= total_delay_)
-//		{
-//
-//			left_collider_->draw_attack = false;
-//			right_collider_->draw_attack = false;
-//			return true;
-//		}
-//		return false;
-//	}
-//
-//	float work_done() override
-//	{
-//		return delay_time->get_ticks() / total_delay_;
-//	}
-//
-//};
+	bool do_work() override
+	{
+		left_transform_->scale = SPRITE_SCALING;
+		right_transform_->scale = SPRITE_SCALING;
+		background_transform_->scale = BACKGROUND_SCALING;
+
+		left_transform_->position = Vector2D(SPRITE_LEFT_EDGE_OF_SCREEN, SPRITE_BOTTOM_OF_SCREEN);
+		right_transform_->position = Vector2D(SPRITE_RIGHT_EDGE_OF_SCREEN, SPRITE_BOTTOM_OF_SCREEN);
+		background_transform_->position = Vector2D(BACKGROUND_X_OFFSET, BACKGROUND_Y_OFFSET);	
+
+		work_complete_ = 1;
+		return true;
+	}
+
+	float work_done() override { return work_complete_; }
+};
+
+class DrawAttackLines : public Process
+{
+	ColliderComponent * left_collider_,* right_collider_;
+	Timer * delay_time;
+	int total_delay_;
+public:
+	DrawAttackLines(Entity * player_left, Entity * player_right, int delay)
+		: total_delay_(delay)
+	{
+		left_collider_ = &player_left->get_component<ColliderComponent>();
+		right_collider_ = &player_right->get_component<ColliderComponent>();
+		
+		delay_time = new Timer();
+	}
+	~DrawAttackLines() {}
+
+	bool do_work() override
+	{
+		if (!delay_time->is_started())
+		{
+			delay_time->start();
+			left_collider_->draw_attack = true;
+			right_collider_->draw_attack = true;
+
+			left_collider_->set_color(255, 0, 0);
+			right_collider_->set_color(0, 0, 255);
+		}
+
+
+		if (delay_time->get_ticks() >= total_delay_)
+		{
+
+			left_collider_->draw_attack = false;
+			right_collider_->draw_attack = false;
+			return true;
+		}
+		return false;
+	}
+
+	float work_done() override
+	{
+		return delay_time->get_ticks() / total_delay_;
+	}
+
+};
 
 class EndOfRoundSequence : public Process
 {
@@ -169,8 +169,8 @@ public:
 		player_left_->get_component<SpriteComponent>().play(Idle);
 		player_right_->get_component<SpriteComponent>().play(Idle);
 
-		player_left_->get_component<ControllerComponent>().change_controller(controller_no_input);
-		player_right_->get_component<ControllerComponent>().change_controller(controller_no_input);
+		player_left_->get_component<ControllerComponent>().change_controller("nothing");
+		player_right_->get_component<ControllerComponent>().change_controller("nothing");
 		work_complete_ = 1;
 		return true;
 	}
@@ -206,40 +206,40 @@ public:
 	
 };
 
-//class ProjectileMovement : public Process
-//{
-//	Vector2D velocity_, distance_;
-//	TransformComponent * asset_tc_;
-//	Timer * timer_;
-//	ProjectileMovement(Entity * asset, Vector2D distance, Vector2D velocity)
-//		: distance_(distance), velocity_(velocity)
-//	{
-//		asset_tc_ = &asset->get_component<TransformComponent>();
-//		timer_ = new Timer();
-//	}
-//
-//	bool do_work()
-//	{
-//		if (!timer_->is_started())
-//		{
-//			timer_->start();
-//		}
-//		asset_tc_->position += Vector2D(velocity_.x * timer_->get_ticks(), velocity_.y * timer_->get_ticks() - 4.9 * std::pow(timer_->get_ticks(), static_cast<Uint32>(2)));
-//		if (asset_tc_->position >= distance_)
-//		{
-//			timer_->stop();
-//			return true;
-//		}
-//		return false;
-//	}
-//
-//	float work_done()
-//	{
-//		auto work_complete = asset_tc_->position / distance_;
-//		return (work_complete.x + work_complete.y) / 2;
-//	}
-//
-//};
+class ProjectileMovement : public Process
+{
+	Vector2D velocity_, distance_;
+	TransformComponent * asset_tc_;
+	Timer * timer_;
+	ProjectileMovement(Entity * asset, Vector2D distance, Vector2D velocity)
+		: distance_(distance), velocity_(velocity)
+	{
+		asset_tc_ = &asset->get_component<TransformComponent>();
+		timer_ = new Timer();
+	}
+
+	bool do_work()
+	{
+		if (!timer_->is_started())
+		{
+			timer_->start();
+		}
+		asset_tc_->position += Vector2D(velocity_.x * timer_->get_ticks(), velocity_.y * timer_->get_ticks() - 4.9 * std::pow(timer_->get_ticks(), static_cast<Uint32>(2)));
+		if (asset_tc_->position >= distance_)
+		{
+			timer_->stop();
+			return true;
+		}
+		return false;
+	}
+
+	float work_done()
+	{
+		auto work_complete = asset_tc_->position / distance_;
+		return (work_complete.x + work_complete.y) / 2;
+	}
+
+};
 
 class PlayAnimation : public Process
 {

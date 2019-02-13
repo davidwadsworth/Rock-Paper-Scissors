@@ -1,95 +1,100 @@
 #pragma once
 
 #include "SDL.h"
-#include "Components.h"
 #include "Animation.h"
 
 
 class SpriteComponent : public Component
 {
-	SDL_Rect dest_rect_{};
+	TransformComponent * transform_;
+	SDL_Rect src_rect_, dest_rect_;
 	int frames_ = 1;
 	int speed_ = 200;
-	int animation_frames_ = 3;
+	ANIMATIONS current_animation_;
 	float angle_ = 0;
-	int anim_index_;
-	TransformComponent * transform_;
-	TextureComponent * texture_;
-	std::vector<Animation*> animations_;
-	SpriteAddress * current_address_;
-	int current_animation_;
-	int slot_id_;
-	int height_diff, width_diff;
+	SDL_Texture * texture_;
 public:
 
-	SDL_RendererFlip sprite_flip;
 	bool animated = false;
-	SDL_Point rotation_point{ 0,0 };
+	int anim_index = 0;
 
+	std::vector<Animation> animations;
 
-	explicit SpriteComponent(std::vector<Animation *> animations, SDL_RendererFlip flp = SDL_FLIP_NONE)
-		:animated(true), animations_(animations), angle_(0), sprite_flip(flp)
-	{}
+	SDL_RendererFlip sprite_flip = SDL_FLIP_NONE;
+
+	SpriteComponent() = default;
+
+	SpriteComponent(const float angle, const SDL_RendererFlip flp, const bool is_animated )
+	{
+		angle_ = angle;
+		sprite_flip = flp;
+		animated = is_animated;
+
+	}
+
+	SpriteComponent(const bool is_animated)
+	{
+		animated = is_animated;
+	}
 
 	~SpriteComponent()
-	{}
+	{
+	}
+ 
+
 
 	void init() override
 	{
 		transform_ = &entity->get_component<TransformComponent>();
-		texture_ = &entity->get_component<TextureComponent>();
 
-		for (auto anim : animations_)
-		{
-			for (int i = 0; i < anim->frames; i++)
-			{
-				anim->call_ids.push_back(texture_->new_tex(anim->index + i, &dest_rect_, 0, sprite_flip, &rotation_point));
-			}
-		}
-
-		slot_id_ = texture_->create_texture_slot(animations_[0]->call_ids[0]);
-		play(Idle);
-		current_address_ = texture_->get_address(slot_id_);
-
-		transform_->width = current_address_->src.w;
-		transform_->height = current_address_->src.h;
-		transform_->position_offset.x = current_address_->x_offset;
-		transform_->position_offset.y = current_address_->y_offset;
+		texture_ = entity->get_component<TextureComponent>().texture;
+		src_rect_.x = src_rect_.y = 0;
+		src_rect_.w = transform_->width;
+		src_rect_.h = transform_->height;
 
 		if (sprite_flip == SDL_FLIP_HORIZONTAL)
 		{
 			entity->get_component<PlayerComponent>().direction = -1;
 		}
+
+		if (animated)
+		{
+			const auto idle = Animation(0, 3, speed_);
+			const auto walk_right = Animation(1, 3, speed_);
+			const auto walk_left = Animation(2, 3, speed_);
+
+			animations.push_back(idle);
+			animations.push_back(walk_right);
+			animations.push_back(walk_left);
+
+			play(Idle);
+		}
 	}
-
-
 	void update() override
 	{
 		if (animated)
 		{
-			texture_->calls[slot_id_] = animations_[current_animation_]->call_ids[static_cast<int>((SDL_GetTicks() / speed_) % frames_)];
-			current_address_ = texture_->get_address(slot_id_);
-			transform_->width = current_address_->src.w;
-			transform_->height = current_address_->src.h;
-			transform_->position_offset.x = current_address_->x_offset;
-			transform_->position_offset.y = current_address_->y_offset;
-
-			if (sprite_flip && !current_address_->rotation)
-				transform_->position_offset.x += current_address_->original_width - current_address_->src.w;
+			src_rect_.x = src_rect_.w * static_cast<int>((SDL_GetTicks() / speed_) % frames_);
 		}
+			
+		src_rect_.y = anim_index * transform_->height;
 
-		dest_rect_.x = std::round(transform_->position.x + transform_->position_offset.x * transform_->scale);
-		dest_rect_.y = std::round(transform_->position.y + transform_->position_offset.y * transform_->scale);
-		dest_rect_.w = std::round(transform_->width * transform_->scale);
-		dest_rect_.h = std::round(transform_->height * transform_->scale);
-
-		rotation_point = { static_cast<int>(std::round(current_address_->original_width * transform_->scale) / 2), static_cast<int>(std::round(current_address_->original_height * transform_->scale) / 2 )};
+		dest_rect_.x = static_cast<int>(transform_->position.x);
+		dest_rect_.y = static_cast<int>(transform_->position.y);
+		dest_rect_.w = transform_->width * transform_->scale;
+		dest_rect_.h = transform_->height * transform_->scale;
 	}
 
-	void play(const int animation)
+	void draw() override
 	{
-		frames_ = animations_[animation]->frames;
+		TextureManager::draw(texture_, src_rect_, dest_rect_, angle_, sprite_flip);
+	}
+
+	void play(const ANIMATIONS animation)
+	{
 		current_animation_ = animation;
-		speed_ = animations_[animation]->speed;
+		frames_ = animations[animation].frames;
+		anim_index = animations[animation].index;
+		speed_ = animations[animation].speed;
 	}
 };

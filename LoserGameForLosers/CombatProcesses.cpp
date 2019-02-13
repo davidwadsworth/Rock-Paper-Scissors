@@ -36,7 +36,7 @@ Entity* EndOfRoundSequence::check_winner(Entity* entity)
 		entity->get_component<SpriteComponent>().animated = true;
 
 		// tiny jump kick exception
-		if (priority_player_->attack_id == Jump_Kick && other_player_->attack_id == Whip)
+		if (priority_player_->chosen_attack->attack_id == Jump_Kick && other_player_->chosen_attack->attack_id == Whip)
 		{
 			auto current_distance = std::abs(priority_transform_->position.x - other_transform_->position.x) / (priority_transform_->scale * priority_transform_->height);
 
@@ -99,18 +99,18 @@ bool EndOfRoundSequence::do_work()
 		priority_attack_ = priority_player_->chosen_attack;
 		other_attack_ = other_player_->chosen_attack;
 		attack_unset_ = false;
-		priority_movement_ = priority_attack_->move_distance * priority_transform_->scale * priority_transform_->height * priority_player_->direction * priority_player_->player_identity->hit_box;
-		other_movement_ = other_attack_->move_distance * other_transform_->scale * other_transform_->height * other_player_->direction * other_player_->player_identity->hit_box;
+		priority_movement_ = priority_attack_->move_distance * priority_transform_->scale * priority_transform_->height * priority_player_->direction * priority_player_->player_identity.hit_box;
+		other_movement_ = other_attack_->move_distance * other_transform_->scale * other_transform_->height * other_player_->direction * other_player_->player_identity.hit_box;
 	}
 
 	Entity* winner = nullptr;
 
-	if (priority_player_->attack_id == Nothing && !priority_player_->attack_used)
+	if (priority_player_->chosen_attack->attack_id == Nothing && !priority_player_->attack_used)
 	{
 		if (!move_player(priority_, priority_movement_) || PLAYER_MAX_RANGE >= current_distance + FLT_EPSILON)
 			return false;
 	}
-	if (other_player_->attack_id == Nothing && !other_player_->attack_used)
+	if (other_player_->chosen_attack->attack_id == Nothing && !other_player_->attack_used)
 	{
 		if (!move_player(other_, other_movement_) || PLAYER_MAX_RANGE >= current_distance + FLT_EPSILON)
 			return false;

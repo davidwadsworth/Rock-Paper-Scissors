@@ -3,81 +3,98 @@
 #include "ECS.h"
 #include "SDL.h"
 #include "Game.h"
-#include "DrawCall.h"
+
 
 class BoxComponent : public Component
 {
-	TextureComponent * texture_;
-	int box_slots[9];
-	int scale_;
-	int corner_id_, side_id_, center_id_;
+	SDL_Texture * texture_;
 public:
 	SDL_Rect box_rect{};
 
-	BoxComponent(const int scale, int corner_id, int side_id, int center_id, SDL_Rect box_rect = {})
-		: scale_(scale), corner_id_(corner_id), side_id_(side_id), center_id_(center_id), box_rect(box_rect)
-	{}
+	BoxComponent()
+		= default;
+
+	BoxComponent(const int scale)
+		: scale_(scale)
+	{
+	}
+
+	BoxComponent(SDL_Rect box_rect, const int scale)
+		: box_rect(box_rect), scale_(scale)
+	{
+	}
 
 	~BoxComponent()
 	{}
 
 	void init() override
 	{
-		texture_ = &entity->get_component<TextureComponent>();
-
 		if(entity->has_component<OptionsComponent>())
 		{
-			box_rect = entity->get_component<OptionsComponent>().current_options->box;
+			build_box(entity->get_component<OptionsComponent>().current_options->option_rect);
 		}
+		else { build_box(box_rect); }
 
-		build_box();
+		texture_ = entity->get_component<MultiTextureComponent>().texture_map["box"];
 	}
 
-	void build_box()
+	void build_box(const SDL_Rect box)
 	{
 		const auto scaled_size = BOX_SIZE * scale_;
-		const auto box_w = box_rect.w;
-		const auto box_h = box_rect.h;
-		const auto left_x = box_rect.x;
-		const auto top_y = box_rect.y;
-		const auto right_x = box_rect.x + box_w;
-		const auto bot_y = box_rect.y + box_h;
+		const auto box_w = box.w;
+		const auto box_h = box.h;
+		const auto left_x = box.x;
+		const auto top_y = box.y;
+		const auto right_x = box.x + box_w;
+		const auto bot_y = box.y + box_h;
 
 		//Top Left Corner
-		auto top_left_corner_id = texture_->new_tex(corner_id_, new SDL_Rect{ left_x, top_y, scaled_size, scaled_size }, 0);
+		box_rects_.push_back(SDL_Rect{ 0 , 0, BOX_SIZE, BOX_SIZE });
+		box_rects_.push_back(SDL_Rect{ left_x, top_y, scaled_size, scaled_size });
 
 		//Top Right Corner
-		auto top_right_corner_id = texture_->new_tex(corner_id_, new SDL_Rect{ right_x, top_y, scaled_size, scaled_size }, 90);
-
-		//Bot Right Corner
-		auto bot_right_corner_id = texture_->new_tex(corner_id_, new SDL_Rect{ right_x, bot_y, scaled_size, scaled_size }, 180);
+		box_rects_.push_back(SDL_Rect{ BOX_SIZE * 2, 0, BOX_SIZE, BOX_SIZE });;
+		box_rects_.push_back(SDL_Rect{ right_x, top_y, scaled_size, scaled_size });
 
 		//Bot Left Corner
-		auto bot_left_corner_id = texture_->new_tex(corner_id_, new SDL_Rect{ left_x, bot_y, scaled_size, scaled_size }, 270);
+		box_rects_.push_back(SDL_Rect{ 0, BOX_SIZE * 2, BOX_SIZE, BOX_SIZE });
+		box_rects_.push_back(SDL_Rect{ left_x, bot_y, scaled_size, scaled_size });
+
+		//Bot Right Corner
+		box_rects_.push_back(SDL_Rect{ BOX_SIZE * 2, BOX_SIZE * 2, BOX_SIZE, BOX_SIZE });
+		box_rects_.push_back(SDL_Rect{ right_x, bot_y, scaled_size, scaled_size });
 
 		//Top Side
-		auto top_side_id = texture_->new_tex(side_id_, new SDL_Rect{ left_x + scaled_size, top_y, box_w - scaled_size, scaled_size }, 0 );
-
-		//Right Side
-		auto right_side_id = texture_->new_tex(side_id_, new SDL_Rect{ right_x, top_y + scaled_size, scaled_size, box_h - scaled_size }, 90 );
-
-		//Bot Side
-		auto bot_side_id = texture_->new_tex(side_id_, new SDL_Rect{ left_x + scaled_size, bot_y, box_w - scaled_size, scaled_size }, 180 );
+		box_rects_.push_back(SDL_Rect{ BOX_SIZE, 0, BOX_SIZE, BOX_SIZE });
+		box_rects_.push_back(SDL_Rect{left_x + scaled_size, top_y, box_w - scaled_size, scaled_size  });
 
 		//Left Side
-		auto left_side_id = texture_->new_tex(side_id_, new SDL_Rect{ left_x, top_y + scaled_size, scaled_size, box_h - scaled_size }, 270 );
+		box_rects_.push_back(SDL_Rect{ 0, BOX_SIZE, BOX_SIZE, BOX_SIZE });
+		box_rects_.push_back(SDL_Rect{ left_x, top_y + scaled_size, scaled_size, box_h - scaled_size });
+
+		//Right Side
+		box_rects_.push_back(SDL_Rect{ BOX_SIZE * 2, BOX_SIZE, BOX_SIZE, BOX_SIZE });
+		box_rects_.push_back(SDL_Rect{ right_x, top_y + scaled_size, scaled_size, box_h - scaled_size });
+
+		//Bot Side
+		box_rects_.push_back(SDL_Rect{ BOX_SIZE, BOX_SIZE * 2, BOX_SIZE, BOX_SIZE });
+		box_rects_.push_back(SDL_Rect{ left_x + scaled_size, bot_y, box_w - scaled_size, scaled_size });
 
 		//Body
-		auto body_id = texture_->new_tex(center_id_, new SDL_Rect{ left_x + scaled_size, top_y + scaled_size,box_w - scaled_size, box_h - scaled_size }, 0);
-
-		texture_->create_texture_slot(top_left_corner_id);
-		texture_->create_texture_slot(top_right_corner_id);
-		texture_->create_texture_slot(bot_right_corner_id);
-		texture_->create_texture_slot(bot_left_corner_id);
-		texture_->create_texture_slot(top_side_id);
-		texture_->create_texture_slot(right_side_id);
-		texture_->create_texture_slot(bot_side_id);
-		texture_->create_texture_slot(left_side_id);
-		texture_->create_texture_slot(body_id);
+		box_rects_.push_back(SDL_Rect{ BOX_SIZE, BOX_SIZE, BOX_SIZE, BOX_SIZE });
+		box_rects_.push_back(SDL_Rect{ left_x + scaled_size, top_y + scaled_size,box_w - scaled_size, box_h - scaled_size });
 	}
+
+
+	void draw() override
+	{
+		for (auto i = 0; i < box_rects_.size(); i += 2)
+		{
+			TextureManager::draw(texture_, box_rects_[i], box_rects_[i + 1], 0, SDL_FLIP_NONE);
+		}
+	}
+
+private:
+	std::vector<SDL_Rect> box_rects_;
+	int scale_;
 };

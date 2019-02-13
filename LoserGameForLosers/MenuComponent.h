@@ -7,24 +7,29 @@
 class MenuComponent : public Component
 {
 private:
-	TextureComponent * texture_{};
-	SDL_Rect dest_rect_;
-	int menu_id_, menu_slot_;
+	TransformComponent * transform_{};
+	SDL_Texture * texture_{};
+	SDL_Rect src_rect_{}, dest_rect_{};
 
 public:
 
-	explicit MenuComponent(int sprite_id, SDL_Rect dest = { 0,0, SCREEN_WIDTH, SCREEN_HEIGHT })
-		: menu_id_(sprite_id), dest_rect_(dest)
-	{}
+	MenuComponent() = default;
 
 	~MenuComponent()
 	{}
 
 	void init() override
 	{
-		texture_ = &entity->get_component<TextureComponent>();
+		transform_ = &entity->get_component<TransformComponent>();
 
-		auto menu_tex_id = texture_->new_tex(menu_id_, &dest_rect_);
-		menu_slot_ = texture_->create_texture_slot(menu_tex_id);
+		texture_ = entity->get_component<TextureComponent>().texture;
+		src_rect_.x = src_rect_.y = 0;
+		src_rect_.w = dest_rect_.w = transform_->width;
+		src_rect_.h = dest_rect_.h = transform_->height;
+	}
+
+	void draw() override
+	{
+		TextureManager::draw(texture_, src_rect_, dest_rect_, 0, SDL_FLIP_NONE);
 	}
 };

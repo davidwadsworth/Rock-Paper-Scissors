@@ -107,13 +107,10 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Development\SDL2\include;C:\Development\SDL2_mixer-2.0.2\include;C:\Development\rapidxml;C:\Development\SDL2_ttf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Development\SDL2\lib\x64;C:\Development\SDL2_mixer-2.0.2\lib\x64;C:\Development\SDL2_ttf\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -158,55 +155,45 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AssetManager.h" />
-    <ClInclude Include="Atlas.h" />
-    <ClInclude Include="AtlasData.h" />
     <ClInclude Include="Attack.h" />
     <ClInclude Include="BackgroundComponent.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="BitmapTexture.h" />
     <ClInclude Include="BoxComponent.h" />
     <ClInclude Include="Character.h" />
-    <ClInclude Include="CharacterData.h" />
+    <ClInclude Include="CharacterDataReader.h" />
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Combat.h" />
     <ClInclude Include="CombatProcesses.h" />
     <ClInclude Include="Command.h" />
-    <ClInclude Include="CommandBuilder.h" />
-    <ClInclude Include="Commands.h" />
     <ClInclude Include="CommonProcesses.h" />
     <ClInclude Include="ControllerCommands.h" />
     <ClInclude Include="Components.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="ControllerComponent.h" />
-    <ClInclude Include="ControllerData.h" />
+    <ClInclude Include="ControllerConstants.h" />
     <ClInclude Include="CursorComponent.h" />
-    <ClInclude Include="Data.h" />
-    <ClInclude Include="DataBank.h" />
-    <ClInclude Include="DataManager.h" />
-    <ClInclude Include="DrawCall.h" />
     <ClInclude Include="ECS.h" />
     <ClInclude Include="EndOfRound.h" />
-    <ClInclude Include="Font.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameSettings.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GlyphAtlasComponent.h" />
-    <ClInclude Include="LinkBuilder.h" />
-    <ClInclude Include="Links.h" />
-    <ClInclude Include="OptionsData.h" />
+    <ClInclude Include="MultiTextureComponent.h" />
     <ClInclude Include="TextureComponent.h" />
     <ClInclude Include="KeyboardHandler.h" />
     <ClInclude Include="BitmapFont.h" />
     <ClInclude Include="LinkCommands.h" />
     <ClInclude Include="MusicProcesses.h" />
-    <ClInclude Include="Link.h" />
+    <ClInclude Include="OptionLinks.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuComponent.h" />
     <ClInclude Include="PlayerComponent.h" />
-    <ClInclude Include="OptionsComponent.h" />
     <ClInclude Include="Options.h" />
+    <ClInclude Include="OptionsComponent.h" />
+    <ClInclude Include="OptionsConstants.h" />
     <ClInclude Include="Process.h" />
     <ClInclude Include="CombatProcessor.h" />
     <ClInclude Include="Processes.h" />
@@ -218,29 +205,24 @@
     <ClInclude Include="TransformationProcesses.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TransformComponent.h" />
+    <ClInclude Include="TTFComponent.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
-    <ClCompile Include="AtlasData.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="BitmapTexture.cpp" />
-    <ClCompile Include="CharacterData.cpp" />
+    <ClCompile Include="CharacterDataReader.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Combat.cpp" />
     <ClCompile Include="CombatProcesses.cpp" />
     <ClCompile Include="ControllerCommands.cpp" />
-    <ClCompile Include="ControllerData.cpp" />
-    <ClCompile Include="DataBank.cpp" />
-    <ClCompile Include="DataManager.cpp" />
     <ClCompile Include="ECS.cpp" />
     <ClCompile Include="EndOfRound.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="BitmapFont.cpp" />
-    <ClCompile Include="LinkCommands.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="OptionsData.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

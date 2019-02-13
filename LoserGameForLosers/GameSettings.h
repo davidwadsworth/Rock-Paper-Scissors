@@ -5,10 +5,9 @@
 class GameSettings
 {
 public:
-	Character* player1 = new Character();
-	Character* player2 = new Character();
-	int background = main_background_city;
-	int max_range = 4;
+	Character player1 = Character();
+	Character player2 = Character();
+	const char * background_path = "western industrial.jpg";
 
 	GameSettings()
 	{}

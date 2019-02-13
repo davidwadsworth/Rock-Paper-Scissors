@@ -1,58 +1,7 @@
-﻿  stdafx.cpp
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\constants.h(36): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\constants.h(40): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\constants.h(51): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\constants.h(117): error C2365: 'round': redefinition; previous definition was 'function'
-  c:\program files (x86)\windows kits\10\include\10.0.17134.0\ucrt\corecrt_math.h(533): note: see declaration of 'round'
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\constants.h(143): error C2365: 'fighter_idle_1': redefinition; previous definition was 'enumerator'
-  c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\constants.h(135): note: see declaration of 'fighter_idle_1'
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\transformcomponent.h(26): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\optionlinks.h(49): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\optionlinks.h(50): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\options.h(28): warning C4018: '<': signed/unsigned mismatch
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\options.h(31): warning C4018: '<': signed/unsigned mismatch
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\options.h(38): warning C4018: '<': signed/unsigned mismatch
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\options.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\options.h(39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\options.h(43): warning C4018: '<': signed/unsigned mismatch
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\options.h(45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\options.h(44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\optionscomponent.h(43): warning C4018: '>': signed/unsigned mismatch
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\optionscomponent.h(52): warning C4018: '>': signed/unsigned mismatch
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\backgroundcomponent.h(47): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\backgroundcomponent.h(48): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\playercomponent.h(44): error C2440: '=': cannot convert from '_Ty *' to 'Attack *'
-          with
-          [
-              _Ty=Attack *
-          ]
-  c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\playercomponent.h(44): note: Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\playercomponent.h(63): error C2440: '=': cannot convert from '_Ty *' to 'Attack *'
-          with
-          [
-              _Ty=Attack *
-          ]
-  c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\playercomponent.h(63): note: Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\spritecomponent.h(84): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\spritecomponent.h(85): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\spritecomponent.h(90): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\boxcomponent.h(91): warning C4018: '<': signed/unsigned mismatch
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\cursorcomponent.h(39): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\keyboardhandler.h(24): warning C4200: nonstandard extension used: zero-sized array in struct/union
-  c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\keyboardhandler.h(24): note: This member will be ignored by a defaulted constructor or copy/move assignment operator
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\collidercomponent.h(67): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\collidercomponent.h(92): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\collidercomponent.h(95): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\collidercomponent.h(96): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\collidercomponent.h(99): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\collidercomponent.h(100): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\promptcomponent.h(31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\promptcomponent.h(32): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\commonprocesses.h(22): warning C4018: '>=': signed/unsigned mismatch
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\transformationprocesses.h(62): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\combatprocesses.h(70): warning C4018: '>=': signed/unsigned mismatch
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\combatprocesses.h(82): warning C4244: 'return': conversion from 'Uint32' to 'float', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\combatprocesses.h(227): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\combatprocessor.h(10): warning C4099: 'CombatProcessor': type name first seen using 'class' now seen using 'struct'
-  c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\combatprocessor.h(9): note: see declaration of 'CombatProcessor'
-c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\combatprocessor.h(111): warning C4018: '<': signed/unsigned mismatch
+﻿  Game.cpp
+c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\game.cpp(24): warning C4305: 'argument': truncation from 'double' to 'const float'
+c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\game.cpp(24): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\game.cpp(25): warning C4305: 'argument': truncation from 'double' to 'const float'
+c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\game.cpp(25): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\dwads\onedrive\desktop\david backup\repos\losergameforlosers\losergameforlosers\game.cpp(26): warning C4305: 'argument': truncation from 'double' to 'const float'
+  LoserGameForLosers.vcxproj -> C:\Users\dwads\OneDrive\Desktop\David Backup\repos\LoserGameForLosers\Debug\LoserGameForLosers.exe

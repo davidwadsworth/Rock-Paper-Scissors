@@ -3,17 +3,13 @@
 
 class CursorComponent : public Component
 {
-	OptionsComponent * options_;
-	SDL_Rect *dest_;
-	TextureComponent * texture_;
-	float angle_;
-	int cursor_id_, cursor_slot_;
-	SDL_RendererFlip cursor_flip_;
 public:
 
-	CursorComponent(int sprite_id)
-		: angle_(0), cursor_flip_(SDL_FLIP_NONE), cursor_id_(sprite_id)
-	{}
+	CursorComponent(const float angle, const SDL_RendererFlip flip)
+		: angle_(angle), cursor_flip_(flip)
+	{
+		src_.x = src_.y = 0;
+	}
 
 	~CursorComponent()
 	{}
@@ -23,17 +19,30 @@ public:
 		if (entity->has_component<OptionsComponent>())
 		{
 			options_ = &entity->get_component<OptionsComponent>();
+
 			dest_ = options_->get_current_link()->get_cursor_dimensions();
+			src_.w = options_->get_current_link()->get_cursor_dimensions().w;
+			src_.h = options_->get_current_link()->get_cursor_dimensions().h;
 		}
 
-		texture_ = &entity->get_component<TextureComponent>();
-
-		auto current_cursor_id = texture_->new_tex(cursor_id_, dest_);
-		cursor_slot_ = texture_->create_texture_slot(current_cursor_id);
+		texture_ = entity->get_component<MultiTextureComponent>().texture_map["cursor"];
 	}
+
 
 	void update() override
 	{
 		dest_ = options_->get_current_link()->get_cursor_dimensions();
 	}
+
+	void draw() override
+	{
+		TextureManager::draw(texture_, src_, dest_, angle_, cursor_flip_);
+	}
+
+private:
+	OptionsComponent * options_;
+	SDL_Rect dest_, src_;
+	SDL_Texture * texture_;
+	float angle_;
+	SDL_RendererFlip cursor_flip_;
 };

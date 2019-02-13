@@ -1,0 +1,31 @@
+<Controllers>
+	<Controller id="menu_nav" >
+		<Input command="7" key="0" />
+		<Input command="8" key="1" />
+		<Input command="9" key="2" />
+		<Input command="10" key="3" />
+		<Input command="11" key="4" />
+	</Controller>
+	<Controller id="debug">
+		<Input command="0" key="2" />
+		<Input command="1" key="3" />
+		<Input command="2" key="-23" />
+		<Input command="3" key="4" />
+		<Input command="4" key="5" />
+		<Input command="5" key="6" />
+		<Input command="6" key="7" />
+	</Controller>
+	<Controller id="no_input" >
+	</Controller>
+	<Controller id="select_attack" >
+		<Input command="3" key="4" />
+		<Input command="4" key="5" />
+		<Input command="5" key="6" />
+	</Controller>
+	<Controller id="combat" >
+		<Input command="0" key="2" />
+		<Input command="1" key="3" />
+		<Input command="2" key="-23" />
+		<Input command="6" key="7" />
+	</Controller>
+</Controllers>

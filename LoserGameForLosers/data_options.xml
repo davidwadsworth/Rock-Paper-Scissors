@@ -1,6 +1,0 @@
-<Obscure>
-	<Item id="02000000" padding="5" alignment_x="0.0" alignment_y="0.0" x="0.333333" y="0.484375" font="lazyfont" text="Play Game" command="6" command_value="6" link="0" />
-	<Item id="02000001" text="Option 2" command="-1" command_value="0" link="0" />
-	<Item id="02000002" text="Option 3" command="-1" command_value="0" link="0" />
-	<Item id="02000003" text="Option 4" command="-1" command_value="0" link="0" />
-</Obscure>

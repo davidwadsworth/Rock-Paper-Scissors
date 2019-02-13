@@ -30,7 +30,7 @@ public:
 	{
 		winning_player->round_win();
 
-		std::cout << winning_player->player_identity->id << " wins the round!" << std::endl;
+		std::cout << winning_player->player_identity.id << " wins the round!" << std::endl;
 
 		priority_pc_->change_priority();
 		other_pc_->change_priority();
