@@ -24,7 +24,7 @@ W, A, S, D - Move Player,
  2 - choose jump kick,
  3 - choose grab 
 
-Player Right
+Player Right: 
 up, left, down, right - move player, 
  I - choose whip,
  O - choose jump kick,
