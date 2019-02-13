@@ -11,7 +11,6 @@ Menu::Menu(Manager * manager)
 	screen.add_component<MenuComponent>(main_menu_title);
 	screen.add_group(Game::group_background);
 
-	Game::assets->create_option_box(Game::data->get_options(0), atlas_texture_sheet_main, main_cursor_box);
 }
 
 
@@ -38,6 +37,9 @@ void Menu::render()
 void Menu::logic()
 {
 	manager.refresh();
+
+	Game::assets->get_bitmap_font()->render_text(0,0, "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890!@#$%^&*()");
+
 	manager.update();
 }
 

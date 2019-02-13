@@ -57,35 +57,6 @@ public:
 		}
 	}
 
-	void draw_attack_collider()
-	{
-		auto transform = entity->get_component<TransformComponent>();
-		auto player = entity->get_component<PlayerComponent>();
-
-		SDL_SetRenderDrawColor(Game::renderer, red_, green_, blue_, SDL_ALPHA_OPAQUE);
-		SDL_RenderDrawLine(Game::renderer, projectile_point, collider.y + 10,
-			projectile_point + player.chosen_attack->projectile_range * transform.scale * transform.height * player.direction, collider.y + 10);
-	}
-
-	void draw_collision()
-	{
-		SDL_SetRenderDrawColor(Game::renderer, red_, green_, blue_, SDL_ALPHA_OPAQUE);
-		SDL_RenderFillRect(Game::renderer, new SDL_Rect{ projectile_point, collider.y, static_cast<int>(entity->get_component<PlayerComponent>().chosen_attack->projectile_range * transform->scale * transform->height) * entity->get_component<PlayerComponent>().direction, static_cast<int>(transform->scale * transform->height) });
-	}
-
-	void draw_movement()
-	{
-		SDL_SetRenderDrawColor(Game::renderer, red_, green_, blue_, SDL_ALPHA_OPAQUE);
-		SDL_RenderFillRect(Game::renderer, new SDL_Rect{ projectile_point, collider.y, static_cast<int>(entity->get_component<PlayerComponent>().chosen_attack->move_distance * transform->scale * transform->height) * entity->get_component<PlayerComponent>().direction, static_cast<int>(transform->scale * transform->height) });
-	}
-
-	void set_color(Uint8 r, Uint8 g, Uint8 b)
-	{
-		red_ = r;
-		green_ = g;
-		blue_ = b;
-	}
-
 	void update() override
 	{
 		collider.x = transform->position.x;

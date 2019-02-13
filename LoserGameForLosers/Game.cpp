@@ -3,6 +3,7 @@
 #include "Combat.h"
 #include "GameState.h"
 #include "Constants.h"
+#include "DataBank.h"
 
 
 
@@ -11,6 +12,10 @@ Manager manager;
 SDL_Renderer *Game::renderer = nullptr;
 SDL_Event Game::event;
 GameSettings* Game::game_settings = new GameSettings();
+
+BitmapFont font;
+BitmapTexture bitmaptex;
+
 
 AssetManager* Game::assets = new AssetManager(&manager);
 DataManager * Game::data = new DataManager(&manager);
@@ -37,21 +42,28 @@ void Game::init(const char * window_title)
 		Game::is_running = true;
 	}
 
-	data->load_atlas_data("data_main_textures-0.xml");
-	data->load_atlas_data("data_prompts-0.xml");
-	data->load_character_data("data_characters.xml");
-	data->load_controller_data("data_controllers.xml");
-	data->load_options_data("data_options.xml");
+	if (bitmaptex.load_from_file("lazyfont.png"))
+	{
+		font.build_font(&bitmaptex);
+	}
+	else { std::cout << "Font Failure" << std::endl; }
 
-	Game::game_settings->player1 = data->get_character(square);
-	Game::game_settings->player2 = data->get_character(arms);
+	assets->set_bit_map_font("lazyfont.png");
+
+	data->load_atlas_data("data_main_textures-0_v1.xml");
+	data->load_character_data("data_characters_v1.xml");
+	data->load_controller_data("data_controllers_v1.xml");
+	data->load_options_data("data_options_v1.xml");
+
+	Game::game_settings->player1 = data->get_character(arms);
+	Game::game_settings->player2 = data->get_character(fighter);
 
 	Game::assets->add_texture(data->get_atlas(atlas_texture_sheet_main)->path.c_str());
 
-	Game::assets->set_bit_map_font("lazyfont.png");
 
-	current_state = new Combat(&manager);
-	state_id = STATE_COMBAT;
+
+	current_state = new Menu(&manager);
+	state_id = STATE_MENU;
 }
 
 // Stolen verbatim from @LazyFooProductions
@@ -104,6 +116,7 @@ void Game::render()
 {
 	SDL_RenderClear(renderer);
 	current_state->render();
+	Game::assets->get_bitmap_font()->render_text(0, 0, "Bitmap Font:\nABDCEFGHIJKLMNOPQRSTUVWXYZ\nabcdefghijklmnopqrstuvwxyz\n0123456789");
 	SDL_RenderPresent(renderer);
 }
 

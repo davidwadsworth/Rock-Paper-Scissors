@@ -47,7 +47,7 @@ public:
 	{
 		for(auto& label : labels_)
 		{
-			bitmap_font_->render_text(label->position->x, label->position->y, scale_, label->text);
+			bitmap_font_->render_text(label->position->x, label->position->y, label->text);
 		}
 	}
 };

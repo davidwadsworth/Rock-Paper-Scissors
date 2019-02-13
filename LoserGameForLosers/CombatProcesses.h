@@ -38,51 +38,51 @@ class CombatProcessor;
 //	float work_done() override { return work_complete_; }
 //};
 
-class DrawAttackLines : public Process
-{
-	ColliderComponent * left_collider_,* right_collider_;
-	Timer * delay_time;
-	int total_delay_;
-public:
-	DrawAttackLines(Entity * player_left, Entity * player_right, int delay)
-		: total_delay_(delay)
-	{
-		left_collider_ = &player_left->get_component<ColliderComponent>();
-		right_collider_ = &player_right->get_component<ColliderComponent>();
-		
-		delay_time = new Timer();
-	}
-	~DrawAttackLines() {}
-
-	bool do_work() override
-	{
-		if (!delay_time->is_started())
-		{
-			delay_time->start();
-			left_collider_->draw_attack = true;
-			right_collider_->draw_attack = true;
-
-			left_collider_->set_color(255, 0, 0);
-			right_collider_->set_color(0, 0, 255);
-		}
-
-
-		if (delay_time->get_ticks() >= total_delay_)
-		{
-
-			left_collider_->draw_attack = false;
-			right_collider_->draw_attack = false;
-			return true;
-		}
-		return false;
-	}
-
-	float work_done() override
-	{
-		return delay_time->get_ticks() / total_delay_;
-	}
-
-};
+//class DrawAttackLines : public Process
+//{
+//	ColliderComponent * left_collider_,* right_collider_;
+//	Timer * delay_time;
+//	int total_delay_;
+//public:
+//	DrawAttackLines(Entity * player_left, Entity * player_right, int delay)
+//		: total_delay_(delay)
+//	{
+//		left_collider_ = &player_left->get_component<ColliderComponent>();
+//		right_collider_ = &player_right->get_component<ColliderComponent>();
+//		
+//		delay_time = new Timer();
+//	}
+//	~DrawAttackLines() {}
+//
+//	bool do_work() override
+//	{
+//		if (!delay_time->is_started())
+//		{
+//			delay_time->start();
+//			left_collider_->draw_attack = true;
+//			right_collider_->draw_attack = true;
+//
+//			left_collider_->set_color(255, 0, 0);
+//			right_collider_->set_color(0, 0, 255);
+//		}
+//
+//
+//		if (delay_time->get_ticks() >= total_delay_)
+//		{
+//
+//			left_collider_->draw_attack = false;
+//			right_collider_->draw_attack = false;
+//			return true;
+//		}
+//		return false;
+//	}
+//
+//	float work_done() override
+//	{
+//		return delay_time->get_ticks() / total_delay_;
+//	}
+//
+//};
 
 class EndOfRoundSequence : public Process
 {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
-<!-- $TexturePacker:SmartUpdate:f21ecb71ba131419539a6a74b4bf0d63:f458d4f4425cbcbb82cc99ba95bf34d9:8146d8160b2ae6a3ec7d32929422ef4c$ -->
+<!-- $TexturePacker:SmartUpdate:236c83bf8f95556b71b71c4291c32058:c828e2dc09c3c0fe4b984c8a9bfd9871:834b9c04975479f56c328872038c41fb$ -->
 <!--Format:
 n  => name of the sprite
 x  => sprite x pos in texture
@@ -19,70 +19,70 @@ vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
 verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
 triangles  => sprite triangulation, 3 vertex indices per triangle
 -->
-<TextureAtlas imagePath="atlas_main_textures-0.png" width="2048" height="1926">
-    <sprite n="attack_belt_extension.png" x="2033" y="1218" w="14" h="64" r="y"/>
-    <sprite n="attack_belt_hit.png" x="869" y="1858" w="64" h="54"/>
-    <sprite n="attack_belt_miss.png" x="1063" y="1858" w="55" h="46"/>
-    <sprite n="attack_hand_extension.png" x="1753" y="760" w="64" h="13"/>
-    <sprite n="atttack_hand_hit.png" x="803" y="1858" w="64" h="64"/>
-    <sprite n="atttack_hand_miss.png" x="999" y="1858" w="62" h="44" oX="0" oY="11" oW="64" oH="64"/>
-    <sprite n="atttack_leg_extension.png" x="2032" y="837" w="13" h="64" r="y"/>
-    <sprite n="atttack_leg_hit.png" x="935" y="1858" w="62" h="55" oX="0" oY="0" oW="64" oH="64"/>
-    <sprite n="atttack_leg_miss.png" x="1120" y="1858" w="57" h="39" oX="0" oY="4" oW="64" oH="64"/>
-    <sprite n="background_cave.png" x="1" y="1" w="800" h="640"/>
-    <sprite n="background_city.png" x="1" y="643" w="800" h="640"/>
-    <sprite n="background_hills.png" x="1" y="1285" w="800" h="640"/>
-    <sprite n="background_suburban.png" x="803" y="1" w="800" h="640"/>
-    <sprite n="cursor.png" x="1900" y="1774" w="32" h="32"/>
-    <sprite n="menu_title_screen.png" x="803" y="643" w="800" h="640"/>
-    <sprite n="number_0.png" x="1753" y="667" w="160" h="91" oX="0" oY="0" oW="100" oH="160" r="y"/>
-    <sprite n="number_1.png" x="1605" y="1218" w="152" h="71" oX="12" oY="4" oW="100" oH="160" r="y"/>
-    <sprite n="number_2.png" x="1332" y="1580" w="93" h="147" oX="0" oY="2" oW="100" oH="160"/>
-    <sprite n="number_3.png" x="1428" y="1711" w="92" h="146" oX="1" oY="11" oW="100" oH="160"/>
-    <sprite n="number_4.png" x="1888" y="571" w="159" h="94" oX="6" oY="1" oW="100" oH="160" r="y"/>
-    <sprite n="number_5.png" x="1906" y="760" w="141" h="75" oX="11" oY="6" oW="100" oH="160" r="y"/>
-    <sprite n="number_6.png" x="1427" y="1556" w="87" h="153" oX="2" oY="6" oW="100" oH="160"/>
-    <sprite n="number_7.png" x="1759" y="1208" w="142" h="90" oX="7" oY="9" oW="100" oH="160" r="y"/>
-    <sprite n="number_8.png" x="1522" y="1711" w="74" h="152" oX="11" oY="6" oW="100" oH="160"/>
-    <sprite n="number_9.png" x="1516" y="1556" w="75" h="153" oX="5" oY="0" oW="100" oH="160"/>
-    <sprite n="player_arms_idle_1.png" x="1903" y="1218" w="128" h="90" oX="0" oY="0" oW="128" oH="128" r="y"/>
-    <sprite n="player_arms_idle_2.png" x="1598" y="1816" w="125" h="90" oX="0" oY="3" oW="128" oH="128" r="y"/>
-    <sprite n="player_arms_idle_3.png" x="1915" y="667" w="128" h="91" oX="0" oY="0" oW="128" oH="128" r="y"/>
-    <sprite n="player_arms_walk_left_1.png" x="1947" y="1310" w="94" h="125" oX="1" oY="3" oW="128" oH="128"/>
-    <sprite n="player_arms_walk_left_2.png" x="1535" y="1426" w="94" h="128" oX="1" oY="0" oW="128" oH="128"/>
-    <sprite n="player_arms_walk_left_3.png" x="1631" y="1421" w="90" h="128" oX="0" oY="0" oW="128" oH="128"/>
-    <sprite n="player_arms_walk_right_1.png" x="1723" y="1421" w="94" h="128" oX="1" oY="0" oW="128" oH="128"/>
-    <sprite n="player_arms_walk_right_2.png" x="1940" y="1437" w="94" h="125" oX="1" oY="3" oW="128" oH="128"/>
-    <sprite n="player_arms_walk_right_3.png" x="1593" y="1556" w="90" h="128" oX="0" oY="0" oW="128" oH="128"/>
-    <sprite n="player_fighter_idle_1.png" x="1598" y="1686" w="100" h="128" oX="0" oY="0" oW="128" oH="128"/>
-    <sprite n="player_fighter_idle_2.png" x="1725" y="1811" w="125" h="103" oX="0" oY="3" oW="128" oH="128" r="y"/>
-    <sprite n="player_fighter_idle_3.png" x="1804" y="1681" w="94" h="128" oX="0" oY="0" oW="128" oH="128"/>
-    <sprite n="player_fighter_walk_left_1.png" x="1808" y="1551" w="90" h="128" oX="0" oY="0" oW="128" oH="128"/>
-    <sprite n="player_fighter_walk_left_2.png" x="1852" y="1811" w="128" h="100" oX="0" oY="0" oW="128" oH="128" r="y"/>
-    <sprite n="player_fighter_walk_left_3.png" x="1324" y="1729" w="102" h="128" oX="0" oY="0" oW="128" oH="128"/>
-    <sprite n="player_fighter_walk_right_1.png" x="1817" y="1310" w="128" h="100" oX="0" oY="0" oW="128" oH="128" r="y"/>
-    <sprite n="player_fighter_walk_right_2.png" x="1900" y="1682" w="128" h="90" oX="0" oY="0" oW="128" oH="128" r="y"/>
-    <sprite n="player_fighter_walk_right_3.png" x="1700" y="1681" w="102" h="128" oX="0" oY="0" oW="128" oH="128"/>
-    <sprite n="player_square_idle_1.png" x="1906" y="1097" w="128" h="119" oX="0" oY="0" oW="128" oH="128" r="y"/>
-    <sprite n="player_square_idle_2.png" x="1900" y="1564" w="120" h="116" oX="3" oY="12" oW="128" oH="128"/>
-    <sprite n="player_square_idle_3.png" x="1563" y="1291" w="122" h="128" oX="0" oY="0" oW="128" oH="128"/>
-    <sprite n="player_square_walk_left_1.png" x="1906" y="967" w="123" h="128" oX="2" oY="0" oW="128" oH="128"/>
-    <sprite n="player_square_walk_left_2.png" x="1819" y="1412" w="119" h="124" oX="0" oY="4" oW="128" oH="128"/>
-    <sprite n="player_square_walk_left_3.png" x="1687" y="1300" w="128" h="119" oX="0" oY="0" oW="128" oH="128" r="y"/>
-    <sprite n="player_square_walk_right_1.png" x="1409" y="1426" w="124" h="128" oX="0" oY="0" oW="128" oH="128"/>
-    <sprite n="player_square_walk_right_2.png" x="1906" y="837" w="124" h="128" oX="0" oY="0" oW="128" oH="128"/>
-    <sprite n="player_square_walk_right_3.png" x="1685" y="1551" w="121" h="128" oX="0" oY="0" oW="128" oH="128"/>
-    <sprite n="prompt_fight.png" x="1751" y="777" w="153" h="429" oX="194" oY="7" oW="800" oH="160" r="y"/>
-    <sprite n="prompt_miss.png" x="803" y="1726" w="519" h="130" oX="112" oY="12" oW="800" oH="160"/>
-    <sprite n="prompt_player_1_match_win.png" x="803" y="1285" w="758" h="139" oX="31" oY="13" oW="800" oH="160"/>
-    <sprite n="prompt_player_1_wins.png" x="1888" y="1" w="154" h="568" oX="125" oY="5" oW="800" oH="160" r="y"/>
-    <sprite n="prompt_player_2_match_win.png" x="1605" y="1" w="146" h="774" oX="5" oY="14" oW="800" oH="160" r="y"/>
-    <sprite n="prompt_player_2_wins.png" x="803" y="1426" w="604" h="152" oX="86" oY="8" oW="800" oH="160"/>
-    <sprite n="prompt_round.png" x="803" y="1580" w="527" h="144" oX="60" oY="1" oW="600" oH="160"/>
-    <sprite n="prompt_select_attack.png" x="1753" y="1" w="133" h="664" oX="53" oY="5" oW="800" oH="160" r="y"/>
-    <sprite n="prompt_stop.png" x="1605" y="777" w="144" h="439" oX="145" oY="0" oW="800" oH="160" r="y"/>
-    <sprite n="textbox_default_center.png" x="1409" y="1556" w="10" h="10"/>
-    <sprite n="textbox_default_corner.png" x="1751" y="1208" w="6" h="6" oX="4" oY="4" oW="10" oH="10"/>
-    <sprite n="textbox_default_side.png" x="1687" y="1291" w="10" h="6" oX="0" oY="4" oW="10" oH="10"/>
-    <sprite n="textbox_default_speech_arrow.png" x="1409" y="1568" w="10" h="10"/>
+<TextureAtlas imagePath="atlas_main_textures-0.png" width="1896" height="2027">
+    <sprite n="00 Arms/00 Idle/0000000000.png" x="1332" y="1736" w="90" h="128" oX="0" oY="0" oW="128" oH="128"/>
+    <sprite n="00 Arms/00 Idle/0000000001.png" x="1693" y="1298" w="90" h="125" oX="0" oY="3" oW="128" oH="128"/>
+    <sprite n="00 Arms/00 Idle/0000000002.png" x="1535" y="1426" w="91" h="128" oX="0" oY="0" oW="128" oH="128"/>
+    <sprite n="00 Arms/01 Walk Left/0000000100.png" x="1752" y="1425" w="94" h="128" oX="1" oY="0" oW="128" oH="128"/>
+    <sprite n="00 Arms/01 Walk Left/0000000101.png" x="1522" y="1686" w="125" h="94" oX="1" oY="3" oW="128" oH="128" r="y"/>
+    <sprite n="00 Arms/01 Walk Left/0000000102.png" x="1332" y="1736" w="90" h="128" oX="0" oY="0" oW="128" oH="128"/>
+    <sprite n="00 Arms/02 Walk Right/0000000200.png" x="1522" y="1686" w="125" h="94" oX="1" oY="3" oW="128" oH="128" r="y"/>
+    <sprite n="00 Arms/02 Walk Right/0000000201.png" x="1764" y="1555" w="94" h="128" oX="1" oY="0" oW="128" oH="128"/>
+    <sprite n="00 Arms/02 Walk Right/0000000202.png" x="1424" y="1734" w="90" h="128" oX="0" oY="0" oW="128" oH="128"/>
+    <sprite n="00 Belt/00030000.png" x="1848" y="1488" w="46" h="55" r="y"/>
+    <sprite n="00 Belt/00030001.png" x="1332" y="1866" w="64" h="14"/>
+    <sprite n="00 Belt/00030002.png" x="1676" y="1945" w="64" h="54"/>
+    <sprite n="00 Default/00060000.png" x="621" y="2004" w="10" h="10"/>
+    <sprite n="00 Default/00060001.png" x="174" y="2020" w="6" h="6" oX="4" oY="4" oW="10" oH="10"/>
+    <sprite n="00 Default/00060002.png" x="162" y="2020" w="10" h="6" oX="0" oY="4" oW="10" oH="10"/>
+    <sprite n="00 Default/00060003.png" x="621" y="2016" w="10" h="10"/>
+    <sprite n="00 Default/00070000.png" x="162" y="1927" w="160" h="91" oX="0" oY="0" oW="100" oH="160" r="y"/>
+    <sprite n="00 Default/00070001.png" x="1373" y="1580" w="71" h="152" oX="12" oY="4" oW="100" oH="160"/>
+    <sprite n="00 Default/00070002.png" x="324" y="1927" w="147" h="93" oX="0" oY="2" oW="100" oH="160" r="y"/>
+    <sprite n="00 Default/00070003.png" x="473" y="1927" w="146" h="92" oX="1" oY="11" oW="100" oH="160" r="y"/>
+    <sprite n="00 Default/00070004.png" x="1" y="1927" w="159" h="94" oX="6" oY="1" oW="100" oH="160" r="y"/>
+    <sprite n="00 Default/00070005.png" x="1244" y="1882" w="75" h="141" oX="11" oY="6" oW="100" oH="160"/>
+    <sprite n="00 Default/00070006.png" x="1737" y="1208" w="153" h="87" oX="2" oY="6" oW="100" oH="160" r="y"/>
+    <sprite n="00 Default/00070007.png" x="1753" y="667" w="142" h="90" oX="7" oY="9" oW="100" oH="160" r="y"/>
+    <sprite n="00 Default/00070008.png" x="1446" y="1556" w="74" h="152" oX="11" oY="6" oW="100" oH="160"/>
+    <sprite n="00 Default/00070009.png" x="621" y="1927" w="153" h="75" oX="5" oY="0" oW="100" oH="160" r="y"/>
+    <sprite n="01 Fighter/00 Idle/0000010000.png" x="1649" y="1685" w="128" h="100" oX="0" oY="0" oW="128" oH="128" r="y"/>
+    <sprite n="01 Fighter/00 Idle/0000010001.png" x="1785" y="1297" w="103" h="125" oX="0" oY="3" oW="128" oH="128"/>
+    <sprite n="01 Fighter/00 Idle/0000010002.png" x="1516" y="1782" w="128" h="94" oX="0" oY="0" oW="128" oH="128" r="y"/>
+    <sprite n="01 Fighter/01 Walk Left/0000010100.png" x="1646" y="1787" w="128" h="90" oX="0" oY="0" oW="128" oH="128" r="y"/>
+    <sprite n="01 Fighter/01 Walk Left/0000010101.png" x="1321" y="1882" w="100" h="128" oX="0" oY="0" oW="128" oH="128"/>
+    <sprite n="01 Fighter/01 Walk Left/0000010102.png" x="1546" y="1879" w="128" h="102" oX="0" oY="0" oW="128" oH="128" r="y"/>
+    <sprite n="01 Fighter/02 Walk Right/0000010200.png" x="1321" y="1882" w="100" h="128" oX="0" oY="0" oW="128" oH="128"/>
+    <sprite n="01 Fighter/02 Walk Right/0000010201.png" x="1646" y="1787" w="128" h="90" oX="0" oY="0" oW="128" oH="128" r="y"/>
+    <sprite n="01 Fighter/02 Walk Right/0000010202.png" x="1546" y="1879" w="128" h="102" oX="0" oY="0" oW="128" oH="128" r="y"/>
+    <sprite n="01 Foot/00030100.png" x="1806" y="1933" w="57" h="39" oX="0" oY="4" oW="64" oH="64"/>
+    <sprite n="01 Foot/00030101.png" x="1753" y="759" w="64" h="13"/>
+    <sprite n="01 Foot/00030102.png" x="1742" y="1933" w="62" h="55" oX="0" oY="0" oW="64" oH="64"/>
+    <sprite n="02 Hand/00030200.png" x="1848" y="1424" w="44" h="62" oX="0" oY="11" oW="64" oH="64" r="y"/>
+    <sprite n="02 Hand/00030201.png" x="1753" y="759" w="64" h="13"/>
+    <sprite n="02 Hand/00030202.png" x="1676" y="1879" w="64" h="64"/>
+    <sprite n="02 Square/00 Idle/00-00-02-00-00.png" x="1522" y="1556" w="119" h="128" oX="0" oY="0" oW="128" oH="128"/>
+    <sprite n="02 Square/00 Idle/00-00-02-00-01.png" x="1779" y="1685" w="116" h="120" oX="3" oY="12" oW="128" oH="128" r="y"/>
+    <sprite n="02 Square/00 Idle/00-00-02-00-02.png" x="1628" y="1425" w="122" h="128" oX="0" oY="0" oW="128" oH="128"/>
+    <sprite n="02 Square/01 Walk Left/00-00-02-01-00.png" x="1563" y="1298" w="128" h="123" oX="2" oY="0" oW="128" oH="128" r="y"/>
+    <sprite n="02 Square/01 Walk Left/00-00-02-01-01.png" x="1776" y="1807" w="119" h="124" oX="0" oY="4" oW="128" oH="128"/>
+    <sprite n="02 Square/01 Walk Left/00-00-02-01-02.png" x="1643" y="1555" w="119" h="128" oX="0" oY="0" oW="128" oH="128"/>
+    <sprite n="02 Square/02 Walk Right/00-00-02-02-00.png" x="1409" y="1426" w="124" h="128" oX="0" oY="0" oW="128" oH="128"/>
+    <sprite n="02 Square/02 Walk Right/00-00-02-02-01.png" x="1409" y="1426" w="124" h="128" oX="0" oY="0" oW="128" oH="128"/>
+    <sprite n="02 Square/02 Walk Right/00-00-02-02-02.png" x="1423" y="1878" w="121" h="128" oX="0" oY="0" oW="128" oH="128"/>
+    <sprite n="000100.png" x="1" y="1" w="800" h="640"/>
+    <sprite n="000101.png" x="1" y="643" w="800" h="640"/>
+    <sprite n="000102.png" x="803" y="1" w="800" h="640"/>
+    <sprite n="000103.png" x="1" y="1285" w="800" h="640"/>
+    <sprite n="000200.png" x="1737" y="777" w="153" h="429" oX="194" oY="7" oW="800" oH="160" r="y"/>
+    <sprite n="000201.png" x="1605" y="777" w="130" h="519" oX="112" oY="12" oW="800" oH="160" r="y"/>
+    <sprite n="000202.png" x="803" y="1285" w="758" h="139" oX="31" oY="13" oW="800" oH="160"/>
+    <sprite n="000203.png" x="803" y="1580" w="568" h="154" oX="125" oY="5" oW="800" oH="160"/>
+    <sprite n="000204.png" x="1605" y="1" w="146" h="774" oX="5" oY="14" oW="800" oH="160" r="y"/>
+    <sprite n="000205.png" x="803" y="1426" w="604" h="152" oX="86" oY="8" oW="800" oH="160"/>
+    <sprite n="000206.png" x="803" y="1736" w="527" h="144" oX="60" oY="1" oW="600" oH="160"/>
+    <sprite n="000207.png" x="1753" y="1" w="133" h="664" oX="53" oY="5" oW="800" oH="160" r="y"/>
+    <sprite n="000208.png" x="803" y="1882" w="439" h="144" oX="145" oY="0" oW="800" oH="160"/>
+    <sprite n="000400.png" x="1742" y="1879" w="32" h="32"/>
+    <sprite n="000800.png" x="803" y="643" w="800" h="640"/>
 </TextureAtlas>

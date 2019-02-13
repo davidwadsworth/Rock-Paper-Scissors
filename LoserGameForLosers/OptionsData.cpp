@@ -86,9 +86,13 @@ std::vector<Options*> OptionsData::load()
 					options->box.w += current_box->x + current_box->w - (options->box.x + options->box.w);
 				if (options->box.y + options->box.h < current_box->y + current_box->h)
 					options->box.h += current_box->y + current_box->h - (options->box.y + options->box.h);
+
+				std::cout << "box " << y << ": ( " << current_box->x << ", " << current_box->y << ", " << current_box->w << ", " << current_box->h << ")" << std::endl;
 			}
 		}
 
+		std::cout << "box: ( " << options->box.x << ", " << options->box.y << ", " << options->box.w << ", " << options->box.h << ")" << std::endl;
+	
 
 		option_map.push_back(options);
 	}

@@ -213,6 +213,12 @@
     <ClInclude Include="SpriteComponent.h">
       <Filter>Header Files\ECS</Filter>
     </ClInclude>
+    <ClInclude Include="DataBank.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -283,6 +289,9 @@
     </ClCompile>
     <ClCompile Include="LinkCommands.cpp">
       <Filter>Header Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="DataBank.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

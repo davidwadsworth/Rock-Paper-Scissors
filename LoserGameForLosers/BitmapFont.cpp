@@ -176,7 +176,7 @@ bool BitmapFont::build_font(BitmapTexture* bitmap)
 	return success;
 }
 
-void BitmapFont::render_text(int x, int y, float sc, std::string text)
+void BitmapFont::render_text(int x, int y, std::string text)
 {
 	//If the font has been built
 	if (map_bitmap_ != NULL)
@@ -208,7 +208,7 @@ void BitmapFont::render_text(int x, int y, float sc, std::string text)
 				int ascii = (unsigned char)text[i];
 
 				//Show the character
-				TextureManager::draw(map_bitmap_->get_texture(), map_chars_[ascii], SDL_Rect{ curX, curY, static_cast<int>(map_chars_[ascii].w * sc), static_cast<int>(map_chars_[ascii].h * sc) });
+				map_bitmap_->render(curX, curY, &map_chars_[ascii]);
 
 				//Move over the width of the character with one pixel of padding
 				curX += map_chars_[ascii].w + 1;
@@ -220,7 +220,7 @@ void BitmapFont::render_text(int x, int y, float sc, std::string text)
 SDL_Rect BitmapFont::text_dimensions(const int x, const int y, std::string text)
 {
 	//Temp offsets
-	auto cur_w = 0, cur_h = 0;
+	auto cur_w = 0, cur_h = 37;
 
 	//Go through the text
 	for (auto i = 0; i < text.length(); ++i)

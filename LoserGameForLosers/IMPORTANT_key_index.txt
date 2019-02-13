@@ -134,10 +134,10 @@ Textures Type
 02 = Prompt Textures
 03 = Projectile Textures
 04 = Cursor Textures
-05 = BitMap Textures
+05 = Menu Textures
 06 = Box Textures
 07 = Number Textures
-08 = Menu Textures
+08 = BitMap Textures
 
 Player Textures Animations
 ---------------------------

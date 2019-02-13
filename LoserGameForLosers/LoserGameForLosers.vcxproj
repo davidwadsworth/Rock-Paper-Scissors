@@ -183,10 +183,12 @@
     <ClInclude Include="ControllerData.h" />
     <ClInclude Include="CursorComponent.h" />
     <ClInclude Include="Data.h" />
+    <ClInclude Include="DataBank.h" />
     <ClInclude Include="DataManager.h" />
     <ClInclude Include="DrawCall.h" />
     <ClInclude Include="ECS.h" />
     <ClInclude Include="EndOfRound.h" />
+    <ClInclude Include="Font.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameSettings.h" />
     <ClInclude Include="GameState.h" />
@@ -229,6 +231,7 @@
     <ClCompile Include="CombatProcesses.cpp" />
     <ClCompile Include="ControllerCommands.cpp" />
     <ClCompile Include="ControllerData.cpp" />
+    <ClCompile Include="DataBank.cpp" />
     <ClCompile Include="DataManager.cpp" />
     <ClCompile Include="ECS.cpp" />
     <ClCompile Include="EndOfRound.cpp" />

@@ -1,0 +1,36 @@
+<Controllers>
+	<Controller id="menu_nav" >
+		<Input key="0" command="3" command_value="-1"/>
+		<Input key="1" command="3" command_value="1" />
+		<Input key="2" command="4" command_value="-1" />
+		<Input key="3" command="4" command_value="1" />
+		<Input key="4" command="5" command_value="0" />
+	</Controller>
+	<Controller id="debug">
+		<Input key="2" command="0" command_value="-1,1" />
+		<Input key="3" command="0" command_value="1,2" />
+		<Input key="-23" command="0" command_value="0,0" />
+		<Input key="4" command="1" command_value="0" />
+		<Input key="5" command="1" command_value="1" />
+		<Input key="6" command="1" command_value="2" />
+	</Controller>
+	<Controller id="no_input" >
+	</Controller>
+	<Controller id="select_attack" >
+		<Input key="4" command="1" command_value="0" />
+		<Input key="5" command="1" command_value="1" />
+		<Input key="6" command="1" command_value="2" />
+	</Controller>
+	<Controller id="combat" >
+		<Input key="2" command="0" command_value="-1,1" />
+		<Input key="3" command="0" command_value="1,2" />
+		<Input key="-23" command="0" command_value="0,0" />
+		<Input key="7" command="2" command_value="1" />
+	</Controller>
+	<Controller id="fix stupid rotation bug">
+		<Input key="0" command="6" command_value="0,1" />
+		<Input key="1" command="6" command_value="0,-1" />
+		<Input key="2" command="6" command_value="1,0" />
+		<Input key="3" command="6" command_value="-1,0" />
+	</Controller>
+</Controllers>
