@@ -15,7 +15,7 @@ Grab beats jump-kick
 First to 3 wins the match
 
 
-Controlls
+Controls
 -------------------
 
 Player Left:
