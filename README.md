@@ -5,7 +5,6 @@ Dependencies
 -------------------
 SDL2, SDL2_image, SDL2_mixer, SDL2_TTF, RapidXML
 
-
 Game Synopsis
 ------------------
  - Jump-Kick beats whip
