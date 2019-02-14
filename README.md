@@ -22,7 +22,7 @@ Controls
 -------------------
 
 Player Left:
-
+------------
 
 W, A, S, D - Move Player,
 
@@ -33,7 +33,7 @@ W, A, S, D - Move Player,
 3 - choose grab 
 
 Player Right: 
-
+-------------
 
 up, left, down, right - move player, 
 
