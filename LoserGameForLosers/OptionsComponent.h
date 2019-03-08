@@ -1,46 +1,60 @@
 #pragma once
 #include "ECS.h"
-#include <map>
+#include "Link.h"
 #include "Options.h"
+#include "PlayerComponent.h"
 
-class OptionsComponent: public Component
+class OptionsComponent : public Component
 {
-	const char * screen_id_;
+	int y_pos_, x_pos_, padding_;
+	Vector2D alignment_;
 
-	Choices* option_choices_;
-
-	int y_pos_;
-	int x_pos_;
-	
+	Options options_;
+	Entity * target_;
 public:
-	Options * current_options{};
+	SDL_Rect box;
+	std::vector<std::vector<Link*>> current_links;
+	int options_id;
+	SDL_Point position;
 
-	OptionsComponent()
-		:screen_id_("main")
-	{}
-
-	explicit OptionsComponent(Choices* choices)
-		: option_choices_(choices)
-	{}
+	explicit OptionsComponent(const int options_id, const int x, const int y, const Vector2D align, const int pad)
+		: padding_(pad), options_id(options_id), alignment_(align), position{x, y}
+	{
+	}
 
 	void init() override
 	{
-		y_pos_ = 0;
+		options_ = Options(Game::data->get_options_data(this->options_id));
+		current_links = options_.build_options(position.x, position.y, alignment_, padding_);
 		x_pos_ = 0;
-		current_options = new Options(option_choices_);
+		y_pos_ = 0;
+		box = options_.box;
 	}
 
-	void load_new_options(Choices* choices)
-	 {
-		current_options = new Options(choices);
-	 }
+	void change_target(Entity * target)
+	{
+		target_ = target;
+		for (auto x : current_links)
+		{
+			for (auto y : x)
+			{
+				auto y_target = dynamic_cast<Targetable*>(y->get_command());
+
+				if (y_target)
+					y_target->change_target(target_);
+			}
+		}
+	}
+
+	void change_options(const int new_options);
+
 
 	void next_x(const int x_inc)
 	{
 		x_pos_ += x_inc;
 		if (x_pos_ < 0)
-			x_pos_ = current_options->option_links.size() - 1;
-		if (x_pos_ > current_options->option_links.size() - 1)
+			x_pos_ = current_links.size() - 1;
+		if (x_pos_ > current_links.size() - 1)
 			x_pos_ = 0;
 	}
 
@@ -48,14 +62,14 @@ public:
 	{
 		y_pos_ += y_inc;
 		if (y_pos_ < 0)
-			y_pos_ = current_options->option_links[x_pos_].size() - 1;
-		if (y_pos_ > current_options->option_links[x_pos_].size() - 1)
+			y_pos_ = current_links[x_pos_].size() - 1;
+		if (y_pos_ > current_links[x_pos_].size() - 1)
 			y_pos_ = 0;
 	}
 
 	Link * get_current_link() const
 	{
-		return current_options->option_links[x_pos_][y_pos_];
+		return current_links[x_pos_][y_pos_];
 	}
 	
 };

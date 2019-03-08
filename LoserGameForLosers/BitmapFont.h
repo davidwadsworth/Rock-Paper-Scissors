@@ -18,9 +18,9 @@ public:
 	bool build_font(BitmapTexture * tex);
 
 	//Shows the text
-	void render_text(const int x, const int y, const float sc, std::string text);
+	void render_text(const int x, const int y, std::string text);
 
-	SDL_Rect text_dimensions(int x, int y, std::string text);
+	SDL_Rect* text_dimensions(int x, int y, std::string text);
 
 private:
 	//The font texture

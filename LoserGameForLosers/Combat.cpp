@@ -3,47 +3,49 @@
 #include "Combat.h"
 
 Background * bg_logic;
-
 CombatProcessor *processor = nullptr;
 
-std::vector<SDL_Scancode> keys = { SDL_SCANCODE_UP, SDL_SCANCODE_DOWN, SDL_SCANCODE_LEFT, SDL_SCANCODE_RIGHT, SDL_SCANCODE_I, SDL_SCANCODE_O, SDL_SCANCODE_P, SDL_SCANCODE_L };
 
 Combat::Combat(Manager * manager)
 	: manager_(manager)
 {
+	Game::stack->clear();
+
 	auto& background(manager_->add_entity());
 	auto& player_left(manager_->add_entity());
 	auto& player_right(manager_->add_entity());
 
 	background.add_component<TransformComponent>(BACKGROUND_X_OFFSET, BACKGROUND_Y_OFFSET, BACKGROUND_HEIGHT, BACKGROUND_WIDTH, BACKGROUND_SCALING);
-	background.add_component<TextureComponent>("background");
-	background.add_component<BackgroundComponent>();
+	background.add_component<TextureComponent>();
+	background.add_component<BackgroundComponent>(Game::game_settings->background);
 	background.add_group(Game::group_background);
 
-	player_left.add_component<TransformComponent>(SPRITE_LEFT_EDGE_OF_SCREEN, SPRITE_BOTTOM_OF_SCREEN, SPRITE_LENGTH, SPRITE_LENGTH, SPRITE_SCALING);
-	player_left.add_component<TextureComponent>("player left");
+	player_left.add_component<TransformComponent>(SPRITE_LEFT_EDGE_OF_SCREEN, SPRITE_BOTTOM_OF_SCREEN, SPRITE_SCALING);
+	player_left.add_component<TextureComponent>();
 	player_left.add_component<PlayerComponent>(true, Game::game_settings->player1);
-	player_left.add_component<SpriteComponent>(true);
-	player_left.add_component<ControllerComponent>("debug");
+	player_left.add_component<SpriteComponent>(Game::game_settings->player1_animations);
+	player_left.add_component<ControllerComponent>(controller_no_input);
 	player_left.add_component<ColliderComponent>();
 	player_left.add_group(Game::group_players);
 
-	player_right.add_component<TransformComponent>(SPRITE_RIGHT_EDGE_OF_SCREEN, SPRITE_BOTTOM_OF_SCREEN, SPRITE_LENGTH, SPRITE_LENGTH, SPRITE_SCALING);
-	player_right.add_component<TextureComponent>("player right");
+	player_right.add_component<TransformComponent>(SPRITE_RIGHT_EDGE_OF_SCREEN, SPRITE_BOTTOM_OF_SCREEN, SPRITE_SCALING);
+	player_right.add_component<TextureComponent>();
 	player_right.add_component<PlayerComponent>(false, Game::game_settings->player2);
-	player_right.add_component<SpriteComponent>(0, SDL_FLIP_HORIZONTAL, true);
-	player_right.add_component<ControllerComponent>("debug", keys);
+	player_right.add_component<SpriteComponent>(Game::game_settings->player2_animations, SDL_FLIP_HORIZONTAL);
+	player_right.add_component<ControllerComponent>(controller_no_input, Game::keys);
 	player_right.add_component<ColliderComponent>();
 	player_right.add_group(Game::group_players);
 
-	bg_logic = new Background(&player_left, &player_right, &background, PLAYER_MAX_RANGE);
+	bg_logic = new Background(&player_left, &player_right, &background);
 	processor = new CombatProcessor(&player_left, &player_right, &background);
 
 	processor->create_combat();
 }
 
 Combat::~Combat()
-{}
+{
+	Combat::close();
+}
 
 
 void Combat::handle_events()
@@ -75,7 +77,27 @@ void Combat::logic()
 
 void Combat::render()
 {
-	
+	auto& player_group = manager.get_group(Game::group_players);
+	auto& background_group = manager.get_group(Game::group_background);
+	auto& prompt_group = manager.get_group(Game::group_prompts);
+	auto& cursor_group = manager.get_group(Game::group_cursors);
+
+	for (auto& b : background_group)
+	{
+		b->draw();
+	}
+	for (auto& p : player_group)
+	{
+		p->draw();
+	}
+	for (auto& pr : prompt_group)
+	{
+		pr->draw();
+	}
+	for (auto& c : cursor_group)
+	{
+		c->draw();
+	}
 }
 
 void Combat::close()

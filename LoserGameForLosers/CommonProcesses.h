@@ -35,18 +35,19 @@ class ChangeController : public Process
 {
 	float work_complete_;
 	Entity * player1_, *player2_;
-	std::string new_controller_;
+	CONTROLLER_DATA new_controller_;
 public:
-	ChangeController(Entity * player_left, Entity * player_right, std::string new_controller)
+	ChangeController(Entity * player_left, Entity * player_right, CONTROLLER_DATA new_controller)
 		: player1_(player_left), player2_(player_right), new_controller_(new_controller)
 	{}
 	~ChangeController() {}
 
 	bool do_work() override
 	{
-		std::cout << new_controller_ << std::endl;
-		player1_->get_component<ControllerComponent>().change_controller(new_controller_);
-		player2_->get_component<ControllerComponent>().change_controller(new_controller_);
+		if (player1_->has_component<ControllerComponent>())
+			player1_->get_component<ControllerComponent>().change_controller(new_controller_);
+		if (player2_->has_component<ControllerComponent>())
+			player2_->get_component<ControllerComponent>().change_controller(new_controller_);
 		work_complete_ = 1;
 		return true;
 	}

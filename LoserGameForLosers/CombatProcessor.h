@@ -22,45 +22,30 @@ struct CombatProcessor
 		current_task = 0;
 		tasks.clear();
 		tasks.push_back(new Skip());
-		tasks.push_back(new AndMultiProcessor({new ResetGame(player_left_, player_right_, background_), new ChangeController(player_left_, player_right_, "nothing") }));
-		tasks.push_back(new DisplayRound("round", "number", "round.png", "numbers.png",  round_count_));
+		tasks.push_back(new ResetGame(player_left_, player_right_, background_));
+		tasks.push_back(new DisplayRoundPrompt(main_prompt_round, main_number_0,  round_count_));
 		tasks.push_back(new Delay(3000));
 		tasks.push_back(new ClearPrompts());
-		tasks.push_back(new AndMultiProcessor({ new DisplayPrompt("select attack", "selectattack.png"), new ChangeController(player_left_, player_right_, "select attack") }));
+		tasks.push_back(new DisplayPrompt(main_prompt_select_attack));
 		tasks.push_back(new Delay(2000));
 		tasks.push_back(new ClearPrompts());
-		tasks.push_back(new Delay(4000));
-		tasks.push_back(new AndMultiProcessor({ new DisplayPrompt("stop", "stop.png"), new ChangeController(player_left_, player_right_, "nothing") }));
-		tasks.push_back(new Delay(500));
-		tasks.push_back(new ClearPrompts());
-		tasks.push_back(new DisplayPrompt("fight", "fight.png"));
+		tasks.push_back(new ChangeController(player_left_, player_right_, controller_no_input) );
+		tasks.push_back(new ChooseAttack(player_left_, player_right_));
+		tasks.push_back(new DisplayPrompt(main_prompt_fight));
 		tasks.push_back(new Delay(1000));
-		tasks.push_back(new AndMultiProcessor({ new ClearPrompts(), new ChangeController(player_left_, player_right_, "combat") }));
+		tasks.push_back(new AndMultiProcessor({ new ClearPrompts(), new ChangeController(player_left_, player_right_, controller_combat_fight) }));
 		tasks.push_back(new AndMultiProcessor({new Delay(5000), new CombatCollision(player_left_, player_right_)}));
-		tasks.push_back(new AndMultiProcessor({ new StopRound(player_left_, player_right_), new DisplayPrompt("stop", "stop.png"),  new ChangeController(player_left_, player_right_, "nothing") }));
+		tasks.push_back(new AndMultiProcessor({ new StopRound(player_left_, player_right_), new DisplayPrompt(main_prompt_stop),  new ChangeController(player_left_, player_right_, controller_no_input) }));
 		tasks.push_back(new Delay(500));
 		tasks.push_back(new ClearPrompts());
 		tasks.push_back(new EndOfRoundSequence(player_left_, player_right_, this));
 		tasks.push_back(new DrawAttackLines(player_left_, player_right_, 1000));
-		tasks.push_back(new DisplayPrompt("miss", "miss.png"));
+		tasks.push_back(new DisplayPrompt(main_prompt_miss));
 		tasks.push_back(new Delay(1000));
 		tasks.push_back(new ClearPrompts());
 		tasks.push_back(new CleanUp(player_left_, player_right_, this));
 	}
 
-	void debug_end_round()
-	{
-		current_task = 0;
-		tasks.clear();
-		tasks.push_back(new Skip());
-		tasks.push_back(new ClearPrompts());
-		tasks.push_back(new EndOfRoundSequence(player_left_, player_right_, this));
-		tasks.push_back(new DrawAttackLines(player_left_, player_right_, 1000));
-		tasks.push_back(new DisplayPrompt("miss", "miss.png"));
-		tasks.push_back(new Delay(1000));
-		tasks.push_back(new ClearPrompts());
-		tasks.push_back(new CleanUp(player_left_, player_right_, this));
-	}
 
 	void end_of_round(Entity * winner)
 	{
@@ -70,11 +55,11 @@ struct CombatProcessor
 		tasks.push_back(new DrawAttackLines(player_left_, player_right_, 1000));
 		if (winner->get_component<SpriteComponent>().sprite_flip == SDL_FLIP_HORIZONTAL)
 		{
-			tasks.push_back(new DisplayPrompt("player 2 wins", "player2wins.png"));
+			tasks.push_back(new DisplayPrompt(main_prompt_player_2_wins));
 		}
 		else
 		{
-			tasks.push_back(new DisplayPrompt("player 1 wins", "player1wins.png"));
+			tasks.push_back(new DisplayPrompt(main_prompt_player_1_wins));
 		}
 		tasks.push_back(new Delay(2000));
 		tasks.push_back(new ClearPrompts());
@@ -96,9 +81,9 @@ struct CombatProcessor
 		current_task = 0;
 		tasks.push_back(new Skip());
 		if (player_left_->get_component<PlayerComponent>().num_wins >= ROUNDWIN)
-			tasks.push_back(new DisplayPrompt("player 1 match win", "player1matchwin.png"));
+			tasks.push_back(new DisplayPrompt(main_prompt_player_1_match_win));
 		else
-			tasks.push_back(new DisplayPrompt("player 2 match win", "plater2matchwin.png"));
+			tasks.push_back(new DisplayPrompt(main_prompt_player_2_match_win));
 		tasks.push_back(new Delay(2000));
 		tasks.push_back(new ClearPrompts());
 		tasks.push_back(new Delay(500));

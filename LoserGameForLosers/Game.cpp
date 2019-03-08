@@ -2,6 +2,8 @@
 #include "Menu.h"
 #include "Combat.h"
 #include "GameState.h"
+#include "Constants.h"
+
 
 
 Manager manager;
@@ -10,21 +12,19 @@ SDL_Renderer *Game::renderer = nullptr;
 SDL_Event Game::event;
 GameSettings* Game::game_settings = new GameSettings();
 
+BitmapFont font;
+BitmapTexture bitmaptex;
+
+LinkStack * Game::stack = new LinkStack();
+
 AssetManager* Game::assets = new AssetManager(&manager);
+DataManager * Game::data = new DataManager(&manager);
+
+std::vector<SDL_Scancode> Game::keys = { SDL_SCANCODE_UP, SDL_SCANCODE_DOWN, SDL_SCANCODE_LEFT, SDL_SCANCODE_RIGHT, SDL_SCANCODE_I, SDL_SCANCODE_O, SDL_SCANCODE_P, SDL_SCANCODE_L };
+
 GameState * current_state = nullptr;
 
-BitmapTexture tex;
-BitmapFont font;
-
-
 bool Game::is_running = false;
-
-// needs to be moved to a .txt so I can update it while running
-std::vector<Character> characters{  Character(),
-									Character(0.6, "arms", 0.9, "LongArms_full.png", new Attack(0.7, 0.2, Whip), new Attack(0.1, 1, Jump_Kick), new Attack(0.2, 0.1, Grab), new Attack(0, -0.2, Nothing)),
-									Character(0.9, "square", 0.8, "square_full.png", new Attack(0.6, 0, Whip), new Attack(0.2, 0.9, Jump_Kick), new Attack(0.2, 0.5, Grab), new Attack(0, -0.1, Nothing)),
-									Character(0.7, "brunis", 1.0, "brunis_full.png", new Attack(0.6, 0, Whip), new Attack(0.3, 0.9, Jump_Kick), new Attack(0.2, 0.2, Grab), new Attack(0, -0.3, Nothing)) };
-
 
 //State variables
 int Game::state_id = STATE_NULL;
@@ -44,32 +44,22 @@ void Game::init(const char * window_title)
 		Game::is_running = true;
 	}
 
-	Game::game_settings->player1 = characters[1];
-	Game::game_settings->player2 = characters[2];
+	if (bitmaptex.load_from_file("lazyfont.png"))
+	{
+		font.build_font(&bitmaptex);
+	}
+	else { std::cout << "Font Failure" << std::endl; }
 
-	// needs to be moved to a single png, so I can gloat about effieciancy
-	Game::assets->add_texture("background", "western industrial.jpg");
-	Game::assets->add_texture("player left", Game::game_settings->player1.file_path.c_str());
-	Game::assets->add_texture("player right", Game::game_settings->player2.file_path.c_str());
+	assets->set_bit_map_font("lazyfont.png");
 
-	Game::assets->set_bit_map_font("lazyfont.png");
+	data->load_atlas_data("data_main_textures-0_v1.xml");
+	data->load_character_data("data_characters_v1.xml");
+	data->load_controller_data("data_controllers_v1.xml");
+	data->load_options_data("data_options_v1.xml");
 
-	Game::assets->add_texture("main", "title_screen.png");
-	Game::assets->add_texture("box", "textbox.png");
-	Game::assets->add_texture("cursor", "cursor.png");
+	Game::assets->add_texture(data->get_atlas_data()->image_path.c_str());
 
-	Game::assets->add_texture("round", "Round.png");
-	Game::assets->add_texture("number", "numbers.png");
-	Game::assets->add_texture("select attack", "selectattack.png");
-	Game::assets->add_texture("miss", "miss.png");
-	Game::assets->add_texture("stop", "stop.png" );
-	Game::assets->add_texture("fight", "fight.png");
 
-	Game::assets->add_texture("player 1 wins", "player1wins.png");
-	Game::assets->add_texture("player 2 wins", "player2wins.png");
-
-	Game::assets->add_texture("player 1 match win", "player1matchwin.png");
-	Game::assets->add_texture("player 2 match win", "player2matchwin.png");
 
 	current_state = new Menu(&manager);
 	state_id = STATE_MENU;
@@ -121,30 +111,10 @@ void Game::update()
 	current_state->logic();
 }
 
-auto& player_group = manager.get_group(Game::group_players);
-auto& background_group = manager.get_group(Game::group_background);
-auto& prompt_group = manager.get_group(Game::group_prompts);
-auto& cursor_group = manager.get_group(Game::group_cursors);
-
 void Game::render()
 {
 	SDL_RenderClear(renderer);
-	for (auto& b : background_group)
-	{
-		b->draw();
-	}
-	for (auto& p : player_group)
-	{
-		p->draw();
-	}
-	for (auto& pr : prompt_group)
-	{
-		pr->draw();
-	}
-	for (auto& c : cursor_group)
-	{
-		c->draw();
-	}
+	current_state->render();
 	SDL_RenderPresent(renderer);
 }
 
@@ -156,6 +126,7 @@ void Game::handle_events()
 void Game::clean()
 {
 	current_state->close();
+	stack->clear();
 
 	SDL_DestroyWindow(window);
 	window = nullptr;

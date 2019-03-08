@@ -10,67 +10,42 @@ AssetManager::AssetManager(Manager* man) : manager_(man)
 AssetManager::~AssetManager()
 = default;
 
-void AssetManager::create_option_box(Choices choices, bool is_boxed, std::vector<std::string> textures)
+Entity* AssetManager::create_option_box(int options_id, SDL_Point position, const bool player_1) const
 {
 	auto& option_box(manager_->add_entity());
-	option_box.add_component<OptionsComponent>(&choices);
-	option_box.add_component<MultiTextureComponent>(textures);
-	
-	if (is_boxed)
-		option_box.add_component<BoxComponent>(1);
-	
-	option_box.add_component<GlyphAtlasComponent>(1.0f);
-	option_box.add_component<CursorComponent>(0, SDL_FLIP_NONE);
-	option_box.add_component<ControllerComponent>("options");
+	option_box.add_component<OptionsComponent>(options_id, position.x, position.y, Vector2D(0, 0), PADDING);
+	option_box.add_component<WhiteRectComponent>();
+	option_box.add_component<TextureComponent>();
+	//option_box.add_component<BoxComponent>(1, main_textbox_default_corner, main_textbox_default_side, main_textbox_default_center);
+	option_box.add_component<GlyphAtlasComponent>();
+	option_box.add_component<CursorComponent>(main_cursor_box);
+	if (player_1)
+		option_box.add_component<ControllerComponent>(controller_options_nav);
+	else
+		option_box.add_component<ControllerComponent>(controller_options_nav, Game::keys);
 	option_box.add_group(Game::group_cursors);
+	return &option_box;
 }
 
-void AssetManager::create_prompt(SDL_Rect * dest, int sc, const char * texture)
+Entity* AssetManager::create_prompt(int sprite_id, SDL_Rect * position) const
 {
 	auto& prompt(manager_->add_entity());
-	prompt.add_component<TransformComponent>(dest->x, dest->y, dest->h, dest->w, sc);
-	prompt.add_component<TextureComponent>(texture);
-	prompt.add_component<PromptComponent>(dest->x, dest->y, dest->w, dest->h);
+	prompt.add_component<TransformComponent>(position->x, position->y, position->h, position->w, 1);
+	prompt.add_component<TextureComponent>();
+	prompt.add_component<PromptComponent>(sprite_id);
 	prompt.add_group(Game::group_prompts);
+
+	return &prompt;
 }
 
-void AssetManager::create_prompt(SDL_Rect* dest, SDL_Rect* src, int sc, const char * texture)
+void AssetManager::add_texture(const char * path)
 {
-	auto& prompt(manager.add_entity());
-	prompt.add_component<TransformComponent>(dest->x, dest->y, dest->h, dest->w, sc);
-	prompt.add_component<TextureComponent>(texture);
-	prompt.add_component<PromptComponent>(src->x, src->y, src->w, src->h);
-	prompt.add_group(Game::group_prompts);
+	textures_.push_back(TextureManager::load_texture(path));
 }
 
-void AssetManager::add_texture(std::string id, const char * path)
-{
-	textures_.emplace(id, TextureManager::load_texture(path));
-}
-
-SDL_Texture * AssetManager::get_texture(const std::string id)
+SDL_Texture * AssetManager::get_texture(const int id)
 {
 	return textures_[id];
-}
-
-void AssetManager::add_font(std::string id, std::string path, int fontSize)
-{
-	fonts_.emplace(id, TTF_OpenFont(path.c_str(), fontSize));
-}
-
-void AssetManager::add_music(std::string id, const char * path)
-{
-	music_.emplace(id, Mix_LoadMUS(path));
-}
-
-void AssetManager::add_sound(std::string id, const char * path)
-{
-	sounds_.emplace(id, Mix_LoadWAV(path));
-}
-
-TTF_Font * AssetManager::get_font(std::string id)
-{
-	return fonts_[id];
 }
 
 void AssetManager::set_bit_map_font(std::string path)
@@ -85,14 +60,4 @@ void AssetManager::set_bit_map_font(std::string path)
 BitmapFont* AssetManager::get_bitmap_font()
 {
 	return &bitmap_font_;
-}
-
-Mix_Music * AssetManager::get_music(std::string id)
-{
-	return music_[id];
-}
-
-Mix_Chunk * AssetManager::get_sound(std::string id)
-{
-	return sounds_[id];
 }

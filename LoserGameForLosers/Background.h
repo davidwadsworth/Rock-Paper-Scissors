@@ -9,7 +9,7 @@ class Background
 public:
 	Background() = default;
 
-	Background(Entity * player1, Entity * player2, Entity * background, const int max_r) : max_range_(max_r)
+	Background(Entity * player1, Entity * player2, Entity * background) 
 	{
 		p1_tc_ = &player1->get_component<TransformComponent>();
 		p2_tc_ = &player2->get_component<TransformComponent>();
@@ -40,7 +40,8 @@ private:
 	ColliderComponent * p1_col_c_;
 	ColliderComponent * p2_col_c_;
 
-	int max_range_;
+	float p1_scale_, p2_scale_, bg_scale_;
+	Vector2D p1_position_, p2_position_, bg_position_;
 
 	const SDL_Rect LEFT_EDGE{ 0, 0, BACKGROUND_COLLIDER, BACKGROUND_HEIGHT };
 	const SDL_Rect RIGHT_EDGE{ BACKGROUND_WIDTH - BACKGROUND_COLLIDER, 0, BACKGROUND_COLLIDER, BACKGROUND_HEIGHT };

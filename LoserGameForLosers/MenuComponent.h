@@ -1,35 +1,25 @@
 #pragma once
 #include "ECS.h"
-#include "SDL.h"
-#include "TextureManager.h"
-#include "Components.h"
 
 class MenuComponent : public Component
 {
 private:
-	TransformComponent * transform_{};
-	SDL_Texture * texture_{};
-	SDL_Rect src_rect_{}, dest_rect_{};
+	TextureComponent * texture_{};
+	int menu_id_, menu_slot_;
 
 public:
 
-	MenuComponent() = default;
+	explicit MenuComponent(const int sprite_id)
+		: menu_id_(sprite_id)
+	{}
 
 	~MenuComponent()
 	{}
 
 	void init() override
 	{
-		transform_ = &entity->get_component<TransformComponent>();
+		texture_ = &entity->get_component<TextureComponent>();
 
-		texture_ = entity->get_component<TextureComponent>().texture;
-		src_rect_.x = src_rect_.y = 0;
-		src_rect_.w = dest_rect_.w = transform_->width;
-		src_rect_.h = dest_rect_.h = transform_->height;
-	}
-
-	void draw() override
-	{
-		TextureManager::draw(texture_, src_rect_, dest_rect_, 0, SDL_FLIP_NONE);
+		const auto menu_tex_id = texture_->new_texture(menu_id_, texture_->create_texture_slot());
 	}
 };

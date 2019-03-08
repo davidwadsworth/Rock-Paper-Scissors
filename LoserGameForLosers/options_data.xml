@@ -1,8 +1,0 @@
-<Option_Maps>
-	<Options id="start_menu" padding="5" alignment_x="0.0" alignment_y="0.0" x="0.5" y="0.5">
-		<Link command="0" text="Play Game" />
-		<Link command="1" text="Option 2" />
-		<Link command="1" text="Option 3" />
-		<Link command="1" text="Option 4" />
-	</Options>
-</Otion_Maps>

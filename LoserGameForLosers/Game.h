@@ -2,10 +2,11 @@
 
 #include <SDL.h>
 #include <SDL_mixer.h>
-#include <SDL_image.h>
 
 #include "AssetManager.h"
 #include "GameSettings.h"
+#include "DataManager.h"
+#include "LinkStack.h"
 
 class Game
 {
@@ -24,6 +25,10 @@ public:
 	static SDL_Event event;
 	static AssetManager* assets;
 	static GameSettings* game_settings;
+	static DataManager* data;
+	static LinkStack* stack;
+	static std::vector<SDL_Scancode> keys;
+
 	SDL_Window *window;
 
 	enum group_labels : std::size_t

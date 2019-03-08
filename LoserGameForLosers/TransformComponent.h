@@ -1,42 +1,32 @@
 #pragma once
-#include "Components.h"
 #include "Vector2D.h"
 #include "Game.h"
 
 class TransformComponent : public Component
 {
 public:
-	Vector2D position;
 	Vector2D net_velocity, player_velocity, external_velocity;
+	Vector2D position;
 
 	int height = 32;
 	int width = 32;
-	float scale = 1.0;
-
+	Vector2D scale_2d;
 
 	int speed = 3;
 
-	TransformComponent()
-	{
-		position.x = 0.0f;
-		position.y = 0.0f;
-	}
+	explicit TransformComponent(const float sc)
+		: scale_2d(sc)
+	{}
 
-	explicit TransformComponent(int sc)
-		: scale(sc)
-	{
-		position.x = 400;
-		position.y = 320;
-	}
-
-	TransformComponent(const float x, const float y)
+	TransformComponent(const float x, const float y, const float sc)
+		: scale_2d(sc)
 	{
 		position.x = x;
 		position.y = y;
 	}
 
 	TransformComponent(const float x, const float y, const int h, const int w, const float sc)
-		: height(h), width(w), scale(sc)
+		: height(h), width(w), scale_2d(sc)
 	{
 		position.x = x;
 		position.y = y;
@@ -54,7 +44,7 @@ public:
 
 	void update() override
 	{
-		position.x += net_velocity.x * static_cast<float>(speed);
+		position.x += net_velocity.x * speed;
 		position.y += net_velocity.y * speed;
 	}
 };

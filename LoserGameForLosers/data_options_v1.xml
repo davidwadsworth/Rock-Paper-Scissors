@@ -1,0 +1,57 @@
+<Option_Maps id="data options">
+	<Options id="start_menu">
+		<X_Position>
+			<Y_Position>
+				<Option text="Play Game" command="7" command_value="0" link="0" />
+				<Option text="How To Play" command="-1" command_value="0" link="0" />
+			</Y_Position>
+		</X_Position>
+	</Options>
+	<Options id="choose_difficulty">
+		<X_Position>
+			<Y_Position>
+				<Option text="Easy" command="6" command_value="0" link="0" />
+				<Option text="Medium" command="6" command_value="1" link="0" />
+				<Option text="Hard" command="6" command_value="2" link="0" />
+				<Option text="Impossible" command="6" command_value="3" link="0"/>
+			</Y_Position>
+		</X_Position>
+	</Options>
+	<Options id="choose_attack">
+		<X_Position>
+			<Y_Position>
+				<Option text="Choose Whip" command="2" command_value="0" link="0" />
+				<Option text="Choose Kick" command="2" command_value="1" link="0" />
+				<Option text="Choose Grab" command="2" command_value="2" link="0" />
+			</Y_Position>
+		</X_Position>
+	</Options>
+	<Options id="choose_character">
+		<X_Position>
+			<Y_Position>
+				<Option text="Fighter" command="4" command_value="0" link="0" />
+				<Option text="Square" command="4" command_value="1" link="0" />
+				<Option text="Arms" command="4" command_value="2" link="0" />
+			</Y_Position>
+		</X_Position>
+	</Options>
+	<Options id="choose_background">
+		<X_Position>
+			<Y_Position>
+				<Option text="Cave" command="5" command_value="0" link="0" />
+				<Option text="City" command="5" command_value="1" link="0" />
+				<Option text="Grassy" command="5" command_value="2" link="0" />
+				<Option text="Suburb" command="5" command_value="3" link="0" />
+			</Y_Position>
+		</X_Position>
+	</Options>
+
+	<Options id="how_to_play">
+		<X_Position>
+			<Y_Position>
+				<Option text="Rules\n------\n\nKick beats whip, whip beats grab, and grab beats kick\n\nW, A, S, D -- move player" command="5" command_value="0" link="0" />
+			</Y_Position>
+		</X_Position>
+	</Options>
+	
+</Option_Maps>

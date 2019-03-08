@@ -1,67 +1,44 @@
 #pragma once
 
-#include "Components.h"
-#include "SDL.h"
-#include "TextureManager.h"
-#include <map>
-#include "AssetManager.h"
 #include "Constants.h"
-
 
 class BackgroundComponent : public Component
 {
-private:
 	TransformComponent * transform_;
-	SDL_Rect src_rect_, dest_rect_, left_dest_rect_, right_dest_rect_;
-	int rotations_ = 0;
-	SDL_Texture * texture_;
-	SDL_RendererFlip sprite_flip_ = SDL_FLIP_NONE;
+	TextureComponent* texture_;
+	int background_id_;
+	int left_bg_slot_, mid_bg_slot_, right_bg_slot_;
 public:
 
-	BackgroundComponent() = default;
-
-	BackgroundComponent(const int rots, const SDL_RendererFlip flp)
-	{
-		rotations_ = rots;
-		sprite_flip_ = flp;
-	}
+	explicit BackgroundComponent(const int sprite_id)
+		: background_id_(sprite_id)
+	{}
 
 	~BackgroundComponent()
-	{
-	}
+	{}
 
 	void init() override
 	{
 		transform_ = &entity->get_component<TransformComponent>();
+		texture_ = &entity->get_component<TextureComponent>();
 
-		texture_ = entity->get_component<TextureComponent>().texture;
-		src_rect_.x = src_rect_.y = 0;
-		src_rect_.w = transform_->width;
-		src_rect_.h = transform_->height;
+		mid_bg_slot_ = texture_->create_texture_slot();
+		left_bg_slot_ = texture_->create_texture_slot();
+		right_bg_slot_ = texture_->create_texture_slot();
+
+		texture_->new_texture(background_id_, mid_bg_slot_);
+		texture_->new_texture(background_id_, left_bg_slot_);
+		texture_->new_texture(background_id_, right_bg_slot_);
+
 	}
 
 	void update() override
 	{
-		dest_rect_.x = static_cast<int>(transform_->position.x);
-		dest_rect_.y = static_cast<int>(SCREEN_HEIGHT - transform_->height * transform_->scale);
-		dest_rect_.w = transform_->width * transform_->scale;
-		dest_rect_.h = transform_->height * transform_->scale;
-
-		left_dest_rect_.x = dest_rect_.x - dest_rect_.w;
-		left_dest_rect_.y = dest_rect_.y;
-		left_dest_rect_.w = dest_rect_.w;
-		left_dest_rect_.h = dest_rect_.h;
-
-		right_dest_rect_.x = dest_rect_.x + dest_rect_.w;
-		right_dest_rect_.y = dest_rect_.y;
-		right_dest_rect_.w = dest_rect_.w;
-		right_dest_rect_.h = dest_rect_.h;
-	}
-
-	void draw() override
-	{
-		TextureManager::draw(texture_, src_rect_, dest_rect_, rotations_, sprite_flip_);
-		TextureManager::draw(texture_, src_rect_, left_dest_rect_, rotations_, sprite_flip_);
-		TextureManager::draw(texture_, src_rect_, right_dest_rect_, rotations_, sprite_flip_);
+		const auto mid = new Vector2D(static_cast<int>(transform_->position.x), static_cast<int>(SCREEN_HEIGHT - transform_->height * transform_->scale_2d.y));
+		const auto left = new Vector2D(mid->x - transform_->width * transform_->scale_2d.x, mid->y);
+		const auto right = new Vector2D(mid->x + transform_->width * transform_->scale_2d.x, mid->y);
+		texture_->update_call(mid_bg_slot_, mid, &transform_->scale_2d);
+		texture_->update_call(left_bg_slot_, left, &transform_->scale_2d);
+		texture_->update_call(right_bg_slot_, right, &transform_->scale_2d);
 	}
 };

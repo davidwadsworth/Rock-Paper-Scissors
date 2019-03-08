@@ -1,6 +1,5 @@
 #pragma once
 #include "ECS.h"
-#include "Components.h"
 
 
 class ColliderComponent : public Component
@@ -59,24 +58,23 @@ public:
 
 	void draw_attack_collider()
 	{
-		auto transform = entity->get_component<TransformComponent>();
 		auto player = entity->get_component<PlayerComponent>();
 
 		SDL_SetRenderDrawColor(Game::renderer, red_, green_, blue_, SDL_ALPHA_OPAQUE);
 		SDL_RenderDrawLine(Game::renderer, projectile_point, collider.y + 10,
-			projectile_point + player.chosen_attack->projectile_range * transform.scale * transform.height * player.direction, collider.y + 10);
+			projectile_point + player.chosen_attack->projectile_range * transform->scale_2d.x * transform->height * player.direction, collider.y + 10);
 	}
 
 	void draw_collision()
 	{
 		SDL_SetRenderDrawColor(Game::renderer, red_, green_, blue_, SDL_ALPHA_OPAQUE);
-		SDL_RenderFillRect(Game::renderer, new SDL_Rect{ projectile_point, collider.y, static_cast<int>(entity->get_component<PlayerComponent>().chosen_attack->projectile_range * transform->scale * transform->height) * entity->get_component<PlayerComponent>().direction, static_cast<int>(transform->scale * transform->height) });
+		SDL_RenderFillRect(Game::renderer, new SDL_Rect{ projectile_point, static_cast<int>(collider.y * 2 / (entity->get_component<PlayerComponent>().attack_id + 1)), static_cast<int>(entity->get_component<PlayerComponent>().chosen_attack->projectile_range * transform->scale_2d.x * SPRITE_LENGTH) * entity->get_component<PlayerComponent>().direction, static_cast<int>(transform->scale_2d.x * SPRITE_LENGTH / 3) });
 	}
 
 	void draw_movement()
 	{
 		SDL_SetRenderDrawColor(Game::renderer, red_, green_, blue_, SDL_ALPHA_OPAQUE);
-		SDL_RenderFillRect(Game::renderer, new SDL_Rect{ projectile_point, collider.y, static_cast<int>(entity->get_component<PlayerComponent>().chosen_attack->move_distance * transform->scale * transform->height) * entity->get_component<PlayerComponent>().direction, static_cast<int>(transform->scale * transform->height) });
+		SDL_RenderFillRect(Game::renderer, new SDL_Rect{ projectile_point, collider.y, static_cast<int>(entity->get_component<PlayerComponent>().chosen_attack->move_distance * transform->scale_2d.x * SPRITE_LENGTH) * entity->get_component<PlayerComponent>().direction, static_cast<int>(transform->scale_2d.x * SPRITE_LENGTH) });
 	}
 
 	void set_color(Uint8 r, Uint8 g, Uint8 b)
@@ -88,21 +86,24 @@ public:
 
 	void update() override
 	{
-		collider.x = static_cast<int>(transform->position.x);
-		projectile_point = transform->position.x + transform->width * transform->scale * (1 - hit_box);
+		collider.x = transform->position.x;
+		projectile_point = transform->position.x + std::round(SPRITE_LENGTH * transform->scale_2d.x * hit_box);
 		if (flipped_)
 		{
-			collider.x = transform->position.x + transform->width * transform->scale * (1 - hit_box);
-			projectile_point = transform->position.x + transform->width * transform->scale * (1 - hit_box);
+			collider.x = transform->position.x + std::round(SPRITE_LENGTH * transform->scale_2d.x * (1 - hit_box));
+			projectile_point = transform->position.x + SPRITE_LENGTH * transform->scale_2d.x * (1 - hit_box);
 		}
-		collider.y = static_cast<int>(transform->position.y);
-		collider.w = transform->width * transform->scale * hit_box;
-		collider.h = transform->height * transform->scale;
+		collider.y = transform->position.y;
+		collider.w = std::round(SPRITE_LENGTH * transform->scale_2d.x * hit_box);
+		collider.h = std::round(SPRITE_LENGTH * transform->scale_2d.x);
 
 	}
 
+
 	void draw() override
 	{
+		SDL_SetRenderDrawColor(Game::renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+		SDL_RenderDrawRect(Game::renderer, &collider);
 		if (draw_attack)
 		{
 			draw_collision();

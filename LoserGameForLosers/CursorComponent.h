@@ -3,46 +3,34 @@
 
 class CursorComponent : public Component
 {
+	OptionsComponent * options_;
+	SDL_Rect* current_link_;
+	TextureComponent * texture_;
+	int cursor_id_, cursor_slot_, cursor_texture_id_;
+	Vector2D position_;
 public:
 
-	CursorComponent(const float angle, const SDL_RendererFlip flip)
-		: angle_(angle), cursor_flip_(flip)
-	{
-		src_.x = src_.y = 0;
-	}
+	explicit CursorComponent(const int sprite_id)
+		: cursor_id_(sprite_id)
+	{}
 
 	~CursorComponent()
 	{}
 
 	void init() override
 	{
-		if (entity->has_component<OptionsComponent>())
-		{
-			options_ = &entity->get_component<OptionsComponent>();
+		options_ = &entity->get_component<OptionsComponent>();
+		current_link_ = options_->get_current_link()->get_cursor_dimensions();
 
-			dest_ = options_->get_current_link()->get_cursor_dimensions();
-			src_.w = options_->get_current_link()->get_cursor_dimensions().w;
-			src_.h = options_->get_current_link()->get_cursor_dimensions().h;
-		}
+		texture_ = &entity->get_component<TextureComponent>();
 
-		texture_ = entity->get_component<MultiTextureComponent>().texture_map["cursor"];
+		cursor_slot_ = texture_->create_texture_slot();
+		cursor_texture_id_ = texture_->new_texture(cursor_id_, cursor_slot_);
 	}
-
 
 	void update() override
 	{
-		dest_ = options_->get_current_link()->get_cursor_dimensions();
+		current_link_ = options_->get_current_link()->get_cursor_dimensions();
+		texture_->update_call(cursor_slot_, new Vector2D(current_link_->x, current_link_->y), new Vector2D(1.0f));
 	}
-
-	void draw() override
-	{
-		TextureManager::draw(texture_, src_, dest_, angle_, cursor_flip_);
-	}
-
-private:
-	OptionsComponent * options_;
-	SDL_Rect dest_, src_;
-	SDL_Texture * texture_;
-	float angle_;
-	SDL_RendererFlip cursor_flip_;
 };

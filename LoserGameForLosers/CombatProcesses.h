@@ -4,7 +4,6 @@
 #include "Game.h"
 #include "Background.h"
 #include "Collision.h"
-#include "EndOfRound.h"
 
 class CombatProcessor;
 
@@ -23,13 +22,13 @@ public:
 
 	bool do_work() override
 	{
-		left_transform_->scale = SPRITE_SCALING;
-		right_transform_->scale = SPRITE_SCALING;
-		background_transform_->scale = BACKGROUND_SCALING;
+		left_transform_->scale_2d = SPRITE_SCALING;
+		right_transform_->scale_2d = SPRITE_SCALING;
+		background_transform_->scale_2d = BACKGROUND_SCALING;
 
-		left_transform_->position = Vector2D(SPRITE_LEFT_EDGE_OF_SCREEN, SPRITE_BOTTOM_OF_SCREEN);
-		right_transform_->position = Vector2D(SPRITE_RIGHT_EDGE_OF_SCREEN, SPRITE_BOTTOM_OF_SCREEN);
-		background_transform_->position = Vector2D(BACKGROUND_X_OFFSET, BACKGROUND_Y_OFFSET);	
+		left_transform_->position = Vector2D{static_cast<float>(SPRITE_LEFT_EDGE_OF_SCREEN), static_cast<float>(SPRITE_BOTTOM_OF_SCREEN)};
+		right_transform_->position = Vector2D{ static_cast<float>(SPRITE_RIGHT_EDGE_OF_SCREEN), static_cast<float>(SPRITE_BOTTOM_OF_SCREEN) };
+		background_transform_->position = Vector2D{ static_cast<float>(BACKGROUND_X_OFFSET), static_cast<float>(BACKGROUND_Y_OFFSET) };
 
 		work_complete_ = 1;
 		return true;
@@ -41,14 +40,37 @@ public:
 class DrawAttackLines : public Process
 {
 	ColliderComponent * left_collider_,* right_collider_;
+	PlayerComponent * left_player_, * right_player_;
 	Timer * delay_time;
 	int total_delay_;
+
+	void set_attack_color(ColliderComponent * player_col, int att_id)
+	{
+		switch (att_id)
+		{
+		case 0:
+			player_col->set_color(255, 0, 0);
+			break;
+		case 1:
+			player_col->set_color(0, 0, 255);
+			break;
+		case 2:
+			player_col->set_color(0, 255, 0);
+			break;
+		default:
+			break;
+		}
+	}
+
 public:
 	DrawAttackLines(Entity * player_left, Entity * player_right, int delay)
 		: total_delay_(delay)
 	{
 		left_collider_ = &player_left->get_component<ColliderComponent>();
 		right_collider_ = &player_right->get_component<ColliderComponent>();
+
+		left_player_ = &player_left->get_component<PlayerComponent>();
+		right_player_ = &player_right->get_component<PlayerComponent>();
 		
 		delay_time = new Timer();
 	}
@@ -59,17 +81,18 @@ public:
 		if (!delay_time->is_started())
 		{
 			delay_time->start();
+
+			set_attack_color(left_collider_, left_player_->attack_id);
+			set_attack_color(right_collider_, right_player_->attack_id);
+
+
 			left_collider_->draw_attack = true;
 			right_collider_->draw_attack = true;
-
-			left_collider_->set_color(255, 0, 0);
-			right_collider_->set_color(0, 0, 255);
 		}
 
 
 		if (delay_time->get_ticks() >= total_delay_)
 		{
-
 			left_collider_->draw_attack = false;
 			right_collider_->draw_attack = false;
 			return true;
@@ -169,41 +192,15 @@ public:
 		player_left_->get_component<SpriteComponent>().play(Idle);
 		player_right_->get_component<SpriteComponent>().play(Idle);
 
-		player_left_->get_component<ControllerComponent>().change_controller("nothing");
-		player_right_->get_component<ControllerComponent>().change_controller("nothing");
+		if (player_left_->has_component<ControllerComponent>())
+			player_left_->get_component<ControllerComponent>().change_controller(controller_no_input);
+		if (player_right_->has_component<ControllerComponent>())
+			player_right_->get_component<ControllerComponent>().change_controller(controller_no_input);
 		work_complete_ = 1;
 		return true;
 	}
 
 	float work_done() override { return work_complete_; }
-};
-
-class CalculateAttackOutcome : public Process
-{
-	float work_complete_;
-	EndOfRound * end_of_round_;
-public:
-	CalculateAttackOutcome(Entity * player_left, Entity * player_right)
-	{
-		auto priority_ = player_left;
-		auto other_ = player_right;
-		if (player_right->get_component<PlayerComponent>().is_priority_player)
-		{
-			priority_ = player_right;
-			other_ = player_left;
-		}
-
-		end_of_round_ = new EndOfRound(priority_, other_);
-	}
-
-	bool do_work() override 
-	{
-
-		return false;
-	}
-	float work_done() override { return work_complete_; }
-
-	
 };
 
 class ProjectileMovement : public Process

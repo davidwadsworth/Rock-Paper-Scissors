@@ -9,6 +9,7 @@ public:
 
 	Vector2D();
 	Vector2D(float x, float y);
+	Vector2D(float xy);
 
 	Vector2D& add(const Vector2D& vec);
 	Vector2D& subtract(const Vector2D& vec);
@@ -24,6 +25,12 @@ public:
 	Vector2D& operator-=(const Vector2D& vec);
 	Vector2D& operator*=(const Vector2D& vec);
 	Vector2D& operator/=(const Vector2D& vec);
+
+	Vector2D& operator+=(const float& vec);
+	Vector2D& operator-=(const float& vec);
+	Vector2D& operator*=(const float& vec);
+	Vector2D& operator/=(const float &vec);
+	Vector2D& operator=(const float& vec);
 
 	friend bool operator>=(const Vector2D& v1, const Vector2D& v2);
 

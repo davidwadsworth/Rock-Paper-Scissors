@@ -1,0 +1,17 @@
+
+<Character_Info>
+	<Character id="040000" velocity="0.9" hitbox="0.6" hitbox="2.3" distance="0" />
+	<Character id="040001" hitbox="0.6" distance="2.0" />
+	<Character id="040002" hitbox="1.0" distance="0.5" />
+	<Character id="040003" hitbox="0.0" distance="-0.6" />
+	<Character id="040100" velocity="1.0" character_hitbox="0.5" hitbox="1.5" distance="0" />
+	<Character id="040101" hitbox="0.8" distance="2.0" />
+	<Character id="040102" hitbox="0.8" distance="0.5" />
+	<Character id="040103" hitbox="0.0" distance="-0.5" />
+	<Character id="040200" velocity="0.7" character_hitbox="0.9" hitbox="1.5" distance="0"  />
+	<Character id="040201" hitbox="1.1" distance="1.5" />
+	<Character id="040202" hitbox="1.2" distance="0.5" />
+	<Character id="040203" hitbox="0.0" distance="-0.3" />
+</Character_Info>
+
+
