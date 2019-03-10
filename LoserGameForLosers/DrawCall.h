@@ -18,8 +18,6 @@ public:
 		data_offset_.x = data_->offset_x;
 		data_offset_.y = data_->offset_y;
 
-		std::cout << data->n << " : ( " << data->offset_x << ", " << data->offset_y << " )" << std::endl;
-
 		rotation_axis_ = data_->original_h;
 
 		if (this->flip == SDL_FLIP_HORIZONTAL)

@@ -160,6 +160,8 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="AtlasData.h" />
+    <ClInclude Include="Audio.h" />
+    <ClInclude Include="AudioPlayer.h" />
     <ClInclude Include="CharacterData.h" />
     <ClInclude Include="ControllerData.h" />
     <ClInclude Include="Data.h" />
@@ -231,6 +233,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="AudioPlayer.cpp" />
     <ClCompile Include="DrawCall.cpp" />
     <ClCompile Include="LoadAtlasData.cpp" />
     <ClCompile Include="Background.cpp" />

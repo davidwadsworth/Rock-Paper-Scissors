@@ -24,6 +24,8 @@ std::vector<SDL_Scancode> Game::keys = { SDL_SCANCODE_UP, SDL_SCANCODE_DOWN, SDL
 
 GameState * current_state = nullptr;
 
+Mix_Music* music = nullptr;
+
 bool Game::is_running = false;
 
 //State variables
@@ -58,9 +60,11 @@ void Game::init(const char * window_title)
 	data->load_options_data("data_options_v1.xml");
 
 	Game::assets->add_texture(data->get_atlas_data()->image_path.c_str());
-
-
-
+	if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) != -1)
+	{
+		music = Mix_LoadMUS("Yamborghini_High.mp3");
+		Mix_PlayMusic(music, -1);
+	}
 	current_state = new Menu(&manager);
 	state_id = STATE_MENU;
 }
@@ -131,8 +135,10 @@ void Game::clean()
 	SDL_DestroyWindow(window);
 	window = nullptr;
 	SDL_DestroyRenderer(renderer);
+	Mix_HaltMusic();
 
 	IMG_Quit();
 	SDL_Quit();
+	Mix_Quit();
 }
 
