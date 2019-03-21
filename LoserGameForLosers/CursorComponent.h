@@ -24,13 +24,12 @@ public:
 
 		texture_ = &entity->get_component<TextureComponent>();
 
-		cursor_slot_ = texture_->create_texture_slot();
-		cursor_texture_id_ = texture_->new_texture(cursor_id_, cursor_slot_);
+		cursor_slot_ = texture_->create_image_slot(cursor_id_, current_link_->x, current_link_->y);
 	}
 
 	void update() override
 	{
 		current_link_ = options_->get_current_link()->get_cursor_dimensions();
-		texture_->update_call(cursor_slot_, new Vector2D(current_link_->x, current_link_->y), new Vector2D(1.0f));
+		texture_->update_call(cursor_slot_, new Vector2D(current_link_->x, current_link_->y));
 	}
 };

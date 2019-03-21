@@ -61,24 +61,24 @@ public:
 		const auto height_scale = box_h / scaled_size;
 
 
-		box_calls_.push_back(Box(texture_->create_texture_slot(), corner_id_, Vector2D(right_x, top_y), Vector2D(scale_)));
-		box_calls_.push_back(Box(texture_->create_texture_slot(), corner_id_, Vector2D(right_x, top_y), Vector2D(scale_)));
-		box_calls_.push_back(Box(texture_->create_texture_slot(), corner_id_, Vector2D(right_x, bot_y), Vector2D(scale_)));
-		box_calls_.push_back(Box(texture_->create_texture_slot(), corner_id_, Vector2D(left_x, bot_y), Vector2D(scale_)));
+		//box_calls_.push_back(Box(texture_->create_texture_slot(), corner_id_, Vector2D(right_x, top_y), Vector2D(scale_)));
+		//box_calls_.push_back(Box(texture_->create_texture_slot(), corner_id_, Vector2D(right_x, top_y), Vector2D(scale_)));
+		//box_calls_.push_back(Box(texture_->create_texture_slot(), corner_id_, Vector2D(right_x, bot_y), Vector2D(scale_)));
+		//box_calls_.push_back(Box(texture_->create_texture_slot(), corner_id_, Vector2D(left_x, bot_y), Vector2D(scale_)));
 
-		box_calls_.push_back(Box(texture_->create_texture_slot(), side_id_, Vector2D(left_x + scaled_size, top_y), Vector2D(scale_)));
-		box_calls_.push_back(Box(texture_->create_texture_slot(), side_id_, Vector2D(right_x, top_y + scaled_size), Vector2D(scale_)));
-		box_calls_.push_back(Box(texture_->create_texture_slot(), side_id_, Vector2D(left_x + scaled_size, bot_y), Vector2D(scale_)));
-		box_calls_.push_back(Box(texture_->create_texture_slot(), side_id_, Vector2D(left_x, top_y + scaled_size), Vector2D(scale_)));
+		//box_calls_.push_back(Box(texture_->create_texture_slot(), side_id_, Vector2D(left_x + scaled_size, top_y), Vector2D(scale_)));
+		//box_calls_.push_back(Box(texture_->create_texture_slot(), side_id_, Vector2D(right_x, top_y + scaled_size), Vector2D(scale_)));
+		//box_calls_.push_back(Box(texture_->create_texture_slot(), side_id_, Vector2D(left_x + scaled_size, bot_y), Vector2D(scale_)));
+		//box_calls_.push_back(Box(texture_->create_texture_slot(), side_id_, Vector2D(left_x, top_y + scaled_size), Vector2D(scale_)));
 
-		box_calls_.push_back(Box(texture_->create_texture_slot(), center_id_, Vector2D(left_x + scaled_size, top_y + scaled_size), Vector2D(scale_)));
+		//box_calls_.push_back(Box(texture_->create_texture_slot(), center_id_, Vector2D(left_x + scaled_size, top_y + scaled_size), Vector2D(scale_)));
 
-		auto rotation = 0;
-		for(auto box : box_calls_)
-		{
-			box.call = texture_->new_texture(box.texture_id, box.slot);
-			texture_->update_call(box.slot, &box.position, &box.scale);
-			rotation++;
-		}
+		//auto rotation = 0;
+		//for(auto box : box_calls_)
+		//{
+		//	box.call = texture_->new_texture(box.texture_id, box.slot);
+		//	texture_->update_call(box.slot, &box.position, &box.scale);
+		//	rotation++;
+		//}
 	}
 };

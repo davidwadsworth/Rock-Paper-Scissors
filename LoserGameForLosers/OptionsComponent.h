@@ -18,7 +18,7 @@ public:
 	SDL_Point position;
 
 	explicit OptionsComponent(const int options_id, const int x, const int y, const Vector2D align, const int pad)
-		: padding_(pad), options_id(options_id), alignment_(align), position{x, y}
+		: padding_(pad), alignment_(align), options_id(options_id), position{x, y}
 	{
 	}
 

@@ -1,5 +1,11 @@
 #pragma once
+#include <SDL_mixer.h>
 
+struct PlayMessage
+{
+	int id;
+	int volume;
+};
 
 class Audio
 {

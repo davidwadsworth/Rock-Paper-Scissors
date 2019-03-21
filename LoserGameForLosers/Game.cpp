@@ -137,6 +137,9 @@ void Game::clean()
 	SDL_DestroyRenderer(renderer);
 	Mix_HaltMusic();
 
+	Mix_FreeMusic(music);
+	music = nullptr;
+
 	IMG_Quit();
 	SDL_Quit();
 	Mix_Quit();

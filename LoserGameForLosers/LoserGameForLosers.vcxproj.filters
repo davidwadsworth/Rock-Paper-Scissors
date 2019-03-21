@@ -75,9 +75,6 @@
     <ClInclude Include="BackgroundComponent.h">
       <Filter>Header Files\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="Animation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Collision.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -252,8 +249,14 @@
     <ClInclude Include="Audio.h">
       <Filter>Header Files\Queue</Filter>
     </ClInclude>
-    <ClInclude Include="AudioPlayer.h">
+    <ClInclude Include="TextureSlot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioQueue.h">
       <Filter>Header Files\Queue</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioData.h">
+      <Filter>Header Files\Data\DataCollections</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -330,10 +333,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="OptionsComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AudioPlayer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files\ECS</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

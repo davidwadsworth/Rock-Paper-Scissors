@@ -5,13 +5,13 @@ void DrawCall::init()
 {
 	tex = Game::assets->get_texture(atlas_texture_sheet_main);
 
-	src.x = data_->x;
-	src.y = data_->y;
-	src.w = data_->w;
-	src.h = data_->h;
+	src.x = data_.x;
+	src.y = data_.y;
+	src.w = data_.w;
+	src.h = data_.h;
 
-	dest->x = data_offset_.x;
-	dest->y = data_offset_.y;
+	dest->x = dest->x + data_offset_.x;
+	dest->y = dest->y + data_offset_.y;
 	dest->w = src.w;
 	dest->h = src.h;
 

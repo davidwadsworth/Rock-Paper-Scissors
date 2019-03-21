@@ -74,7 +74,7 @@ public:
 			if (right_is_player_)
 			{
 				const auto right_box = Game::assets->create_option_box(options_choose_attack, { SCREEN_HALF_WIDTH * 5 / 4, SCREEN_HALF_HEIGHT }, false);
-				right_box->get_component<OptionsComponent>().change_target(right_);
+				right_box->get_component<OptionsComponent>().change_target(left_);
 			}
 			not_initialized_ = false;
 		}

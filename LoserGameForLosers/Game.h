@@ -21,6 +21,8 @@ public:
 
 	static bool is_running;
 	static int state_id;
+
+	//OH NO! Don't look
 	static SDL_Renderer *renderer;
 	static SDL_Event event;
 	static AssetManager* assets;

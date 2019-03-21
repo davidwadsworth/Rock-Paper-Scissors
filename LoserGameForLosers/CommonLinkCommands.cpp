@@ -55,7 +55,7 @@ void ChooseCharacterLink::execute(Entity * entity)
 {
 	if (entity->get_component<ControllerComponent>().player1)
 	{
-		previous_id_ = Game::game_settings->player1;
+		previous_id_ = Game::game_settings->player_1_info;
 		Game::game_settings->set_player_1(character_id_);
 		entity->get_component<OptionsComponent>().change_options(options_choose_background);
 		entity_ = entity;

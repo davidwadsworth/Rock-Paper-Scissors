@@ -22,19 +22,14 @@ public:
 		transform_ = &entity->get_component<TransformComponent>();
 		texture_ = &entity->get_component<TextureComponent>();
 
-		mid_bg_slot_ = texture_->create_texture_slot();
-		left_bg_slot_ = texture_->create_texture_slot();
-		right_bg_slot_ = texture_->create_texture_slot();
-
-		texture_->new_texture(background_id_, mid_bg_slot_);
-		texture_->new_texture(background_id_, left_bg_slot_);
-		texture_->new_texture(background_id_, right_bg_slot_);
-
+		mid_bg_slot_ = texture_->create_image_slot(background_id_, transform_->position.x, SCREEN_HEIGHT - transform_->height * transform_->scale_2d.y);
+		left_bg_slot_ = texture_->create_image_slot(background_id_, transform_->position.x - transform_->width * transform_->scale_2d.x, SCREEN_HEIGHT - transform_->height * transform_->scale_2d.y);
+		right_bg_slot_ = texture_->create_image_slot(background_id_, transform_->position.x + transform_->width * transform_->scale_2d.x, SCREEN_HEIGHT - transform_->height * transform_->scale_2d.y);
 	}
 
 	void update() override
 	{
-		const auto mid = new Vector2D(static_cast<int>(transform_->position.x), static_cast<int>(SCREEN_HEIGHT - transform_->height * transform_->scale_2d.y));
+		const auto mid = new Vector2D(transform_->position.x, SCREEN_HEIGHT - transform_->height * transform_->scale_2d.y);
 		const auto left = new Vector2D(mid->x - transform_->width * transform_->scale_2d.x, mid->y);
 		const auto right = new Vector2D(mid->x + transform_->width * transform_->scale_2d.x, mid->y);
 		texture_->update_call(mid_bg_slot_, mid, &transform_->scale_2d);

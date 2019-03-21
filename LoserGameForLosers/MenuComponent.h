@@ -19,7 +19,6 @@ public:
 	void init() override
 	{
 		texture_ = &entity->get_component<TextureComponent>();
-
-		const auto menu_tex_id = texture_->new_texture(menu_id_, texture_->create_texture_slot());
+		menu_slot_ = texture_->create_image_slot(menu_id_, 0, 0);
 	}
 };
