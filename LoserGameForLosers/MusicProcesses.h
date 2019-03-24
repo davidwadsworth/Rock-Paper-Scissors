@@ -1,48 +1,43 @@
 #pragma once
 #include "Processes.h"
 
-//class PlaySound : public Process
-//{
-//	float work_complete_;
-//	Mix_Chunk * sound;
-//public:
-//	PlaySound(int id)
-//		: work_complete_(0)
-//	{
-//		sound = Game::assets->get_sound(id);
-//	}
-//
-//	bool do_work() override
-//	{
-//		Mix_PlayChannel(-1, sound, 0);
-//		work_complete_ = 1;
-//		return true;
-//	}
-//
-//	float work_done() override { return work_complete_; }
-//};
-//
-//class PlayMusic : public Process
-//{
-//	float work_complete_;
-//	Mix_Music * music;
-//public:
-//	PlayMusic(int id)
-//		: work_complete_(0)
-//	{
-//		music = Game::assets->get_music(id);
-//	}
-//
-//	bool do_work() override
-//	{
-//		Mix_PlayMusic(music, -1);
-//		work_complete_ = 1;
-//		return true;
-//	}
-//
-//	float work_done() override { return work_complete_; }
-//
-//};
+class PlaySound : public Process
+{
+	float work_complete_;
+	int sound_id_;
+public:
+	explicit PlaySound(const int id)
+		: work_complete_(0), sound_id_(id)
+	{}
+
+	bool do_work() override
+	{
+		Game::player->play_sound(sound_id_);
+		return true;
+	}
+
+	float work_done() override { return work_complete_; }
+};
+
+class PlayMusic : public Process
+{
+	float work_complete_;
+	int music_id_, loop_;
+public:
+	PlayMusic(const int id, const int loop)
+		: work_complete_(0), music_id_(id), loop_(loop)
+	{}
+
+	bool do_work() override
+	{
+		Game::player->play_music(music_id_, loop_);
+		work_complete_ = 1;
+		return true;
+	}
+
+	float work_done() override { return work_complete_; }
+
+};
 
 class StopMusic : public Process
 {
@@ -54,7 +49,7 @@ public:
 
 	bool do_work() override
 	{
-		Mix_HaltMusic();
+		Game::player->stop_music();
 		work_complete_ = 1;
 		return true;
 	}

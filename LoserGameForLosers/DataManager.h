@@ -10,7 +10,7 @@ class DataManager
 	AtlasData atlas_data_;
 	OptionsCollection options_data_;
 	ControllerCollection controllers_data_;
-
+	AudioCollection audio_data_;
 public:
 	explicit DataManager(Manager *manager)
 		: manager_(manager)
@@ -33,4 +33,9 @@ public:
 	//Controller Data
 	void load_controller_data(const char* path);
 	ControllerData* get_controller_data(int id);
+
+	//Audio Data
+	void load_audio_data(const char * path);
+	AudioCollection* get_audio_data();
+
 };

@@ -119,6 +119,8 @@ void Combat::close()
 		pr->del_group(Game::group_prompts);
 		pr->destroy();
 	}
+
+	Game::player->stop_music();
 }
 
 

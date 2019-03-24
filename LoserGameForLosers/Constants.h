@@ -168,6 +168,25 @@ enum MAIN_SPRITESHEET
 	main_textbox_default_speech_arrow
 };
 
+enum MUSIC_ORDER
+{
+	music_drum_beat,
+	music_title_theme,
+	music_yamborghini_high
+};
+
+enum SOUND_ORDER
+{
+	sound_combat_start,
+	sound_cymbal_swell,
+	sound_hit_1,
+	sound_hit_2,
+	sound_hit_3,
+	sound_miss,
+	sound_swell_to_hit,
+	sound_round_end
+};
+
 enum CONTROLLER_DATA
 {
 	controller_options_nav,

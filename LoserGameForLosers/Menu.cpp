@@ -14,7 +14,7 @@ Menu::Menu(Manager * manager)
 	screen.add_group(Game::group_background);
 
 	Game::assets->create_option_box(options_start_menu, SDL_Point{ SPRITE_LENGTH, SCREEN_HALF_HEIGHT}, true);
-
+	Game::player->play_music(music_title_theme, -1);
 }
 
 
@@ -73,4 +73,6 @@ void Menu::close()
 		c->del_group(Game::group_cursors);
 		c->destroy();
 	}
+
+	Game::player->stop_music();
 }

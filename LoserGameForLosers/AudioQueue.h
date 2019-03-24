@@ -5,41 +5,51 @@
 
 class AudioQueue : public Audio
 {
-	int channel_count_;
 	AudioCollection* data_;
+
+	std::vector<Mix_Music*> loaded_music_;
+	std::vector<Mix_Chunk*> loaded_effects_;
+
 
 	void load_music_files()
 	{
-		for (auto sound : data_->data)
+		for (const auto& sound : data_->data)
 		{	
-			switch (sound.id)
+			switch (sound.encoding)
 			{
 			case 0:
-
-
-
+				loaded_music_.push_back(Mix_LoadMUS(sound.path.c_str()));
+				break;
+			case 1:
+				loaded_effects_.push_back(Mix_LoadWAV(sound.path.c_str()));
+				break;
 			default:
-				;
+				return;
 			}
 		}
 	}
 
 public:
-	AudioQueue(AudioCollection * data)
+	explicit AudioQueue(AudioCollection * data)
 		: data_(data)
-	{}
+	{
+		load_music_files();
+	}
 
 	~AudioQueue() = default;
 
 	void play_sound(const int sound_id) override
 	{
-		
+		Mix_PlayChannel(-1, loaded_effects_[sound_id], 0);
 	}
 
-	void stop_sound(int sound_id) override
-	{}
+	void play_music(const int music_id, const int loops) override
+	{
+		Mix_PlayMusic(loaded_music_[music_id], loops);
+	}
 
-	void stop_all_sound() override
-	{}
-
+	void stop_music() override
+	{
+		Mix_HaltMusic();
+	}
 };

@@ -11,14 +11,11 @@ Manager manager;
 SDL_Renderer *Game::renderer = nullptr;
 SDL_Event Game::event;
 GameSettings* Game::game_settings = new GameSettings();
-
-BitmapFont font;
-BitmapTexture bitmaptex;
-
 LinkStack * Game::stack = new LinkStack();
 
 AssetManager* Game::assets = new AssetManager(&manager);
 DataManager * Game::data = new DataManager(&manager);
+AudioQueue * Game::player = nullptr;
 
 std::vector<SDL_Scancode> Game::keys = { SDL_SCANCODE_UP, SDL_SCANCODE_DOWN, SDL_SCANCODE_LEFT, SDL_SCANCODE_RIGHT, SDL_SCANCODE_I, SDL_SCANCODE_O, SDL_SCANCODE_P, SDL_SCANCODE_L };
 
@@ -43,14 +40,12 @@ void Game::init(const char * window_title)
 		{
 			SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 		}
-		Game::is_running = true;
-	}
 
-	if (bitmaptex.load_from_file("lazyfont.png"))
-	{
-		font.build_font(&bitmaptex);
+		if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) != -1)
+		{
+			is_running = true;
+		}
 	}
-	else { std::cout << "Font Failure" << std::endl; }
 
 	assets->set_bit_map_font("lazyfont.png");
 
@@ -58,13 +53,11 @@ void Game::init(const char * window_title)
 	data->load_character_data("data_characters_v1.xml");
 	data->load_controller_data("data_controllers_v1.xml");
 	data->load_options_data("data_options_v1.xml");
+	data->load_audio_data("data_audio_v1.xml");
 
-	Game::assets->add_texture(data->get_atlas_data()->image_path.c_str());
-	if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) != -1)
-	{
-		music = Mix_LoadMUS("Yamborghini_High.mp3");
-		Mix_PlayMusic(music, -1);
-	}
+	assets->add_texture(data->get_atlas_data()->image_path.c_str());
+	player = new AudioQueue(data->get_audio_data());
+	
 	current_state = new Menu(&manager);
 	state_id = STATE_MENU;
 }

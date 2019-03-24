@@ -45,3 +45,14 @@ ControllerData *DataManager::get_controller_data(int id)
 {
 	return &controllers_data_.data[id];
 }
+
+void DataManager::load_audio_data(const char * path)
+{
+	auto audio_data = LoadAudioData(path);
+	audio_data_ = audio_data.load();
+}
+
+AudioCollection * DataManager::get_audio_data()
+{
+	return &audio_data_;
+}

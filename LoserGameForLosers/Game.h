@@ -7,6 +7,7 @@
 #include "GameSettings.h"
 #include "DataManager.h"
 #include "LinkStack.h"
+#include "AudioQueue.h"
 
 class Game
 {
@@ -29,6 +30,7 @@ public:
 	static GameSettings* game_settings;
 	static DataManager* data;
 	static LinkStack* stack;
+	static AudioQueue* player;
 	static std::vector<SDL_Scancode> keys;
 
 	SDL_Window *window;

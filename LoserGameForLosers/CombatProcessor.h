@@ -23,15 +23,16 @@ struct CombatProcessor
 		tasks.clear();
 		tasks.push_back(new Skip());
 		tasks.push_back(new ResetGame(player_left_, player_right_, background_));
-		tasks.push_back(new DisplayRoundPrompt(main_prompt_round, main_number_0,  round_count_));
+		tasks.push_back(new AndMultiProcessor({ new DisplayRoundPrompt(main_prompt_round, main_number_0,  round_count_), new PlaySound(sound_cymbal_swell) }));
 		tasks.push_back(new Delay(3000));
 		tasks.push_back(new ClearPrompts());
-		tasks.push_back(new DisplayPrompt(main_prompt_select_attack));
+		tasks.push_back(new AndMultiProcessor({ new DisplayPrompt(main_prompt_select_attack), new PlayMusic(music_drum_beat, -1) }));
 		tasks.push_back(new Delay(2000));
 		tasks.push_back(new ClearPrompts());
 		tasks.push_back(new ChangeController(player_left_, player_right_, controller_no_input) );
 		tasks.push_back(new ChooseAttack(player_left_, player_right_));
-		tasks.push_back(new DisplayPrompt(main_prompt_fight));
+		tasks.push_back(new StopMusic());
+		tasks.push_back(new AndMultiProcessor({ new DisplayPrompt(main_prompt_fight), new PlaySound(sound_combat_start) }));
 		tasks.push_back(new Delay(1000));
 		tasks.push_back(new AndMultiProcessor({ new ClearPrompts(), new ChangeController(player_left_, player_right_, controller_combat_fight) }));
 		tasks.push_back(new AndMultiProcessor({new Delay(5000), new CombatCollision(player_left_, player_right_)}));
@@ -39,8 +40,9 @@ struct CombatProcessor
 		tasks.push_back(new Delay(500));
 		tasks.push_back(new ClearPrompts());
 		tasks.push_back(new EndOfRoundSequence(player_left_, player_right_, this));
+		tasks.push_back(new PlaySound(sound_miss));
 		tasks.push_back(new DrawAttackLines(player_left_, player_right_, 1000));
-		tasks.push_back(new DisplayPrompt(main_prompt_miss));
+		tasks.push_back(new DisplayPrompt(main_prompt_miss) );
 		tasks.push_back(new Delay(1000));
 		tasks.push_back(new ClearPrompts());
 		tasks.push_back(new CleanUp(player_left_, player_right_, this));
@@ -52,6 +54,7 @@ struct CombatProcessor
 		tasks.clear();
 		current_task = 0;
 		tasks.push_back(new Skip());
+		tasks.push_back(new PlaySound(sound_hit_2));
 		tasks.push_back(new DrawAttackLines(player_left_, player_right_, 1000));
 		if (winner->get_component<SpriteComponent>().sprite_flip == SDL_FLIP_HORIZONTAL)
 		{
@@ -84,6 +87,7 @@ struct CombatProcessor
 			tasks.push_back(new DisplayPrompt(main_prompt_player_1_match_win));
 		else
 			tasks.push_back(new DisplayPrompt(main_prompt_player_2_match_win));
+		tasks.push_back(new PlaySound(sound_round_end));
 		tasks.push_back(new Delay(2000));
 		tasks.push_back(new ClearPrompts());
 		tasks.push_back(new Delay(500));

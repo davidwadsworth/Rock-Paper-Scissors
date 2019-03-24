@@ -6,7 +6,6 @@
 struct AudioData
 {
 	std::string path;
-	std::string id;
 	int encoding;
 };
 
