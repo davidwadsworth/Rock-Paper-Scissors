@@ -1,5 +1,5 @@
 # Rock-Paper-Scissors
-Rock Paper Scissors Game with realtime movement
+Rock Paper Scissors with character movement
 
 Dependencies
 -------------------
@@ -7,9 +7,9 @@ SDL2, SDL2_image, SDL2_mixer, SDL2_TTF, RapidXML
 
 Game Synopsis
 ------------------
- - Jump-Kick beats whip
+ - Kick beats whip
  - Whip beats grab
- - Grab beats jump-kick
+ - Grab beats kick
 
 First to 3 wins the match
 
