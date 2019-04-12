@@ -166,6 +166,7 @@
     <ClInclude Include="ControllerData.h" />
     <ClInclude Include="Data.h" />
     <ClInclude Include="DataManager.h" />
+    <ClInclude Include="Pathway.h" />
     <ClInclude Include="LinkStack.h" />
     <ClInclude Include="LoadAtlasData.h" />
     <ClInclude Include="Attack.h" />
@@ -206,6 +207,7 @@
     <ClInclude Include="Links.h" />
     <ClInclude Include="LoadOptionsData.h" />
     <ClInclude Include="OptionsData.h" />
+    <ClInclude Include="PathQueue.h" />
     <ClInclude Include="Targetable.h" />
     <ClInclude Include="TextureComponent.h" />
     <ClInclude Include="KeyboardHandler.h" />

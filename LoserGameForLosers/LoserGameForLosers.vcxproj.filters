@@ -34,6 +34,9 @@
     <Filter Include="Header Files\Queue">
       <UniqueIdentifier>{7870d300-4125-4b64-a292-6ebd5018825f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Event">
+      <UniqueIdentifier>{305cec45-33e1-4550-9949-ddcfd63b6fcd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -260,6 +263,12 @@
     </ClInclude>
     <ClInclude Include="DataManager.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pathway.h">
+      <Filter>Header Files\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="PathQueue.h">
+      <Filter>Header Files\Queue</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -24,7 +24,7 @@ Combat::Combat(Manager * manager)
 	player_left.add_component<TextureComponent>();
 	player_left.add_component<PlayerComponent>(true, Game::game_settings->player_1_info);
 	player_left.add_component<SpriteComponent>(Game::game_settings->player_1_texture);
-	player_left.add_component<ControllerComponent>(controller_combat_debug);
+	player_left.add_component<ControllerComponent>(controller_no_input);
 	player_left.add_component<ColliderComponent>();
 	player_left.add_group(Game::group_players);
 
@@ -32,7 +32,7 @@ Combat::Combat(Manager * manager)
 	player_right.add_component<TextureComponent>();
 	player_right.add_component<PlayerComponent>(false, Game::game_settings->player_2_info);
 	player_right.add_component<SpriteComponent>(Game::game_settings->player_2_texture, SDL_FLIP_HORIZONTAL);
-	player_right.add_component<ControllerComponent>(controller_combat_debug, Game::keys);
+	player_right.add_component<ControllerComponent>(controller_no_input, Game::keys);
 	player_right.add_component<ColliderComponent>();
 	player_right.add_group(Game::group_players);
 
