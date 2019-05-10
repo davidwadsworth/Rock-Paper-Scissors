@@ -10,7 +10,7 @@ struct CombatProcessor
 {
 	int current_task;
 	CombatProcessor(Entity * player_left, Entity * player_right, Entity * background)
-		: player_left_(player_left), player_right_(player_right), background_(background), process_size_(0), round_count_(0), current_task(0)
+		: current_task(0), round_count_(0), process_size_(0), player_left_(player_left), player_right_(player_right), background_(background)
 	{}
 
 	~CombatProcessor() 
@@ -30,7 +30,6 @@ struct CombatProcessor
 		tasks.push_back(new Delay(2000));
 		tasks.push_back(new ClearPrompts());
 		tasks.push_back(new ChangeController(player_left_, player_right_, controller_no_input) );
-		tasks.push_back(new ChooseAttack(player_left_, player_right_));
 		tasks.push_back(new StopMusic());
 		tasks.push_back(new AndMultiProcessor({ new DisplayPrompt(main_prompt_fight), new PlaySound(sound_combat_start) }));
 		tasks.push_back(new Delay(1000));

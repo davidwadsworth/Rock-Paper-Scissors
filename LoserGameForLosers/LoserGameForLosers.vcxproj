@@ -163,9 +163,17 @@
     <ClInclude Include="AudioData.h" />
     <ClInclude Include="AudioQueue.h" />
     <ClInclude Include="CharacterData.h" />
+    <ClInclude Include="CombatNavigation.h" />
+    <ClInclude Include="CommonNavigation.h" />
     <ClInclude Include="ControllerData.h" />
     <ClInclude Include="Data.h" />
     <ClInclude Include="DataManager.h" />
+    <ClInclude Include="FadeComponent.h" />
+    <ClInclude Include="LinkNavigation.h" />
+    <ClInclude Include="AudioNavigation.h" />
+    <ClInclude Include="Navigation.h" />
+    <ClInclude Include="Navigator.h" />
+    <ClInclude Include="PathHack.h" />
     <ClInclude Include="Pathway.h" />
     <ClInclude Include="LinkStack.h" />
     <ClInclude Include="LoadAtlasData.h" />
@@ -202,14 +210,13 @@
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GlyphAtlasComponent.h" />
     <ClInclude Include="LinkBuilder.h" />
-    <ClInclude Include="LinkCommand.h" />
     <ClInclude Include="LinkCommandBuilder.h" />
     <ClInclude Include="Links.h" />
     <ClInclude Include="LoadOptionsData.h" />
     <ClInclude Include="OptionsData.h" />
-    <ClInclude Include="PathQueue.h" />
+    <ClInclude Include="ProjectileComponent.h" />
     <ClInclude Include="Targetable.h" />
-    <ClInclude Include="TextureComponent.h" />
+    <ClInclude Include="TextureAtlasComponent.h" />
     <ClInclude Include="KeyboardHandler.h" />
     <ClInclude Include="BitmapFont.h" />
     <ClInclude Include="CommonLinkCommands.h" />
@@ -227,8 +234,10 @@
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TextureComponent.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="TextureSlot.h" />
+    <ClInclude Include="TransformationNavigation.h" />
     <ClInclude Include="TransformationProcesses.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TransformComponent.h" />
@@ -237,8 +246,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="CombatNavigation.cpp" />
+    <ClCompile Include="CommonNavigation.cpp" />
     <ClCompile Include="DataManager.cpp" />
     <ClCompile Include="DrawCall.cpp" />
+    <ClCompile Include="FadeComponent.cpp" />
     <ClCompile Include="LoadAtlasData.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="BitmapTexture.cpp" />
@@ -257,15 +269,21 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="LoadOptionsData.cpp" />
+    <ClCompile Include="AudioNavigation.cpp" />
     <ClCompile Include="OptionsComponent.cpp" />
+    <ClCompile Include="Pathway.cpp" />
+    <ClCompile Include="ProjectileComponent.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TextureAtlasComponent.cpp" />
+    <ClCompile Include="TextureComponent.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="TransformationNavigation.cpp" />
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>

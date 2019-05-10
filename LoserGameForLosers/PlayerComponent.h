@@ -19,8 +19,7 @@ public:
 	int direction;
 	bool attack_used;
 
-	PlayerComponent(const bool has_priority, const int character_id) 
-		: is_priority_player(has_priority), direction(1)
+	PlayerComponent(const int character_id) 
 	{
 		data_ = Game::data->get_character_data(character_id);
 	}
@@ -56,6 +55,16 @@ public:
 		chosen_attack = &player_identity.attacks[att_id];
 	}
 
+	float attack_distance() const
+	{
+		return chosen_attack->move_distance * entity->get_component<TransformComponent>().scale_2d.x * SPRITE_LENGTH;
+	}
+
+	float attack_hitbox() const
+	{
+		return chosen_attack->projectile_range * entity->get_component<TransformComponent>().scale_2d.x * SPRITE_LENGTH;
+	}
+
 	void change_priority()
 	{
 		is_priority_player = !is_priority_player;
@@ -80,8 +89,6 @@ public:
 			if (other->get_component<PlayerComponent>().attack_id == Whip)
 				winner = other;
 		}
-		if (attack_used)
-			winner = other;
 
 		return winner;
 	}

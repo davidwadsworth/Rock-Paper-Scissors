@@ -1,6 +1,7 @@
 #pragma once
 #include "ECS.h"
 #include "TransformComponent.h"
+#include "TextureAtlasComponent.h"
 #include "TextureComponent.h"
 #include "OptionsComponent.h"
 #include "BackgroundComponent.h"
@@ -14,6 +15,8 @@
 #include "GlyphAtlasComponent.h"
 #include "PromptComponent.h"
 #include "WhiteRectComponent.h"
+#include "FadeComponent.h"
+#include "ProjectileComponent.h"
 
 
 

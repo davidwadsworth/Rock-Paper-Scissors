@@ -12,7 +12,7 @@ public:
 
 	bool do_work() override
 	{
-		Game::player->play_sound(sound_id_);
+		Game::audio_queue->play_sound(sound_id_);
 		return true;
 	}
 
@@ -30,7 +30,7 @@ public:
 
 	bool do_work() override
 	{
-		Game::player->play_music(music_id_, loop_);
+		Game::audio_queue->play_music(music_id_, loop_);
 		work_complete_ = 1;
 		return true;
 	}
@@ -49,7 +49,7 @@ public:
 
 	bool do_work() override
 	{
-		Game::player->stop_music();
+		Game::audio_queue->stop_music();
 		work_complete_ = 1;
 		return true;
 	}

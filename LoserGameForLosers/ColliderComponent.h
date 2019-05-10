@@ -12,17 +12,15 @@ public:
 	SDL_Rect collider{};
 	std::string tag;
 	bool draw_attack;
-
 	SDL_Rect src_r, dest_r;
-
 	TransformComponent* transform;
 
 	float hit_box = 1.0;
 	int projectile_point;
 
-	ColliderComponent() {}
+	ColliderComponent() = default;
 
-	ColliderComponent(const std::string& t)
+	explicit ColliderComponent(const std::string& t)
 	{
 		tag = t;
 	}

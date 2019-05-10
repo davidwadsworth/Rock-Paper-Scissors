@@ -8,7 +8,7 @@ class SpriteComponent : public Component
 	int speed_ = 200;
 	int animation_frames_ = 3;
 	TransformComponent * transform_;
-	TextureComponent * texture_;
+	TextureAtlasComponent * texture_;
 	int slot_id_;
 	int animation_state_;
 	int sprite_rotation_;
@@ -33,7 +33,7 @@ public:
 	void init() override
 	{
 		transform_ = &entity->get_component<TransformComponent>();
-		texture_ = &entity->get_component<TextureComponent>();
+		texture_ = &entity->get_component<TextureAtlasComponent>();
 
 		slot_id_ = texture_->create_animated_slot(transform_->position.x, transform_->position.y, speed_, animation_frames_, sprite_id_, sprite_rotation_, sprite_flip);
 		texture_->add_animation_state(slot_id_, speed_, animation_frames_, sprite_id_ + animation_frames_, sprite_rotation_, sprite_flip);
@@ -47,8 +47,9 @@ public:
 
 	void update() override
 	{
-		texture_->update_animation(slot_id_, animation_state_);
-		texture_->update_call(slot_id_, &transform_->position, &transform_->scale_2d);
+		if (animated)
+			texture_->update_animation(slot_id_, animation_state_);
+		texture_->update_position_and_scaling(slot_id_, &transform_->position, &transform_->scale);
 	}
 
 	void play(const int animation)

@@ -3,40 +3,51 @@
 
 class LinkStack
 {
-	std::vector<LinkCommand *> link_stack_;
-	int link_cursor_;
+	std::vector<LinkCommand *> links_;
+	int top_;
 public:
 	LinkStack()
-		: link_cursor_(0)
+		: top_(0)
 	{}
 
 	~LinkStack()
 	{
-		link_stack_.clear();
+		links_.clear();
 	}
 
-	 LinkCommand* get_last()
-	 {
-		if (link_stack_.size())
-			return link_stack_[link_cursor_--];
-
-		return nullptr;
-	 }
-
-	void add(LinkCommand * link)
+	LinkCommand * peek()
 	{
-		if (link_stack_.size() == link_cursor_)
-			link_stack_.push_back(link);
-		else
-			link_stack_[link_cursor_] = link;
-
-		link_cursor_++;
+		if (is_empty())
+			return nullptr;
+		return links_[top_ - 1];
 	}
+
+	bool is_empty() const
+	{
+		return top_ == 0;
+	}
+
+	void push(LinkCommand * link)
+	{
+		top_++;
+		links_.push_back(link);
+	}
+
+	LinkCommand* pop()
+	{
+		if (is_empty())
+			return nullptr;
+
+		const auto ret = links_[--top_];
+		links_[top_] = nullptr;
+		return ret;
+	}
+
 
 	void clear()
 	{
-		link_cursor_ = 0;
-		link_stack_.clear();
+		top_ = 0;
+		links_.clear();
 	}
 
 };

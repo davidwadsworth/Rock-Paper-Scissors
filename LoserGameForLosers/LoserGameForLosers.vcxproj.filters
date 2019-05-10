@@ -13,29 +13,29 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\ECS">
-      <UniqueIdentifier>{f79b9345-8bfe-4fcb-8f8b-26446b8efbc2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Processes">
-      <UniqueIdentifier>{93c1fce7-f654-4b7d-a5e8-0b0ff5580ec6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Commands">
+    <Filter Include="Commands">
       <UniqueIdentifier>{ce39a474-6ec0-4331-9517-69032fd45449}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Data">
+    <Filter Include="Data">
       <UniqueIdentifier>{23ab70a0-9518-4887-a112-a492eb839f2b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Data\DataCollections">
+    <Filter Include="Data\DataCollections">
       <UniqueIdentifier>{c910b8b0-beb4-4acf-9412-015e9b0c64a9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Data\DataLoads">
+    <Filter Include="Data\DataLoads">
       <UniqueIdentifier>{294fd808-e89b-458b-9611-f2fb6bacc715}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Queue">
+    <Filter Include="ECS">
+      <UniqueIdentifier>{f79b9345-8bfe-4fcb-8f8b-26446b8efbc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Navigation">
+      <UniqueIdentifier>{305cec45-33e1-4550-9949-ddcfd63b6fcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Queue">
       <UniqueIdentifier>{7870d300-4125-4b64-a292-6ebd5018825f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Event">
-      <UniqueIdentifier>{305cec45-33e1-4550-9949-ddcfd63b6fcd}</UniqueIdentifier>
+    <Filter Include="Processes">
+      <UniqueIdentifier>{93c1fce7-f654-4b7d-a5e8-0b0ff5580ec6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -64,25 +64,25 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ECS.h">
-      <Filter>Header Files\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClInclude>
     <ClInclude Include="Components.h">
-      <Filter>Header Files\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClInclude>
     <ClInclude Include="TransformComponent.h">
-      <Filter>Header Files\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClInclude>
     <ClInclude Include="ControllerComponent.h">
-      <Filter>Header Files\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClInclude>
     <ClInclude Include="BackgroundComponent.h">
-      <Filter>Header Files\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClInclude>
     <ClInclude Include="Collision.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PlayerComponent.h">
-      <Filter>Header Files\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClInclude>
     <ClInclude Include="Attack.h">
       <Filter>Header Files</Filter>
@@ -91,10 +91,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CursorComponent.h">
-      <Filter>Header Files\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClInclude>
     <ClInclude Include="BoxComponent.h">
-      <Filter>Header Files\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClInclude>
     <ClInclude Include="Menu.h">
       <Filter>Header Files</Filter>
@@ -109,13 +109,13 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="OptionsComponent.h">
-      <Filter>Header Files\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClInclude>
     <ClInclude Include="ColliderComponent.h">
-      <Filter>Header Files\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClInclude>
     <ClInclude Include="GlyphAtlasComponent.h">
-      <Filter>Header Files\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>Header Files</Filter>
@@ -124,37 +124,34 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PromptComponent.h">
-      <Filter>Header Files\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClInclude>
     <ClInclude Include="MusicProcesses.h">
-      <Filter>Header Files\Processes</Filter>
+      <Filter>Processes</Filter>
     </ClInclude>
     <ClInclude Include="CombatProcesses.h">
-      <Filter>Header Files\Processes</Filter>
+      <Filter>Processes</Filter>
     </ClInclude>
     <ClInclude Include="CommonProcesses.h">
-      <Filter>Header Files\Processes</Filter>
+      <Filter>Processes</Filter>
     </ClInclude>
     <ClInclude Include="Processes.h">
-      <Filter>Header Files\Processes</Filter>
+      <Filter>Processes</Filter>
     </ClInclude>
     <ClInclude Include="Process.h">
-      <Filter>Header Files\Processes</Filter>
+      <Filter>Processes</Filter>
     </ClInclude>
     <ClInclude Include="TransformationProcesses.h">
-      <Filter>Header Files\Processes</Filter>
+      <Filter>Processes</Filter>
     </ClInclude>
     <ClInclude Include="Command.h">
-      <Filter>Header Files\Commands</Filter>
+      <Filter>Commands</Filter>
     </ClInclude>
     <ClInclude Include="GameSettings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TextureComponent.h">
-      <Filter>Header Files\ECS</Filter>
-    </ClInclude>
     <ClInclude Include="CombatProcessor.h">
-      <Filter>Header Files\Processes</Filter>
+      <Filter>Processes</Filter>
     </ClInclude>
     <ClInclude Include="BitmapTexture.h">
       <Filter>Header Files</Filter>
@@ -169,7 +166,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Commands.h">
-      <Filter>Header Files\Commands</Filter>
+      <Filter>Commands</Filter>
     </ClInclude>
     <ClInclude Include="Links.h">
       <Filter>Header Files</Filter>
@@ -181,94 +178,124 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MenuComponent.h">
-      <Filter>Header Files\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClInclude>
     <ClInclude Include="SpriteComponent.h">
-      <Filter>Header Files\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClInclude>
     <ClInclude Include="Font.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LinkCommand.h">
-      <Filter>Header Files\Commands</Filter>
-    </ClInclude>
     <ClInclude Include="LinkCommandBuilder.h">
-      <Filter>Header Files\Commands</Filter>
+      <Filter>Commands</Filter>
     </ClInclude>
     <ClInclude Include="InputCommandBuilder.h">
-      <Filter>Header Files\Commands</Filter>
+      <Filter>Commands</Filter>
     </ClInclude>
     <ClInclude Include="InputCommand.h">
-      <Filter>Header Files\Commands</Filter>
+      <Filter>Commands</Filter>
     </ClInclude>
     <ClInclude Include="CommonLinkCommands.h">
-      <Filter>Header Files\Commands</Filter>
+      <Filter>Commands</Filter>
     </ClInclude>
     <ClInclude Include="CommonInputCommands.h">
-      <Filter>Header Files\Commands</Filter>
+      <Filter>Commands</Filter>
     </ClInclude>
     <ClInclude Include="OptionsData.h">
-      <Filter>Header Files\Data\DataCollections</Filter>
+      <Filter>Data\DataCollections</Filter>
     </ClInclude>
     <ClInclude Include="AtlasData.h">
-      <Filter>Header Files\Data\DataCollections</Filter>
+      <Filter>Data\DataCollections</Filter>
     </ClInclude>
     <ClInclude Include="CharacterData.h">
-      <Filter>Header Files\Data\DataCollections</Filter>
+      <Filter>Data\DataCollections</Filter>
     </ClInclude>
     <ClInclude Include="ControllerData.h">
-      <Filter>Header Files\Data\DataCollections</Filter>
+      <Filter>Data\DataCollections</Filter>
     </ClInclude>
     <ClInclude Include="LoadAtlasData.h">
-      <Filter>Header Files\Data\DataLoads</Filter>
+      <Filter>Data\DataLoads</Filter>
     </ClInclude>
     <ClInclude Include="LoadCharacterData.h">
-      <Filter>Header Files\Data\DataLoads</Filter>
+      <Filter>Data\DataLoads</Filter>
     </ClInclude>
     <ClInclude Include="LoadControllerData.h">
-      <Filter>Header Files\Data\DataLoads</Filter>
+      <Filter>Data\DataLoads</Filter>
     </ClInclude>
     <ClInclude Include="DataLoads.h">
-      <Filter>Header Files\Data\DataLoads</Filter>
+      <Filter>Data\DataLoads</Filter>
     </ClInclude>
     <ClInclude Include="LoadOptionsData.h">
-      <Filter>Header Files\Data\DataLoads</Filter>
+      <Filter>Data\DataLoads</Filter>
     </ClInclude>
     <ClInclude Include="Data.h">
-      <Filter>Header Files\Data\DataCollections</Filter>
+      <Filter>Data\DataCollections</Filter>
     </ClInclude>
     <ClInclude Include="WhiteRectComponent.h">
-      <Filter>Header Files\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClInclude>
     <ClInclude Include="Targetable.h">
-      <Filter>Header Files\Commands</Filter>
+      <Filter>Commands</Filter>
     </ClInclude>
     <ClInclude Include="LinkStack.h">
-      <Filter>Header Files\Commands</Filter>
+      <Filter>Commands</Filter>
     </ClInclude>
     <ClInclude Include="Audio.h">
-      <Filter>Header Files\Queue</Filter>
+      <Filter>Queue</Filter>
     </ClInclude>
     <ClInclude Include="TextureSlot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AudioQueue.h">
-      <Filter>Header Files\Queue</Filter>
+      <Filter>Queue</Filter>
     </ClInclude>
     <ClInclude Include="AudioData.h">
-      <Filter>Header Files\Data\DataCollections</Filter>
+      <Filter>Data\DataCollections</Filter>
     </ClInclude>
     <ClInclude Include="LoadAudioData.h">
-      <Filter>Header Files\Data\DataLoads</Filter>
+      <Filter>Data\DataLoads</Filter>
     </ClInclude>
     <ClInclude Include="DataManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Pathway.h">
-      <Filter>Header Files\Event</Filter>
+      <Filter>Navigation</Filter>
     </ClInclude>
-    <ClInclude Include="PathQueue.h">
-      <Filter>Header Files\Queue</Filter>
+    <ClInclude Include="Navigator.h">
+      <Filter>Navigation</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureAtlasComponent.h">
+      <Filter>ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureComponent.h">
+      <Filter>ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkNavigation.h">
+      <Filter>Navigation</Filter>
+    </ClInclude>
+    <ClInclude Include="CombatNavigation.h">
+      <Filter>Navigation</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonNavigation.h">
+      <Filter>Navigation</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformationNavigation.h">
+      <Filter>Navigation</Filter>
+    </ClInclude>
+    <ClInclude Include="Navigation.h">
+      <Filter>Navigation</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioNavigation.h">
+      <Filter>Navigation</Filter>
+    </ClInclude>
+    <ClInclude Include="PathHack.h">
+      <Filter>Queue</Filter>
+    </ClInclude>
+    <ClInclude Include="FadeComponent.h">
+      <Filter>ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileComponent.h">
+      <Filter>ECS</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -288,7 +315,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ECS.cpp">
-      <Filter>Header Files\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClCompile>
     <ClCompile Include="Collision.cpp">
       <Filter>Source Files</Filter>
@@ -309,7 +336,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CombatProcesses.cpp">
-      <Filter>Header Files\Processes</Filter>
+      <Filter>Processes</Filter>
     </ClCompile>
     <ClCompile Include="BitmapTexture.cpp">
       <Filter>Source Files</Filter>
@@ -321,33 +348,60 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CommonLinkCommands.cpp">
-      <Filter>Header Files\Commands</Filter>
+      <Filter>Commands</Filter>
     </ClCompile>
     <ClCompile Include="CommonInputCommands.cpp">
-      <Filter>Header Files\Commands</Filter>
+      <Filter>Commands</Filter>
     </ClCompile>
     <ClCompile Include="LoadAtlasData.cpp">
-      <Filter>Header Files\Data\DataLoads</Filter>
+      <Filter>Data\DataLoads</Filter>
     </ClCompile>
     <ClCompile Include="LoadCharacterData.cpp">
-      <Filter>Header Files\Data\DataLoads</Filter>
+      <Filter>Data\DataLoads</Filter>
     </ClCompile>
     <ClCompile Include="LoadControllerData.cpp">
-      <Filter>Header Files\Data\DataLoads</Filter>
+      <Filter>Data\DataLoads</Filter>
     </ClCompile>
     <ClCompile Include="LoadOptionsData.cpp">
-      <Filter>Header Files\Data\DataLoads</Filter>
+      <Filter>Data\DataLoads</Filter>
     </ClCompile>
     <ClCompile Include="DrawCall.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="OptionsComponent.cpp">
-      <Filter>Header Files\ECS</Filter>
+      <Filter>ECS</Filter>
     </ClCompile>
     <ClCompile Include="LoadAudioData.cpp">
-      <Filter>Header Files\Data\DataLoads</Filter>
+      <Filter>Data\DataLoads</Filter>
     </ClCompile>
     <ClCompile Include="DataManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pathway.cpp">
+      <Filter>Navigation</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureComponent.cpp">
+      <Filter>ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureAtlasComponent.cpp">
+      <Filter>ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonNavigation.cpp">
+      <Filter>Navigation</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformationNavigation.cpp">
+      <Filter>Navigation</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioNavigation.cpp">
+      <Filter>Navigation</Filter>
+    </ClCompile>
+    <ClCompile Include="CombatNavigation.cpp">
+      <Filter>Navigation</Filter>
+    </ClCompile>
+    <ClCompile Include="FadeComponent.cpp">
+      <Filter>ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectileComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

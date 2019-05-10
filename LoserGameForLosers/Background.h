@@ -22,8 +22,7 @@ public:
 		p2_col_c_ = &player2->get_component<ColliderComponent>();
 	}
 
-	~Background()
-	{}
+	~Background() = default;
 
 	void screen_change();
 	void scroll_screen(float scroll_increment);
@@ -45,5 +44,6 @@ private:
 
 	const SDL_Rect LEFT_EDGE{ 0, 0, BACKGROUND_COLLIDER, BACKGROUND_HEIGHT };
 	const SDL_Rect RIGHT_EDGE{ BACKGROUND_WIDTH - BACKGROUND_COLLIDER, 0, BACKGROUND_COLLIDER, BACKGROUND_HEIGHT };
+	const float CENTER = 0.5;
 
 };

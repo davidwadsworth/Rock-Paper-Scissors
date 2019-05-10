@@ -36,9 +36,18 @@ OptionsCollection LoadOptionsData::load() const
 				{
 					auto link_data = LinkData();
 					link_data.text = option_node->first_attribute("text")->value();
-					link_data.command_id = std::atoi(option_node->first_attribute("command")->value());
-					link_data.command_value = option_node->first_attribute("command_value")->value();
-					link_data.link_id = std::atoi(option_node->first_attribute("link")->value());
+
+					if (option_node->first_attribute("command"))
+					{
+						link_data.command_id = std::atoi(option_node->first_attribute("command")->value());
+						link_data.command_value = option_node->first_attribute("command_value")->value();	
+					}
+					
+					if (option_node->first_attribute("link"))
+						link_data.link_id = std::atoi(option_node->first_attribute("link")->value());
+
+					if (option_node->first_attribute("path"))
+						link_data.path = std::atoi(option_node->first_attribute("path")->value());
 
 					y_data.push_back(link_data);
 				}

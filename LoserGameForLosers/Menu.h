@@ -5,16 +5,12 @@
 
 class Menu : public GameState
 {
-
 public:
-	Menu(Manager *manager);
+	Menu();
 	~Menu()
 	{}
-
-	void render() override;
 	void logic() override;
 	void handle_events() override;
+	void render() override;
 	void close() override;
-private:
-	Manager* manager_;
 };

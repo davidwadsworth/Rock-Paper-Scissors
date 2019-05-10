@@ -2,6 +2,7 @@
 
 struct SpriteData
 {
+	int texture_id;
 	std::string n;
 	int x;
 	int y;
@@ -17,6 +18,7 @@ struct SpriteData
 struct AtlasData
 {
 	std::string image_path;
+	int texture_id;
 	int image_width;
 	int image_height;
 	std::vector<SpriteData> data;

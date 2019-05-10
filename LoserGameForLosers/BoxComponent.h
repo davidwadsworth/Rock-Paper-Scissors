@@ -18,7 +18,7 @@ struct Box
 
 class BoxComponent : public Component
 {
-	TextureComponent * texture_;
+	TextureAtlasComponent * texture_;
 	std::vector<Box> box_calls_;
 	float scale_;
 	int corner_id_, side_id_, center_id_;
@@ -37,7 +37,7 @@ public:
 
 	void init() override
 	{
-		texture_ = &entity->get_component<TextureComponent>();
+		texture_ = &entity->get_component<TextureAtlasComponent>();
 
 		if(entity->has_component<OptionsComponent>())
 		{

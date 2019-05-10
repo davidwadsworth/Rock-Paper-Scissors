@@ -1,6 +1,7 @@
 #pragma once
 #include "Commands.h"
 
+using namespace InputCommands;
 class InputCommandBuilder
 {
 public:
@@ -13,34 +14,28 @@ public:
 		switch (command_id)
 		{
 		case 0:
-			command = new MoveCommand(command_value);
+			command = new Move(command_value);
 			break;
 		case 1:
-			command = new SelectAttackCommand(command_value);
+			command = new InputCommands::SelectAttack(command_value);
 			break;
 		case 2:
-			command = new PauseGameCommand();
+			command = new PauseGame();
 			break;
 		case 3:
-			command = new MoveCursorYCommand(command_value);
+			command = new MoveCursorY(command_value);
 			break;
 		case 4:
-			command = new MoveCursorXCommand(command_value);
+			command = new MoveCursorX(command_value);
 			break;
 		case 5:
 			command = new MakeSelection();
 			break;
-		case 6:
-			command = new ChangeRotationPoint(command_value);
-			break;
 		case 7:
-			command = new ChangeControllerCommand(command_value);
-			break;
-		case 8:
-			command = new EndRoundCommand();
+			command = new InputCommands::ChangeController(command_value);
 			break;
 		default:
-			command = new NothingCommand();
+			command = new InputCommand();
 			break;
 		}
 		return command;

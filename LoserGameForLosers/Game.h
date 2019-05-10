@@ -6,8 +6,8 @@
 #include "AssetManager.h"
 #include "GameSettings.h"
 #include "DataManager.h"
-#include "LinkStack.h"
 #include "AudioQueue.h"
+#include "Pathway.h"
 
 class Game
 {
@@ -23,15 +23,13 @@ public:
 	static bool is_running;
 	static int state_id;
 
-	//OH NO! Don't look
 	static SDL_Renderer *renderer;
 	static SDL_Event event;
 	static AssetManager* assets;
 	static GameSettings* game_settings;
 	static DataManager* data;
-	static LinkStack* stack;
-	static AudioQueue* player;
-	static std::vector<SDL_Scancode> keys;
+	static AudioQueue* audio_queue;
+	static Path* path;
 
 	SDL_Window *window;
 
@@ -40,9 +38,10 @@ public:
 		group_characters,
 		group_background,
 		group_prompts,
-		group_processor,
 		group_players,
-		group_cursors
+		group_cursors,
+		group_wipes,
+		group_attacks
 	};
 
 private:

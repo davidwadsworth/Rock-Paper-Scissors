@@ -3,7 +3,7 @@
 class Delay : public Process
 {
 	;
-	int total_delay_;
+	Uint32 total_delay_;
 	Timer *timer;
 public:
 	Delay(int seconds)
@@ -61,7 +61,7 @@ class ChangeStateProcess : public Process
 	game_states new_state_;
 public:
 	ChangeStateProcess(game_states new_state)
-		: new_state_(new_state), work_complete_(0)
+		: work_complete_(0), new_state_(new_state)
 	{}
 
 	bool do_work() override

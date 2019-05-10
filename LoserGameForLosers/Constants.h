@@ -1,5 +1,6 @@
 #pragma once
 #include "SDL.h"
+#include "Vector2D.h"
 
 //inits
 static const int SCREEN_HEIGHT = 640;
@@ -55,15 +56,24 @@ static const int BACKGROUND_COLLIDER = 2;
 
 static const int PADDING = 5;
 
+static const Vector2D P1_OPTIONS = Vector2D(0, SCREEN_HALF_HEIGHT);
+static const Vector2D P2_OPTIONS = Vector2D(SPRITE_RIGHT_EDGE_OF_SCREEN, SCREEN_HALF_HEIGHT );
+
 //Attack consts
+static const int ATTACK_LENGTH = 64;
+
 static const float WHIP_RANGE = 0.8f;
 static const float WHIP_DISTANCE = 0;
+static const int WHIP_HEIGHT = 100;
 
 static const float JUMP_KICK_RANGE = 0.3f;
 static const float JUMP_KICK_DISTANCE = 1.0f;
+static const int JUMP_KICK_HEIGHT = SPRITE_LENGTH - ATTACK_LENGTH;
 
 static const float GRAB_RANGE = 0.3f;
 static const float GRAB_DISTANCE = 0.1f;
+static const int GRAB_HEIGHT = WHIP_HEIGHT;
+static const int GRAB_ARM_SEPERATION = GRAB_HEIGHT + ATTACK_LENGTH + PADDING;
 
 static const int ROUNDWIN = 3;
 
@@ -206,8 +216,15 @@ enum OPTIONS_DATA
 	options_choose_background
 };
 
-enum ATLAS_ORDER
+enum TEXTURE_ORDER
 {
-	atlas_texture_sheet_main,
-	atlas_glyph
+	texture_atlas_main,
+	texture_white,	
+	texture_glyph_atlas
+};
+
+enum INPUT_CONTROLLER_ORDER
+{
+	input_controller_player_1,
+	input_controller_player_2
 };

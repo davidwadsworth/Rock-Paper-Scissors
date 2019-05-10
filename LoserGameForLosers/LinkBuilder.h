@@ -17,9 +17,6 @@ public:
 
 		switch (data->link_id)
 		{
-		case 0:
-			link = new CursorLeftLink(padding, alignment, data->text, command);
-			break;
 		default:
 			link = new CursorLeftLink(padding, alignment, data->text, command);
 			break;

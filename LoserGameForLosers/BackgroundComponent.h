@@ -5,7 +5,7 @@
 class BackgroundComponent : public Component
 {
 	TransformComponent * transform_;
-	TextureComponent* texture_;
+	TextureAtlasComponent* texture_;
 	int background_id_;
 	int left_bg_slot_, mid_bg_slot_, right_bg_slot_;
 public:
@@ -20,7 +20,7 @@ public:
 	void init() override
 	{
 		transform_ = &entity->get_component<TransformComponent>();
-		texture_ = &entity->get_component<TextureComponent>();
+		texture_ = &entity->get_component<TextureAtlasComponent>();
 
 		mid_bg_slot_ = texture_->create_image_slot(background_id_, transform_->position.x, SCREEN_HEIGHT - transform_->height * transform_->scale_2d.y);
 		left_bg_slot_ = texture_->create_image_slot(background_id_, transform_->position.x - transform_->width * transform_->scale_2d.x, SCREEN_HEIGHT - transform_->height * transform_->scale_2d.y);

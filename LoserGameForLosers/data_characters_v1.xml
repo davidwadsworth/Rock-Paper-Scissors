@@ -18,7 +18,7 @@
 		<Attack hitbox="1.0" distance="0.5" />
 	</Character>
 
-	<Character id="Brunis" velocity="0.9" hitbox="0.6">
+	<Character id="Brunis" velocity="" hitbox="0.6">
 		<Attack hitbox="1.7" distance="0.5" />
 		<Attack hitbox="1.0" distance="0.6" />
 		<Attack hitbox="0.5" distance="0.5" />

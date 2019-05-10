@@ -1,45 +1,24 @@
 
 #include "stdafx.h"
 #include "Combat.h"
+#include "PathHack.h"
 
 Background * bg_logic;
-CombatProcessor *processor = nullptr;
 
 
-Combat::Combat(Manager * manager)
-	: manager_(manager)
+Combat::Combat()
 {
-	Game::stack->clear();
+	const auto player_1 = Game::assets->create_left_player();
+	const auto player_2 = Game::assets->create_right_player();
+	const auto background = Game::assets->create_combat_background();
 
-	auto& background(manager_->add_entity());
-	auto& player_left(manager_->add_entity());
-	auto& player_right(manager_->add_entity());
 
-	background.add_component<TransformComponent>(BACKGROUND_X_OFFSET, BACKGROUND_Y_OFFSET, BACKGROUND_HEIGHT, BACKGROUND_WIDTH, BACKGROUND_SCALING);
-	background.add_component<TextureComponent>();
-	background.add_component<BackgroundComponent>(Game::game_settings->background);
-	background.add_group(Game::group_background);
+	bg_logic = new Background(player_1, player_2, background);
+	/*processor = new CombatProcessor(&player_left, &player_right, &background);
 
-	player_left.add_component<TransformComponent>(SPRITE_LEFT_EDGE_OF_SCREEN, SPRITE_BOTTOM_OF_SCREEN, SPRITE_SCALING);
-	player_left.add_component<TextureComponent>();
-	player_left.add_component<PlayerComponent>(true, Game::game_settings->player_1_info);
-	player_left.add_component<SpriteComponent>(Game::game_settings->player_1_texture);
-	player_left.add_component<ControllerComponent>(controller_no_input);
-	player_left.add_component<ColliderComponent>();
-	player_left.add_group(Game::group_players);
-
-	player_right.add_component<TransformComponent>(SPRITE_RIGHT_EDGE_OF_SCREEN, SPRITE_BOTTOM_OF_SCREEN, SPRITE_SCALING);
-	player_right.add_component<TextureComponent>();
-	player_right.add_component<PlayerComponent>(false, Game::game_settings->player_2_info);
-	player_right.add_component<SpriteComponent>(Game::game_settings->player_2_texture, SDL_FLIP_HORIZONTAL);
-	player_right.add_component<ControllerComponent>(controller_no_input, Game::keys);
-	player_right.add_component<ColliderComponent>();
-	player_right.add_group(Game::group_players);
-
-	bg_logic = new Background(&player_left, &player_right, &background);
-	processor = new CombatProcessor(&player_left, &player_right, &background);
-
-	processor->create_combat();
+	processor->create_combat();*/
+	auto hack = PathHack();
+	Game::path->add(hack.initiateCombat(player_1, player_2, background));
 }
 
 Combat::~Combat()
@@ -47,37 +26,20 @@ Combat::~Combat()
 	Combat::close();
 }
 
-
-void Combat::handle_events()
-{
-	SDL_PollEvent(&Game::event);
-
-	switch (Game::event.type)
-	{
-	case SDL_QUIT:
-		Game::is_running = false;
-		break;
-	default:
-		break;
-	}
-}
-
 void Combat::logic()
 {
+	Game::path->navigate_path();
 	bg_logic->screen_change();
 
 	manager.refresh();
 	manager.update();
 
-	if (processor->tasks[processor->current_task]->do_work())
-		processor->next_process();
+	/*if (processor->tasks[processor->current_task]->do_work())
+		processor->next_process();*/
 }
-
-
 
 void Combat::render()
 {
-	auto& player_group = manager.get_group(Game::group_players);
 	auto& background_group = manager.get_group(Game::group_background);
 	auto& prompt_group = manager.get_group(Game::group_prompts);
 	auto& cursor_group = manager.get_group(Game::group_cursors);
@@ -85,10 +47,6 @@ void Combat::render()
 	for (auto& b : background_group)
 	{
 		b->draw();
-	}
-	for (auto& p : player_group)
-	{
-		p->draw();
 	}
 	for (auto& pr : prompt_group)
 	{
@@ -100,27 +58,42 @@ void Combat::render()
 	}
 }
 
+void Combat::handle_events()
+{
+	SDL_PollEvent(&Game::event);
+
+	switch (Game::event.type)
+	{
+	case SDL_QUIT:
+		Game::is_running = false;
+		break;
+
+	default:
+		break;
+	}
+}
+
 void Combat::close()
 {
-	for (auto& b : manager_->get_group(Game::group_background))
+	for (auto& b : manager.get_group(Game::group_background))
 	{
 		b->del_group(Game::group_background);
 		b->destroy();
 	}
 
-	for (auto& p : manager_->get_group(Game::group_players))
+	for (auto& p : manager.get_group(Game::group_players))
 	{
 		p->del_group(Game::group_players);
 		p->destroy();
 	}
 
-	for (auto& pr : manager_->get_group(Game::group_prompts))
+	for (auto& pr : manager.get_group(Game::group_prompts))
 	{
 		pr->del_group(Game::group_prompts);
 		pr->destroy();
 	}
 
-	Game::player->stop_music();
+	Game::audio_queue->stop_music();
 }
 
 

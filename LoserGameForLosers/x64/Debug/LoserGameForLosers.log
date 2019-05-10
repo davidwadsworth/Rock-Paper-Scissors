@@ -1,8 +1,86 @@
-﻿  Combat.cpp
-c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers\ecs.h(94): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-  c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers\combat.cpp(18): note: see reference to function template instantiation 'T &Entity::add_component<TransformComponent,const int&,const int&,const int&,const int&,const float&>(const int &,const int &,const int &,const int &,const float &)' being compiled
-          with
-          [
-              T=TransformComponent
-          ]
-  LoserGameForLosers.vcxproj -> C:\Users\dwads\Documents\GitHub\Rock-Paper-Scissors\x64\Debug\WhipJumpKickGrab.exe
+﻿  stdafx.cpp
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\constants.h(41): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\constants.h(52): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\links.h(10): error C2061: syntax error: identifier 'LinkCommand'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\links.h(25): error C2143: syntax error: missing ';' before '*'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\links.h(25): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\links.h(25): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\links.h(34): error C2143: syntax error: missing ';' before '*'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\links.h(34): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\links.h(34): error C2238: unexpected token(s) preceding ';'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\links.h(11): error C2065: 'command': undeclared identifier
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\links.h(11): error C2614: 'CursorLeftLink': illegal member initialization: 'command_' is not a base or member
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\commoninputcommands.h(33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\commoninputcommands.h(88): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\commoninputcommands.h(112): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\linkbuilder.h(21): error C2259: 'CursorLeftLink': cannot instantiate abstract class
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\linkbuilder.h(21): note: due to following members:
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\linkbuilder.h(21): note: 'Command *Link::get_command(void)': is abstract
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\link.h(12): note: see declaration of 'Link::get_command'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\linkbuilder.h(21): error C2661: 'CursorLeftLink::CursorLeftLink': no overloaded function takes 4 arguments
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\linkbuilder.h(23): warning C4065: switch statement contains 'default' but no 'case' labels
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\backgroundcomponent.h(25): error C2039: 'scale_2d': is not a member of 'TransformComponent'
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\transformcomponent.h(5): note: see declaration of 'TransformComponent'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\backgroundcomponent.h(25): error C2660: 'TextureAtlasComponent::create_image_slot': function does not take 2 arguments
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\textureatlascomponent.h(25): note: see declaration of 'TextureAtlasComponent::create_image_slot'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\backgroundcomponent.h(26): error C2039: 'scale_2d': is not a member of 'TransformComponent'
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\transformcomponent.h(5): note: see declaration of 'TransformComponent'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\backgroundcomponent.h(26): error C2660: 'TextureAtlasComponent::create_image_slot': function does not take 1 arguments
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\textureatlascomponent.h(25): note: see declaration of 'TextureAtlasComponent::create_image_slot'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\backgroundcomponent.h(27): error C2039: 'scale_2d': is not a member of 'TransformComponent'
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\transformcomponent.h(5): note: see declaration of 'TransformComponent'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\backgroundcomponent.h(27): error C2660: 'TextureAtlasComponent::create_image_slot': function does not take 1 arguments
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\textureatlascomponent.h(25): note: see declaration of 'TextureAtlasComponent::create_image_slot'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\backgroundcomponent.h(32): error C2039: 'scale_2d': is not a member of 'TransformComponent'
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\transformcomponent.h(5): note: see declaration of 'TransformComponent'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\backgroundcomponent.h(33): error C2039: 'scale_2d': is not a member of 'TransformComponent'
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\transformcomponent.h(5): note: see declaration of 'TransformComponent'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\backgroundcomponent.h(34): error C2039: 'scale_2d': is not a member of 'TransformComponent'
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\transformcomponent.h(5): note: see declaration of 'TransformComponent'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\backgroundcomponent.h(35): error C2039: 'update_call': is not a member of 'TextureAtlasComponent'
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\textureatlascomponent.h(12): note: see declaration of 'TextureAtlasComponent'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\backgroundcomponent.h(35): error C2039: 'scale_2d': is not a member of 'TransformComponent'
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\transformcomponent.h(5): note: see declaration of 'TransformComponent'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\backgroundcomponent.h(36): error C2039: 'update_call': is not a member of 'TextureAtlasComponent'
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\textureatlascomponent.h(12): note: see declaration of 'TextureAtlasComponent'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\backgroundcomponent.h(36): error C2039: 'scale_2d': is not a member of 'TransformComponent'
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\transformcomponent.h(5): note: see declaration of 'TransformComponent'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\backgroundcomponent.h(37): error C2039: 'update_call': is not a member of 'TextureAtlasComponent'
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\textureatlascomponent.h(12): note: see declaration of 'TextureAtlasComponent'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\backgroundcomponent.h(37): error C2039: 'scale_2d': is not a member of 'TransformComponent'
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\transformcomponent.h(5): note: see declaration of 'TransformComponent'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\playercomponent.h(60): error C2039: 'scale_2d': is not a member of 'TransformComponent'
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\transformcomponent.h(5): note: see declaration of 'TransformComponent'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\playercomponent.h(65): error C2039: 'scale_2d': is not a member of 'TransformComponent'
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\transformcomponent.h(5): note: see declaration of 'TransformComponent'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\spritecomponent.h(38): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\spritecomponent.h(52): error C2039: 'scale_2d': is not a member of 'TransformComponent'
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\transformcomponent.h(5): note: see declaration of 'TransformComponent'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\spritecomponent.h(52): error C2660: 'TextureAtlasComponent::update_position_and_scaling': function does not take 2 arguments
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\textureatlascomponent.h(27): note: see declaration of 'TextureAtlasComponent::update_position_and_scaling'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\cursorcomponent.h(33): error C2039: 'update_call': is not a member of 'TextureAtlasComponent'
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\textureatlascomponent.h(12): note: see declaration of 'TextureAtlasComponent'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\cursorcomponent.h(33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\keyboardhandler.h(24): warning C4200: nonstandard extension used: zero-sized array in struct/union
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\keyboardhandler.h(24): note: This member will be ignored by a defaulted constructor or copy/move assignment operator
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\collidercomponent.h(63): error C2039: 'scale_2d': is not a member of 'TransformComponent'
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\transformcomponent.h(5): note: see declaration of 'TransformComponent'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\collidercomponent.h(62): error C2660: 'SDL_RenderDrawLine': function does not take 4 arguments
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\sdl2\include\sdl_render.h(733): note: see declaration of 'SDL_RenderDrawLine'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\collidercomponent.h(69): error C2039: 'scale_2d': is not a member of 'TransformComponent'
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\transformcomponent.h(5): note: see declaration of 'TransformComponent'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\collidercomponent.h(75): error C2039: 'scale_2d': is not a member of 'TransformComponent'
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\transformcomponent.h(5): note: see declaration of 'TransformComponent'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\collidercomponent.h(87): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\collidercomponent.h(88): error C2039: 'scale_2d': is not a member of 'TransformComponent'
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\transformcomponent.h(5): note: see declaration of 'TransformComponent'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\collidercomponent.h(91): error C2039: 'scale_2d': is not a member of 'TransformComponent'
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\transformcomponent.h(5): note: see declaration of 'TransformComponent'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\collidercomponent.h(92): error C2039: 'scale_2d': is not a member of 'TransformComponent'
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\transformcomponent.h(5): note: see declaration of 'TransformComponent'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\collidercomponent.h(94): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\collidercomponent.h(95): error C2039: 'scale_2d': is not a member of 'TransformComponent'
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\transformcomponent.h(5): note: see declaration of 'TransformComponent'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\collidercomponent.h(96): error C2039: 'scale_2d': is not a member of 'TransformComponent'
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\transformcomponent.h(5): note: see declaration of 'TransformComponent'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\promptcomponent.h(19): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data

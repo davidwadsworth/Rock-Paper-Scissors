@@ -11,13 +11,11 @@ Manager manager;
 SDL_Renderer *Game::renderer = nullptr;
 SDL_Event Game::event;
 GameSettings* Game::game_settings = new GameSettings();
-LinkStack * Game::stack = new LinkStack();
 
 AssetManager* Game::assets = new AssetManager(&manager);
 DataManager * Game::data = new DataManager(&manager);
-AudioQueue * Game::player = nullptr;
-
-std::vector<SDL_Scancode> Game::keys = { SDL_SCANCODE_UP, SDL_SCANCODE_DOWN, SDL_SCANCODE_LEFT, SDL_SCANCODE_RIGHT, SDL_SCANCODE_I, SDL_SCANCODE_O, SDL_SCANCODE_P, SDL_SCANCODE_L };
+AudioQueue * Game::audio_queue = nullptr;
+Path * Game::path = new Path();
 
 GameState * current_state = nullptr;
 
@@ -56,9 +54,9 @@ void Game::init(const char * window_title)
 	data->load_audio_data("data_audio_v1.xml");
 
 	assets->add_texture(data->get_atlas_data()->image_path.c_str());
-	player = new AudioQueue(data->get_audio_data());
+	audio_queue = new AudioQueue(data->get_audio_data());
 	
-	current_state = new Menu(&manager);
+	current_state = new Menu();
 	state_id = STATE_MENU;
 }
 
@@ -86,10 +84,10 @@ void change_state()
 		switch (next_state)
 		{
 		case STATE_MENU:
-			current_state = new Menu(&manager);
+			current_state = new Menu();
 			break;
 		case STATE_COMBAT:
-			current_state = new Combat(&manager);
+			current_state = new Combat();
 			break;
 		default: ;
 		}
@@ -108,10 +106,18 @@ void Game::update()
 	current_state->logic();
 }
 
+
+auto& wipe_group = manager.get_group(Game::group_wipes);
+
 void Game::render()
 {
 	SDL_RenderClear(renderer);
 	current_state->render();
+
+	for (auto& w : wipe_group)
+	{
+		w->draw();
+	}
 	SDL_RenderPresent(renderer);
 }
 
@@ -123,7 +129,6 @@ void Game::handle_events()
 void Game::clean()
 {
 	current_state->close();
-	stack->clear();
 
 	SDL_DestroyWindow(window);
 	window = nullptr;

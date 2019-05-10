@@ -9,24 +9,25 @@ class ControllerComponent : public Component
 {
 	KeyboardHandler * keyboard_;
 
-	std::vector<SDL_Scancode> keys_ = { SDL_SCANCODE_W, SDL_SCANCODE_S, SDL_SCANCODE_A, SDL_SCANCODE_D, SDL_SCANCODE_1, SDL_SCANCODE_2, SDL_SCANCODE_3, SDL_SCANCODE_4 };
+	std::vector<SDL_Scancode> keys_;
 
 	int controller_id_;
+	int keys_id_;
 
 	ControllerData * data_;
 	Controller controller_;
 public:
 
-	bool player1;
-
-	explicit ControllerComponent(const int controller_id) : controller_id_(controller_id), player1(true)
-	{}
-
-	ControllerComponent(const int controller_id, const std::vector<SDL_Scancode> keys) : keys_(keys), controller_id_(controller_id), player1(false)
+	ControllerComponent(const int controller_id, const int keys_id) : keys_(Game::game_settings->get_keys(keys_id)), controller_id_(controller_id), keys_id_(keys_id)
 	{}
 
 	~ControllerComponent()
 	= default;
+
+	int get_input_controller_id() const
+	{
+		return keys_id_;
+	}
 
 	void init() override
 	{

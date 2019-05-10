@@ -22,11 +22,13 @@ AtlasData LoadAtlasData::load() const
 	atlas_data.image_path = texture_atlas_node->first_attribute("imagePath")->value();
 	atlas_data.image_width = atoi(texture_atlas_node->first_attribute("width")->value());
 	atlas_data.image_height = atoi(texture_atlas_node->first_attribute("height")->value());
+	atlas_data.texture_id = atoi(texture_atlas_node->first_attribute("textureID")->value());
 
 	for (auto sprite_node = texture_atlas_node->first_node("sprite"); sprite_node; sprite_node = sprite_node->next_sibling())
 	{
 		auto sprite_data = SpriteData();
 
+		sprite_data.texture_id = atlas_data.texture_id;
 		sprite_data.n = sprite_node->first_attribute("n")->value();
 		sprite_data.x = atoi(sprite_node->first_attribute("x")->value());
 		sprite_data.y = atoi(sprite_node->first_attribute("y")->value());
