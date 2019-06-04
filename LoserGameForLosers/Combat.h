@@ -4,7 +4,7 @@
 class Combat : public GameState
 {
 public:
-	Combat();
+	Combat(LoadedCollections * collections);
 	~Combat();
 	void handle_events() override;
 	void logic() override;

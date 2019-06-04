@@ -22,18 +22,18 @@ public:
 		transform_ = &entity->get_component<TransformComponent>();
 		texture_ = &entity->get_component<TextureAtlasComponent>();
 
-		mid_bg_slot_ = texture_->create_image_slot(background_id_, transform_->position.x, SCREEN_HEIGHT - transform_->height * transform_->scale_2d.y);
-		left_bg_slot_ = texture_->create_image_slot(background_id_, transform_->position.x - transform_->width * transform_->scale_2d.x, SCREEN_HEIGHT - transform_->height * transform_->scale_2d.y);
-		right_bg_slot_ = texture_->create_image_slot(background_id_, transform_->position.x + transform_->width * transform_->scale_2d.x, SCREEN_HEIGHT - transform_->height * transform_->scale_2d.y);
+		mid_bg_slot_ = texture_->create_image_slot(background_id_, transform_->position.x, SCREEN_HEIGHT - transform_->height * transform_->scale);
+		left_bg_slot_ = texture_->create_image_slot(background_id_, transform_->position.x - transform_->width * transform_->scale, SCREEN_HEIGHT - transform_->height * transform_->scale);
+		right_bg_slot_ = texture_->create_image_slot(background_id_, transform_->position.x + transform_->width * transform_->scale, SCREEN_HEIGHT - transform_->height * transform_->scale);
 	}
 
 	void update() override
 	{
-		const auto mid = new Vector2D(transform_->position.x, SCREEN_HEIGHT - transform_->height * transform_->scale_2d.y);
-		const auto left = new Vector2D(mid->x - transform_->width * transform_->scale_2d.x, mid->y);
-		const auto right = new Vector2D(mid->x + transform_->width * transform_->scale_2d.x, mid->y);
-		texture_->update_call(mid_bg_slot_, mid, &transform_->scale_2d);
-		texture_->update_call(left_bg_slot_, left, &transform_->scale_2d);
-		texture_->update_call(right_bg_slot_, right, &transform_->scale_2d);
+		const auto mid = Vector2D(transform_->position.x, SCREEN_HEIGHT - transform_->height * transform_->scale);
+		const auto left = Vector2D(mid.x - transform_->width * transform_->scale, mid.y);
+		const auto right = Vector2D(mid.x + transform_->width * transform_->scale, mid.y);
+		texture_->update_position_and_scaling(mid_bg_slot_, mid, transform_->scale);
+		texture_->update_position_and_scaling(left_bg_slot_, left, transform_->scale);
+		texture_->update_position_and_scaling(right_bg_slot_, right, transform_->scale);
 	}
 };

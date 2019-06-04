@@ -1,4 +1,4 @@
-<Controllers id="data controllers">
+<Controllers id="data_controllers" path="data_controllers_v1.xml">
 	<Controller id="y_menu_nav" >
 		<Input key="0" command="3" command_value="-1"/>
 		<Input key="1" command="3" command_value="1" />

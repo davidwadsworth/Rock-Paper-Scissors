@@ -17,7 +17,7 @@ public:
 	PathTrunk(PathBranch * root, PathTrunk * next);
 
 	void add(PathTrunk * trunk_to_add);
-	void remove() const;
+	void remove();
 	bool has_next() const;
 	bool has_current() const;
 
@@ -36,7 +36,7 @@ inline NavigatorID getNewNavigatorTypeID()
 template <typename T> inline NavigatorID getNavigatorTypeID() noexcept
 {
 	static_assert (std::is_base_of<Navigator, T>::value, "");
-	static NavigatorID type_id = getNewComponentTypeID();
+	static NavigatorID type_id = getNewNavigatorTypeID();
 	return type_id;
 }
 
@@ -58,9 +58,7 @@ public:
 	bool has_previous() const { return previous; }
 
 	void init();
-	//
 	void close();
-	void remove();
 
 	PathTrunk * parent = nullptr;
 	PathBranch * previous = nullptr;
@@ -76,13 +74,12 @@ public:
 	{
 		T* n(new T(std::forward<TArgs>(m_args)...));
 		n->branch = this;
+
 		std::unique_ptr<Navigator> u_ptr{ n };
 		navigators_.emplace_back(std::move(u_ptr));
-
 		navigator_array_[getNavigatorTypeID<T>()] = n;
 		navigator_bit_set_[getNavigatorTypeID<T>()] = true;
 
-		n->init();
 		return *n;
 	}
 
@@ -92,24 +89,43 @@ public:
 		return *static_cast<T*>(ptr);
 	}
 
+	void remove();
+
 	void navigate_path() const;
 };
 
 class Path
 {
-	PathTrunk * head_;
+	PathTrunk * head_ = nullptr;
 public:
 
-	Path() = default;
+	Path()
+	{}
 
 	~Path()
 	{
-		head_ = new PathTrunk();
+		head_ = nullptr;
 	}
 
-	void add(PathTrunk * trunk) const
+	bool is_empty() const
 	{
-		head_->add(trunk);
+		return !head_;
+	}
+
+	void clear()
+	{
+		head_ = nullptr;
+	}
+
+	void add(PathTrunk * trunk)
+	{
+		if (head_)
+			head_->add(trunk);
+		else
+		{
+			head_ = trunk;
+			head_->current->init();
+		}
 	}
 
 	void previous_path() const
@@ -122,16 +138,16 @@ public:
 
 	void navigate_path()
 	{
+		if (!head_)
+			return;
+
 		if (head_->has_current())
 			head_->current->navigate_path();
 		else
-			if(head_->has_next())
-			{
-				const auto current_head = head_;
-				head_ = current_head->next;
-				current_head->remove();
-				current_head->next = nullptr;
-			}
+		{
+			head_ = head_->next;
+			head_->current->init();
+		}
 	}
 
 };

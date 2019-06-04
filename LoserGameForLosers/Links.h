@@ -7,8 +7,8 @@
 class CursorLeftLink : public Link
 {
 public:
-	explicit CursorLeftLink(const int padding, Vector2D alignment, std::string asset, LinkCommand* command)
-		: padding_(padding), alignment_(alignment), text_(asset), command_(command)
+	explicit CursorLeftLink(AssetManager* asset_manager, const int padding, Vector2D alignment, std::string asset, Command* command)
+		: asset_manager_(asset_manager), padding_(padding), alignment_(alignment), text_(asset), command_(command)
 	{}
 
 	~CursorLeftLink()
@@ -22,7 +22,7 @@ public:
 		pos_.y = y;
 	}
 
-	LinkCommand * get_command() override { return command_; }
+	Command * get_command() override { return command_; }
 	std::string get_text() override { return text_; }
 	SDL_Rect* get_link_dimensions() override { return link_dimensions_; }
 	SDL_Rect* get_box_dimensions() override { return box_dimensions_; }
@@ -30,8 +30,9 @@ public:
 
 
 private:
+	AssetManager * asset_manager_;
 	SDL_Point pos_;
-	LinkCommand * command_;
+	Command * command_;
 	int padding_;
 	Vector2D alignment_;
 	std::string text_;

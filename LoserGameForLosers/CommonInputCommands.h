@@ -148,17 +148,24 @@ namespace InputCommands
 
 	};
 
-
-	class ChangeController : public InputCommand
+	class CreateAttack : public InputCommand
 	{
-		int controller_id_;
+		int attack_id_;
+		bool was_pressed_;
 	public:
-		ChangeController(std::string controller_id)
-			: controller_id_(std::stoi(controller_id))
-		{}
+		CreateAttack(std::string att_id);
 
-		void execute(Entity * entity) override;
+		void execute(Entity* entity) override;
+		void idle(Entity* entity) override;
+	};
 
-		void idle(Entity* entity) override {}
+	class Back : public InputCommand
+	{
+		bool was_pressed_;
+	public:
+		Back();
+
+		void execute(Entity* entity) override;
+		void idle(Entity* entity) override;
 	};
 }

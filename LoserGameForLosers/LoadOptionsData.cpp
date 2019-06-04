@@ -6,7 +6,7 @@
 
 OptionsCollection LoadOptionsData::load() const
 {	
-	std::ifstream character_path(path_);
+	std::ifstream character_path(path);
 	rapidxml::xml_document<> data;
 
 	std::vector<char> buffer((std::istreambuf_iterator<char>(character_path)), std::istreambuf_iterator<char>());
@@ -19,6 +19,7 @@ OptionsCollection LoadOptionsData::load() const
 	auto options_collection = OptionsCollection();
 
 	options_collection.id = option_maps_node->first_attribute("id")->value();
+	options_collection.path = option_maps_node->first_attribute("path")->value();
 
 	for (auto options_node = option_maps_node->first_node("Options"); options_node; options_node = options_node->next_sibling())
 	{

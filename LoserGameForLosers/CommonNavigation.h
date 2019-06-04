@@ -25,6 +25,14 @@ namespace Navigation
 		int choose_path() override;
 	};
 
+	class ToggleEnableController final : public Navigator
+	{
+		Entity * player_;
+	public:
+		explicit ToggleEnableController(Entity* player);
+		int choose_path() override;
+	};
+
 	class ChangeState final : public Navigator
 	{
 		game_states new_state_;
@@ -39,13 +47,24 @@ namespace Navigation
 		Entity *target_, *option_box_;
 		int input_id_, options_id_;
 		Vector2D position_;
+		AssetManager * asset_manager_;
 	public:
-		CreateOptionBox(int options_id, int input_id, Vector2D position);
-		CreateOptionBox(int options_id, int input_id, Vector2D position, Entity* target);
+		CreateOptionBox(AssetManager * asset_manager, int options_id, int input_id, Vector2D position);
+		CreateOptionBox(AssetManager * asset_manager, int options_id, int input_id, Vector2D position, Entity* target);
 
 		void init() override;
 		int choose_path() override;
 		void close() override;
+	};
+
+	class ExecuteDataLoad : public Navigator
+	{
+		std::string data_path_;
+		int data_id_;
+	public:
+		ExecuteDataLoad(std::string path){}
+
+		int choose_path() override { return 1; }
 	};
 }
 

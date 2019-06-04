@@ -14,9 +14,9 @@ struct Character
 	Character(CharacterData * data)
 		: hit_box(data->hitbox), id(data->id), velocity(data->velocity)
 	{
-		for(auto att : data->attack_data)
+		for(AttackData att : data->attack_data)
 		{
-			attacks.push_back(Attack(att.hitbox, att.distance));
+			attacks.push_back(Attack( att.hitbox, att.distance));
 		}
 	}
 

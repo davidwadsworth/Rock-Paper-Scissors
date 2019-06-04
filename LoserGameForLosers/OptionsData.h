@@ -15,8 +15,7 @@ struct OptionsData
 	std::string id;
 };
 
-struct OptionsCollection
+struct OptionsCollection : DataCollection
 {
-	std::string id;
 	std::vector<OptionsData> data;
 };

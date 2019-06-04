@@ -159,6 +159,7 @@
   <ItemGroup>
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="AtlasData.h" />
+    <ClInclude Include="AttackQueue.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="AudioData.h" />
     <ClInclude Include="AudioQueue.h" />
@@ -167,6 +168,7 @@
     <ClInclude Include="CommonNavigation.h" />
     <ClInclude Include="ControllerData.h" />
     <ClInclude Include="Data.h" />
+    <ClInclude Include="DataCollection.h" />
     <ClInclude Include="DataManager.h" />
     <ClInclude Include="FadeComponent.h" />
     <ClInclude Include="LinkNavigation.h" />
@@ -175,7 +177,6 @@
     <ClInclude Include="Navigator.h" />
     <ClInclude Include="PathHack.h" />
     <ClInclude Include="Pathway.h" />
-    <ClInclude Include="LinkStack.h" />
     <ClInclude Include="LoadAtlasData.h" />
     <ClInclude Include="Attack.h" />
     <ClInclude Include="BackgroundComponent.h" />
@@ -188,11 +189,9 @@
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Combat.h" />
-    <ClInclude Include="CombatProcesses.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="InputCommandBuilder.h" />
     <ClInclude Include="Commands.h" />
-    <ClInclude Include="CommonProcesses.h" />
     <ClInclude Include="InputCommand.h" />
     <ClInclude Include="CommonInputCommands.h" />
     <ClInclude Include="Components.h" />
@@ -201,12 +200,11 @@
     <ClInclude Include="ControllerComponent.h" />
     <ClInclude Include="LoadControllerData.h" />
     <ClInclude Include="CursorComponent.h" />
-    <ClInclude Include="DataLoads.h" />
+    <ClInclude Include="Loads.h" />
     <ClInclude Include="DrawCall.h" />
     <ClInclude Include="ECS.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="GameSettings.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GlyphAtlasComponent.h" />
     <ClInclude Include="LinkBuilder.h" />
@@ -220,16 +218,12 @@
     <ClInclude Include="KeyboardHandler.h" />
     <ClInclude Include="BitmapFont.h" />
     <ClInclude Include="CommonLinkCommands.h" />
-    <ClInclude Include="MusicProcesses.h" />
     <ClInclude Include="Link.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuComponent.h" />
     <ClInclude Include="PlayerComponent.h" />
     <ClInclude Include="OptionsComponent.h" />
     <ClInclude Include="Options.h" />
-    <ClInclude Include="Process.h" />
-    <ClInclude Include="CombatProcessor.h" />
-    <ClInclude Include="Processes.h" />
     <ClInclude Include="PromptComponent.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="stdafx.h" />
@@ -238,7 +232,6 @@
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="TextureSlot.h" />
     <ClInclude Include="TransformationNavigation.h" />
-    <ClInclude Include="TransformationProcesses.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TransformComponent.h" />
     <ClInclude Include="Vector2D.h" />
@@ -248,7 +241,6 @@
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="CombatNavigation.cpp" />
     <ClCompile Include="CommonNavigation.cpp" />
-    <ClCompile Include="DataManager.cpp" />
     <ClCompile Include="DrawCall.cpp" />
     <ClCompile Include="FadeComponent.cpp" />
     <ClCompile Include="LoadAtlasData.cpp" />
@@ -258,7 +250,6 @@
     <ClCompile Include="LoadCharacterData.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Combat.cpp" />
-    <ClCompile Include="CombatProcesses.cpp" />
     <ClCompile Include="CommonInputCommands.cpp" />
     <ClCompile Include="LoadControllerData.cpp" />
     <ClCompile Include="ECS.cpp" />
@@ -270,6 +261,7 @@
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="LoadOptionsData.cpp" />
     <ClCompile Include="AudioNavigation.cpp" />
+    <ClCompile Include="Options.cpp" />
     <ClCompile Include="OptionsComponent.cpp" />
     <ClCompile Include="Pathway.cpp" />
     <ClCompile Include="ProjectileComponent.cpp" />

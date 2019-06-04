@@ -13,8 +13,7 @@ struct ControllerData
 	std::vector<InputData> data;
 };
 
-struct ControllerCollection
+struct ControllerCollection : DataCollection
 {
-	std::string id;
 	std::vector<ControllerData> data;
 };

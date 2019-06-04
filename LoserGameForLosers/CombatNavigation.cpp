@@ -4,7 +4,7 @@ namespace Navigation
 {
 	MovePlayerToOtherPlayer::MovePlayerToOtherPlayer(Entity * player_to_move, Entity * other_player, const float distance)
 		: moving_(player_to_move), comparing_(other_player),
-		move_command_(InputCommands::Move(player_to_move->get_component<PlayerComponent>().direction, Walk_Right)),
+		move_command_(InputCommands::Move(player_to_move->get_component<PlayerComponent>().direction, player_to_move->get_component<PlayerComponent>().direction < 0 ? animation_player_walk_left : animation_player_walk_right)),
 		velocity_(player_to_move->get_component<PlayerComponent>().get_velocity()), distance_(distance)
 	{
 		MovePlayerToOtherPlayer::init();
@@ -111,7 +111,7 @@ namespace Navigation
 
 	void CreateAttack::init()
 	{
-		attack_ = Game::assets->create_attack(player_);
+		attack_ = player_->state->palette->create_attack(player_);
 	}
 
 	int CreateAttack::choose_path()

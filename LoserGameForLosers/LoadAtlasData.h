@@ -1,14 +1,14 @@
 #pragma once
 
 #include "AtlasData.h"
+#include "DataManager.h"
 
-class LoadAtlasData
+class LoadAtlasData : public LoadData
 {
-	const char * path_;
 public:
-	explicit LoadAtlasData(const char * path)
-		: path_(path)
+	explicit LoadAtlasData(const std::string path)
+		: LoadData(path)
 	{}
-	~LoadAtlasData() {}
-	AtlasData load() const;
+	AtlasCollection load() const;
+	const char * image_source() const;
 };

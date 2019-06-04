@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:7b932208e1d0407cef52b79e93af6e09:ba1c97d429d66c787040897fe60ed1c3:e8aa67ca5e1ce41d6be4cab589fd981d$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+pX => x pos of the pivot point (relative to sprite width)
+pY => y pos of the pivot point (relative to sprite height)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+with polygon mode enabled:
+vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
+verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
+triangles  => sprite triangulation, 3 vertex indices per triangle
+-->
+<TextureAtlas id="data_atlas" imagePath="atlas_main_textures-0_v2.png" width="1884" height="1017" textureID="0">
+    <sprite n="animations/blueguy/attacks/grab/blue_guy_grab.png" x="1661" y="749" w="105" h="87" oX="0" oY="23" oW="128" oH="128" r="y"/>
+    <sprite n="animations/blueguy/attacks/jump_kick/blue_guy_jump_kick.png" x="1476" y="798" w="74" h="104" oX="0" oY="15" oW="128" oH="128"/>
+    <sprite n="animations/blueguy/attacks/whip/blue_guy_whip.png" x="1768" y="763" w="105" h="83" oX="0" oY="23" oW="128" oH="128" r="y"/>
+    <sprite n="animations/blueguy/block/blue_guy_block_1.png" x="1476" y="691" w="75" h="105" oX="0" oY="23" oW="128" oH="128"/>
+    <sprite n="animations/blueguy/block/blue_guy_block_2.png" x="1398" y="730" w="76" h="110" oX="0" oY="18" oW="128" oH="128"/>
+    <sprite n="animations/blueguy/block/blue_guy_block_3.png" x="1680" y="563" w="112" h="85" oX="0" oY="16" oW="128" oH="128" r="y"/>
+    <sprite n="animations/blueguy/hit/blue_guy_hit_1.png" x="1794" y="557" w="89" h="110" oX="0" oY="18" oW="128" oH="128"/>
+    <sprite n="animations/blueguy/hit/blue_guy_hit_2.png" x="1447" y="463" w="109" h="122" oX="0" oY="6" oW="128" oH="128"/>
+    <sprite n="animations/blueguy/hit/blue_guy_hit_3.png" x="892" y="979" w="117" h="37" oX="0" oY="91" oW="128" oH="128"/>
+    <sprite n="animations/blueguy/idle/blue_guy_idle_1.png" x="1558" y="572" w="120" h="75" oX="0" oY="8" oW="128" oH="128" r="y"/>
+    <sprite n="animations/blueguy/idle/blue_guy_idle_2.png" x="473" y="926" w="105" h="90" oX="0" oY="23" oW="128" oH="128" r="y"/>
+    <sprite n="animations/blueguy/idle/blue_guy_idle_3.png" x="1552" y="899" w="104" h="85" oX="0" oY="24" oW="128" oH="128" r="y"/>
+    <sprite n="animations/blueguy/kick/blue_guy_kick_1.png" x="1476" y="691" w="75" h="105" oX="0" oY="23" oW="128" oH="128"/>
+    <sprite n="animations/blueguy/kick/blue_guy_kick_2.png" x="1112" y="876" w="104" h="96" oX="0" oY="24" oW="128" oH="128" r="y"/>
+    <sprite n="animations/blueguy/kick/blue_guy_kick_3.png" x="777" y="876" w="113" h="105" oX="0" oY="23" oW="128" oH="128"/>
+    <sprite n="animations/blueguy/push/blue_guy_push_1.png" x="1476" y="691" w="75" h="105" oX="0" oY="23" oW="128" oH="128"/>
+    <sprite n="animations/blueguy/push/blue_guy_push_2.png" x="1398" y="730" w="76" h="110" oX="0" oY="18" oW="128" oH="128"/>
+    <sprite n="animations/blueguy/push/blue_guy_push_3.png" x="892" y="876" w="110" h="101" oX="0" oY="18" oW="128" oH="128" r="y"/>
+    <sprite n="animations/blueguy/walk_left/blue_guy_walk_left_1.png" x="145" y="926" w="109" h="90" oX="0" oY="19" oW="128" oH="128" r="y"/>
+    <sprite n="animations/blueguy/walk_left/blue_guy_walk_left_2.png" x="1792" y="450" w="91" h="105" oX="0" oY="23" oW="128" oH="128"/>
+    <sprite n="animations/blueguy/walk_left/blue_guy_walk_left_3.png" x="1390" y="904" w="103" h="87" oX="0" oY="25" oW="128" oH="128" r="y"/>
+    <sprite n="animations/blueguy/walk_right/blue_guy_walk_right_1.png" x="1558" y="649" w="108" h="77" oX="0" oY="20" oW="128" oH="128" r="y"/>
+    <sprite n="animations/blueguy/walk_right/blue_guy_walk_right_2.png" x="580" y="926" w="105" h="90" oX="0" oY="23" oW="128" oH="128" r="y"/>
+    <sprite n="animations/blueguy/walk_right/blue_guy_walk_right_3.png" x="1658" y="926" w="104" h="85" oX="0" oY="24" oW="128" oH="128" r="y"/>
+    <sprite n="animations/redguy/attacks/grab/red_guy_grab.png" x="365" y="926" w="106" h="90" oX="0" oY="22" oW="128" oH="128" r="y"/>
+    <sprite n="animations/redguy/attacks/jump_kick/red_guy_jump_kick.png" x="1476" y="587" w="80" h="102" oX="0" oY="13" oW="128" oH="128"/>
+    <sprite n="animations/redguy/attacks/whip/red_guy_whip.png" x="1553" y="728" w="106" h="74" oX="0" oY="22" oW="128" oH="128" r="y"/>
+    <sprite n="animations/redguy/block/red_guy_block_1.png" x="1312" y="851" w="76" h="116" oX="0" oY="12" oW="128" oH="128"/>
+    <sprite n="animations/redguy/block/red_guy_block_2.png" x="667" y="791" w="108" h="78" oX="0" oY="20" oW="128" oH="128" r="y"/>
+    <sprite n="animations/redguy/block/red_guy_block_3.png" x="1312" y="730" w="84" h="119" oX="0" oY="9" oW="128" oH="128"/>
+    <sprite n="animations/redguy/hit/red_guy_hit_1.png" x="256" y="926" w="107" h="90" oX="0" oY="21" oW="128" oH="128" r="y"/>
+    <sprite n="animations/redguy/hit/red_guy_hit_2.png" x="1332" y="463" w="113" h="123" oX="0" oY="5" oW="128" oH="128"/>
+    <sprite n="animations/redguy/hit/red_guy_hit_3.png" x="1563" y="97" w="118" h="39" oX="0" oY="89" oW="128" oH="128"/>
+    <sprite n="animations/redguy/idle/red_guy_idle_1.png" x="1312" y="851" w="76" h="116" oX="0" oY="12" oW="128" oH="128"/>
+    <sprite n="animations/redguy/idle/red_guy_idle_2.png" x="1218" y="878" w="92" h="105" oX="0" oY="23" oW="128" oH="128"/>
+    <sprite n="animations/redguy/idle/red_guy_idle_3.png" x="1659" y="838" w="105" h="86" oX="0" oY="23" oW="128" oH="128" r="y"/>
+    <sprite n="animations/redguy/kick/red_guy_kick_1.png" x="1312" y="851" w="76" h="116" oX="0" oY="12" oW="128" oH="128"/>
+    <sprite n="animations/redguy/kick/red_guy_kick_2.png" x="1668" y="650" w="106" h="97" oX="0" oY="22" oW="128" oH="128" r="y"/>
+    <sprite n="animations/redguy/kick/red_guy_kick_3.png" x="1558" y="463" w="118" h="107" oX="0" oY="21" oW="128" oH="128"/>
+    <sprite n="animations/redguy/push/red_guy_push_1.png" x="1312" y="851" w="76" h="116" oX="0" oY="12" oW="128" oH="128"/>
+    <sprite n="animations/redguy/push/red_guy_push_2.png" x="667" y="791" w="108" h="78" oX="0" oY="20" oW="128" oH="128" r="y"/>
+    <sprite n="animations/redguy/push/red_guy_push_3.png" x="1678" y="450" w="112" h="111" oX="0" oY="17" oW="128" oH="128"/>
+    <sprite n="animations/redguy/walk_left/red_guy_walk_left_1.png" x="687" y="871" w="88" h="111" oX="0" oY="17" oW="128" oH="128"/>
+    <sprite n="animations/redguy/walk_left/red_guy_walk_left_2.png" x="1004" y="876" w="106" h="100" oX="0" oY="22" oW="128" oH="128" r="y"/>
+    <sprite n="animations/redguy/walk_left/red_guy_walk_left_3.png" x="1552" y="804" w="105" h="93" oX="0" oY="23" oW="128" oH="128" r="y"/>
+    <sprite n="animations/redguy/walk_right/red_guy_walk_right_1.png" x="1324" y="649" w="110" h="79" oX="0" oY="18" oW="128" oH="128" r="y"/>
+    <sprite n="animations/redguy/walk_right/red_guy_walk_right_2.png" x="1776" y="669" w="106" h="92" oX="0" oY="22" oW="128" oH="128" r="y"/>
+    <sprite n="animations/redguy/walk_right/red_guy_walk_right_3.png" x="1766" y="848" w="105" h="88" oX="0" oY="23" oW="128" oH="128" r="y"/>
+    <sprite n="attacks/blue_guy/grab/blue_guy_grab_extension.png" x="667" y="871" w="15" h="32" oX="0" oY="8" oW="32" oH="32" r="y"/>
+    <sprite n="attacks/blue_guy/grab/blue_guy_grab_hit.png" x="1495" y="904" w="32" h="28" oX="0" oY="3" oW="32" oH="32"/>
+    <sprite n="attacks/blue_guy/grab/blue_guy_grab_miss.png" x="667" y="871" w="15" h="32" oX="0" oY="8" oW="32" oH="32" r="y"/>
+    <sprite n="attacks/blue_guy/jump_kick/blue_guy_jump_kick_extension.png" x="667" y="871" w="15" h="32" oX="0" oY="8" oW="32" oH="32" r="y"/>
+    <sprite n="attacks/blue_guy/jump_kick/blue_guy_jump_kick_hit.png" x="687" y="984" w="32" h="32"/>
+    <sprite n="attacks/blue_guy/jump_kick/blue_guy_jump_kick_miss.png" x="777" y="643" w="23" h="32" oX="0" oY="0" oW="32" oH="32" r="y"/>
+    <sprite n="attacks/blue_guy/whip/blue_guy_whip_extension.png" x="667" y="871" w="15" h="32" oX="0" oY="8" oW="32" oH="32" r="y"/>
+    <sprite n="attacks/blue_guy/whip/blue_guy_whip_hit.png" x="1495" y="904" w="32" h="28" oX="0" oY="3" oW="32" oH="32"/>
+    <sprite n="attacks/blue_guy/whip/blue_guy_whip_miss.png" x="667" y="871" w="15" h="32" oX="0" oY="8" oW="32" oH="32" r="y"/>
+    <sprite n="attacks/red_guy/grab/red_guy_grab_extension.png" x="1312" y="969" w="32" h="14" oX="0" oY="8" oW="32" oH="32"/>
+    <sprite n="attacks/red_guy/grab/red_guy_grab_hit.png" x="1683" y="97" w="32" h="31" oX="0" oY="1" oW="32" oH="32"/>
+    <sprite n="attacks/red_guy/grab/red_guy_grab_miss.png" x="1312" y="969" w="32" h="14" oX="0" oY="8" oW="32" oH="32"/>
+    <sprite n="attacks/red_guy/jump_kick/red_guy_jump_kick_extension.png" x="1312" y="969" w="32" h="14" oX="0" oY="8" oW="32" oH="32"/>
+    <sprite n="attacks/red_guy/jump_kick/red_guy_jump_kick_hit.png" x="721" y="984" w="32" h="32"/>
+    <sprite n="attacks/red_guy/jump_kick/red_guy_jump_kick_miss.png" x="1495" y="934" w="32" h="26" oX="0" oY="3" oW="32" oH="32"/>
+    <sprite n="attacks/red_guy/whip/red_guy_whip_extension.png" x="1312" y="969" w="32" h="14" oX="0" oY="8" oW="32" oH="32"/>
+    <sprite n="attacks/red_guy/whip/red_guy_whip_hit.png" x="1683" y="97" w="32" h="31" oX="0" oY="1" oW="32" oH="32"/>
+    <sprite n="attacks/red_guy/whip/red_guy_whip_miss.png" x="1312" y="969" w="32" h="14" oX="0" oY="8" oW="32" oH="32"/>
+    <sprite n="backgrounds/background_city.png" x="1" y="1" w="800" h="640"/>
+    <sprite n="cursors/cursor_box.png" x="755" y="984" w="32" h="32"/>
+    <sprite n="numbers/number_0.png" x="1373" y="297" w="160" h="91" oX="0" oY="0" oW="100" oH="160" r="y"/>
+    <sprite n="numbers/number_1.png" x="1373" y="390" w="152" h="71" oX="12" oY="4" oW="100" oH="160" r="y"/>
+    <sprite n="numbers/number_2.png" x="1724" y="1" w="147" h="93" oX="0" oY="2" oW="100" oH="160" r="y"/>
+    <sprite n="numbers/number_3.png" x="1218" y="730" w="92" h="146" oX="1" oY="11" oW="100" oH="160"/>
+    <sprite n="numbers/number_4.png" x="1563" y="1" w="159" h="94" oX="6" oY="1" oW="100" oH="160" r="y"/>
+    <sprite n="numbers/number_5.png" x="1535" y="386" w="141" h="75" oX="11" oY="6" oW="100" oH="160" r="y"/>
+    <sprite n="numbers/number_6.png" x="1535" y="297" w="153" h="87" oX="2" oY="6" oW="100" oH="160" r="y"/>
+    <sprite n="numbers/number_7.png" x="1" y="926" w="142" h="90" oX="7" oY="9" oW="100" oH="160" r="y"/>
+    <sprite n="numbers/number_8.png" x="1690" y="374" w="152" h="74" oX="11" oY="6" oW="100" oH="160" r="y"/>
+    <sprite n="numbers/number_9.png" x="1690" y="297" w="153" h="75" oX="5" oY="0" oW="100" oH="160" r="y"/>
+    <sprite n="prompts/prompt_fight.png" x="1409" y="142" w="429" h="153" oX="194" oY="7" oW="800" oH="160"/>
+    <sprite n="prompts/prompt_miss.png" x="803" y="598" w="519" h="130" oX="112" oY="12" oW="800" oH="160"/>
+    <sprite n="prompts/prompt_player_1_match_win.png" x="803" y="1" w="758" h="139" oX="31" oY="13" oW="800" oH="160"/>
+    <sprite n="prompts/prompt_player_1_wins.png" x="803" y="296" w="568" h="154" oX="125" oY="5" oW="800" oH="160"/>
+    <sprite n="prompts/prompt_player_2_match_win.png" x="1" y="643" w="774" h="146" oX="5" oY="14" oW="800" oH="160"/>
+    <sprite n="prompts/prompt_player_2_wins.png" x="803" y="142" w="604" h="152" oX="86" oY="8" oW="800" oH="160"/>
+    <sprite n="prompts/prompt_round.png" x="803" y="452" w="527" h="144" oX="60" oY="1" oW="600" oH="160"/>
+    <sprite n="prompts/prompt_select_attack.png" x="1" y="791" w="664" h="133" oX="53" oY="5" oW="800" oH="160"/>
+    <sprite n="prompts/prompt_stop.png" x="777" y="730" w="439" h="144" oX="145" oY="0" oW="800" oH="160"/>
+</TextureAtlas>

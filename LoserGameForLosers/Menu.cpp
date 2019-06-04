@@ -4,10 +4,22 @@
 
 
 
-Menu::Menu()
+Menu::Menu(LoadedCollections * collections)
+	: GameState(collections)
 {
-	auto hack = PathHack();
-	Game::path->add(hack.initiate_menu());
+	palette = new AssetManager(&manager, this);
+	palette->add_texture(collections->atlas_data.path.c_str());
+	palette->add_texture("white_background.png");
+	palette->set_bit_map_font("lazyfont.png");
+	audio_player = new AudioQueue(&bank->audio_data);
+
+	const auto menu = palette->create_menu_screen();
+	path = new Path();
+
+	auto hack = PathHack(this);
+
+	path->add(hack.initiate_menu());
+
 }
 
 
@@ -28,7 +40,7 @@ void Menu::render()
 
 void Menu::logic()
 {
-	Game::path->navigate_path();
+	path->navigate_path();
 
 	manager.refresh();
 	manager.update();
@@ -62,5 +74,5 @@ void Menu::close()
 		c->destroy();
 	}
 
-	Game::audio_queue->stop_music();
+	audio_player->stop_music();
 }

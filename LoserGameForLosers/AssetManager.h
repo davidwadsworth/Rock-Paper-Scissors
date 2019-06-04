@@ -10,10 +10,11 @@
 class AssetManager
 {
 public:
-	explicit AssetManager(Manager* man);
+	explicit AssetManager(Manager* man, GameState * state);
 	~AssetManager();
 
 	Entity* create_option_box(int options_id, Vector2D position, int input_id) const;
+	Entity* create_menu_option_box(int options_id, Vector2D position, int input_id) const;
 	Entity* create_prompt(int sprite_id, SDL_Rect* position) const;
 	Entity* create_attack(Entity * player) const;
 	Entity* create_left_player() const;
@@ -32,6 +33,7 @@ public:
 
 private:
 	Manager * manager_;
+	GameState* state_;
 	BitmapFont bitmap_font_;
 	BitmapTexture bitmap_tex_;
 	std::vector<SDL_Texture*> textures_{};

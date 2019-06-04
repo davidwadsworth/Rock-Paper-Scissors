@@ -9,26 +9,27 @@ class PlayerComponent : public Component
 {
 	CharacterData * data_;
 	float hit_box_;
+	int character_id_;
 public:
 	int num_wins;
 	Attack* chosen_attack;
 	std::string player_name;
-	int attack_id = Nothing;
+	int attack_id = Whip;
 	bool is_priority_player;
 	Character player_identity;
 	int direction;
 	bool attack_used;
 
-	PlayerComponent(const int character_id) 
-	{
-		data_ = Game::data->get_character_data(character_id);
-	}
+	explicit PlayerComponent(const int character_id)
+		: character_id_(character_id)
+	{}
 
 	~PlayerComponent()
 	{}
 
 	void init() override
 	{
+		data_ = &entity->state->bank->character_data.data[character_id_];
 		player_identity = Character(data_);
 		chosen_attack = &player_identity.attacks[Jump_Kick];
 		player_name = player_identity.id;
@@ -57,12 +58,12 @@ public:
 
 	float attack_distance() const
 	{
-		return chosen_attack->move_distance * entity->get_component<TransformComponent>().scale_2d.x * SPRITE_LENGTH;
+		return chosen_attack->move_distance * entity->get_component<TransformComponent>().scale * SPRITE_LENGTH;
 	}
 
 	float attack_hitbox() const
 	{
-		return chosen_attack->projectile_range * entity->get_component<TransformComponent>().scale_2d.x * SPRITE_LENGTH;
+		return chosen_attack->projectile_range * entity->get_component<TransformComponent>().scale * SPRITE_LENGTH;
 	}
 
 	void change_priority()

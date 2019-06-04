@@ -12,11 +12,13 @@ class TextureAtlasComponent : public Component
 {
 	std::vector<Slot*> slots_;
 	int slot_count_;
-	AtlasData* data_;
+	AtlasCollection* data_;
+	SDL_Texture * texture_;
 public:
-
 	TextureAtlasComponent();
 	~TextureAtlasComponent();
+
+	void init() override;
 
 	int create_null_slot( int slot_id = -1);
 
@@ -34,6 +36,7 @@ public:
 	int create_animated_slot(int x, int y, int speed, int frames, int sprite_id, int rotation = 0, SDL_RendererFlip flip = SDL_FLIP_NONE, int slot_id = -1);
 	void add_animation_state(int slot_id, int speed, int frames, int sprite_id, int rotation = 0, SDL_RendererFlip flip = SDL_FLIP_NONE);
 	void update_animation(int slot_id, int state);
+	void lock_animation(int slot_id, int state);
 	void set_animated_call(int slot_id, int state, int call_id);
 
 	void draw() override;

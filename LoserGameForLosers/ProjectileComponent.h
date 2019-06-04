@@ -16,8 +16,7 @@ class ProjectileComponent : public Component
 	int attack_distance_;
 	int projectile_size_;
 public:
-	ProjectileComponent(Entity * player);
+	explicit ProjectileComponent(Entity * player);
 	void init() override;
 	void update() override;
-
 };

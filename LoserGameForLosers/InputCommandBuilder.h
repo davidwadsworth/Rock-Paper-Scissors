@@ -8,7 +8,7 @@ public:
 	InputCommandBuilder() {}
 	~InputCommandBuilder() {}
 
-	InputCommand * create_command(int command_id, std::string command_value)
+	static InputCommand * create_command(const int command_id, const std::string command_value)
 	{
 		InputCommand * command;
 		switch (command_id)
@@ -31,13 +31,17 @@ public:
 		case 5:
 			command = new MakeSelection();
 			break;
+		case 6:
+			command = new CreateAttack(command_value);
+			break;
 		case 7:
-			command = new InputCommands::ChangeController(command_value);
+			command = new Back();
 			break;
 		default:
 			command = new InputCommand();
 			break;
 		}
+
 		return command;
 	}
 };

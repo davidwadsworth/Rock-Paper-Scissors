@@ -20,13 +20,12 @@ class GlyphAtlasComponent : public Component
 	std::vector<Label*> labels_;
 public:
 
-	explicit GlyphAtlasComponent()
-	{
-		bitmap_font_ = Game::assets->get_bitmap_font();
-	}
-	
+	GlyphAtlasComponent(): bitmap_font_(nullptr)
+	{}
+
 	~GlyphAtlasComponent()
 	{}
+
 
 	void create_labels()
 	{
@@ -45,6 +44,7 @@ public:
 
 	void init() override
 	{
+		bitmap_font_ = entity->state->palette->get_bitmap_font();
 		create_labels();
 	}
 

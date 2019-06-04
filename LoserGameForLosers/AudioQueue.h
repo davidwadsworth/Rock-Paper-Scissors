@@ -5,7 +5,7 @@
 
 class AudioQueue : public Audio
 {
-	AudioCollection* data_;
+	AudioCollection *data_;
 
 	std::vector<Mix_Music*> loaded_music_;
 	std::vector<Mix_Chunk*> loaded_effects_;
@@ -30,7 +30,7 @@ class AudioQueue : public Audio
 	}
 
 public:
-	explicit AudioQueue(AudioCollection * data)
+	explicit AudioQueue(AudioCollection* data)
 		: data_(data)
 	{
 		load_music_files();

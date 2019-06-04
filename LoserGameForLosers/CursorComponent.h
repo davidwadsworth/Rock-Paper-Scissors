@@ -30,6 +30,6 @@ public:
 	void update() override
 	{
 		current_link_ = options_->get_current_link()->get_cursor_dimensions();
-		texture_->update_call(cursor_slot_, new Vector2D(current_link_->x, current_link_->y));
+		texture_->update_position(cursor_slot_, Vector2D(current_link_->x, current_link_->y));
 	}
 };

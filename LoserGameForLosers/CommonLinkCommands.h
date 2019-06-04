@@ -43,7 +43,7 @@ namespace LinkCommands
 		ChooseCharacter(const std::string command_value)
 			: character_id_(stoi(command_value)), entity_(nullptr)
 		{}
-		void execute(Entity* entity) override;
+		void execute(Entity* entity) override{}
 	};
 
 	class ChooseBackground : public Command
@@ -54,7 +54,7 @@ namespace LinkCommands
 			: background_id_(stoi(command_value)), previous_id_(0)
 		{}
 
-		void execute(Entity* entity) override;
+		void execute(Entity* entity) override{}
 	};
 
 	class SetDifficulty : public Command

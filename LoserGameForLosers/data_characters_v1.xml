@@ -1,4 +1,4 @@
-<Characters id="data characters">
+<Characters id="data_characters" path="data_characters_v1.xml">
 	
 	<Character id="fighter" velocity="1.0" hitbox="0.5">
 		<Attack hitbox="1.5" distance="0" />

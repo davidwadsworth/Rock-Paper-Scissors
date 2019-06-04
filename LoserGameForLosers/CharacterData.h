@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 
 struct AttackData
 {
@@ -14,8 +15,7 @@ struct CharacterData
 	float hitbox;
 };
 
-struct CharacterCollection
+struct CharacterCollection : DataCollection
 {
-	std::string id;
 	std::vector<CharacterData> data;
 };

@@ -11,6 +11,7 @@
 class Component;
 class Entity;
 class Manager;
+class GameState;
 
 using ComponentID = std::size_t;
 using Group = std::size_t;
@@ -58,8 +59,10 @@ private:
 	ComponentBitSet componentBitSet;
 	GroupBitSet groupBitSet;
 
-public: 
-	Entity(Manager& mManager) : manager(mManager)
+public:
+	GameState* state;
+
+	Entity(Manager& mManager, GameState * state) : manager(mManager), state(state)
 	{}
 	void update()
 	{
@@ -156,9 +159,9 @@ public:
 		return groupedEntities[m_group];
 	}
 
-	Entity& add_entity()
+	Entity& add_entity(GameState* state)
 	{
-		const auto e = new Entity(*this);
+		const auto e = new Entity(*this, state);
 		std::unique_ptr<Entity> u_ptr{ e };
 		entities.emplace_back(std::move(u_ptr));
 		return *e;

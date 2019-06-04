@@ -9,8 +9,9 @@ namespace Navigation
 		int prompt_id_;
 		SDL_Rect* prompt_rect_;
 		Entity* prompt_;
+		AssetManager * asset_manager_;
 	public:
-		DisplayPrompt(Uint32 delay, int prompt_id);
+		DisplayPrompt(AssetManager * asset_manager, Uint32 delay, int prompt_id);
 		void init() override;
 		void close() override;
 	};
@@ -20,8 +21,9 @@ namespace Navigation
 		SDL_Rect *round_dest_, *tens_dest_, *ones_dest_;
 		int round_id_, number_id_, round_number_;
 		Entity * round_prompt_, *tens_prompt_, *ones_prompt_;
+		AssetManager * asset_manager_;
 	public:
-		DisplayRoundPrompt(Uint32 delay, int round_id, int number_id, int round_number);
+		DisplayRoundPrompt(AssetManager * asset_manager, Uint32 delay, int round_id, int number_id, int round_number);
 		void init() override;
 		void close() override;
 	};
@@ -30,8 +32,9 @@ namespace Navigation
 	{
 		int frames_;
 		Entity* wipe_;
+		AssetManager * asset_manager_;
 	public:
-		BackgroundTransition(int frames);
+		BackgroundTransition(AssetManager * asset_manager, int frames);
 		void init() override;
 		int choose_path() override;
 		void close() override;

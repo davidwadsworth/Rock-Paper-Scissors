@@ -7,22 +7,22 @@
 class Slot
 {
 public:
-	Slot(AtlasData * data)
-		: atlas_data(data)
+	explicit Slot(SDL_Texture * tex)
+		: texture(tex)
 	{}
 	virtual ~Slot() = default;
 
 	bool is_rotated;
 	Vector2D position, data_offset;
-	float scale;
+	float scale = 1.0f;
 	SDL_Rect dest;
 	DrawCall* call;
-	AtlasData * atlas_data;
 	int width, height;
+	SDL_Texture * texture;
 
-	void set_call(const int sprite_id, const int rotation, const SDL_RendererFlip flip)
+	void set_call(AtlasData* sprite, const int rotation, const SDL_RendererFlip flip)
 	{
-		call = new DrawCall(&atlas_data->data[sprite_id], &dest, flip, rotation);
+		call = new DrawCall(sprite, texture, &dest, flip, rotation);
 	}
 
 	void update_position_and_scaling(const Vector2D pos, const float sc)
@@ -81,69 +81,122 @@ class Animated
 {
 public:
 	virtual ~Animated() = default;
-	virtual void add_animated_state(int speed, int frames, int sprite_id, int rotation, SDL_RendererFlip flip) = 0;
+	virtual void add_animated_state(int speed, std::vector<AtlasData*> frames, int rotation,  SDL_RendererFlip flip) = 0;
 	virtual void update_animation(int state) = 0;
+	virtual void lock_animation(int state) = 0;
 	virtual void set_animated_call(int state, int call_id) = 0;
 };
 
 class ImageSlot : public Slot
 {
 public:
-	explicit ImageSlot(AtlasData * data, const int sprite_id, const int x, const int y, const int rotation, const SDL_RendererFlip flip)
-		: Slot(data)
+	explicit ImageSlot(SDL_Texture * texture, AtlasData * data, const int x, const int y, const int rotation, const SDL_RendererFlip flip)
+		: Slot(texture)
 	{
-		dest = SDL_Rect{ x,y, data->data[sprite_id].w, data->data[sprite_id].h };
-		set_call(sprite_id, rotation, flip);
+		dest = SDL_Rect{ x,y, data->w, data->h };
+		set_call(data, rotation, flip);
 	}
 };
 
 struct AnimatedState
 {
+private:
+	Uint32 start_ticks_;
+public:
+	AnimatedState()
+		: start_ticks_(SDL_GetTicks()), speed(0), frames(0), locked(false), current_frame(0), frame_count(0)
+	{}
+
 	std::vector<DrawCall> calls;
 	int speed;
 	int frames;
+	bool locked;
+	int current_frame;
+	int previous_frame;
+	int frame_count;
 
 	DrawCall* animate()
 	{
-		return &calls[static_cast<int>(SDL_GetTicks() / speed) % frames];
+		current_frame = (SDL_GetTicks() - start_ticks_) / speed % frames;
+		
+
+		return &calls[current_frame];
+	}
+
+	DrawCall* locked_animation()
+	{
+		previous_frame = current_frame;
+		current_frame = (SDL_GetTicks() - start_ticks_) / speed % frames;
+		if (previous_frame != current_frame)
+			frame_count++; 
+		return &calls[current_frame];
 	}
 
 	DrawCall* get_call(const int call_id)
 	{
 		return &calls[call_id];
 	}
+
+	void reset_ticks()
+	{
+		start_ticks_ = SDL_GetTicks();
+		frame_count = 0;
+	}
 };
 
 class AnimatedSlot : public Slot, public Animated
 {
 	std::vector<AnimatedState> animated_states_;
-	SDL_Rect rect_;
+	AnimatedState* current_state_;
 public:
-	AnimatedSlot(AtlasData* data, const int x, const int y)
-		: Slot(data), rect_{x, y, 0, 0}
-	{}
+	AnimatedSlot(SDL_Texture * texture, const int x, const int y)
+		: Slot(texture)
+	{
+		dest = { x, y, 0, 0 };
+	}
 
-	void add_animated_state(const int speed, const int frames, const int sprite_id, const int rotation, const SDL_RendererFlip flip) override
+	void add_animated_state(const int speed, std::vector<AtlasData*> frames, const int rotation, const SDL_RendererFlip flip) override
 	{
 		auto anim_state = AnimatedState();
 
-		anim_state.frames = frames;
+		anim_state.frames = frames.size();
 		anim_state.speed = speed;
+		anim_state.locked = false;
 
-		for(auto id = sprite_id; id < sprite_id + frames; id++)
-			anim_state.calls.push_back(DrawCall(&atlas_data->data[sprite_id], &rect_, flip, rotation));
+		for(auto sprite : frames)
+			anim_state.calls.push_back(DrawCall(sprite, texture, &dest, flip, rotation));
 
-		call = &animated_states_[0].calls[0];
 		animated_states_.push_back(anim_state);
+		current_state_ = &animated_states_[0];
+		call = &current_state_->calls[0];
+	}
+
+	void lock_animation(const int state) override
+	{
+		current_state_ = &animated_states_[state];
+		current_state_->locked = true;
+		current_state_->reset_ticks();
 	}
 
 	void update_animation(const int state) override
 	{
-		call = animated_states_[state].animate();
+		if (!current_state_->locked)
+		{
+			current_state_ = &animated_states_[state];
+			call = current_state_->animate();
+		}
+		else
+		{
+			if (current_state_->frame_count == current_state_->frames)
+				current_state_->locked = false;
+
+			call = current_state_->locked_animation();
+		}
 	}
 
 	void set_animated_call(const int state, const int call_id) override
 	{
-		call = animated_states_[state].get_call(call_id);
+		current_state_ = &animated_states_[state];
+		call = current_state_->get_call(call_id);
 	}
 };

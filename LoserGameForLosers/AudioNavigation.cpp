@@ -3,29 +3,33 @@
 
 namespace Navigation
 {
-	PlaySound::PlaySound(const int id)
-		: sound_id_(id)
+	PlaySound::PlaySound(AudioQueue * player, const int id)
+		: sound_id_(id), player_(player)
 	{}
 
 	int PlaySound::choose_path()
 	{
-		Game::audio_queue->play_sound(sound_id_);
+		player_->play_sound(sound_id_);
 		return true;
 	}
 
-	PlayMusic::PlayMusic(const int id, const int loop)
-		: music_id_(id), loop_(loop)
+	PlayMusic::PlayMusic(AudioQueue * player, const int id, const int loop)
+		: music_id_(id), loop_(loop), player_(player)
 	{}
 
 	int PlayMusic::choose_path()
 	{
-		Game::audio_queue->play_music(music_id_, loop_);
+		player_->play_music(music_id_, loop_);
 		return true;
 	}
 
+	StopMusic::StopMusic(AudioQueue * player)
+		: player_(player)
+	{}
+
 	int StopMusic::choose_path()
 	{
-		Game::audio_queue->stop_music();
+		player_->stop_music();
 		return 1;
 	}
 }

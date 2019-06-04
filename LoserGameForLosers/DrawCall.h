@@ -2,10 +2,11 @@
 #include "SDL.h"
 #include "AtlasData.h"
 
+class AssetManager;
 class DrawCall
 {
-	SpriteData * data_;
-	SDL_Point rotation_axis_, rotation_;
+	AtlasData * data_;
+	SDL_Point rotation_axis_;
 	bool is_rotated_;
 	int original_w_, original_h_;
 	int data_w_, data_h_;
@@ -16,8 +17,8 @@ public:
 	int height, width;
 	
 	DrawCall() = default;
-	DrawCall(int texture_id, SDL_Rect src, SDL_Rect *dest, SDL_RendererFlip flip, int rotation, SDL_Point * point);
-	DrawCall(SpriteData * data, SDL_Rect* dest, SDL_RendererFlip flip, int rotation);
+	DrawCall(AtlasData * data, SDL_Texture* tex, SDL_Rect* dest, SDL_RendererFlip flip, int rotation);
+	DrawCall(SDL_Texture *tex, SDL_Rect src, SDL_Rect *dest, SDL_RendererFlip flip, int rotation, SDL_Point * point);
 	void update_rotation_point(float scaling) const;
 	void update_height(int h);
 	void update_width(int w);

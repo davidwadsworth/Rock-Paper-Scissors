@@ -1,6 +1,8 @@
 #pragma once
+#include "DataCollection.h"
+#include <vector>
 
-struct SpriteData
+struct AtlasData
 {
 	int texture_id;
 	std::string n;
@@ -15,11 +17,10 @@ struct SpriteData
 	bool is_rotated = false;
 };
 
-struct AtlasData
+struct AtlasCollection : DataCollection 
 {
-	std::string image_path;
 	int texture_id;
 	int image_width;
 	int image_height;
-	std::vector<SpriteData> data;
+	std::vector<AtlasData> data;
 };

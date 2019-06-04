@@ -12,6 +12,7 @@ class OptionsComponent : public Component
 	OptionsData *data_;
 	Options options_;
 	Entity * target_;
+	int options_id_;
 public:
 	SDL_Rect box;
 	std::vector<std::vector<Link*>> current_links;

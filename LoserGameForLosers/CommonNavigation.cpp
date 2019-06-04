@@ -34,17 +34,17 @@ namespace Navigation
 		return 1;
 	}
 
-	CreateOptionBox::CreateOptionBox(const int options_id, const int input_id, const Vector2D position)
-		: target_(nullptr), option_box_(nullptr), input_id_(input_id), options_id_(options_id), position_(position)
+	CreateOptionBox::CreateOptionBox(AssetManager * asset_manager, const int options_id, const int input_id, const Vector2D position)
+		: target_(nullptr), option_box_(nullptr), input_id_(input_id), options_id_(options_id), position_(position), asset_manager_(asset_manager)
 	{}
 
-	CreateOptionBox::CreateOptionBox(const int options_id, const int input_id, const Vector2D position, Entity* target)
-		: target_(target), option_box_(nullptr), input_id_(input_id), options_id_(options_id), position_(position)
+	CreateOptionBox::CreateOptionBox(AssetManager * asset_manager, const int options_id, const int input_id, const Vector2D position, Entity* target)
+		: target_(target), option_box_(nullptr), input_id_(input_id), options_id_(options_id), position_(position), asset_manager_(asset_manager)
 	{}
 
 	void CreateOptionBox::init()
 	{
-		option_box_ = Game::assets->create_option_box(options_id_, position_, input_id_);
+		option_box_ = asset_manager_->create_option_box(options_id_, position_, input_id_);
 
 		if (target_)
 			option_box_->get_component<OptionsComponent>().change_target(target_);
@@ -59,6 +59,14 @@ namespace Navigation
 	int CreateOptionBox::choose_path()
 	{
 		return option_box_->get_component<OptionsComponent>().get_path();
+	}
+	ToggleEnableController::ToggleEnableController(Entity * player)
+		: player_(player)
+	{}
+	int ToggleEnableController::choose_path()
+	{
+		player_->get_component<ControllerComponent>().toggle_keys_activity();
+		return 1;
 	}
 }
 

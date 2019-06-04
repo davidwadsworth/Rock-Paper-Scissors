@@ -9,7 +9,7 @@ public:
 	LinkBuilder() {}
 	~LinkBuilder() {}
 
-	Link * create_link(const int padding, const Vector2D alignment, LinkData * data )
+	static Link * create_link(AssetManager * asset_manager, const int padding, const Vector2D alignment, LinkData * data)
 	{
 		auto command_gen = LinkCommandBuilder();
 		const auto command = command_gen.create_command(data->command_id, data->command_value);
@@ -18,7 +18,7 @@ public:
 		switch (data->link_id)
 		{
 		default:
-			link = new CursorLeftLink(padding, alignment, data->text, command);
+			link = new CursorLeftLink(asset_manager, padding, alignment, data->text, command);
 			break;
 		}
 

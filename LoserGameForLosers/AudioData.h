@@ -9,8 +9,7 @@ struct AudioData
 	int encoding;
 };
 
-struct AudioCollection
+struct AudioCollection : DataCollection
 {
-	std::string id;
 	std::vector<AudioData> data;
 };

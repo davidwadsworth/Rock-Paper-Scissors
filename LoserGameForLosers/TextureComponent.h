@@ -7,8 +7,9 @@ class TextureComponent : public Component
 	int texture_id_;
 	DrawCall call_;
 	SDL_Rect dest_, src_;
+	SDL_Texture * texture_;
 public:
-	explicit TextureComponent(int texture_id);
+	TextureComponent(int texture_id);
 	~TextureComponent() = default;
 
 	void set_blend_mode(SDL_BlendMode blending) const;

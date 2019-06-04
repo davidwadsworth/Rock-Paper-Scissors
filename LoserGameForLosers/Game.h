@@ -3,12 +3,6 @@
 #include <SDL.h>
 #include <SDL_mixer.h>
 
-#include "AssetManager.h"
-#include "GameSettings.h"
-#include "DataManager.h"
-#include "AudioQueue.h"
-#include "Pathway.h"
-
 class Game
 {
 public:
@@ -25,11 +19,6 @@ public:
 
 	static SDL_Renderer *renderer;
 	static SDL_Event event;
-	static AssetManager* assets;
-	static GameSettings* game_settings;
-	static DataManager* data;
-	static AudioQueue* audio_queue;
-	static Path* path;
 
 	SDL_Window *window;
 

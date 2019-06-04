@@ -24,10 +24,12 @@ void TextureComponent::init()
 {
 	const auto transform = entity->get_component<TransformComponent>();
 
-	dest_ = { static_cast<int>(transform.position.x), static_cast<int>(transform.position.y), static_cast<int>(transform.width * transform.scale_2d.x), static_cast<int>(transform.height * transform.scale_2d.y) };
+	texture_ = entity->state->palette->get_texture(texture_id_);
+
+	dest_ = { static_cast<int>(transform.position.x), static_cast<int>(transform.position.y), static_cast<int>(transform.width * transform.scale), static_cast<int>(transform.height * transform.scale) };
 	src_ = { 0, 0, transform.width, transform.height };
 
-	call_ = DrawCall(texture_id_, &src_, &dest_, SDL_FLIP_NONE, 0, nullptr);
+	call_ = DrawCall(texture_, src_, &dest_, SDL_FLIP_NONE, 0, nullptr);
 }
 
 void TextureComponent::draw()

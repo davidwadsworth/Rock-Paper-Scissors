@@ -2,7 +2,7 @@
 #include "Pathway.h"
 
 PathTrunk::PathTrunk(PathBranch * root, PathTrunk * next)
-	: root_(root), current(root), next(next)
+	: root_(root), next(next), current(root)
 {}
 
 void PathTrunk::add(PathTrunk * trunk_to_add)
@@ -10,6 +10,23 @@ void PathTrunk::add(PathTrunk * trunk_to_add)
 	trunk_to_add->next = next;
 	next = trunk_to_add;
 }
+
+void release_ptr_rec(PathBranch* branch)
+{
+	if (!branch)
+		return;
+
+	release_ptr_rec(branch->child);
+	release_ptr_rec(branch->sibling);
+	branch->remove();
+}
+
+void PathTrunk::remove()
+{
+	release_ptr_rec(root_);
+}
+
+
 
 bool PathTrunk::has_next() const
 {
@@ -20,20 +37,6 @@ bool PathTrunk::has_current() const
 {
 	return current;
 }
-
-void post_order_delete(PathBranch * branch)
-{
-	if (branch == nullptr) return;
-	post_order_delete(branch->child);
-	post_order_delete(branch->sibling);
-	branch->remove();
-}
-
-void PathTrunk::remove() const
-{
-	post_order_delete(root_);
-}
-
 
 PathBranch::PathBranch(PathTrunk * parent, PathBranch * sibling, PathBranch * child)
 	: navigator_array_(), parent(parent), sibling(sibling), child(child)
@@ -51,11 +54,7 @@ void PathBranch::close()
 
 void PathBranch::remove()
 {
-	for (auto& n : navigators_) n.reset();
-	child = nullptr;
-	sibling = nullptr;
-	parent = nullptr;
-	previous = nullptr;
+	for (auto& n : navigators_) n.release();
 }
 
 void PathBranch::navigate_path() const
@@ -72,24 +71,34 @@ void PathBranch::navigate_path() const
 	case 0: // stay on same path
 		break;
 	case 1: // continue on this path
+		parent->current->close();
 		if (has_child())
+		{
 			child->previous = parent->current;
+			child->init();
+		}	
 		parent->current = child;
 		break;
 	default: // chooses a new path, if it exists
 		if (has_sibling())
 		{
+			parent->current->close();
 			auto temp_sibling = sibling;
 			for (auto i = 2; i < path && temp_sibling; i++)
 				temp_sibling = temp_sibling->sibling;
 
 			temp_sibling->previous = parent->current;
 			parent->current = temp_sibling;
+			parent->current->init();
 		}
 		else
 		{
+			parent->current->close();
 			if (has_child())
+			{
 				child->previous = parent->current;
+				child->init();
+			}
 			parent->current = child;
 		}
 		break;

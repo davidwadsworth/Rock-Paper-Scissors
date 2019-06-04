@@ -1,0 +1,27 @@
+<Controllers id="data_controllers" path="data_controllers_v2.xml">
+	<Controller id="y_menu_nav" >
+		<Input key="0" command="3" command_value="-1"/>
+		<Input key="1" command="3" command_value="1" />
+		<Input key="4" command="5" command_value="0" />
+		<Input key="5" command="7" command_value="0" />
+	</Controller>
+	<Controller id="debug">
+		<Input key="2" command="0" command_value="-1,1" />
+		<Input key="3" command="0" command_value="1,2" />
+		<Input key="-23" command="0" command_value="0,0" />
+		<Input key="4" command="6" command_value="3" />
+		<Input key="5" command="6" command_value="4" />
+		<Input key="6" command="6" command_value="5" />
+	</Controller>
+	<Controller id="select_attack" >
+		<Input key="4" command="1" command_value="0" />
+		<Input key="5" command="1" command_value="1" />
+		<Input key="6" command="1" command_value="2" />
+	</Controller>
+	<Controller id="combat" >
+		<Input key="2" command="0" command_value="-1,1" />
+		<Input key="3" command="0" command_value="1,2" />
+		<Input key="-23" command="0" command_value="0,0" />
+		<Input key="7" command="2" command_value="1" />
+	</Controller>
+</Controllers>

@@ -6,8 +6,9 @@ namespace Navigation
 	class PlaySound : public Navigator
 	{
 		int sound_id_;
+		AudioQueue * player_;
 	public:
-		explicit PlaySound(int id);
+		explicit PlaySound(AudioQueue * player, int id);
 
 		int choose_path() override;
 	};
@@ -15,8 +16,9 @@ namespace Navigation
 	class PlayMusic : public Navigator
 	{
 		int music_id_, loop_;
+		AudioQueue * player_;
 	public:
-		PlayMusic(int id, int loop);
+		PlayMusic(AudioQueue * player, int id, int loop);
 
 		int choose_path() override;
 
@@ -24,9 +26,9 @@ namespace Navigation
 
 	class StopMusic : public Navigator
 	{
+		AudioQueue * player_;
 	public:
-		StopMusic() {}
-
+		explicit StopMusic(AudioQueue * player);
 		int choose_path() override;
 	};
 }

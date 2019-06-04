@@ -6,7 +6,7 @@
 
 ControllerCollection LoadControllerData::load() const
 {
-	std::ifstream character_path(path_);
+	std::ifstream character_path(path);
 	rapidxml::xml_document<> data;
 
 	std::vector<char> buffer((std::istreambuf_iterator<char>(character_path)), std::istreambuf_iterator<char>());
@@ -17,6 +17,9 @@ ControllerCollection LoadControllerData::load() const
 	const auto controllers_node = data.first_node("Controllers");
 
 	auto controller_collection = ControllerCollection();
+
+	controller_collection.id = controllers_node->first_attribute("id")->value();
+	controller_collection.path = controllers_node->first_attribute("path")->value();
 
 	for (auto controller_node = controllers_node->first_node("Controller"); controller_node; controller_node = controller_node->next_sibling())
 	{
