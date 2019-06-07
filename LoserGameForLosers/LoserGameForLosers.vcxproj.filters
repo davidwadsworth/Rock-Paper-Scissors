@@ -58,6 +58,9 @@
     <Filter Include="ECS\GlyphAtlasComponent">
       <UniqueIdentifier>{d8be095f-5780-4969-b1c3-8d5317aba818}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Navigation\NavigationPresets">
+      <UniqueIdentifier>{8cde515b-4701-44e1-b621-3955067ed187}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -96,17 +99,11 @@
     <ClInclude Include="PlayerComponent.h">
       <Filter>ECS</Filter>
     </ClInclude>
-    <ClInclude Include="Attack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CursorComponent.h">
       <Filter>ECS</Filter>
     </ClInclude>
     <ClInclude Include="BoxComponent.h">
       <Filter>ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="Character.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>Header Files</Filter>
@@ -210,9 +207,6 @@
     <ClInclude Include="FadeComponent.h">
       <Filter>ECS</Filter>
     </ClInclude>
-    <ClInclude Include="ProjectileComponent.h">
-      <Filter>ECS</Filter>
-    </ClInclude>
     <ClInclude Include="DataCollection.h">
       <Filter>Data\DataCollections</Filter>
     </ClInclude>
@@ -297,6 +291,18 @@
     <ClInclude Include="AttackQueue.h">
       <Filter>Queue</Filter>
     </ClInclude>
+    <ClInclude Include="AttackPresets.h">
+      <Filter>Navigation\NavigationPresets</Filter>
+    </ClInclude>
+    <ClInclude Include="NavigationPreset.h">
+      <Filter>Navigation\NavigationPresets</Filter>
+    </ClInclude>
+    <ClInclude Include="CombatPresets.h">
+      <Filter>Navigation\NavigationPresets</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuPresets.h">
+      <Filter>Navigation\NavigationPresets</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -360,9 +366,6 @@
       <Filter>Navigation</Filter>
     </ClCompile>
     <ClCompile Include="FadeComponent.cpp">
-      <Filter>ECS</Filter>
-    </ClCompile>
-    <ClCompile Include="ProjectileComponent.cpp">
       <Filter>ECS</Filter>
     </ClCompile>
     <ClCompile Include="TextureAtlasComponent.cpp">

@@ -54,9 +54,14 @@ public:
 		controller_ = Controller(data_);
 	}
 
-	void toggle_keys_activity()
+	void deactivate()
 	{
-		keys_are_active_ = !keys_are_active_;
+		keys_are_active_ = false;
+	}
+
+	void activate()
+	{
+		keys_are_active_ = true;
 	}
 
 	bool keyboard_check(const int key)

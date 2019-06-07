@@ -10,6 +10,7 @@ public:
 	{
 		path_ = Path();
 	}
+	~AttackQueue() = default;
 
 	void empty_add(PathTrunk * action)
 	{
@@ -27,4 +28,5 @@ public:
 	{
 		path_.add(action);
 	}
+
 };

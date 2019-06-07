@@ -52,7 +52,7 @@ public:
 
 		branch_1 = new PathBranch(select_attack_, nullptr, branch_6);
 		branch_1->add_navigator<Navigation::StopMusic>(state_->audio_player);
-		branch_1->add_navigator<Navigation::ToggleEnableController>(player_left);
+		branch_1->add_navigator<Navigation::DisableController>(player_left);
 		
 		branch_2 = new PathBranch(select_attack_, nullptr, branch_1);
 		branch_2->add_navigator<Navigation::CreateOptionBox>(state_->palette, options_choose_attack, input_controller_player_1,  P1_OPTIONS, player_left);
@@ -67,16 +67,6 @@ public:
 		combat_->next = select_attack_;
 
 		return combat_;
-	}
-
-	PathTrunk * attack_selection()
-	{
-		
-	}
-
-
-	PathTrunk * create_attack()
-	{
 	}
 
 

@@ -159,12 +159,14 @@
   <ItemGroup>
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="AtlasData.h" />
+    <ClInclude Include="AttackPresets.h" />
     <ClInclude Include="AttackQueue.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="AudioData.h" />
     <ClInclude Include="AudioQueue.h" />
     <ClInclude Include="CharacterData.h" />
     <ClInclude Include="CombatNavigation.h" />
+    <ClInclude Include="CombatPresets.h" />
     <ClInclude Include="CommonNavigation.h" />
     <ClInclude Include="ControllerData.h" />
     <ClInclude Include="Data.h" />
@@ -173,17 +175,17 @@
     <ClInclude Include="FadeComponent.h" />
     <ClInclude Include="LinkNavigation.h" />
     <ClInclude Include="AudioNavigation.h" />
+    <ClInclude Include="MenuPresets.h" />
     <ClInclude Include="Navigation.h" />
+    <ClInclude Include="NavigationPreset.h" />
     <ClInclude Include="Navigator.h" />
     <ClInclude Include="PathHack.h" />
     <ClInclude Include="Pathway.h" />
     <ClInclude Include="LoadAtlasData.h" />
-    <ClInclude Include="Attack.h" />
     <ClInclude Include="BackgroundComponent.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="BitmapTexture.h" />
     <ClInclude Include="BoxComponent.h" />
-    <ClInclude Include="Character.h" />
     <ClInclude Include="LoadAudioData.h" />
     <ClInclude Include="LoadCharacterData.h" />
     <ClInclude Include="ColliderComponent.h" />
@@ -212,7 +214,6 @@
     <ClInclude Include="Links.h" />
     <ClInclude Include="LoadOptionsData.h" />
     <ClInclude Include="OptionsData.h" />
-    <ClInclude Include="ProjectileComponent.h" />
     <ClInclude Include="Targetable.h" />
     <ClInclude Include="TextureAtlasComponent.h" />
     <ClInclude Include="KeyboardHandler.h" />
@@ -264,7 +265,6 @@
     <ClCompile Include="Options.cpp" />
     <ClCompile Include="OptionsComponent.cpp" />
     <ClCompile Include="Pathway.cpp" />
-    <ClCompile Include="ProjectileComponent.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

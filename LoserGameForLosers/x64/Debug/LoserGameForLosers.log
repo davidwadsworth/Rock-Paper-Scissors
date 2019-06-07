@@ -1,7 +1,7 @@
 ﻿  stdafx.cpp
 c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\constants.h(41): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\constants.h(52): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\textureslot.h(155): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\textureslot.h(162): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
 c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\commoninputcommands.h(33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\commoninputcommands.h(88): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\commoninputcommands.h(112): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data

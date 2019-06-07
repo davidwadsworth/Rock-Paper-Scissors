@@ -1,20 +1,20 @@
 <Characters id="data_characters" path="data_characters_v2.xml">
 	
 	<Character id="blue_guy" velocity="1.0" hitbox="0.5">
-		<Attack hitbox="1.5" distance="0" />
+		<Attack hitbox="1.5"/>
 		<Attack hitbox="0.8" distance="2.0"/>
 		<Attack hitbox="0.8" distance="0.5" />
-		<Attack hitbox="0.8" distance="0" />
-		<Attack hitbox="0.8" distance="0" />
-		<Attack hitbox="0.5" distance="0" />
+		<Attack hitbox="0.5" move_stun="50" defense="4"/>
+		<Attack hitbox="0.8" move_stun="60" hit_stun="10" damage="4" op_distance="0.7"/>
+		<Attack hitbox="0.9" move_stun="70" hit_stun="70" damage="8"/>
 	</Character>
 
-	<Character id="red_guy" velocity="1.0" hitbox="0.8">
-		<Attack hitbox="1.0" distance="0" />
+	<Character id="red_guy" velocity="1.0" hitbox="0.7">
+		<Attack hitbox="1.0"/>
 		<Attack hitbox="1.0" distance="1.0"/>
 		<Attack hitbox="0.9" distance="1.0" />
-		<Attack hitbox="0.8" distance="0" />
-		<Attack hitbox="0.8" distance="0" />
-		<Attack hitbox="0.5" distance="0" />
+		<Attack hitbox="0.5" move_stun="50" defense="4"/>
+		<Attack hitbox="0.8" move_stun="60" hit_stun="10" damage="4" op_distance="0.7"/>
+		<Attack hitbox="0.9" move_stun="70" hit_stun="70" damage="8"/>
 	</Character>
 </Characters>

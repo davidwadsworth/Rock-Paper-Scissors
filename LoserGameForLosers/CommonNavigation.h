@@ -25,11 +25,19 @@ namespace Navigation
 		int choose_path() override;
 	};
 
-	class ToggleEnableController final : public Navigator
+	class EnableController final : public Navigator
 	{
 		Entity * player_;
 	public:
-		explicit ToggleEnableController(Entity* player);
+		explicit EnableController(Entity* player);
+		int choose_path() override;
+	};
+
+	class DisableController final : public Navigator
+	{
+		Entity * player_;
+	public:
+		explicit DisableController(Entity* player);
 		int choose_path() override;
 	};
 

@@ -43,11 +43,6 @@ public:
 		/* Whip       */texture_->add_animation_state(slot_id_, speed_, 1, sprite_id_ + 2, sprite_rotation_, sprite_flip);
 		/* Jump Kick  */texture_->add_animation_state(slot_id_, speed_, 1, sprite_id_ + 1, sprite_rotation_, sprite_flip);
 		/* Grab       */texture_->add_animation_state(slot_id_, speed_, 1, sprite_id_, sprite_rotation_, sprite_flip);
-
-		if (sprite_flip == SDL_FLIP_HORIZONTAL)
-		{
-			entity->get_component<PlayerComponent>().direction = -1;
-		}
 	}
 
 	void play_locked_animation(const int animation) const

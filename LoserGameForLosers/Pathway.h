@@ -114,6 +114,7 @@ public:
 
 	void clear()
 	{
+		head_->current->close();
 		head_ = nullptr;
 	}
 

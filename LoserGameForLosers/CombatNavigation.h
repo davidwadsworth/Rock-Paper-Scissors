@@ -1,5 +1,8 @@
 #include "Navigator.h"
 #include "Components.h"
+#include "CommonNavigation.h"
+#include "AttackQueue.h"
+#include "AttackPresets.h"
 
 namespace Navigation
 {
@@ -28,60 +31,86 @@ namespace Navigation
 	/**
 	 * Moves player x to player y
 	 */
-	class MovePlayerToOtherPlayer final : public Navigator
+	class ConvergeTowardsOtherPlayer final : public Navigator
 	{
 		Entity * moving_, *comparing_;
 		InputCommands::Move move_command_;
 		float velocity_, distance_left_, distance_;
 	public:
-		MovePlayerToOtherPlayer(Entity * player_to_move, Entity * other_player, float distance);
+		ConvergeTowardsOtherPlayer(Entity * player_to_move, Entity * other_player, float distance);
 		void init() override;
 		int choose_path() override;
 
 	};
 
-	/**
-	 * returns the winner of two players accounting for attack distance and the rock paper scissors winner determinant located in PlayerComponent
-	 */
-	class CheckAttackWinner : public Navigator
+	class RepelFromOtherPlayer final : public Navigator
 	{
-		Entity * priority_, *other_;
-		bool attack_used_;
+		Entity * moving_, *comparing_;
+		InputCommands::Move move_command_;
+		float velocity_, distance_left_, distance_;
 	public:
-		CheckAttackWinner(Entity * priority, Entity * other, bool attack_used);
-
-		int choose_path() override;
-
-	};
-
-	/**
-	 * Background scales and scrolls based on player position (for more info see Background.h)
-	 */
-	class ScalingScrollingBackground : public Navigator
-	{
-		Background* moving_background_;
-		Entity * player_1_, *player_2_, *background_;
-	public:
-		ScalingScrollingBackground(Entity * player_1, Entity* player_2, Entity * background);
+		RepelFromOtherPlayer(Entity * player_to_move, Entity * other_player, float distance);
 		void init() override;
 		int choose_path() override;
-		void close() override;
 
 	};
 
-	/**
-	 * Creates a lingering attack projectile from AssetManager that destroys itself once the distance is reached or it hits its target
-	 */
-	class CreateAttack : public Navigator
+
+	class PushPlayer : public Delay
 	{
-		Entity * player_, * attack_;
+		Entity * player_, * other_player_;
+		AttackQueue * other_player_queue_;
+		AttackPresets::PlayerSlideBack slide_back_;
+		bool used_;
 	public:
-		explicit CreateAttack(Entity * player);
+		PushPlayer(Entity * player, Entity *other_player, AttackQueue * other_player_queue, Uint32 attack_frames);
 
 		void init() override;
 		int choose_path() override;
 		void close() override;
+
 	};
+
+	class KickPlayer : public Delay
+	{
+		Entity * player_, *other_player_;
+		AttackQueue * other_player_queue_;
+		AttackPresets::KickHitStun stun_;
+		bool used_;
+	public:
+		KickPlayer(Entity * player, Entity *other_player, AttackQueue * other_player_queue, Uint32 attack_frames);
+
+		void init() override;
+		int choose_path() override;
+		void close() override;
+	};
+
+	class BlockPlayer : public Delay
+	{
+		Entity * player_;
+		bool used_;
+	public:
+		BlockPlayer(Entity * player, Uint32 attack_frames);
+
+		void init() override;
+		int choose_path() override;
+		void close() override;
+	};
+
+	class SetAnimation : public Navigator
+	{
+		
+	};
+
+	class ResetAnimations : public Navigator
+	{
+		
+	};
+
+	class ReceiveDamage : public Navigator
+	{};
+
+
 }
 
 

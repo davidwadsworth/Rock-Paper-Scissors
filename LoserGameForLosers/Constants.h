@@ -75,6 +75,7 @@ static const float GRAB_DISTANCE = 0.1f;
 static const int GRAB_HEIGHT = WHIP_HEIGHT;
 static const int GRAB_ARM_SEPERATION = GRAB_HEIGHT + ATTACK_LENGTH + PADDING;
 
+
 static const int ROUNDWIN = 3;
 
 
@@ -93,11 +94,29 @@ enum ANIMATIONS
 	animation_player_grab
 };
 
-enum ATTACKS
+enum FINAL_ATTACKS
 {
-	Whip,
-	Jump_Kick,
-	Grab,
+	final_attack_whip,
+	final_attack_Jump_Kick,
+	final_attack_grab,
+};
+
+enum COMBAT_ATTACKS
+{
+	attack_nothing,
+	attack_block,
+	attack_kick,
+	attack_push
+};
+
+enum CHARACTER_ATTACK_DATA
+{
+	character_order_attack_whip,
+	character_order_attack_jump_kick,
+	character_order_attack_grab,
+	character_order_attack_block,
+	character_order_attack_kick,
+	character_order_attack_push
 };
 
 enum CHARACTER
