@@ -1,13 +1,11 @@
 #pragma once
 #include "AudioData.h"
 
-class LoadAudioData
+class LoadAudioData : public LoadData
 {
-	const char * path_;
 public:
-	LoadAudioData(const char * path)
-		: path_(path)
+	LoadAudioData(const std::string path)
+		: LoadData(path)
 	{}
-	~LoadAudioData() = default;
 	AudioCollection load() const;
 };

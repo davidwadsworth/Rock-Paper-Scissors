@@ -45,52 +45,6 @@ public:
 	float work_done() override { return 1; }
 };
 
-class ChooseAttack: public Process
-{
-	Entity *left_, *right_;
-	bool left_is_player_, right_is_player_;
-	bool not_initialized_;
-public:
-	ChooseAttack(Entity * player_left, Entity * player_right)
-		: not_initialized_(true)
-	{
-		left_is_player_ = player_left->has_component<ControllerComponent>();
-		right_is_player_ = player_right->has_component<ControllerComponent>();
-
-		left_ = player_left;
-		right_ = player_right;
-	}
-
-	bool do_work() override
-	{
-
-		if (not_initialized_)
-		{
-			if (left_is_player_)
-			{
-				const auto left_box = Game::assets->create_option_box(options_choose_attack, { 0, SCREEN_HALF_HEIGHT }, true);
-				left_box->get_component<OptionsComponent>().change_target(left_);
-			}
-			if (right_is_player_)
-			{
-				const auto right_box = Game::assets->create_option_box(options_choose_attack, { SCREEN_HALF_WIDTH * 5 / 4, SCREEN_HALF_HEIGHT }, false);
-				right_box->get_component<OptionsComponent>().change_target(left_);
-			}
-			not_initialized_ = false;
-		}
-
-		if (!manager.get_group(Game::group_cursors).size())
-		{
-			return true;
-		}
-		
-		return false;
-	}
-
-	float work_done() override { return 1; }
-};
-
-
 class ClearPrompts : public Process
 {
 public:

@@ -1,8 +1,107 @@
-﻿  Combat.cpp
-c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers\ecs.h(94): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
-  c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers\combat.cpp(18): note: see reference to function template instantiation 'T &Entity::add_component<TransformComponent,const int&,const int&,const int&,const int&,const float&>(const int &,const int &,const int &,const int &,const float &)' being compiled
+﻿  stdafx.cpp
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\constants.h(41): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\constants.h(52): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\textureslot.h(162): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\commoninputcommands.h(33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\commoninputcommands.h(88): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\commoninputcommands.h(112): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\linkbuilder.h(23): warning C4065: switch statement contains 'default' but no 'case' labels
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\backgroundcomponent.h(25): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\backgroundcomponent.h(26): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\backgroundcomponent.h(27): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\spritecomponent.h(36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\cursorcomponent.h(33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\keyboardhandler.h(24): warning C4200: nonstandard extension used: zero-sized array in struct/union
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\keyboardhandler.h(24): note: This member will be ignored by a defaulted constructor or copy/move assignment operator
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\collidercomponent.h(63): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\collidercomponent.h(87): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\collidercomponent.h(88): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\collidercomponent.h(91): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\collidercomponent.h(92): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\collidercomponent.h(94): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\collidercomponent.h(95): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\collidercomponent.h(96): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\promptcomponent.h(19): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  AssetManager.cpp
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\ecs.h(97): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\assetmanager.cpp(16): note: see reference to function template instantiation 'T &Entity::add_component<OptionsComponent,int&,float&,float&,Vector2D,const int&>(int &,float &,float &,Vector2D &&,const int &)' being compiled
+          with
+          [
+              T=OptionsComponent
+          ]
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\ecs.h(97): warning C4244: 'argument': conversion from '_Ty' to 'const float', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\assetmanager.cpp(42): note: see reference to function template instantiation 'T &Entity::add_component<TransformComponent,int&,int&,int&,int&,int>(int &,int &,int &,int &,int &&)' being compiled
           with
           [
               T=TransformComponent
           ]
-  LoserGameForLosers.vcxproj -> C:\Users\dwads\Documents\GitHub\Rock-Paper-Scissors\x64\Debug\WhipJumpKickGrab.exe
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\ecs.h(97): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\ecs.h(97): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
+  c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\assetmanager.cpp(62): note: see reference to function template instantiation 'T &Entity::add_component<TransformComponent,const int&,const int&,const float&>(const int &,const int &,const float &)' being compiled
+          with
+          [
+              T=TransformComponent
+          ]
+  AudioNavigation.cpp
+  Background.cpp
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\background.cpp(42): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
+  BitmapFont.cpp
+  BitmapTexture.cpp
+  Collision.cpp
+  Combat.cpp
+  CombatNavigation.cpp
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\combatnavigation.cpp(7): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+  CommonInputCommands.cpp
+  CommonLinkCommands.cpp
+  CommonNavigation.cpp
+  DrawCall.cpp
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\drawcall.cpp(6): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\drawcall.cpp(68): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\drawcall.cpp(68): warning C4244: 'initializing': conversion from 'int' to 'const float', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\drawcall.cpp(69): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\drawcall.cpp(69): warning C4244: 'initializing': conversion from 'int' to 'const float', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\drawcall.cpp(70): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\drawcall.cpp(70): warning C4244: 'initializing': conversion from 'int' to 'const float', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\drawcall.cpp(71): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\drawcall.cpp(71): warning C4244: 'initializing': conversion from 'int' to 'const float', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\drawcall.cpp(97): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\drawcall.cpp(98): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\drawcall.cpp(107): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\drawcall.cpp(107): warning C4244: 'initializing': conversion from 'int' to 'const float', possible loss of data
+  ECS.cpp
+  FadeComponent.cpp
+  Game.cpp
+  Links.cpp
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\links.cpp(17): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\links.cpp(18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  LoadAtlasData.cpp
+  LoadAudioData.cpp
+  LoadCharacterData.cpp
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\loadcharacterdata.cpp(28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\loadcharacterdata.cpp(29): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\loadcharacterdata.cpp(35): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\loadcharacterdata.cpp(36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  LoadControllerData.cpp
+  Generating Code...
+  Compiling...
+  LoadOptionsData.cpp
+  Main.cpp
+  Menu.cpp
+  Options.cpp
+  OptionsComponent.cpp
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\optionscomponent.cpp(34): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\dwads\desktop\repo clones\whipjumpkickgrab\losergameforlosers\optionscomponent.cpp(43): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Pathway.cpp
+  ProjectileComponent.cpp
+  TextureAtlasComponent.cpp
+  TextureComponent.cpp
+  TextureManager.cpp
+  Timer.cpp
+  TransformationNavigation.cpp
+  Vector2D.cpp
+  Generating Code...
+  LoserGameForLosers.vcxproj -> C:\Users\dwads\Desktop\Repo Clones\WhipJumpKickGrab\x64\Debug\WhipJumpKickGrab.exe

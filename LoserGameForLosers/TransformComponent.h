@@ -10,26 +10,31 @@ public:
 
 	int height = 32;
 	int width = 32;
-	Vector2D scale_2d;
+	float scale;
 
 	int speed = 3;
 
 	explicit TransformComponent(const float sc)
-		: scale_2d(sc)
+		: scale(sc)
 	{}
 
 	TransformComponent(const float x, const float y, const float sc)
-		: scale_2d(sc)
+		: scale(sc)
 	{
 		position.x = x;
 		position.y = y;
 	}
 
 	TransformComponent(const float x, const float y, const int h, const int w, const float sc)
-		: height(h), width(w), scale_2d(sc)
+		: height(h), width(w), scale(sc)
 	{
 		position.x = x;
 		position.y = y;
+	}
+
+	float get_horizontal_distance(Entity * compare) const
+	{
+		return (this->position.x - compare->get_component<TransformComponent>().position.x) / scale;
 	}
 
 	void init() override

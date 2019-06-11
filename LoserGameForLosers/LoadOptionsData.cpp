@@ -6,7 +6,7 @@
 
 OptionsCollection LoadOptionsData::load() const
 {	
-	std::ifstream character_path(path_);
+	std::ifstream character_path(path);
 	rapidxml::xml_document<> data;
 
 	std::vector<char> buffer((std::istreambuf_iterator<char>(character_path)), std::istreambuf_iterator<char>());
@@ -19,6 +19,7 @@ OptionsCollection LoadOptionsData::load() const
 	auto options_collection = OptionsCollection();
 
 	options_collection.id = option_maps_node->first_attribute("id")->value();
+	options_collection.path = option_maps_node->first_attribute("path")->value();
 
 	for (auto options_node = option_maps_node->first_node("Options"); options_node; options_node = options_node->next_sibling())
 	{
@@ -36,9 +37,18 @@ OptionsCollection LoadOptionsData::load() const
 				{
 					auto link_data = LinkData();
 					link_data.text = option_node->first_attribute("text")->value();
-					link_data.command_id = std::atoi(option_node->first_attribute("command")->value());
-					link_data.command_value = option_node->first_attribute("command_value")->value();
-					link_data.link_id = std::atoi(option_node->first_attribute("link")->value());
+
+					if (option_node->first_attribute("command"))
+					{
+						link_data.command_id = std::atoi(option_node->first_attribute("command")->value());
+						link_data.command_value = option_node->first_attribute("command_value")->value();	
+					}
+					
+					if (option_node->first_attribute("link"))
+						link_data.link_id = std::atoi(option_node->first_attribute("link")->value());
+
+					if (option_node->first_attribute("path"))
+						link_data.path = std::atoi(option_node->first_attribute("path")->value());
 
 					y_data.push_back(link_data);
 				}

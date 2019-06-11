@@ -4,7 +4,7 @@
 class MenuComponent : public Component
 {
 private:
-	TextureComponent * texture_{};
+	TextureAtlasComponent * texture_{};
 	int menu_id_, menu_slot_;
 
 public:
@@ -18,7 +18,7 @@ public:
 
 	void init() override
 	{
-		texture_ = &entity->get_component<TextureComponent>();
+		texture_ = &entity->get_component<TextureAtlasComponent>();
 		menu_slot_ = texture_->create_image_slot(menu_id_, 0, 0);
 	}
 };

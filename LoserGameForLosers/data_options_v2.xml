@@ -1,0 +1,30 @@
+<Option_Maps id="data options" path="data_options_v2.xml">
+	<Options id="start_menu">
+		<X_Position>
+			<Y_Position>
+				<Option text="Single Player" command="5" command_value="0" />
+				<Option text="Multiplayer" command="5" command_value="1" path="2"/>
+				<Option text="How To Play" path="0"/>
+			</Y_Position>
+		</X_Position>
+	</Options>
+	<Options id="choose_difficulty">
+		<X_Position>
+			<Y_Position>
+				<Option text="Easy" command="4" command_value="0" />
+				<Option text="Medium" command="4" command_value="1" />
+				<Option text="Hard" command="4" command_value="2" />
+				<Option text="Impossible" command="4" command_value="3"/>
+			</Y_Position>
+		</X_Position>
+	</Options>
+	<Options id="choose_attack">
+		<X_Position>
+			<Y_Position>
+				<Option text="Choose Whip" command="1" command_value="0" />
+				<Option text="Choose Kick" command="1" command_value="1" />
+				<Option text="Choose Grab" command="1" command_value="2" />
+			</Y_Position>
+		</X_Position>
+	</Options>
+</Option_Maps>

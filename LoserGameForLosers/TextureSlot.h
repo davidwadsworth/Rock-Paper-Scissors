@@ -7,124 +7,198 @@
 class Slot
 {
 public:
+	explicit Slot(SDL_Texture * tex)
+		: texture(tex)
+	{}
 	virtual ~Slot() = default;
-	virtual void set_call(AtlasData * data, int sprite_id, int rotation, SDL_RendererFlip flip) = 0;
-	virtual void update_call(Vector2D* position, Vector2D* scaling) = 0;
-	virtual void draw() = 0;
+
+	bool is_rotated;
+	Vector2D position, data_offset;
+	float scale = 1.0f;
+	SDL_Rect dest;
+	DrawCall* call;
+	int width, height;
+	SDL_Texture * texture;
+
+	void set_call(AtlasData* sprite, const int rotation, const SDL_RendererFlip flip)
+	{
+		call = new DrawCall(sprite, texture, &dest, flip, rotation);
+	}
+
+	void update_position_and_scaling(const Vector2D pos, const float sc)
+	{
+		position = pos;
+		scale = sc;
+		call->update_rotation_point(scale);
+		update();
+
+	}
+	void update_position(const Vector2D pos)
+	{
+		position = pos;
+		update();
+	}
+	void update_scaling(const float sc)
+	{
+		scale = sc;
+		call->update_rotation_point(scale);
+		update();
+	}
+	void update_dimensions(const int w, const int h)
+	{
+		call->update_height(h);
+		call->update_width(w);
+		update();
+	}
+
+	void update_width(const int w)
+	{
+		call->update_width(w);
+		update();
+	}
+
+	void update_height(const int h)
+	{
+		call->update_height(h);
+		update();
+	}
+
+	void update()
+	{ 
+		dest.x = static_cast<int>(position.x + call->position_offset().x * scale);
+		dest.y = static_cast<int>(position.y + call->position_offset().y * scale);
+		dest.w = static_cast<int>(call->width * scale);
+		dest.h = static_cast<int>(call->height * scale);
+	}
+
+	void draw() const
+	{
+		TextureManager::draw(call);
+	}
 };
 
 class Animated
 {
 public:
 	virtual ~Animated() = default;
-	virtual void add_animated_state(AtlasData * data, int speed, int frames, int sprite_id, int rotation, SDL_RendererFlip flip) = 0;
+	virtual void add_animated_state(int speed, std::vector<AtlasData*> frames, int rotation,  SDL_RendererFlip flip) = 0;
 	virtual void update_animation(int state) = 0;
+	virtual void lock_animation(int state) = 0;
+	virtual void unlock_animation() = 0;
+	virtual void set_animated_call(int state, int call_id) = 0;
 };
 
 class ImageSlot : public Slot
 {
-	DrawCall call_;
-	SDL_Rect rect_;
-
 public:
-	explicit ImageSlot(AtlasData * data, const int sprite_id, const int x, const int y, const int rotation, const SDL_RendererFlip flip)
-		: rect_ {x,y, 0, 0}
+	explicit ImageSlot(SDL_Texture * texture, AtlasData * data, const int x, const int y, const int rotation, const SDL_RendererFlip flip)
+		: Slot(texture)
 	{
-		ImageSlot::set_call(data, sprite_id, rotation, flip);
-	}
-
-	void set_call(AtlasData* data, const int sprite_id, const int rotation = 0, const SDL_RendererFlip flip = SDL_FLIP_NONE) override
-	{
-		call_ = DrawCall(data->data[sprite_id], &rect_, rotation, flip);
-	}
-
-	void update_call(Vector2D* position, Vector2D* scaling) override
-	{
-		call_.update_call(position, scaling);
-	}
-
-	void draw() override
-	{
-		TextureManager::draw(&call_);
+		dest = SDL_Rect{ x,y, data->w, data->h };
+		set_call(data, rotation, flip);
 	}
 };
 
 struct AnimatedState
 {
+private:
+	Uint32 start_ticks_;
+public:
+	AnimatedState()
+		: start_ticks_(SDL_GetTicks()), speed(0), frames(0), locked(false), current_frame(0), frame_count(0)
+	{}
+
 	std::vector<DrawCall> calls;
 	int speed;
 	int frames;
+	bool locked;
+	int current_frame;
+	int frame_count;
 
 	DrawCall* animate()
 	{
-		return &calls[static_cast<int>(SDL_GetTicks() / speed) % frames];
+		current_frame = (SDL_GetTicks() - start_ticks_) / speed % frames;
+		
+		return &calls[current_frame];
+	}
+
+	DrawCall* locked_animation()
+	{
+		current_frame = frame_count;
+
+		if (frame_count < frames)
+			frame_count++;
+
+		return &calls[current_frame];
+	}
+
+	DrawCall* get_call(const int call_id)
+	{
+		return &calls[call_id];
+	}
+
+	void reset_ticks()
+	{
+		start_ticks_ = SDL_GetTicks();
+		frame_count = 0;
 	}
 };
 
 class AnimatedSlot : public Slot, public Animated
 {
-	DrawCall* call_;
 	std::vector<AnimatedState> animated_states_;
-	SDL_Rect rect_;
-
+	AnimatedState* current_state_;
 public:
-	AnimatedSlot(const int x, const int y)
-		: call_(nullptr), rect_{x, y, 0, 0}
-	{}
+	AnimatedSlot(SDL_Texture * texture, const int x, const int y)
+		: Slot(texture)
+	{
+		dest = { x, y, 0, 0 };
+	}
 
-	void add_animated_state(AtlasData * data, const int speed, const int frames, const int sprite_id, const int rotation, const SDL_RendererFlip flip) override
+	void add_animated_state(const int speed, std::vector<AtlasData*> frames, const int rotation, const SDL_RendererFlip flip) override
 	{
 		auto anim_state = AnimatedState();
-		auto sprite_data = data->data;
 
-		anim_state.frames = frames;
+		anim_state.frames = frames.size();
 		anim_state.speed = speed;
+		anim_state.locked = false;
 
-		for(auto id = sprite_id; id < sprite_id + frames; id++)
-		{
-			anim_state.calls.push_back(DrawCall(sprite_data[id], &rect_, rotation, flip));
-		}
-
-		if (call_)
-		{
-			call_ = &animated_states_[0].calls[0];
-		}
+		for(auto sprite : frames)
+			anim_state.calls.push_back(DrawCall(sprite, texture, &dest, flip, rotation));
 
 		animated_states_.push_back(anim_state);
+		current_state_ = &animated_states_[0];
+		call = &current_state_->calls[0];
 	}
 
-	void set_call(AtlasData* data, const int sprite_id, const int rotation = 0, const SDL_RendererFlip flip = SDL_FLIP_NONE) override
+	void lock_animation(const int state) override
 	{
-		call_ = new DrawCall(data->data[sprite_id], &rect_, rotation, flip);
-	}
-
-	void update_call(Vector2D* position, Vector2D* scaling) override
-	{
-		call_->update_call(position, scaling);
+		current_state_ = &animated_states_[state];
+		current_state_->locked = true;
+		current_state_->reset_ticks();
 	}
 
 	void update_animation(const int state) override
 	{
-		call_ = animated_states_[state].animate();
+		if (!current_state_->locked)
+		{
+			current_state_ = &animated_states_[state];
+			call = current_state_->animate();
+		}
+		else
+		{
+			call = current_state_->locked_animation();
+		}
 	}
 
-	void draw() override
+	void unlock_animation() override
 	{
-		TextureManager::draw(call_);
+		current_state_->locked = false;
 	}
 
-};
-
-class NULLSlot : public Slot
-{
-public:
-	NULLSlot() = default;
-	void set_call(AtlasData* data, int sprite_id, int rotation, SDL_RendererFlip flip) override
-	{}
-
-	void update_call(Vector2D* position, Vector2D* scaling) override
-	{}
-
-	void draw() override
-	{}
+	void set_animated_call(const int state, const int call_id) override
+	{
+		current_state_ = &animated_states_[state];
+		call = current_state_->get_call(call_id);
+	}
 };

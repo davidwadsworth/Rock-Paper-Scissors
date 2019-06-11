@@ -11,6 +11,7 @@ SDL_Texture* TextureManager::load_texture(const char* texture)
 	return tex;
 }
 
+
 void TextureManager::draw(SDL_Texture * tex, SDL_Rect src, SDL_Rect dest)
 {
 	SDL_RenderCopyEx(Game::renderer, tex, &src, &dest, 0, nullptr, SDL_FLIP_NONE);
@@ -18,6 +19,6 @@ void TextureManager::draw(SDL_Texture * tex, SDL_Rect src, SDL_Rect dest)
 
 void TextureManager::draw(DrawCall *call)
 {
-	SDL_RenderCopyEx(Game::renderer, call->tex, &call->src, call->dest, call->rotation, &call->rotation_point, call->flip);
+	SDL_RenderCopyEx(Game::renderer, call->tex, &call->src, call->dest, call->rotation, call->rotation_point, call->flip);
 }
  

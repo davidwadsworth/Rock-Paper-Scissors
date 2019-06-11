@@ -2,40 +2,74 @@
 #include "ECS.h"
 #include "Data.h"
 
-class DataManager
-{
-	Manager * manager_;
+class LoadData;
+class DataManager;
 
-	CharacterCollection character_data_;
-	AtlasData atlas_data_;
-	OptionsCollection options_data_;
-	ControllerCollection controllers_data_;
-	AudioCollection audio_data_;
+using LoadDataID = std::size_t;
+
+inline LoadDataID getNewLoadDataTypeID()
+{
+	static LoadDataID last_id = 0u;
+	return last_id++;
+}
+
+template <typename T> inline LoadDataID getLoadDataTypeID() noexcept
+{
+	static_assert(std::is_base_of<LoadData, T>::value, "");
+	static LoadDataID type_id = getNewLoadDataTypeID();
+	return type_id;
+}
+
+constexpr std::size_t maxLoadData = 32;
+
+using LoadDataBitSet = std::bitset<maxLoadData>;
+
+using LoadDataArray = std::array<LoadData*, maxLoadData>;
+
+class LoadData
+{
 public:
-	explicit DataManager(Manager *manager)
-		: manager_(manager)
+	std::string path;
+
+	explicit LoadData(const std::string path)
+		: path(path)
 	{}
 
-	~DataManager() {}
+	virtual ~LoadData() = default;
+};
 
-	//Atlas Data
-	void load_atlas_data(const char* path);
-	AtlasData* get_atlas_data();
 
-	//Character Data
-	void load_character_data(const char* path);
-	CharacterData* get_character_data(int id);
 
-	//Options Data
-	void load_options_data(const char* path);
-	OptionsData* get_options_data(int id);
+class DataManager
+{
+	LoadDataArray load_array_;
+	LoadDataBitSet load_bit_set_;
+public:
+	DataManager()
+	{}
 
-	//Controller Data
-	void load_controller_data(const char* path);
-	ControllerData* get_controller_data(int id);
+	~DataManager() = default;
 
-	//Audio Data
-	void load_audio_data(const char * path);
-	AudioCollection* get_audio_data();
+	template <typename T> bool is_loaded() const
+	{
+		return load_bit_set_[getLoadDataTypeID<T>()];
+	}
+
+	template <typename T, typename... TArgs>
+	T& load_data(TArgs&&... m_args)
+	{
+		T* d(new T(std::forward<TArgs>(m_args)...));
+
+		load_array_[getLoadDataTypeID<T>()] = d;
+		load_bit_set_[getLoadDataTypeID<T>()] = true;
+
+		return *d;
+	}
+
+	template<typename T> T& get_load() const
+	{
+		auto ptr(load_array_[getLoadDataTypeID<T>()]);
+		return *static_cast<T*>(ptr);
+	}
 
 };

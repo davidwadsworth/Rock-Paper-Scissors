@@ -1,5 +1,6 @@
 #pragma once
 #include "Commands.h"
+using namespace LinkCommands;
 
 class LinkCommandBuilder
 {
@@ -7,40 +8,31 @@ public:
 	LinkCommandBuilder() {}
 	~LinkCommandBuilder() {}
 
-	LinkCommand * create_command(const int command_id, const std::string command_value)
+	static Command * create_command(const int command_id, const std::string command_value)
 	{
-		LinkCommand * command;
+		Command * command;
 		switch (command_id)
 		{
 		case 0:
-			command = new ChangeStateLink(command_value);
+			command = new ChangeState(command_value);
 			break;
 		case 1:
-			command = new ChangeScreenLink();
+			command = new SelectAttack(command_value);
 			break;
 		case 2:
-			command = new SelectAttackLink(command_value);
+			command = new ChooseCharacter(command_value);
 			break;
 		case 3:
-			command = new UndoLink();
+			command = new ChooseBackground(command_value);
 			break;
 		case 4:
-			command = new ChooseCharacterLink(command_value);
+			command = new SetDifficulty(command_value);
 			break;
 		case 5:
-			command = new ChooseBackgroundLink(command_value);
-			break;
-		case 6:
-			command = new SetDifficultyLink(command_value);
-			break;
-		case 7:
-			command = new SinglePlayerLink();
-			break;
-		case 8:
-			command = new TwoPlayerLink();
+			command = new SetGameMode(command_value);
 			break;
 		default:
-			command = new NothingLink();
+			command = new Command();
 			break;
 		}
 		return command;

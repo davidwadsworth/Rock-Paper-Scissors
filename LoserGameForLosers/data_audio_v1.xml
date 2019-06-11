@@ -1,5 +1,5 @@
 
-<AudioCollection id="data audio">
+<AudioCollection id="data_audio" path="data_audio_v1.xml">
 	<Audio path="combat_start.wav" encoding="1" />
 	<Audio path="cymbal_swell.wav" encoding="1" />
 	<Audio path="drum_beat.wav" encoding="0" />

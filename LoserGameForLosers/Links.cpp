@@ -2,7 +2,7 @@
 
 void CursorLeftLink::set_link_information(SDL_Rect * starting_rect)
 {
-	auto bitmap_font = Game::assets->get_bitmap_font();
+	auto bitmap_font = asset_manager_->get_bitmap_font();
 
 	link_dimensions_ = bitmap_font->text_dimensions(static_cast<int>(pos_.x) + CURSOR_WIDTH + 4 * padding_, static_cast<int>(pos_.y) + 2 * padding_, text_);
 

@@ -2,13 +2,11 @@
 
 #include "OptionsData.h"
 
-class LoadOptionsData
+class LoadOptionsData : public LoadData
 {
-	const char * path_;
 public:
-	LoadOptionsData(const char * path)
-		: path_(path)
+	LoadOptionsData(const char * path) 
+		: LoadData(path)
 	{}
-	~LoadOptionsData() {}
 	OptionsCollection load() const;
 };

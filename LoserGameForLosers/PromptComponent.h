@@ -3,7 +3,7 @@
 
 class PromptComponent : public Component
 {
-	TextureComponent * texture_;
+	TextureAtlasComponent * texture_;
 	TransformComponent * transform_;
 	int sprite_id_, prompt_slot_;
 public:
@@ -15,7 +15,7 @@ public:
 	void init() override
 	{
 		transform_ = &entity->get_component<TransformComponent>();
-		texture_ = &entity->get_component<TextureComponent>();
+		texture_ = &entity->get_component<TextureAtlasComponent>();
 		prompt_slot_ = texture_->create_image_slot(sprite_id_, transform_->position.x, transform_->position.y);
 	}
 };

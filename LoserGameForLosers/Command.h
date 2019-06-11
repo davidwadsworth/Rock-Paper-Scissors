@@ -4,7 +4,8 @@
 class Command
 {
 public:
+	Command() = default;
 	virtual ~Command() = default;
-	virtual void execute(Entity * entity) = 0;
+	virtual void execute(Entity * entity){}
 };
 

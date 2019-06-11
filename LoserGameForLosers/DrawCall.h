@@ -2,53 +2,31 @@
 #include "SDL.h"
 #include "AtlasData.h"
 
+class AssetManager;
 class DrawCall
 {
-	SpriteData data_;
+	AtlasData * data_;
+	SDL_Point rotation_axis_;
 	bool is_rotated_;
-	SDL_Point data_offset_;
-	int rotation_axis_;
-public:
-
-	DrawCall() = default;
-
-	explicit DrawCall(const SpriteData data, SDL_Rect* dest, const int rotation = 0, const SDL_RendererFlip flip = SDL_FLIP_NONE)
-		: data_(data), is_rotated_(data.is_rotated), rotation(rotation), flip(flip), dest(dest)
-	{
-		data_offset_.x = data_.offset_x;
-		data_offset_.y = 0;
-
-		if (!is_rotated_)
-			data_offset_.y = data_.offset_y;
-
-		rotation_axis_ = data_.original_h;
-
-		if (this->flip == SDL_FLIP_HORIZONTAL)
-		{
-			data_offset_.x = data_.offset_x;
-			data_offset_.y = data_.offset_y;
-
-			if (!is_rotated_)
-			{
-				data_offset_.x += data_.original_w - data_.w;
-			}
-			else
-			{
-				this->rotation += 180;
-			}
-		}
-
-		init();
-	}
-
+	int original_w_, original_h_;
+	int data_w_, data_h_;
+	Vector2D data_offset_, other_offset_;
+	void find_rotation_point();
 	void init();
+public:
+	int height, width;
+	
+	DrawCall() = default;
+	DrawCall(AtlasData * data, SDL_Texture* tex, SDL_Rect* dest, SDL_RendererFlip flip, int rotation);
+	DrawCall(SDL_Texture *tex, SDL_Rect src, SDL_Rect *dest, SDL_RendererFlip flip, int rotation, SDL_Point * point);
+	void update_rotation_point(float scaling) const;
+	void update_height(int h);
+	void update_width(int w);
+	Vector2D position_offset();
 
-	void update_call(Vector2D* position, Vector2D* scaling);
-
-	SDL_Point rotation_point;
+	SDL_Point* rotation_point;
 	int rotation = 0;
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
-	int id;
 	SDL_Texture * tex;
 	SDL_Rect src, *dest;
 

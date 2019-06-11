@@ -1,9 +1,16 @@
 #pragma once
+#include <vector>
 
 struct AttackData
 {
-	float hitbox;
+	int encoding;
+	float hit_box;
 	float distance;
+	Uint32 move_stun;
+	Uint32 hit_stun;
+	int damage;
+	int defense;
+	float op_distance;
 };
 
 struct CharacterData
@@ -11,11 +18,10 @@ struct CharacterData
 	std::string id;
 	std::vector<AttackData> attack_data;
 	float velocity;
-	float hitbox;
+	float hit_box;
 };
 
-struct CharacterCollection
+struct CharacterCollection : DataCollection
 {
-	std::string id;
 	std::vector<CharacterData> data;
 };

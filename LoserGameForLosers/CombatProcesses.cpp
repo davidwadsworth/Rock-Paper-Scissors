@@ -26,8 +26,8 @@ Entity* EndOfRoundSequence::check_winner(Entity* entity)
 {
 	Entity * winner = nullptr;
 
-	if (Collision::aabb(SDL_Rect{priority_collider_->projectile_point, priority_collider_->collider.y, static_cast<int>(priority_player_->chosen_attack->projectile_range * priority_transform_->scale_2d.x * SPRITE_LENGTH) * priority_player_->direction, static_cast<int>(priority_transform_->scale_2d.y * SPRITE_LENGTH) }, other_collider_->collider) ||
-		Collision::aabb(SDL_Rect{other_collider_->projectile_point, other_collider_->collider.y, static_cast<int>(other_player_->chosen_attack->projectile_range * other_transform_->scale_2d.x * SPRITE_LENGTH) * other_player_->direction, static_cast<int>(other_transform_->scale_2d.y * SPRITE_LENGTH) }, priority_collider_->collider)
+	if (Collision::aabb(SDL_Rect{priority_collider_->projectile_point, priority_collider_->collider.y, static_cast<int>(priority_player_->chosen_attack->projectile_range * priority_transform_->scale * SPRITE_LENGTH) * priority_player_->direction, static_cast<int>(priority_transform_->scale * SPRITE_LENGTH) }, other_collider_->collider) ||
+		Collision::aabb(SDL_Rect{other_collider_->projectile_point, other_collider_->collider.y, static_cast<int>(other_player_->chosen_attack->projectile_range * other_transform_->scale * SPRITE_LENGTH) * other_player_->direction, static_cast<int>(other_transform_->scale * SPRITE_LENGTH) }, priority_collider_->collider)
 		)
 	{
 		entity->get_component<TransformComponent>().net_velocity.x = 0;
@@ -38,9 +38,9 @@ Entity* EndOfRoundSequence::check_winner(Entity* entity)
 		// tiny jump kick exception
 		if (priority_player_->attack_id == Jump_Kick && other_player_->attack_id == Whip)
 		{
-			auto current_distance = std::abs(priority_transform_->position.x - other_transform_->position.x) / (priority_transform_->scale_2d.x * SPRITE_LENGTH);
+			auto current_distance = std::abs(priority_transform_->position.x - other_transform_->position.x) / (priority_transform_->scale * SPRITE_LENGTH);
 
-			if (priority_player_->chosen_attack->projectile_range * priority_transform_->scale_2d.y * SPRITE_LENGTH >= current_distance)
+			if (priority_player_->chosen_attack->projectile_range * priority_transform_->scale * SPRITE_LENGTH >= current_distance)
 				winner = priority_;
 		}
 		else
@@ -82,7 +82,7 @@ bool EndOfRoundSequence::move_player(Entity * entity, int distance)
 
 	transform->player_velocity.x = player->get_velocity() * player->direction * move_direction;
 
-	if (transform->scale_2d.x == SPRITE_SCALING)
+	if (transform->scale == SPRITE_SCALING)
 		transform->net_velocity.x = transform->player_velocity.x + transform->external_velocity.x;
 
 	return false;
@@ -90,15 +90,15 @@ bool EndOfRoundSequence::move_player(Entity * entity, int distance)
 
 bool EndOfRoundSequence::do_work()
 {
-	auto current_distance = std::abs(priority_transform_->position.x - other_transform_->position.x) / (priority_transform_->scale_2d.x * SPRITE_LENGTH);
+	auto current_distance = std::abs(priority_transform_->position.x - other_transform_->position.x) / (priority_transform_->scale * SPRITE_LENGTH);
 
 	if (attack_unset_)
 	{
 		priority_attack_ = priority_player_->chosen_attack;
 		other_attack_ = other_player_->chosen_attack;
 		attack_unset_ = false;
-		priority_movement_ = priority_attack_->move_distance * priority_transform_->scale_2d.y * SPRITE_LENGTH * priority_player_->direction * priority_player_->player_identity.hit_box;
-		other_movement_ = other_attack_->move_distance * other_transform_->scale_2d.x * SPRITE_LENGTH * other_player_->direction * other_player_->player_identity.hit_box;
+		priority_movement_ = priority_attack_->move_distance * priority_transform_->scale * SPRITE_LENGTH * priority_player_->direction * priority_player_->player_identity.hit_box;
+		other_movement_ = other_attack_->move_distance * other_transform_->scale * SPRITE_LENGTH * other_player_->direction * other_player_->player_identity.hit_box;
 	}
 
 	Entity* winner = nullptr;

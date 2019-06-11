@@ -1,13 +1,14 @@
 #pragma once
 #include "ControllerData.h"
+#include "DataManager.h"
 
-class LoadControllerData
+
+class LoadControllerData : public LoadData
 {
-	const char * path_;
 public:
-	explicit LoadControllerData(const char * path)
-		: path_(path)
+	explicit LoadControllerData(const std::string path)
+		: LoadData(path)
 	{}
-	~LoadControllerData() {}
+
 	ControllerCollection load() const;
 };

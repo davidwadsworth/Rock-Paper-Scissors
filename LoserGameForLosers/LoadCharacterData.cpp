@@ -6,7 +6,7 @@
 
 CharacterCollection LoadCharacterData::load() const
 {
-	std::ifstream character_path(path_);
+	std::ifstream character_path(path);
 	rapidxml::xml_document<> data;
 	rapidxml::xml_node<> * characters_node;
 
@@ -19,6 +19,7 @@ CharacterCollection LoadCharacterData::load() const
 	auto character_collection = CharacterCollection();
 
 	character_collection.id = characters_node->first_attribute("id")->value();
+	character_collection.path = characters_node->first_attribute("path")->value();
 	
 	for (auto character_node = characters_node->first_node("Character"); character_node; character_node = character_node->next_sibling())
 	{

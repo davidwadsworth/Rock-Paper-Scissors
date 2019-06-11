@@ -22,9 +22,9 @@ public:
 
 	bool do_work() override
 	{
-		left_transform_->scale_2d = SPRITE_SCALING;
-		right_transform_->scale_2d = SPRITE_SCALING;
-		background_transform_->scale_2d = BACKGROUND_SCALING;
+		left_transform_->scale = SPRITE_SCALING;
+		right_transform_->scale = SPRITE_SCALING;
+		background_transform_->scale = BACKGROUND_SCALING;
 
 		left_transform_->position = Vector2D{static_cast<float>(SPRITE_LEFT_EDGE_OF_SCREEN), static_cast<float>(SPRITE_BOTTOM_OF_SCREEN)};
 		right_transform_->position = Vector2D{ static_cast<float>(SPRITE_RIGHT_EDGE_OF_SCREEN), static_cast<float>(SPRITE_BOTTOM_OF_SCREEN) };

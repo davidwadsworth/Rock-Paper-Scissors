@@ -19,16 +19,16 @@ vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
 verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
 triangles  => sprite triangulation, 3 vertex indices per triangle
 -->
-<TextureAtlas id="data atlas" imagePath="atlas_main_textures-0_v1.png" width="2048" height="1926" textureID="0">
+<TextureAtlas id="data_atlas" imagePath="atlas_main_textures-0_v1.png" width="2048" height="1926" textureID="0">
     <sprite n="attack_belt_extension.png" x="2033" y="1218" w="14" h="64" r="y"/>
     <sprite n="attack_belt_hit.png" x="869" y="1858" w="64" h="54"/>
     <sprite n="attack_belt_miss.png" x="1063" y="1858" w="55" h="46"/>
     <sprite n="attack_hand_extension.png" x="1753" y="760" w="64" h="13"/>
-    <sprite n="atttack_hand_hit.png" x="803" y="1858" w="64" h="64"/>
-    <sprite n="atttack_hand_miss.png" x="999" y="1858" w="62" h="44" oX="0" oY="11" oW="64" oH="64"/>
-    <sprite n="atttack_leg_extension.png" x="2032" y="837" w="13" h="64" r="y"/>
-    <sprite n="atttack_leg_hit.png" x="935" y="1858" w="62" h="55" oX="0" oY="0" oW="64" oH="64"/>
-    <sprite n="atttack_leg_miss.png" x="1120" y="1858" w="57" h="39" oX="0" oY="4" oW="64" oH="64"/>
+    <sprite n="attack_hand_hit.png" x="803" y="1858" w="64" h="64"/>
+    <sprite n="attack_hand_miss.png" x="999" y="1858" w="62" h="44" oX="0" oY="11" oW="64" oH="64"/>
+    <sprite n="attack_leg_extension.png" x="2032" y="837" w="13" h="64" r="y"/>
+    <sprite n="attack_leg_hit.png" x="935" y="1858" w="62" h="55" oX="0" oY="0" oW="64" oH="64"/>
+    <sprite n="attack_leg_miss.png" x="1120" y="1858" w="57" h="39" oX="0" oY="4" oW="64" oH="64"/>
     <sprite n="background_cave.png" x="1" y="1" w="800" h="640"/>
     <sprite n="background_city.png" x="1" y="643" w="800" h="640"/>
     <sprite n="background_hills.png" x="1" y="1285" w="800" h="640"/>

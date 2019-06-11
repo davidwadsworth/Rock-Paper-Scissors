@@ -1,36 +1,36 @@
 #include "stdafx.h"
 #include "Menu.h"
+#include "PathHack.h"
 
-Menu::Menu(Manager * manager)
-	: manager_(manager)
+
+
+Menu::Menu(LoadedCollections * collections)
+	: GameState(collections)
 {
-	Game::stack->clear();
+	palette = new AssetManager(&manager, this);
+	palette->add_texture(collections->atlas_data.path.c_str());
+	palette->add_texture("white_background.png");
+	palette->set_bit_map_font("lazyfont.png");
+	audio_player = new AudioQueue(&bank->audio_data);
 
-	auto& screen(manager_->add_entity());
+	const auto menu = palette->create_menu_screen();
+	path = new Path();
 
-	screen.add_component<TransformComponent>(BACKGROUND_X_OFFSET, BACKGROUND_Y_OFFSET, BACKGROUND_HEIGHT, BACKGROUND_WIDTH, BACKGROUND_SCALING_TARGET);
-	screen.add_component<TextureComponent>();
-	screen.add_component<MenuComponent>(main_menu_title);
-	screen.add_group(Game::group_background);
+	auto hack = PathHack(this);
 
-	Game::assets->create_option_box(options_start_menu, SDL_Point{ SPRITE_LENGTH, SCREEN_HALF_HEIGHT}, true);
-	Game::player->play_music(music_title_theme, -1);
+	path->add(hack.initiate_menu());
+
 }
 
 
 void Menu::render()
 {
 	auto& background_group = manager.get_group(Game::group_background);
-	auto& prompt_group = manager.get_group(Game::group_prompts);
 	auto& cursor_group = manager.get_group(Game::group_cursors);
 
 	for (auto& b : background_group)
 	{
 		b->draw();
-	}
-	for (auto& pr : prompt_group)
-	{
-		pr->draw();
 	}
 	for (auto& c : cursor_group)
 	{
@@ -40,8 +40,9 @@ void Menu::render()
 
 void Menu::logic()
 {
-	manager.refresh();
+	path->navigate_path();
 
+	manager.refresh();
 	manager.update();
 }
 
@@ -62,17 +63,16 @@ void Menu::handle_events()
 
 void Menu::close()
 {
-	for (auto& b : manager_->get_group(Game::group_background))
+	for (auto& b : manager.get_group(Game::group_background))
 	{
 		b->del_group(Game::group_background);
 		b->destroy();
 	}
-
-	for (auto& c : manager_->get_group(Game::group_cursors))
+	for (auto& c : manager.get_group(Game::group_cursors))
 	{
 		c->del_group(Game::group_cursors);
 		c->destroy();
 	}
 
-	Game::player->stop_music();
+	audio_player->stop_music();
 }

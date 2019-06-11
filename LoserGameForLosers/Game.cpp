@@ -3,25 +3,17 @@
 #include "Combat.h"
 #include "GameState.h"
 #include "Constants.h"
-
+#include "Loads.h"
 
 
 Manager manager;
 
 SDL_Renderer *Game::renderer = nullptr;
 SDL_Event Game::event;
-GameSettings* Game::game_settings = new GameSettings();
-LinkStack * Game::stack = new LinkStack();
-
-AssetManager* Game::assets = new AssetManager(&manager);
-DataManager * Game::data = new DataManager(&manager);
-AudioQueue * Game::player = nullptr;
-
-std::vector<SDL_Scancode> Game::keys = { SDL_SCANCODE_UP, SDL_SCANCODE_DOWN, SDL_SCANCODE_LEFT, SDL_SCANCODE_RIGHT, SDL_SCANCODE_I, SDL_SCANCODE_O, SDL_SCANCODE_P, SDL_SCANCODE_L };
+DataManager * data = new DataManager();
 
 GameState * current_state = nullptr;
-
-Mix_Music* music = nullptr;
+LoadedCollections collections = LoadedCollections();
 
 bool Game::is_running = false;
 
@@ -47,19 +39,20 @@ void Game::init(const char * window_title)
 		}
 	}
 
-	assets->set_bit_map_font("lazyfont.png");
+	data->load_data<LoadAtlasData>("data_main_textures-0_v2.xml");
+	data->load_data<LoadAudioData>("data_audio_v2.xml");
+	data->load_data<LoadControllerData>("data_controllers_v2.xml");
+	data->load_data<LoadOptionsData>("data_options_v2.xml");
+	data->load_data<LoadCharacterData>("data_characters_v2.xml");
 
-	data->load_atlas_data("data_main_textures-0_v1.xml");
-	data->load_character_data("data_characters_v1.xml");
-	data->load_controller_data("data_controllers_v1.xml");
-	data->load_options_data("data_options_v1.xml");
-	data->load_audio_data("data_audio_v1.xml");
+	collections.atlas_data = AtlasCollection(data->get_load<LoadAtlasData>().load());
+	collections.audio_data = AudioCollection(data->get_load<LoadAudioData>().load());
+	collections.controller_data = ControllerCollection(data->get_load<LoadControllerData>().load());
+	collections.options_data = OptionsCollection(data->get_load<LoadOptionsData>().load());
+	collections.character_data = CharacterCollection(data->get_load<LoadCharacterData>().load());
 
-	assets->add_texture(data->get_atlas_data()->image_path.c_str());
-	player = new AudioQueue(data->get_audio_data());
-	
-	current_state = new Menu(&manager);
-	state_id = STATE_MENU;
+	current_state = new Combat(&collections);
+	state_id = STATE_COMBAT;
 }
 
 // Stolen verbatim from @LazyFooProductions
@@ -86,14 +79,13 @@ void change_state()
 		switch (next_state)
 		{
 		case STATE_MENU:
-			current_state = new Menu(&manager);
+			current_state = new Menu(&collections);
 			break;
 		case STATE_COMBAT:
-			current_state = new Combat(&manager);
+			current_state = new Combat(&collections);
 			break;
 		default: ;
 		}
-
 		//Change the current state ID
 		Game::state_id = next_state;
 
@@ -108,10 +100,18 @@ void Game::update()
 	current_state->logic();
 }
 
+
+
+auto& wipe_group = manager.get_group(Game::group_wipes);
 void Game::render()
 {
 	SDL_RenderClear(renderer);
 	current_state->render();
+
+	for (auto& w : wipe_group)
+	{
+		w->draw();
+	}
 	SDL_RenderPresent(renderer);
 }
 
@@ -123,15 +123,11 @@ void Game::handle_events()
 void Game::clean()
 {
 	current_state->close();
-	stack->clear();
 
 	SDL_DestroyWindow(window);
 	window = nullptr;
 	SDL_DestroyRenderer(renderer);
 	Mix_HaltMusic();
-
-	Mix_FreeMusic(music);
-	music = nullptr;
 
 	IMG_Quit();
 	SDL_Quit();
