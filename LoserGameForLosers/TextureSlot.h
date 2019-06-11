@@ -113,6 +113,7 @@ public:
 	int frames;
 	bool locked;
 	int current_frame;
+	int previous_frame;
 	int frame_count;
 
 	DrawCall* animate()
@@ -128,7 +129,6 @@ public:
 
 		if (frame_count < frames)
 			frame_count++;
-
 		return &calls[current_frame];
 	}
 

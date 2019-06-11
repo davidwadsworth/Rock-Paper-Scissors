@@ -8,6 +8,7 @@ namespace Navigation
 	class Delay : public Navigator
 	{
 		Uint32 total_delay_;
+		Uint32 total_delay_, ticks_;
 		Timer *timer_;
 	public:
 		explicit Delay(Uint32 delay);

@@ -2,6 +2,10 @@
 #include "Navigator.h"
 #include "Components.h"
 #include "CommonNavigation.h"
+#include "Navigator.h"
+#include "Components.h"
+#include "CommonNavigation.h"
+#include "AttackQueue.h"
 #include "AttackPresets.h"
 
 namespace Navigation
@@ -25,6 +29,11 @@ namespace Navigation
 		Entity * player_1_, * player_2_;
 	public:
 		CombatCollision(Entity * player_1, Entity * player_2);
+	class CheckCollision final : public Navigator
+	{
+		Entity * player_1_, * player_2_;
+	public:
+		CheckCollision(Entity * player_1, Entity * player_2);
 		int choose_path() override;
 	};
 
@@ -68,6 +77,11 @@ namespace Navigation
 		bool used_;
 	public:
 		PushPlayer(Entity * player, Entity *other_player, Uint32 attack_frames);
+		AttackQueue * other_player_queue_;
+		AttackPresets::PlayerSlideBack slide_back_;
+		bool used_;
+	public:
+		PushPlayer(Entity * player, Entity *other_player, AttackQueue * other_player_queue, Uint32 attack_frames);
 
 		void init() override;
 		int choose_path() override;
@@ -82,6 +96,11 @@ namespace Navigation
 		bool used_;
 	public:
 		KickPlayer(Entity * player, Entity *other_player, Uint32 attack_frames);
+		AttackQueue * other_player_queue_;
+		AttackPresets::KickHitStun stun_;
+		bool used_;
+	public:
+		KickPlayer(Entity * player, Entity *other_player, AttackQueue * other_player_queue, Uint32 attack_frames);
 
 		void init() override;
 		int choose_path() override;

@@ -51,6 +51,11 @@ namespace Navigation
 	{}
 
 	int CombatCollision::choose_path()
+	CheckCollision::CheckCollision(Entity * player_1, Entity * player_2)
+		: player_1_(player_1), player_2_(player_2)
+	{}
+
+	int CheckCollision::choose_path()
 	{
 		if (Collision::aabb(player_1_->get_component<ColliderComponent>().collider,
 			player_2_->get_component<ColliderComponent>().collider))
@@ -63,6 +68,9 @@ namespace Navigation
 
 	PushPlayer::PushPlayer(Entity * player, Entity *other_player, const Uint32 attack_frames)
 		: Delay(attack_frames), player_(player), other_player_(other_player), used_(false)
+
+	PushPlayer::PushPlayer(Entity * player, Entity *other_player, AttackQueue * other_player_queue, const Uint32 attack_frames)
+		: Delay(attack_frames), player_(player), other_player_(other_player), other_player_queue_(other_player_queue), used_(false)
 	{}
 
 	void PushPlayer::init()
@@ -76,6 +84,7 @@ namespace Navigation
 			other_player_->get_component<ColliderComponent>().collider))
 		{
 			player_->get_component<ScriptComponent>().clear_add(slide_back_.get_trunk());
+			other_player_queue_->clear_add(slide_back_.get_trunk());
 
 			used_ = true;
 		}
@@ -90,6 +99,8 @@ namespace Navigation
 
 	KickPlayer::KickPlayer(Entity * player, Entity * other_player, const Uint32 attack_frames)
 		: Delay(attack_frames), player_(player), other_player_(other_player), used_(false)
+	KickPlayer::KickPlayer(Entity * player, Entity * other_player, AttackQueue * other_player_queue, const Uint32 attack_frames)
+		: Delay(attack_frames), player_(player), other_player_(other_player), other_player_queue_(other_player_queue), used_(false)
 	{}
 
 }

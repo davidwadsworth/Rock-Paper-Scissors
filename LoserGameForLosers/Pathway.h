@@ -106,6 +106,7 @@ public:
 	{
 		if (head_)
 			head_->remove();
+		head_ = nullptr;
 	}
 
 	bool is_empty() const

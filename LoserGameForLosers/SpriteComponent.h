@@ -16,6 +16,7 @@ class SpriteComponent : public Component
 	bool animated_;
 public:
 	SDL_RendererFlip sprite_flip;
+	bool animated = false;
 
 	explicit SpriteComponent(const int sprite_id, const SDL_RendererFlip flp = SDL_FLIP_NONE, const int rots = 0)
 		: animation_state_(0), sprite_rotation_(rots), sprite_id_(sprite_id), sprite_flip(flp), animated_(true)
@@ -63,6 +64,17 @@ public:
 	void unset_image()
 	{
 		animated_ = true;
+	}
+
+	void play_locked_animation(const int animation) const
+	{
+		texture_->lock_animation(slot_id_, animation);
+	}
+
+	void set_image(const int animation, const int image_id)
+	{
+		animated = false;
+		texture_->set_animated_call(slot_id_, animation, image_id);
 	}
 
 	void update() override

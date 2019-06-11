@@ -302,6 +302,20 @@
     </ClInclude>
     <ClInclude Include="ScriptComponent.h">
       <Filter>ECS</Filter>
+    <ClInclude Include="AttackQueue.h">
+      <Filter>Queue</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPresets.h">
+      <Filter>Navigation\NavigationPresets</Filter>
+    </ClInclude>
+    <ClInclude Include="NavigationPreset.h">
+      <Filter>Navigation\NavigationPresets</Filter>
+    </ClInclude>
+    <ClInclude Include="CombatPresets.h">
+      <Filter>Navigation\NavigationPresets</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuPresets.h">
+      <Filter>Navigation\NavigationPresets</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

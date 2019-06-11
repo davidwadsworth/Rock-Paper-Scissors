@@ -5,6 +5,7 @@ namespace Navigation
 {
 	Delay::Delay(const Uint32 delay)
 		: total_delay_(delay), timer_(new Timer())
+		: total_delay_(delay), ticks_(0)
 	{}
 
 	int Delay::choose_path()
@@ -18,6 +19,8 @@ namespace Navigation
 			return 1;
 		}
 
+		if (ticks_++ > total_delay_)
+			return 1;
 		return 0;
 	}
 
@@ -66,6 +69,14 @@ namespace Navigation
 	int CreateOptionBox::choose_path()
 	{
 		return option_box_->get_component<OptionsComponent>().get_path();
+	}
+	ToggleEnableController::ToggleEnableController(Entity * player)
+		: player_(player)
+	{}
+	int ToggleEnableController::choose_path()
+	{
+		player_->get_component<ControllerComponent>().toggle_keys_activity();
+		return 1;
 	}
 }
 

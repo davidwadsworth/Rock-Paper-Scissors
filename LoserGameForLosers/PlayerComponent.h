@@ -1,5 +1,7 @@
 #pragma once
 #include "ECS.h"
+#include "Attack.h"
+#include "character.h"
 #include "Constants.h"
 #include "SpriteComponent.h"
 
@@ -48,6 +50,10 @@ class PlayerComponent : public Component
 public:
 	int num_wins;
 	int attack_id;
+
+public:
+	int num_wins;
+	int attack_id = attack_nothing;
 	int direction = 1;
 
 	explicit PlayerComponent(const int character_id)
@@ -100,6 +106,7 @@ public:
 		attack_id = att_id;
 		collider_->set_collider_hit_box(data_->attack_data[attack_id].hit_box);
 		sprite_->play_locked_animation(attack_to_animation(attack_id));
+		sprite_->play_locked_animation(attack_to_animation(att_id));
 	}
 
 	void reset_character_hit_box()
@@ -126,6 +133,9 @@ public:
 	AttackData* get_final_attack() const
 	{
 		return &data_->attack_data[final_attack_id_];
+	AttackData* get_attack()
+	{
+		return &data_->attack_data[attack_id];
 	}
 
 	Entity* check_attack_winner(Entity *other) const

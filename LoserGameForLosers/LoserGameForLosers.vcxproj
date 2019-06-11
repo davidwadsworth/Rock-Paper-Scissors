@@ -161,6 +161,8 @@
     <ClInclude Include="AtlasData.h" />
     <ClInclude Include="ScriptComponent.h" />
     <ClInclude Include="AttackPresets.h" />
+    <ClInclude Include="AttackPresets.h" />
+    <ClInclude Include="AttackQueue.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="AudioData.h" />
     <ClInclude Include="AudioQueue.h" />
@@ -243,6 +245,7 @@
     <ClCompile Include="AttackPresets.cpp" />
     <ClCompile Include="CombatNavigation.cpp" />
     <ClCompile Include="CombatPresets.cpp" />
+    <ClCompile Include="CombatNavigation.cpp" />
     <ClCompile Include="CommonNavigation.cpp" />
     <ClCompile Include="DrawCall.cpp" />
     <ClCompile Include="FadeComponent.cpp" />
@@ -269,6 +272,9 @@
     <ClCompile Include="OptionsComponent.cpp" />
     <ClCompile Include="Pathway.cpp" />
     <ClCompile Include="ScriptComponent.cpp" />
+    <ClCompile Include="Options.cpp" />
+    <ClCompile Include="OptionsComponent.cpp" />
+    <ClCompile Include="Pathway.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

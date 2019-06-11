@@ -31,6 +31,8 @@ public:
 	{
 		combat_ = new PathTrunk();
 		
+		auto branch_1 = new PathBranch(combat_, nullptr, nullptr);
+		
 		auto branch_2 = new PathBranch(combat_, nullptr, nullptr);
 		branch_2->add_navigator<Navigation::PlaySound>(state_->audio_player, sound_cymbal_swell);
 
@@ -49,6 +51,7 @@ public:
 		branch_6->add_navigator<Navigation::DisplayPrompt>(state_->palette, 1000, ss_main_prompt_stop);
 
 		auto branch_1 = new PathBranch(select_attack_, nullptr, branch_6);
+		branch_1 = new PathBranch(select_attack_, nullptr, branch_6);
 		branch_1->add_navigator<Navigation::StopMusic>(state_->audio_player);
 		branch_1->add_navigator<Navigation::DisableController>(player_left);
 		

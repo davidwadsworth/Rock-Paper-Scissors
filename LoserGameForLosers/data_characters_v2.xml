@@ -6,6 +6,7 @@
 		<Attack hitbox="0.8" distance="0.5" />
 		<Attack hitbox="0.5" move_stun="50" defense="4"/>
 		<Attack hitbox="0.8" move_stun="60" hit_stun="10" damage="4" op_distance="-30"/>
+		<Attack hitbox="0.8" move_stun="60" hit_stun="10" damage="4" op_distance="0.7"/>
 		<Attack hitbox="0.9" move_stun="70" hit_stun="70" damage="8"/>
 	</Character>
 
@@ -15,6 +16,7 @@
 		<Attack hitbox="0.9" distance="1.0" />
 		<Attack hitbox="0.5" move_stun="50" defense="4"/>
 		<Attack hitbox="0.8" move_stun="60" hit_stun="10" damage="4" op_distance="-30"/>
+		<Attack hitbox="0.8" move_stun="60" hit_stun="10" damage="4" op_distance="0.7"/>
 		<Attack hitbox="0.9" move_stun="70" hit_stun="70" damage="8"/>
 	</Character>
 </Characters>
