@@ -31,7 +31,8 @@ ControllerCollection LoadControllerData::load() const
 			auto input = InputData();
 			input.keys = atoi(input_node->first_attribute("key")->value());
 			input.command_id = atoi(input_node->first_attribute("command")->value());
-			input.command_value = input_node->first_attribute("command_value")->value();
+			if (input_node->first_attribute("command_value"))
+				input.command_value = input_node->first_attribute("command_value")->value();
 
 			controller.data.push_back(input);
 		}

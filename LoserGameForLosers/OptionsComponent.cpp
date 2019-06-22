@@ -1,12 +1,12 @@
 #include "stdafx.h"
 
 OptionsComponent::OptionsComponent(const int options_id, const int x, const int y, const Vector2D align, const int pad)
-	: y_pos_(0), x_pos_(0), padding_(pad), alignment_(align), target_(nullptr), box {}, position{ x, y }, options_id_(options_id)
+	: y_pos_(0), x_pos_(0), padding_(pad), alignment_(align), target_(nullptr), options_id_(options_id), box {}, position{ x, y }
 {}
 
 void OptionsComponent::init()
 {
-	data_ = &entity->state->bank->options_data.data[options_id_];
+	data_ = &entity->state->bank->options_data->data[options_id_];
 	options_ = Options(data_, entity->state->palette);
 	current_links = options_.build_options(position.x, position.y, alignment_, padding_);
 	box = options_.box;

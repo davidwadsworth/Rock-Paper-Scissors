@@ -102,7 +102,7 @@ public:
 	Path()
 	{}
 
-	~Path()
+	virtual ~Path()
 	{
 		if (head_)
 			head_->remove();
@@ -116,7 +116,8 @@ public:
 
 	void clear()
 	{
-		head_->current->close();
+		if (head_)
+			head_->current->close();
 		head_ = nullptr;
 	}
 
@@ -139,7 +140,7 @@ public:
 		}
 	}
 
-	void navigate_path()
+	virtual void navigate_path()
 	{
 		if (!head_)
 			return;
@@ -149,7 +150,8 @@ public:
 		else
 		{
 			head_ = head_->next;
-			head_->current->init();
+			if (head_)
+				head_->current->init();
 		}
 	}
 

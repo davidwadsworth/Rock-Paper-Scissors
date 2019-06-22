@@ -3,6 +3,7 @@
 
 void ScriptComponent::init()
 {
+	attack_path_ = new Path();
 }
 
 void ScriptComponent::update()

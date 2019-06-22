@@ -6,6 +6,8 @@
 /**
  * Commands that are bound to keys
  */
+
+
 namespace InputCommands
 {
 	class Move : public InputCommand
@@ -48,23 +50,6 @@ namespace InputCommands
 	};
 
 
-	class SelectAttack : public InputCommand
-	{
-	public:
-		SelectAttack(std::string att_id)
-			: was_pressed_(false), attack_id_(std::stoi(att_id))
-		{}
-
-		void execute(Entity * entity) override
-		{
-			was_pressed_ = true;
-		}
-		void idle(Entity* entity) override;
-
-	private:
-		bool was_pressed_;
-		int attack_id_;
-	};
 
 	class PauseGame : public InputCommand
 	{
@@ -148,22 +133,33 @@ namespace InputCommands
 
 	};
 
-	class CreateAttack : public InputCommand
-	{
-		int attack_id_;
-		bool was_pressed_;
-	public:
-		CreateAttack(std::string att_id);
-
-		void execute(Entity* entity) override;
-		void idle(Entity* entity) override;
-	};
-
 	class Back : public InputCommand
 	{
 		bool was_pressed_;
 	public:
 		Back();
+
+		void execute(Entity* entity) override;
+		void idle(Entity* entity) override;
+	};
+
+	class LoadData : public InputCommand
+	{
+		bool was_pressed_;
+	public:
+
+		LoadData() = default;
+
+		void execute(Entity* entity) override;
+		void idle(Entity* entity) override;
+	};
+
+	class IChangeState : public InputCommand
+	{
+		bool was_pressed_;
+	public:
+
+		IChangeState() = default;
 
 		void execute(Entity* entity) override;
 		void idle(Entity* entity) override;

@@ -3,14 +3,12 @@
 #include "Combat.h"
 #include "GameState.h"
 #include "Constants.h"
-#include "Loads.h"
 
 
 Manager manager;
 
 SDL_Renderer *Game::renderer = nullptr;
 SDL_Event Game::event;
-DataManager * data = new DataManager();
 
 GameState * current_state = nullptr;
 LoadedCollections collections = LoadedCollections();
@@ -39,19 +37,7 @@ void Game::init(const char * window_title)
 		}
 	}
 
-	data->load_data<LoadAtlasData>("data_main_textures-0_v2.xml");
-	data->load_data<LoadAudioData>("data_audio_v2.xml");
-	data->load_data<LoadControllerData>("data_controllers_v2.xml");
-	data->load_data<LoadOptionsData>("data_options_v2.xml");
-	data->load_data<LoadCharacterData>("data_characters_v2.xml");
-
-	collections.atlas_data = AtlasCollection(data->get_load<LoadAtlasData>().load());
-	collections.audio_data = AudioCollection(data->get_load<LoadAudioData>().load());
-	collections.controller_data = ControllerCollection(data->get_load<LoadControllerData>().load());
-	collections.options_data = OptionsCollection(data->get_load<LoadOptionsData>().load());
-	collections.character_data = CharacterCollection(data->get_load<LoadCharacterData>().load());
-
-	current_state = new Combat(&collections);
+	current_state = new Combat(&manager);
 	state_id = STATE_COMBAT;
 }
 
@@ -79,13 +65,14 @@ void change_state()
 		switch (next_state)
 		{
 		case STATE_MENU:
-			current_state = new Menu(&collections);
+			current_state = new Menu(&manager);
 			break;
 		case STATE_COMBAT:
-			current_state = new Combat(&collections);
+			current_state = new Combat(&manager);
 			break;
 		default: ;
 		}
+
 		//Change the current state ID
 		Game::state_id = next_state;
 

@@ -1,7 +1,7 @@
 #pragma once
 #include "Commands.h"
+#include "CombatInputCommands.h"
 
-using namespace InputCommands;
 class InputCommandBuilder
 {
 public:
@@ -14,28 +14,43 @@ public:
 		switch (command_id)
 		{
 		case 0:
-			command = new Move(command_value);
+			command = new InputCommands::Move(command_value);
 			break;
 		case 1:
-			command = new InputCommands::SelectAttack(command_value);
+			command = new InputCommands::PauseGame();
 			break;
 		case 2:
-			command = new PauseGame();
+			command = new InputCommands::MoveCursorY(command_value);
 			break;
 		case 3:
-			command = new MoveCursorY(command_value);
+			command = new InputCommands::MoveCursorX(command_value);
 			break;
 		case 4:
-			command = new MoveCursorX(command_value);
+			command = new InputCommands::MakeSelection();
 			break;
 		case 5:
-			command = new MakeSelection();
+			command = new InputCommands::Back();
 			break;
 		case 6:
-			command = new CreateAttack(command_value);
+			command = new CombatCommands::ScriptPush();
 			break;
 		case 7:
-			command = new Back();
+			command = new CombatCommands::ScriptKick();
+			break;
+		case 8:
+			command = new CombatCommands::ScriptBlock();
+			break;
+		case 9:
+			command = new CombatCommands::EndCombat();
+			break;
+		case 10:
+			command = new CombatCommands::SelectAttack();
+			break;
+		case 11:
+			command = new InputCommands::LoadData();
+			break;
+		case 12:
+			command = new InputCommands::IChangeState();
 			break;
 		default:
 			command = new InputCommand();

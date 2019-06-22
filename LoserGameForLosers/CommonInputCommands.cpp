@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "CommonInputCommands.h"
+#include "CombatPresets.h"
+#include "LoadCharacterData.h"
 
 
 namespace InputCommands
@@ -13,15 +15,6 @@ namespace InputCommands
 
 		if (transform->scale == SPRITE_SCALING)
 			transform->net_velocity.x = transform->player_velocity.x + transform->external_velocity.x;
-	}
-
-	void SelectAttack::idle(Entity * entity)
-	{
-		if (was_pressed_)
-		{
-			entity->get_component<PlayerComponent>().choose_attack(attack_id_);
-			was_pressed_ = false;
-		}
 	}
 
 	void MoveCursorX::execute(Entity * entity)
@@ -59,24 +52,6 @@ namespace InputCommands
 		}
 	}
 
-	CreateAttack::CreateAttack(const std::string att_id)
-		: attack_id_(stoi(att_id)), was_pressed_(false)
-	{}
-
-	void CreateAttack::execute(Entity * entity)
-	{
-		was_pressed_ = true;
-	}
-
-	void CreateAttack::idle(Entity * entity)
-	{
-		if (was_pressed_)
-		{
-			entity->get_component<SpriteComponent>().play_locked_animation(attack_id_);
-			was_pressed_ = false;
-		}
-	}
-
 	Back::Back()
 		: was_pressed_(false)
 	{}
@@ -91,6 +66,34 @@ namespace InputCommands
 		if (was_pressed_)
 		{
 			entity->state->path->previous_path();
+		}
+	}
+
+
+	void LoadData::execute(Entity * entity)
+	{
+		was_pressed_ = true;
+	}
+
+	void LoadData::idle(Entity * entity)
+	{
+		if (was_pressed_)
+		{
+			auto character_data = LoadCharacterData("data_characters_v2.xml");
+			entity->state->bank->character_data = &character_data.load();
+		}
+	}
+
+	void IChangeState::execute(Entity * entity)
+	{
+		was_pressed_ = true;
+	}
+
+	void IChangeState::idle(Entity * entity)
+	{
+		if (was_pressed_)
+		{
+			Game::set_next_state(STATE_COMBAT);
 		}
 	}
 

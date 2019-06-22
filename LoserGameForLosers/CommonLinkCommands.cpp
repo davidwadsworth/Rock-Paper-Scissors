@@ -21,7 +21,7 @@ namespace LinkCommands
 		if (target_)
 		{
 			previous_attack_id_ = target_->get_component<PlayerComponent>().attack_id;
-			target_->get_component<PlayerComponent>().choose_attack(attack_id_);
+			target_->get_component<PlayerComponent>().choose_final_attack(attack_id_);
 		}
 	}
 

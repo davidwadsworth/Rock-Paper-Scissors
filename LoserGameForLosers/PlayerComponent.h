@@ -1,7 +1,5 @@
 #pragma once
 #include "ECS.h"
-#include "Attack.h"
-#include "character.h"
 #include "Constants.h"
 #include "SpriteComponent.h"
 
@@ -15,6 +13,7 @@ class PlayerComponent : public Component
 	SpriteComponent * sprite_;
 	bool is_priority_player_;
 	int final_attack_id_ = final_attack_whip;
+	int health_total_ = 100;
 
 	static ANIMATIONS attack_to_animation(const int attack)
 	{
@@ -46,11 +45,6 @@ class PlayerComponent : public Component
 		}
 	}
 
-
-public:
-	int num_wins;
-	int attack_id;
-
 public:
 	int num_wins;
 	int attack_id = attack_nothing;
@@ -65,14 +59,17 @@ public:
 
 	void init() override
 	{
-		data_ = &entity->state->bank->character_data.data[character_id_];
+		data_ = &entity->state->bank->character_data->data[character_id_];
 		num_wins = 0;
 
 		sprite_ = &entity->get_component<SpriteComponent>();
 		direction = sprite_->sprite_flip ? -1 : 1;
 
+		if (!sprite_->sprite_flip)
+			is_priority_player_ = true;
+
 		collider_ = &entity->get_component<ColliderComponent>();
-		collider_->set_collider_hit_box(data_->hit_box);
+		collider_->hit_box = data_->hit_box;
 
 		attack_id = attack_nothing;
 	}
@@ -84,10 +81,10 @@ public:
 
 	float get_velocity() const
 	{
-		auto velocity = data_->velocity;
 		if (is_priority_player_)
-			velocity = data_->velocity + PLAYER_PRIORITY_INCREMENT;
-		return velocity;
+			return data_->velocity + PLAYER_PRIORITY_INCREMENT;
+
+		return data_->velocity;
 	}	
 
 	void choose_final_attack(const int att_id)
@@ -97,22 +94,27 @@ public:
 
 	void execute_final_attack() const
 	{
-		collider_->set_collider_hit_box(data_->attack_data[final_attack_id_].hit_box);
+		collider_->hit_box = data_->attack_data[final_attack_id_].hit_box;
 		sprite_->set_image(final_attack_to_animation(final_attack_id_), 0);
 	}
 
 	void choose_combat_attack(const int att_id)
 	{
 		attack_id = att_id;
-		collider_->set_collider_hit_box(data_->attack_data[attack_id].hit_box);
+	}
+
+	void execute_combat_attack() const
+	{
+		collider_->hit_box = data_->attack_data[attack_id].hit_box;
 		sprite_->play_locked_animation(attack_to_animation(attack_id));
-		sprite_->play_locked_animation(attack_to_animation(att_id));
 	}
 
 	void reset_character_hit_box()
 	{
 		attack_id = attack_nothing;
-		collider_->set_collider_hit_box(data_->hit_box);
+		collider_->hit_box = data_->hit_box;
+		sprite_->unlock_animation();
+		sprite_->unset_image();
 	}
 
 	void change_priority()
@@ -133,32 +135,39 @@ public:
 	AttackData* get_final_attack() const
 	{
 		return &data_->attack_data[final_attack_id_];
-	AttackData* get_attack()
-	{
-		return &data_->attack_data[attack_id];
 	}
 
-	Entity* check_attack_winner(Entity *other) const
+	void receive_damage(const int amount)
 	{
-		auto winner = entity;
+		health_total_ -= amount;
+		std::cout << data_->id << ": " << health_total_ << std::endl;
+	}
+
+	bool check_player_knock_out() const
+	{
+		return health_total_ <= 0;
+	}
+
+	int check_attack_winner(Entity *other) const
+	{
 
 		if (this->final_attack_id_ == final_attack_whip)
 		{
 			if (other->get_component<PlayerComponent>().final_attack_id_ == final_attack_Jump_Kick)
-				winner = other;
+				return 1;
 		}
 		if (this->final_attack_id_ == final_attack_Jump_Kick)
 		{
 			if (other->get_component<PlayerComponent>().final_attack_id_ == final_attack_grab)
-				winner = other;
+				return 1;
 		}
 		if (this->final_attack_id_ == final_attack_grab)
 		{
 			if (other->get_component<PlayerComponent>().final_attack_id_ == final_attack_whip)
-				winner = other;
+				return 1;
 		}
 
-		return winner;
+		return 2;
 	}
 
 };

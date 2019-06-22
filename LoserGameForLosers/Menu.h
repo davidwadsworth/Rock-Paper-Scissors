@@ -6,7 +6,7 @@
 class Menu : public GameState
 {
 public:
-	Menu(LoadedCollections * collections);
+	Menu(Manager * manager);
 	~Menu()
 	{}
 	void logic() override;

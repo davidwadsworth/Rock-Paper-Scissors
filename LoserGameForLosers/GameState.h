@@ -8,7 +8,7 @@
 class GameState
 {
 public:
-	explicit GameState(LoadedCollections * collections) : bank(collections)
+	explicit GameState(Manager * manager) :manager(manager), bank(new LoadedCollections())
 	{}
 
 	virtual void logic() = 0;
@@ -18,6 +18,7 @@ public:
 	virtual ~GameState() {}
 
 	LoadedCollections * bank;
+	Manager * manager;
 	Path* path = nullptr;
 	AudioQueue* audio_player = nullptr;
 	AssetManager* palette = nullptr;

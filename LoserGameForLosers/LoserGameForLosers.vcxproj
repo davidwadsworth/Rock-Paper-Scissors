@@ -159,6 +159,9 @@
   <ItemGroup>
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="AtlasData.h" />
+    <ClInclude Include="CombatInputCommands.h" />
+    <ClInclude Include="CombatScripts.h" />
+    <ClInclude Include="Script.h" />
     <ClInclude Include="ScriptComponent.h" />
     <ClInclude Include="AttackPresets.h" />
     <ClInclude Include="AttackPresets.h" />
@@ -181,7 +184,6 @@
     <ClInclude Include="Navigation.h" />
     <ClInclude Include="NavigationPreset.h" />
     <ClInclude Include="Navigator.h" />
-    <ClInclude Include="PathHack.h" />
     <ClInclude Include="Pathway.h" />
     <ClInclude Include="LoadAtlasData.h" />
     <ClInclude Include="BackgroundComponent.h" />
@@ -243,9 +245,9 @@
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="AttackPresets.cpp" />
+    <ClCompile Include="CombatInputCommands.cpp" />
     <ClCompile Include="CombatNavigation.cpp" />
     <ClCompile Include="CombatPresets.cpp" />
-    <ClCompile Include="CombatNavigation.cpp" />
     <ClCompile Include="CommonNavigation.cpp" />
     <ClCompile Include="DrawCall.cpp" />
     <ClCompile Include="FadeComponent.cpp" />
@@ -272,9 +274,6 @@
     <ClCompile Include="OptionsComponent.cpp" />
     <ClCompile Include="Pathway.cpp" />
     <ClCompile Include="ScriptComponent.cpp" />
-    <ClCompile Include="Options.cpp" />
-    <ClCompile Include="OptionsComponent.cpp" />
-    <ClCompile Include="Pathway.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

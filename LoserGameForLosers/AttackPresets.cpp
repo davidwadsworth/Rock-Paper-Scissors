@@ -3,6 +3,11 @@
 #include "CombatNavigation.h"
 #include "AudioNavigation.h"
 
+AttackPresets::PlayerSlideBack::PlayerSlideBack(Entity * victim, Entity * attacker)
+	: victim_(victim), attacker_(attacker)
+{}
+
+
 void AttackPresets::PlayerSlideBack::init()
 
 {
@@ -32,6 +37,15 @@ void AttackPresets::PlayerSlideBack::init()
 	set_trunk(pushed);
 }
 
+AttackPresets::KickHitStun::KickHitStun(Entity * victim, Entity * attacker)
+	: victim_(victim), attacker_(attacker), damage_(attacker->get_component<PlayerComponent>().get_attack()->damage)
+{}
+
+void AttackPresets::KickHitStun::blocked()
+{
+	damage_ = attacker_->get_component<PlayerComponent>().get_attack()->damage / 2;
+}
+
 void AttackPresets::KickHitStun::init()
 {
 	const auto kicked = new PathTrunk();
@@ -50,7 +64,7 @@ void AttackPresets::KickHitStun::init()
 	auto lock_player = new PathBranch(kicked, nullptr, hit_stun);
 	lock_player->add_navigator<Navigation::DisableController>(victim_);
 	lock_player->add_navigator<Navigation::SetAnimation>(victim_, animation_player_hit, 1);
-	lock_player->add_navigator<Navigation::ReceiveDamage>(victim_, attacker_data->damage);
+	lock_player->add_navigator<Navigation::ReceiveDamage>(victim_, damage_);
 	lock_player->add_navigator<Navigation::PlaySound>(victim_->state->audio_player, sound_hit_2);
 
 	kicked->current = lock_player;

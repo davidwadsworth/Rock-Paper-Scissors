@@ -10,4 +10,5 @@
 	<Audio path="title_theme.mp3" encoding="0" />
 	<Audio path="Yamborghini_High.mp3" encoding="0" />
 	<Audio path="round_ending.wav" encoding="1"/>
+	<Audio path="blocking.wav" encoding="1" />
 </AudioCollection>

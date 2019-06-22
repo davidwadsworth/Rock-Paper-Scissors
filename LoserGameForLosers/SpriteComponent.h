@@ -1,7 +1,6 @@
 #pragma once
 
 #include "SDL.h"
-#include "Game.h"
 
 class SpriteComponent : public Component
 {
@@ -19,7 +18,7 @@ public:
 	bool animated = false;
 
 	explicit SpriteComponent(const int sprite_id, const SDL_RendererFlip flp = SDL_FLIP_NONE, const int rots = 0)
-		: animation_state_(0), sprite_rotation_(rots), sprite_id_(sprite_id), sprite_flip(flp), animated_(true)
+		: animation_state_(0), sprite_rotation_(rots), sprite_id_(sprite_id), animated_(true), sprite_flip(flp)
 	{}
 
 	~SpriteComponent()
@@ -39,7 +38,7 @@ public:
 		/* Block      */texture_->add_animation_state(slot_id_, speed_, animation_frames_, sprite_id_ + animation_frames_, sprite_rotation_, sprite_flip);
 		/* Kick       */texture_->add_animation_state(slot_id_, speed_, animation_frames_, sprite_id_ + animation_frames_ * 4, sprite_rotation_, sprite_flip);
 		/* Push       */texture_->add_animation_state(slot_id_, speed_, animation_frames_, sprite_id_ + animation_frames_ * 5, sprite_rotation_, sprite_flip);
-		/* Hit        */texture_->add_animation_state(slot_id_, speed_, animation_frames_, sprite_id_ + animation_frames_ * 2, sprite_rotation_, sprite_flip);
+		/* Hit        */texture_->add_animation_state(slot_id_, 400, animation_frames_, sprite_id_ + animation_frames_ * 2, sprite_rotation_, sprite_flip);
 		/* Whip       */texture_->add_animation_state(slot_id_, speed_, 1, sprite_id_ + 2, sprite_rotation_, sprite_flip);
 		/* Jump Kick  */texture_->add_animation_state(slot_id_, speed_, 1, sprite_id_ + 1, sprite_rotation_, sprite_flip);
 		/* Grab       */texture_->add_animation_state(slot_id_, speed_, 1, sprite_id_, sprite_rotation_, sprite_flip);
@@ -64,17 +63,6 @@ public:
 	void unset_image()
 	{
 		animated_ = true;
-	}
-
-	void play_locked_animation(const int animation) const
-	{
-		texture_->lock_animation(slot_id_, animation);
-	}
-
-	void set_image(const int animation, const int image_id)
-	{
-		animated = false;
-		texture_->set_animated_call(slot_id_, animation, image_id);
 	}
 
 	void update() override

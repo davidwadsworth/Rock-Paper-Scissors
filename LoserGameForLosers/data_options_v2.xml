@@ -4,6 +4,7 @@
 			<Y_Position>
 				<Option text="Single Player" command="5" command_value="0" />
 				<Option text="Multiplayer" command="5" command_value="1" path="2"/>
+				<Option text="Debug" command="5" command_value="2" />
 				<Option text="How To Play" path="0"/>
 			</Y_Position>
 		</X_Position>

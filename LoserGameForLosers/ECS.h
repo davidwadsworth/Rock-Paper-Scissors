@@ -51,7 +51,6 @@ public:
 class Entity
 {
 private:
-	Manager& manager;
 	bool active = true;
 	std::vector<std::unique_ptr<Component>> components;
 
@@ -60,10 +59,13 @@ private:
 	GroupBitSet groupBitSet;
 
 public:
+	Manager& manager;
 	GameState* state;
 
-	Entity(Manager& mManager, GameState * state) : manager(mManager), state(state)
+	Entity(Manager& mManager, GameState * state) : componentArray(), manager(mManager), state(state)
 	{}
+
+	~Entity() = default;
 	void update()
 	{
 		for (auto& c : components) c->update();

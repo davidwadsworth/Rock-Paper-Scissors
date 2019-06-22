@@ -2,7 +2,7 @@
 #include "TextureComponent.h"
 
 TextureComponent::TextureComponent(const int texture_id)
-	: texture_id_(texture_id)
+	: texture_id_(texture_id), dest_(), src_(), texture_(nullptr)
 {}
 
 void TextureComponent::set_blend_mode(const SDL_BlendMode blending) const

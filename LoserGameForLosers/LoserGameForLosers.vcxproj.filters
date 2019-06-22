@@ -61,6 +61,9 @@
     <Filter Include="Navigation\NavigationPresets">
       <UniqueIdentifier>{8cde515b-4701-44e1-b621-3955067ed187}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Navigation\Scripts">
+      <UniqueIdentifier>{fda16d43-ac17-4f99-9e3c-fda6bdd715a3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -180,9 +183,6 @@
     <ClInclude Include="LoadAudioData.h">
       <Filter>Data\DataLoads</Filter>
     </ClInclude>
-    <ClInclude Include="Pathway.h">
-      <Filter>Navigation</Filter>
-    </ClInclude>
     <ClInclude Include="Navigator.h">
       <Filter>Navigation</Filter>
     </ClInclude>
@@ -282,9 +282,6 @@
     <ClInclude Include="BitmapFont.h">
       <Filter>ECS\GlyphAtlasComponent</Filter>
     </ClInclude>
-    <ClInclude Include="PathHack.h">
-      <Filter>Navigation</Filter>
-    </ClInclude>
     <ClInclude Include="LinkBuilder.h">
       <Filter>Links</Filter>
     </ClInclude>
@@ -302,8 +299,6 @@
     </ClInclude>
     <ClInclude Include="ScriptComponent.h">
       <Filter>ECS</Filter>
-    <ClInclude Include="AttackQueue.h">
-      <Filter>Queue</Filter>
     </ClInclude>
     <ClInclude Include="AttackPresets.h">
       <Filter>Navigation\NavigationPresets</Filter>
@@ -316,6 +311,33 @@
     </ClInclude>
     <ClInclude Include="MenuPresets.h">
       <Filter>Navigation\NavigationPresets</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPresets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPresets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPresets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Script.h">
+      <Filter>Navigation\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="CombatScripts.h">
+      <Filter>Navigation\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="Pathway.h">
+      <Filter>Navigation\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPresets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CombatInputCommands.h">
+      <Filter>Commands</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -364,9 +386,6 @@
     <ClCompile Include="LoadAudioData.cpp">
       <Filter>Data\DataLoads</Filter>
     </ClCompile>
-    <ClCompile Include="Pathway.cpp">
-      <Filter>Navigation</Filter>
-    </ClCompile>
     <ClCompile Include="CommonNavigation.cpp">
       <Filter>Navigation</Filter>
     </ClCompile>
@@ -374,9 +393,6 @@
       <Filter>Navigation</Filter>
     </ClCompile>
     <ClCompile Include="AudioNavigation.cpp">
-      <Filter>Navigation</Filter>
-    </ClCompile>
-    <ClCompile Include="CombatNavigation.cpp">
       <Filter>Navigation</Filter>
     </ClCompile>
     <ClCompile Include="FadeComponent.cpp">
@@ -403,9 +419,6 @@
     <ClCompile Include="Background.cpp">
       <Filter>GameStates\Combat</Filter>
     </ClCompile>
-    <ClCompile Include="OptionsComponent.cpp">
-      <Filter>ECS\OptionsComponent</Filter>
-    </ClCompile>
     <ClCompile Include="Collision.cpp">
       <Filter>ECS\ColliderComponent</Filter>
     </ClCompile>
@@ -414,9 +427,6 @@
     </ClCompile>
     <ClCompile Include="BitmapFont.cpp">
       <Filter>ECS\GlyphAtlasComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="Options.cpp">
-      <Filter>ECS\OptionsComponent</Filter>
     </ClCompile>
     <ClCompile Include="CombatPresets.cpp">
       <Filter>Navigation\NavigationPresets</Filter>
@@ -429,6 +439,45 @@
     </ClCompile>
     <ClCompile Include="ScriptComponent.cpp">
       <Filter>ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="Options.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionsComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pathway.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CombatNavigation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Options.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionsComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pathway.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CombatNavigation.cpp">
+      <Filter>Navigation</Filter>
+    </ClCompile>
+    <ClCompile Include="Options.cpp">
+      <Filter>ECS\OptionsComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionsComponent.cpp">
+      <Filter>ECS\OptionsComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Pathway.cpp">
+      <Filter>Navigation\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="CombatNavigation.cpp">
+      <Filter>Navigation</Filter>
+    </ClCompile>
+    <ClCompile Include="CombatInputCommands.cpp">
+      <Filter>Commands</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -2,7 +2,7 @@
 #include "LoadAtlasData.h"
 
 TextureAtlasComponent::TextureAtlasComponent()
-	: slot_count_(0)
+	: slot_count_(0), data_(nullptr), texture_(nullptr), transform_(nullptr)
 {}
 
 TextureAtlasComponent::~TextureAtlasComponent()
@@ -12,24 +12,27 @@ TextureAtlasComponent::~TextureAtlasComponent()
 
 void TextureAtlasComponent::init()
 {
-	data_ = &entity->state->bank->atlas_data;
+	data_ = entity->state->bank->atlas_data;
 	texture_ = entity->state->palette->get_texture(data_->texture_id);
-}
+
+	if (entity->has_component<TransformComponent>())
+		transform_ = &entity->get_component<TransformComponent>();
+}	
 
 int TextureAtlasComponent::create_image_slot(const int sprite_id, const int x, const int y, const int rotation, const SDL_RendererFlip flip, const int slot_id)
 {
 	if (slot_id < 0)
 	{
-		slots_.push_back(new ImageSlot(texture_, &data_->data[sprite_id], x, y, rotation, flip));
+		slots_.push_back(new ImageSlot(texture_, transform_, &data_->data[sprite_id], x, y, rotation, flip));
 		return slot_count_++;
 	}
-	slots_[slot_id] = new ImageSlot(texture_, &data_->data[sprite_id], x, y, rotation, flip);
+	slots_[slot_id] = new ImageSlot(texture_, transform_, &data_->data[sprite_id], x, y, rotation, flip);
 	return slot_id;
 }
 
 int TextureAtlasComponent::create_animated_slot(const int x, const int y, const int speed, const int frames, const int sprite_id, const int rotation, const SDL_RendererFlip flip, const int slot_id)
 {
-	auto anim_slot = new AnimatedSlot(texture_, x, y);
+	auto anim_slot = new AnimatedSlot(texture_, transform_, x, y);
 	std::vector<AtlasData*> data_frames;
 
 	for (auto id = sprite_id; id < sprite_id + frames; id++)
@@ -50,11 +53,11 @@ int TextureAtlasComponent::create_null_slot(const int slot_id)
 {
 	if (slot_id < 0)
 	{
-		slots_.push_back(new Slot(nullptr));
+		slots_.push_back(new Slot(nullptr, nullptr));
 		return slot_count_++;
 	}
 
-	slots_[slot_id] = new Slot(nullptr);
+	slots_[slot_id] = new Slot(nullptr, nullptr);
 	return slot_id;
 }
 

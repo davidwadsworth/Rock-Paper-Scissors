@@ -28,8 +28,8 @@ static const int BOX_SIZE = 10;
 static const int NUMBER_WIDTH = 100;
 static const int NUMBER_HEIGHT = 160;
 
-static const int PROMPT_DELAY = 300;
-static const int ROUND_TIME = 1500;
+static const int PROMPT_DELAY = 3000;
+static const int ROUND_TIME = 5000;
 static const int TRANSITION_SPEED = 3;
 
 //Runtime consts
@@ -131,7 +131,7 @@ enum CHARACTER
 
 enum BACKGROUND
 {
-	cave
+	background_cave
 };
 
 enum MAIN_SPRITESHEET
@@ -184,24 +184,6 @@ enum MAIN_SPRITESHEET
 	ss_main_animations_red_walk_right_1,
 	ss_main_animations_red_walk_right_2,
 	ss_main_animations_red_walk_right_3,
-	ss_main_attacks_blue_grab_extension,
-	ss_main_attacks_blue_grab_hit,
-	ss_main_attacks_blue_grab_miss,
-	ss_main_attacks_blue_jump_kick_extension,
-	ss_main_attacks_blue_jump_kick_hit,
-	ss_main_attacks_blue_jump_kick_miss,
-	ss_main_attacks_blue_whip_extension,
-	ss_main_attacks_blue_whip_hit,
-	ss_main_attacks_blue_whip_miss,
-	ss_main_attacks_red_grab_extension,
-	ss_main_attacks_red_grab_hit,
-	ss_main_attacks_red_grab_miss,
-	ss_main_attacks_red_jump_kick_extension,
-	ss_main_attacks_red_jump_kick_hit,
-	ss_main_attacks_red_jump_kick_miss,
-	ss_main_attacks_red_whip_extension,
-	ss_main_attacks_red_whip_hit,
-	ss_main_attacks_red_whip_miss,
 	ss_main_background_city,
 	ss_main_cursor_box,
 	ss_main_number_0,
@@ -248,17 +230,15 @@ enum SOUND_ORDER
 	sound_hit_3,
 	sound_miss,
 	sound_swell_to_hit,
-	sound_round_end
+	sound_round_end,
+	sound_blocking
 };
 
 enum CONTROLLER_DATA
 {
-	controller_options_nav,
-	controller_combat_debug,
-	controller_no_input,
-	controller_combat_select_attack,
-	controller_combat_fight,
-	controller_rotation_point
+	controller_options,
+	controller_debug,
+	controller_combat,
 };
 
 enum OPTIONS_DATA

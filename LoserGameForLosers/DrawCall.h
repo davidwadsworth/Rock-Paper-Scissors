@@ -14,7 +14,7 @@ class DrawCall
 	void find_rotation_point();
 	void init();
 public:
-	int height, width;
+	int height, width, or_width, or_height;
 	
 	DrawCall() = default;
 	DrawCall(AtlasData * data, SDL_Texture* tex, SDL_Rect* dest, SDL_RendererFlip flip, int rotation);

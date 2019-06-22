@@ -4,7 +4,7 @@
 
 DrawCall::DrawCall(AtlasData * data, SDL_Texture * tex, SDL_Rect * dest, const SDL_RendererFlip flip, const int rotation)
 	: data_(data), is_rotated_(data->is_rotated), original_w_(data->original_w), original_h_(data->original_h), data_w_(data->w), data_h_(data->h), data_offset_(data->offset_x, data->offset_y), other_offset_(0),
-	  height(data->h), width(data->w), rotation_point(nullptr), rotation(rotation), flip(flip), tex(tex), dest(dest)
+	  height(data->h), width(data->w), or_width(data->original_w), or_height(data->original_h), rotation_point(nullptr), rotation(rotation), flip(flip), tex(tex), dest(dest)
 {
 	init();
 }
@@ -20,7 +20,7 @@ void DrawCall::init()
 	if (flip)
 	{
 		if (!is_rotated_)
-			data_offset_.x += data_->original_w - data_->w;
+			data_offset_.x += SPRITE_LENGTH - data_->w;
 		else
 			rotation += 180;
 	}

@@ -41,13 +41,13 @@ public:
 
 	void change_controller(const int new_controller)
 	{
-		data_ = &entity->state->bank->controller_data.data[new_controller];
+		data_ = &entity->state->bank->controller_data->data[new_controller];
 		controller_ = Controller(data_);
 	}
 
 	void init() override
 	{
-		data_ = &entity->state->bank->controller_data.data[controller_id_];
+		data_ = &entity->state->bank->controller_data->data[controller_id_];
 		keys_ = player_keys_[keys_owner_id_];
 
 		keyboard_ = new KeyboardHandler;

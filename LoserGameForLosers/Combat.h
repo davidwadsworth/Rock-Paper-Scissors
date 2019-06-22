@@ -3,8 +3,9 @@
 
 class Combat : public GameState
 {
+	Background * bg_logic_;
 public:
-	Combat(LoadedCollections * collections);
+	Combat(Manager* manager);
 	~Combat();
 	void handle_events() override;
 	void logic() override;

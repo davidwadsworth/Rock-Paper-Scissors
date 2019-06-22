@@ -14,6 +14,7 @@ class TextureAtlasComponent : public Component
 	int slot_count_;
 	AtlasCollection* data_;
 	SDL_Texture * texture_;
+	TransformComponent * transform_;
 public:
 	TextureAtlasComponent();
 	~TextureAtlasComponent();

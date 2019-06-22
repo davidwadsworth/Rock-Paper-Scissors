@@ -6,10 +6,12 @@
 
 class Slot
 {
+	TransformComponent * transform_;
 public:
-	explicit Slot(SDL_Texture * tex)
-		: texture(tex)
+	explicit Slot(SDL_Texture * tex, TransformComponent * transform)
+		: transform_(transform), is_rotated(false), dest(), call(nullptr), width(0), height(0), texture(tex)
 	{}
+
 	virtual ~Slot() = default;
 
 	bool is_rotated;
@@ -23,6 +25,16 @@ public:
 	void set_call(AtlasData* sprite, const int rotation, const SDL_RendererFlip flip)
 	{
 		call = new DrawCall(sprite, texture, &dest, flip, rotation);
+		update_transform();
+	}
+
+	void update_transform() const
+	{
+		if (transform_)
+		{
+			transform_->width = call->or_width;
+			transform_->height = call->or_height;
+		}
 	}
 
 	void update_position_and_scaling(const Vector2D pos, const float sc)
@@ -91,8 +103,8 @@ public:
 class ImageSlot : public Slot
 {
 public:
-	explicit ImageSlot(SDL_Texture * texture, AtlasData * data, const int x, const int y, const int rotation, const SDL_RendererFlip flip)
-		: Slot(texture)
+	explicit ImageSlot(SDL_Texture * texture, TransformComponent * transform, AtlasData * data, const int x, const int y, const int rotation, const SDL_RendererFlip flip)
+		: Slot(texture, transform)
 	{
 		dest = SDL_Rect{ x,y, data->w, data->h };
 		set_call(data, rotation, flip);
@@ -127,8 +139,8 @@ public:
 	{
 		current_frame = frame_count;
 
-		if (frame_count < frames)
-			frame_count++;
+		if (frame_count < frames - 1)
+			frame_count += (SDL_GetTicks() - start_ticks_) / speed % 2;
 		return &calls[current_frame];
 	}
 
@@ -149,8 +161,8 @@ class AnimatedSlot : public Slot, public Animated
 	std::vector<AnimatedState> animated_states_;
 	AnimatedState* current_state_;
 public:
-	AnimatedSlot(SDL_Texture * texture, const int x, const int y)
-		: Slot(texture)
+	AnimatedSlot(SDL_Texture * texture, TransformComponent * transform, const int x, const int y)
+		: Slot(texture, transform)
 	{
 		dest = { x, y, 0, 0 };
 	}
@@ -169,6 +181,8 @@ public:
 		animated_states_.push_back(anim_state);
 		current_state_ = &animated_states_[0];
 		call = &current_state_->calls[0];
+		update_transform();
+
 	}
 
 	void lock_animation(const int state) override
@@ -189,6 +203,7 @@ public:
 		{
 			call = current_state_->locked_animation();
 		}
+		update_transform();
 	}
 
 	void unlock_animation() override
@@ -200,5 +215,6 @@ public:
 	{
 		current_state_ = &animated_states_[state];
 		call = current_state_->get_call(call_id);
+		update_transform();
 	}
 };

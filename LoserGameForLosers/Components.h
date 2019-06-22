@@ -9,14 +9,14 @@
 #include "CursorComponent.h"
 #include "MenuComponent.h"
 #include "ColliderComponent.h"
-#include "PlayerComponent.h"
 #include "SpriteComponent.h"
+#include "PlayerComponent.h"
 #include "ControllerComponent.h"
 #include "GlyphAtlasComponent.h"
 #include "PromptComponent.h"
 #include "WhiteRectComponent.h"
 #include "FadeComponent.h"
-#include "ProjectileComponent.h"
+#include "ScriptComponent.h"
 
 
 
