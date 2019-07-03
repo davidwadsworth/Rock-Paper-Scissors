@@ -4,5 +4,5 @@
 class InputCommand : public Command
 {
 public:
-	virtual void idle(Entity * entity) {};
+	virtual void idle(Entity * entity) {}
 };

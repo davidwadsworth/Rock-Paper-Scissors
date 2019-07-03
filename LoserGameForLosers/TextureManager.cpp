@@ -1,24 +1,42 @@
 #include "stdafx.h"
 #include "TextureManager.h"
-#include "Constants.h"
 
-SDL_Texture* TextureManager::load_texture(const char* texture)
+void TextureManager::load_texture(const std::string filename)
 {
-	const auto temp_surface = IMG_Load(texture);
-	const auto tex = SDL_CreateTextureFromSurface(Game::renderer, temp_surface);
-	SDL_FreeSurface(temp_surface);
+	auto tex = new Texture();
 
-	return tex;
+	if (tex->load_from_file(filename))
+		textures_.push_back(tex);
 }
 
-
-void TextureManager::draw(SDL_Texture * tex, SDL_Rect src, SDL_Rect dest)
+void TextureManager::load_font(const std::string filename)
 {
-	SDL_RenderCopyEx(Game::renderer, tex, &src, &dest, 0, nullptr, SDL_FLIP_NONE);
+	auto tex = new Texture();
+
+	if (tex->load_editable_texture_from_file(filename))
+	{
+		textures_.push_back(tex);
+
+		auto font = new BitmapFont();
+
+		if (font->build_font(tex))
+			fonts_.push_back(font);
+	}
 }
 
-void TextureManager::draw(DrawCall *call)
+void TextureManager::free_textures()
 {
-	SDL_RenderCopyEx(Game::renderer, call->tex, &call->src, call->dest, call->rotation, call->rotation_point, call->flip);
+	for (auto& t : textures_)
+		t->free();
+}
+
+Texture* TextureManager::get_texture(const int texture)
+{
+	return textures_[texture];
+}
+
+BitmapFont * TextureManager::get_font(const int font)
+{
+	return fonts_[font];
 }
  

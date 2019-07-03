@@ -51,18 +51,16 @@ public:
 class Entity
 {
 private:
-	Manager& manager;
 	bool active = true;
 	std::vector<std::unique_ptr<Component>> components;
 
 	ComponentArray componentArray;
 	ComponentBitSet componentBitSet;
 	GroupBitSet groupBitSet;
-
+	Manager& manager;
 public:
-	GameState* state;
 
-	Entity(Manager& mManager, GameState * state) : manager(mManager), state(state)
+	explicit Entity(Manager& mManager) : componentArray(), manager(mManager)
 	{}
 	void update()
 	{
@@ -116,7 +114,7 @@ public:
 class Manager
 {
 private:
-	std::vector<std::unique_ptr<Entity>>entities;
+	std::vector<std::unique_ptr<Entity>> entities;
 	std::array<std::vector<Entity*>, maxGroups> groupedEntities;
 
 public:
@@ -159,9 +157,9 @@ public:
 		return groupedEntities[m_group];
 	}
 
-	Entity& add_entity(GameState* state)
+	Entity& add_entity()
 	{
-		const auto e = new Entity(*this, state);
+		const auto e = new Entity(*this);
 		std::unique_ptr<Entity> u_ptr{ e };
 		entities.emplace_back(std::move(u_ptr));
 		return *e;

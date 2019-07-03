@@ -1,9 +1,11 @@
 #include "stdafx.h"
 #include "Pathway.h"
 
+
 PathTrunk::PathTrunk(PathBranch * root, PathTrunk * next)
 	: root_(root), next(next), current(root)
 {}
+
 
 void PathTrunk::add(PathTrunk * trunk_to_add)
 {
@@ -11,21 +13,21 @@ void PathTrunk::add(PathTrunk * trunk_to_add)
 	next = trunk_to_add;
 }
 
-void release_ptr_rec(PathBranch* branch)
+
+void post_order_remove(PathBranch * branch)
 {
 	if (!branch)
 		return;
 
-	release_ptr_rec(branch->child);
-	release_ptr_rec(branch->sibling);
+	post_order_remove(branch->child);
+	post_order_remove(branch->sibling);
 	branch->remove();
 }
 
-void PathTrunk::remove()
+void PathTrunk::remove() const
 {
-	release_ptr_rec(root_);
+	post_order_remove(root_);
 }
-
 
 
 bool PathTrunk::has_next() const
@@ -39,7 +41,7 @@ bool PathTrunk::has_current() const
 }
 
 PathBranch::PathBranch(PathTrunk * parent, PathBranch * sibling, PathBranch * child)
-	: navigator_array_(), parent(parent), sibling(sibling), child(child)
+	: parent(parent), sibling(sibling), child(child)
 {}
 
 void PathBranch::init()
@@ -54,7 +56,7 @@ void PathBranch::close()
 
 void PathBranch::remove()
 {
-	for (auto& n : navigators_) n.release();
+	navigators_.clear();
 }
 
 void PathBranch::navigate_path() const
@@ -91,18 +93,6 @@ void PathBranch::navigate_path() const
 			parent->current = temp_sibling;
 			parent->current->init();
 		}
-		else
-		{
-			parent->current->close();
-			if (has_child())
-			{
-				child->previous = parent->current;
-				child->init();
-			}
-			parent->current = child;
-		}
 		break;
 	}
 }
-
-

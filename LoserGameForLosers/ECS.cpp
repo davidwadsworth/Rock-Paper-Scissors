@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "ECS.h"
-#include "Components.h"
 
 void Entity::add_group(const Group m_group)
 {

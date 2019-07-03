@@ -1,7 +1,5 @@
 #pragma once
 #include "ECS.h"
-#include "Attack.h"
-#include "character.h"
 #include "Constants.h"
 #include "SpriteComponent.h"
 
@@ -46,10 +44,35 @@ class PlayerComponent : public Component
 		}
 	}
 
+	static CHARACTER_ATTACK_DATA combat_attack_to_data(const int attack)
+	{
+		switch (attack)
+		{
+		case attack_block:
+			return character_order_attack_block;
+		case attack_kick:
+			return character_order_attack_kick;
+		case attack_push:
+			return character_order_attack_push;
+		default:
+			return character_order_attack_whip;
+		}
+	}
 
-public:
-	int num_wins;
-	int attack_id;
+	static CHARACTER_ATTACK_DATA final_attack_to_data(const int attack)
+	{
+		switch (attack)
+		{
+		case final_attack_whip:
+			return character_order_attack_whip;
+		case final_attack_Jump_Kick:
+			return character_order_attack_jump_kick;
+		case final_attack_grab:
+			return character_order_attack_grab;
+		default:
+			return character_order_attack_push;
+		}
+	}
 
 public:
 	int num_wins;
@@ -65,14 +88,17 @@ public:
 
 	void init() override
 	{
-		data_ = &entity->state->bank->character_data.data[character_id_];
+		data_ = &GameState::get_character_data()->data[character_id_];
 		num_wins = 0;
 
 		sprite_ = &entity->get_component<SpriteComponent>();
 		direction = sprite_->sprite_flip ? -1 : 1;
 
+		if (!sprite_->sprite_flip)
+			is_priority_player_ = true;
+
 		collider_ = &entity->get_component<ColliderComponent>();
-		collider_->set_collider_hit_box(data_->hit_box);
+		collider_->hit_box = data_->hit_box;
 
 		attack_id = attack_nothing;
 	}
@@ -84,10 +110,10 @@ public:
 
 	float get_velocity() const
 	{
-		auto velocity = data_->velocity;
 		if (is_priority_player_)
-			velocity = data_->velocity + PLAYER_PRIORITY_INCREMENT;
-		return velocity;
+			return data_->velocity + PLAYER_PRIORITY_INCREMENT;
+
+		return data_->velocity;
 	}	
 
 	void choose_final_attack(const int att_id)
@@ -97,22 +123,27 @@ public:
 
 	void execute_final_attack() const
 	{
-		collider_->set_collider_hit_box(data_->attack_data[final_attack_id_].hit_box);
+		collider_->hit_box = data_->attack_data[final_attack_id_].hit_box;
 		sprite_->set_image(final_attack_to_animation(final_attack_id_), 0);
 	}
 
 	void choose_combat_attack(const int att_id)
 	{
 		attack_id = att_id;
-		collider_->set_collider_hit_box(data_->attack_data[attack_id].hit_box);
+	}
+
+	void execute_combat_attack() const
+	{
+		collider_->hit_box = data_->attack_data[combat_attack_to_data(attack_id)].hit_box;
 		sprite_->play_locked_animation(attack_to_animation(attack_id));
-		sprite_->play_locked_animation(attack_to_animation(att_id));
 	}
 
 	void reset_character_hit_box()
 	{
 		attack_id = attack_nothing;
-		collider_->set_collider_hit_box(data_->hit_box);
+		collider_->hit_box = data_->hit_box;
+		sprite_->unlock_animation();
+		sprite_->unset_image();
 	}
 
 	void change_priority()
@@ -125,40 +156,49 @@ public:
 		return is_priority_player_;
 	}
 
+	int get_character_id() const { return character_id_; }
+
 	AttackData* get_attack() const
 	{
-		return &data_->attack_data[attack_id];
+		return &data_->attack_data[combat_attack_to_data(attack_id)];
+	}
+
+	AttackData* get_attack(const int att_id) const
+	{
+		return &data_->attack_data[combat_attack_to_data(att_id)];
 	}
 
 	AttackData* get_final_attack() const
 	{
 		return &data_->attack_data[final_attack_id_];
-	AttackData* get_attack()
-	{
-		return &data_->attack_data[attack_id];
 	}
 
-	Entity* check_attack_winner(Entity *other) const
+	AttackData* get_final_attack(const int att_id) const
 	{
-		auto winner = entity;
+		return &data_->attack_data[final_attack_to_data(att_id)];
+	}
+
+	int check_attack_winner(Entity *other) const
+	{
+		const auto other_pc = &other->get_component<PlayerComponent>();
 
 		if (this->final_attack_id_ == final_attack_whip)
 		{
-			if (other->get_component<PlayerComponent>().final_attack_id_ == final_attack_Jump_Kick)
-				winner = other;
+			if (other_pc->final_attack_id_ == final_attack_Jump_Kick)
+				return get_character_id() + 1;
 		}
 		if (this->final_attack_id_ == final_attack_Jump_Kick)
 		{
-			if (other->get_component<PlayerComponent>().final_attack_id_ == final_attack_grab)
-				winner = other;
+			if (other_pc->final_attack_id_ == final_attack_grab)
+				return get_character_id() + 1;
 		}
 		if (this->final_attack_id_ == final_attack_grab)
 		{
-			if (other->get_component<PlayerComponent>().final_attack_id_ == final_attack_whip)
-				winner = other;
+			if (other_pc->get_character_id() == final_attack_whip)
+				return get_character_id() + 1;
 		}
 
-		return winner;
+		return other_pc->get_character_id() + 1;
 	}
 
 };

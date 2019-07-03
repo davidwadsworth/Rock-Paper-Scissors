@@ -58,5 +58,6 @@ OptionsCollection LoadOptionsData::load() const
 		options_collection.data.push_back(options_data);
 	}
 
+	data.clear();
 	return options_collection;
 }

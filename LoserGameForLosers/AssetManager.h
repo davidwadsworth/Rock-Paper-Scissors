@@ -1,27 +1,21 @@
 #pragma once
+#include "BitmapFont.h"
 
-#include <map>
-#include <string>
-#include "TextureManager.h"
-#include "ECS.h"
-#include "BitMapFont.h"
-#include "BitmapTexture.h"
 
 class AssetManager
 {
 public:
-	explicit AssetManager(Manager* man, GameState * state);
+	AssetManager() = default;
 	~AssetManager();
 
-	Entity* create_option_box(int options_id, Vector2D position, int input_id) const;
-	Entity* create_menu_option_box(int options_id, Vector2D position, int input_id) const;
-	Entity* create_prompt(int sprite_id, SDL_Rect* position) const;
-	Entity* create_attack(Entity * player) const;
-	Entity* create_left_player() const;
-	Entity* create_right_player() const;
-	Entity* create_combat_background() const;
-	Entity* create_menu_screen() const;
-	Entity* create_background_transition(int frames) const;
+	void create_option_box(Entity * option_box, int options_id, Vector2D position, int input_id) const;
+	void create_menu_option_box(Entity * menu, int options_id, Vector2D position, int input_id) const;
+	void create_prompt(Entity * prompt, int sprite_id, SDL_Rect* position) const;
+	void create_left_player(Entity * left_player, int controller_id) const;
+	void create_right_player(Entity * right_player, int controller_id) const;
+	void create_combat_background(Entity * combat_bg) const;
+	static void create_menu_screen(Entity * menu);
+	void create_background_transition(Entity* transition, int frames) const;
 
 	//Textures
 	void add_texture(const char* path);
@@ -32,9 +26,6 @@ public:
 	BitmapFont* get_bitmap_font();
 
 private:
-	Manager * manager_;
-	GameState* state_;
-	BitmapFont bitmap_font_;
-	BitmapTexture bitmap_tex_;
-	std::vector<SDL_Texture*> textures_{};
+	BitmapFont* bitmap_font_;
+	Texture* bitmap_tex_;
 };

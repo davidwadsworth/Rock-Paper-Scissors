@@ -21,4 +21,9 @@ public:
 		texture_ = &entity->get_component<TextureAtlasComponent>();
 		menu_slot_ = texture_->create_image_slot(menu_id_, 0, 0);
 	}
+
+	void change_screen(const int screen) const
+	{
+		texture_->update_image_slot(menu_slot_, screen);
+	}
 };

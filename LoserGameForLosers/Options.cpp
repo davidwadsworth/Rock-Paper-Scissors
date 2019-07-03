@@ -13,7 +13,7 @@ std::vector<std::vector<Link*>> Options::build_options(const int x, const int y,
 	std::vector<Link *> y_links;
 
 	//sets the starting position to the first option
-	Link* current_link = link_gen.create_link(asset_manager_, padding, alignment, &options_data[0][0]);
+	Link* current_link = link_gen.create_link(font_, padding, alignment, &options_data[0][0]);
 
 	current_link->set_position(x, y);
 	current_link->set_link_information();
@@ -46,13 +46,13 @@ std::vector<std::vector<Link*>> Options::build_options(const int x, const int y,
 			// setting up next y link position if it exists
 			if (y + 1 < options_data[x].size())
 			{
-				next_y_link = link_gen.create_link(asset_manager_, padding, alignment, &options_data[x][y + 1]);
+				next_y_link = link_gen.create_link(font_, padding, alignment, &options_data[x][y + 1]);
 				next_y_link->set_position(current_link->get_box_dimensions()->x, current_link->get_box_dimensions()->y + current_link->get_box_dimensions()->h);
 			}
 			// setting up next x link position if it exists
 			else if (x + 1 < options_data.size())
 			{
-				next_x_link = link_gen.create_link(asset_manager_, padding, alignment, &options_data[x + 1][y]);
+				next_x_link = link_gen.create_link(font_, padding, alignment, &options_data[x + 1][y]);
 				next_x_link->set_position(current_link->get_box_dimensions()->x + current_link->get_box_dimensions()->w, current_link->get_box_dimensions()->y);
 			}
 

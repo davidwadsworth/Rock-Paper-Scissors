@@ -6,7 +6,7 @@
 class Options
 {
 	OptionsData * data_;
-	AssetManager* asset_manager_;
+	BitmapFont * font_;
 public:
 	std::string id;
 	SDL_Rect box;
@@ -14,8 +14,8 @@ public:
 
 	Options() = default;
 
-	explicit Options(OptionsData* data, AssetManager* asset_manager)
-		: data_(data), asset_manager_(asset_manager), box()
+	explicit Options(OptionsData* data, BitmapFont* font)
+		: data_(data), font_(font), box()
 	{}
 
 	std::vector<std::vector<Link *>> build_options(const int x, const int y, Vector2D alignment, const int padding);

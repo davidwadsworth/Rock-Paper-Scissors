@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:a4c966c1c93e0165d26f8b8a13b8d2c5:43c823c2564ab9ddeb8fa7543ecafb59:46eee25c6181520f50a8bb9b2c0eb533$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+pX => x pos of the pivot point (relative to sprite width)
+pY => y pos of the pivot point (relative to sprite height)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+with polygon mode enabled:
+vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
+verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
+triangles  => sprite triangulation, 3 vertex indices per triangle
+-->
+<TextureAtlas imagePath="data_health_bar-0.png" width="2030" height="1152">
+    <sprite n="atlas_main_textures-0_v2.png" x="1" y="1" w="2028" h="1048" oX="0" oY="0" oW="2030" oH="1048"/>
+    <sprite n="healthbar_bar.png" x="378" y="1051" w="337" h="20"/>
+    <sprite n="healthbar_container.png" x="1" y="1051" w="375" h="100"/>
+</TextureAtlas>

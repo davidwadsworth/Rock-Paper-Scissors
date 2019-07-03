@@ -2,13 +2,14 @@
 #include "Game.h"
 #include "Link.h"
 #include "CommonLinkCommands.h"
+#include "BitmapFont.h"
 
 
 class CursorLeftLink : public Link
 {
 public:
-	explicit CursorLeftLink(AssetManager* asset_manager, const int padding, Vector2D alignment, std::string asset, Command* command)
-		: asset_manager_(asset_manager), padding_(padding), alignment_(alignment), text_(asset), command_(command)
+	explicit CursorLeftLink(BitmapFont* font, const int padding, Vector2D alignment, std::string asset, Command* command)
+		: font_(font), padding_(padding), alignment_(alignment), text_(asset), command_(command)
 	{}
 
 	~CursorLeftLink()
@@ -30,7 +31,7 @@ public:
 
 
 private:
-	AssetManager * asset_manager_;
+	BitmapFont * font_;
 	SDL_Point pos_;
 	Command * command_;
 	int padding_;

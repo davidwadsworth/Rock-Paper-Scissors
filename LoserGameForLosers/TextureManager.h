@@ -1,15 +1,18 @@
 #pragma once
 
 #include "SDL.h"
-#include "SDL_Image.h"
-#include <string>
-#include "Game.h"
 #include "DrawCall.h"
+#include "Texture.h"
+#include "BitmapFont.h"
 
 class TextureManager
 {
+	std::vector<Texture*> textures_;
+	std::vector<BitmapFont*> fonts_;
 public:
-	static SDL_Texture* load_texture(const char* filename);
-	static void draw(SDL_Texture * tex, SDL_Rect src, SDL_Rect dest);
-	static void draw(DrawCall * call);
+	void load_texture(std::string filename);
+	void load_font(std::string filename);
+	void free_textures();
+	Texture* get_texture(int texture);
+	BitmapFont* get_font(int font);
 };

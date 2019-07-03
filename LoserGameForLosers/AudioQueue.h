@@ -14,7 +14,7 @@ class AudioQueue : public Audio
 	void load_music_files()
 	{
 		for (const auto& sound : data_->data)
-		{	
+		{
 			switch (sound.encoding)
 			{
 			case 0:
@@ -30,6 +30,8 @@ class AudioQueue : public Audio
 	}
 
 public:
+	AudioQueue() = default;
+
 	explicit AudioQueue(AudioCollection* data)
 		: data_(data)
 	{
@@ -46,6 +48,17 @@ public:
 	void play_music(const int music_id, const int loops) override
 	{
 		Mix_PlayMusic(loaded_music_[music_id], loops);
+	}
+
+	void close() override
+	{
+		Mix_HaltMusic();
+		data_ = nullptr;
+
+		for (auto lm : loaded_music_)
+			Mix_FreeMusic(lm);
+		for (auto lc : loaded_effects_)
+			Mix_FreeChunk(lc);
 	}
 
 	void stop_music() override

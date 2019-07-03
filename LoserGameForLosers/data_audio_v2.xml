@@ -1,5 +1,5 @@
 <AudioCollection id="data_audio" path="data_audio_v2.xml">
-	<Audio path="combat_start.wav" encoding="1" />
+	<Audio path="combat_start.mp3" encoding="0" />
 	<Audio path="cymbal_swell.wav" encoding="1" />
 	<Audio path="drum_beat.wav" encoding="0" />
 	<Audio path="hit.wav" encoding="1" />
@@ -10,4 +10,5 @@
 	<Audio path="title_theme.mp3" encoding="0" />
 	<Audio path="Yamborghini_High.mp3" encoding="0" />
 	<Audio path="round_ending.wav" encoding="1"/>
+	<Audio path="blocking.wav" encoding="1" />
 </AudioCollection>

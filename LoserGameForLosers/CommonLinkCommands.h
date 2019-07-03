@@ -14,8 +14,9 @@ namespace LinkCommands
 		Entity * entity_;
 	public:
 		explicit ChangeState(const std::string new_state)
-			: state_(std::stoi(new_state))
-		{}
+			: state_(std::stoi(new_state)), previous_state_(0), entity_(nullptr)
+		{
+		}
 
 		void execute(Entity* entity) override;
 

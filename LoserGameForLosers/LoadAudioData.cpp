@@ -30,5 +30,6 @@ AudioCollection LoadAudioData::load() const
 		audio_collection.data.push_back(audio_data);
 	}
 
+	data.clear();
 	return audio_collection;
 }

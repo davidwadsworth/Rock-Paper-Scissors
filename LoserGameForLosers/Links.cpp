@@ -2,15 +2,14 @@
 
 void CursorLeftLink::set_link_information(SDL_Rect * starting_rect)
 {
-	auto bitmap_font = asset_manager_->get_bitmap_font();
 
-	link_dimensions_ = bitmap_font->text_dimensions(static_cast<int>(pos_.x) + CURSOR_WIDTH + 4 * padding_, static_cast<int>(pos_.y) + 2 * padding_, text_);
+	link_dimensions_ = font_->text_dimensions(static_cast<int>(pos_.x) + CURSOR_WIDTH + 4 * padding_, static_cast<int>(pos_.y) + 2 * padding_, text_);
 
 	if (link_dimensions_->h < CURSOR_HEIGHT)
 		link_dimensions_->h = CURSOR_HEIGHT;
 
-	int x_offset = 0;
-	int y_offset = 0;
+	auto x_offset = 0;
+	auto y_offset = 0;
 
 	if (starting_rect)
 	{

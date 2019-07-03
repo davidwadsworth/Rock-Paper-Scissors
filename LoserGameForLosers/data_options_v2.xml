@@ -3,8 +3,9 @@
 		<X_Position>
 			<Y_Position>
 				<Option text="Single Player" command="5" command_value="0" />
-				<Option text="Multiplayer" command="5" command_value="1" path="2"/>
-				<Option text="How To Play" path="0"/>
+				<Option text="Multiplayer" command="5" command_value="1" path="3"/>
+				<Option text="Debug" command="5" command_value="2" path="3" />
+				<Option text="How To Play" path="2"/>
 			</Y_Position>
 		</X_Position>
 	</Options>
@@ -12,9 +13,7 @@
 		<X_Position>
 			<Y_Position>
 				<Option text="Easy" command="4" command_value="0" />
-				<Option text="Medium" command="4" command_value="1" />
-				<Option text="Hard" command="4" command_value="2" />
-				<Option text="Impossible" command="4" command_value="3"/>
+				<Option text="Hard" command="4" command_value="1" />
 			</Y_Position>
 		</X_Position>
 	</Options>

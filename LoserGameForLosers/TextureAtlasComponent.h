@@ -13,7 +13,7 @@ class TextureAtlasComponent : public Component
 	std::vector<Slot*> slots_;
 	int slot_count_;
 	AtlasCollection* data_;
-	SDL_Texture * texture_;
+	Texture * texture_;
 public:
 	TextureAtlasComponent();
 	~TextureAtlasComponent();

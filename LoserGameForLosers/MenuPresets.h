@@ -1,17 +1,14 @@
 #pragma once
 #include "NavigationPreset.h"
-#include "GameState.h"
 
 namespace MenuPresets
 {
 	class CreateMenuOptions : public NavigationPreset
 	{
-		GameState * state_;
+		Entity * screen_;
+		Manager * manager_;
 	public:
-		CreateMenuOptions(GameState * state)
-			: state_(state)
-		{}
-
+		CreateMenuOptions(Entity * screen);
 		void init() override;
 	};
 }

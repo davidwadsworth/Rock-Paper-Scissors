@@ -28,8 +28,8 @@ static const int BOX_SIZE = 10;
 static const int NUMBER_WIDTH = 100;
 static const int NUMBER_HEIGHT = 160;
 
-static const int PROMPT_DELAY = 300;
-static const int ROUND_TIME = 1500;
+static const int PROMPT_DELAY = 3000;
+static const int ROUND_TIME = 10000;
 static const int TRANSITION_SPEED = 3;
 
 //Runtime consts
@@ -81,6 +81,7 @@ static const int GRAB_ARM_SEPERATION = GRAB_HEIGHT + ATTACK_LENGTH + PADDING;
 
 
 static const int ROUNDWIN = 3;
+static const int ATTACK_DELAY = 1000;
 
 
 // Enums
@@ -119,19 +120,19 @@ enum CHARACTER_ATTACK_DATA
 	character_order_attack_jump_kick,
 	character_order_attack_grab,
 	character_order_attack_block,
-	character_order_attack_kick,
-	character_order_attack_push
+	character_order_attack_push,
+	character_order_attack_kick
 };
 
 enum CHARACTER
 {
-	player_blue,
-	player_red
+	order_player_1,
+	order_player_2
 };
 
 enum BACKGROUND
 {
-	cave
+	background_cave
 };
 
 enum MAIN_SPRITESHEET
@@ -184,24 +185,6 @@ enum MAIN_SPRITESHEET
 	ss_main_animations_red_walk_right_1,
 	ss_main_animations_red_walk_right_2,
 	ss_main_animations_red_walk_right_3,
-	ss_main_attacks_blue_grab_extension,
-	ss_main_attacks_blue_grab_hit,
-	ss_main_attacks_blue_grab_miss,
-	ss_main_attacks_blue_jump_kick_extension,
-	ss_main_attacks_blue_jump_kick_hit,
-	ss_main_attacks_blue_jump_kick_miss,
-	ss_main_attacks_blue_whip_extension,
-	ss_main_attacks_blue_whip_hit,
-	ss_main_attacks_blue_whip_miss,
-	ss_main_attacks_red_grab_extension,
-	ss_main_attacks_red_grab_hit,
-	ss_main_attacks_red_grab_miss,
-	ss_main_attacks_red_jump_kick_extension,
-	ss_main_attacks_red_jump_kick_hit,
-	ss_main_attacks_red_jump_kick_miss,
-	ss_main_attacks_red_whip_extension,
-	ss_main_attacks_red_whip_hit,
-	ss_main_attacks_red_whip_miss,
 	ss_main_background_city,
 	ss_main_cursor_box,
 	ss_main_number_0,
@@ -222,8 +205,25 @@ enum MAIN_SPRITESHEET
 	ss_main_prompt_player_2_wins,
 	ss_main_prompt_round,
 	ss_main_prompt_select_attack,
-	ss_main_prompt_stop
+	ss_main_prompt_stop,
+	ss_main_health_bar,
+	ss_main_health_container
 };
+
+enum COMBAT_TEX_ORDER
+{
+	order_texture_combat_ss_main,
+	order_texture_combat_gray_background,
+	order_texture_combat_glyph_atlas
+};
+
+enum MENU_TEX_ORDER
+{
+	order_texture_menu_ss_menu,
+	order_texture_menu_white_background,
+	order_texture_menu_glyph_atlas
+};
+
 
 enum MENU_SPRITESHEET
 {
@@ -234,6 +234,7 @@ enum MENU_SPRITESHEET
 
 enum MUSIC_ORDER
 {
+	music_combat,
 	music_drum_beat,
 	music_title_theme,
 	music_yamborghini_high
@@ -241,24 +242,23 @@ enum MUSIC_ORDER
 
 enum SOUND_ORDER
 {
-	sound_combat_start,
 	sound_cymbal_swell,
 	sound_hit_1,
 	sound_hit_2,
 	sound_hit_3,
 	sound_miss,
 	sound_swell_to_hit,
-	sound_round_end
+	sound_round_end,
+	sound_blocking
 };
 
 enum CONTROLLER_DATA
 {
-	controller_options_nav,
-	controller_combat_debug,
-	controller_no_input,
-	controller_combat_select_attack,
-	controller_combat_fight,
-	controller_rotation_point
+	controller_combat_options,
+	controller_menu_options,
+	controller_back,
+	controller_debug,
+	controller_combat,
 };
 
 enum OPTIONS_DATA
@@ -288,4 +288,9 @@ enum DATA
 	data_controller,
 	data_options,
 	data_audio,
+};
+
+enum FONTS
+{
+	font_lazy_foo
 };

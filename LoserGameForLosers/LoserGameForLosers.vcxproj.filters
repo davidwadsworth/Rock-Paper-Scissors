@@ -34,15 +34,6 @@
     <Filter Include="Queue">
       <UniqueIdentifier>{7870d300-4125-4b64-a292-6ebd5018825f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ECS\TextureComponent">
-      <UniqueIdentifier>{9cf1dbea-71ca-433e-9544-5aac5e5e89f4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ECS\ControllerComponent">
-      <UniqueIdentifier>{78e66999-0513-478c-a67d-c8e175b3d112}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ECS\ColliderComponent">
-      <UniqueIdentifier>{1bbf7ea2-9e4b-4fd5-b5c6-6c0889aabd58}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Links">
       <UniqueIdentifier>{b9c801ab-d751-46e5-8762-1eac22cab16f}</UniqueIdentifier>
     </Filter>
@@ -52,14 +43,32 @@
     <Filter Include="GameStates\Combat">
       <UniqueIdentifier>{591b7bcd-e9bb-4ea7-9662-25b6e238b4cf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ECS\OptionsComponent">
-      <UniqueIdentifier>{16aa414b-e70a-4a15-8e5c-2f8c3f985ecd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ECS\GlyphAtlasComponent">
-      <UniqueIdentifier>{d8be095f-5780-4969-b1c3-8d5317aba818}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Navigation\NavigationPresets">
       <UniqueIdentifier>{8cde515b-4701-44e1-b621-3955067ed187}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Navigation\Scripts">
+      <UniqueIdentifier>{fda16d43-ac17-4f99-9e3c-fda6bdd715a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Components">
+      <UniqueIdentifier>{3775f0c0-d28b-49bd-9299-50b7d2706695}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Components\GlyphAtlasComponent">
+      <UniqueIdentifier>{d8be095f-5780-4969-b1c3-8d5317aba818}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Components\OptionsComponent">
+      <UniqueIdentifier>{16aa414b-e70a-4a15-8e5c-2f8c3f985ecd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Components\TextureComponent">
+      <UniqueIdentifier>{9cf1dbea-71ca-433e-9544-5aac5e5e89f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Components\ControllerComponent">
+      <UniqueIdentifier>{78e66999-0513-478c-a67d-c8e175b3d112}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ECS\Components\ColliderComponent">
+      <UniqueIdentifier>{1bbf7ea2-9e4b-4fd5-b5c6-6c0889aabd58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{d4d3f1b3-6e14-42d2-9d9f-701fe2bdc1e3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -78,50 +87,17 @@
     <ClInclude Include="TextureManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AssetManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Vector2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ECS.h">
-      <Filter>ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="Components.h">
-      <Filter>ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="TransformComponent.h">
-      <Filter>ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="BackgroundComponent.h">
-      <Filter>ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerComponent.h">
-      <Filter>ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="CursorComponent.h">
-      <Filter>ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="BoxComponent.h">
-      <Filter>ECS</Filter>
-    </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PromptComponent.h">
-      <Filter>ECS</Filter>
     </ClInclude>
     <ClInclude Include="Command.h">
       <Filter>Commands</Filter>
     </ClInclude>
     <ClInclude Include="Commands.h">
       <Filter>Commands</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuComponent.h">
-      <Filter>ECS</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteComponent.h">
-      <Filter>ECS</Filter>
     </ClInclude>
     <ClInclude Include="Font.h">
       <Filter>Header Files</Filter>
@@ -165,9 +141,6 @@
     <ClInclude Include="Data.h">
       <Filter>Data\DataCollections</Filter>
     </ClInclude>
-    <ClInclude Include="WhiteRectComponent.h">
-      <Filter>ECS</Filter>
-    </ClInclude>
     <ClInclude Include="Audio.h">
       <Filter>Queue</Filter>
     </ClInclude>
@@ -179,9 +152,6 @@
     </ClInclude>
     <ClInclude Include="LoadAudioData.h">
       <Filter>Data\DataLoads</Filter>
-    </ClInclude>
-    <ClInclude Include="Pathway.h">
-      <Filter>Navigation</Filter>
     </ClInclude>
     <ClInclude Include="Navigator.h">
       <Filter>Navigation</Filter>
@@ -204,9 +174,6 @@
     <ClInclude Include="AudioNavigation.h">
       <Filter>Navigation</Filter>
     </ClInclude>
-    <ClInclude Include="FadeComponent.h">
-      <Filter>ECS</Filter>
-    </ClInclude>
     <ClInclude Include="DataCollection.h">
       <Filter>Data\DataCollections</Filter>
     </ClInclude>
@@ -217,25 +184,25 @@
       <Filter>Data</Filter>
     </ClInclude>
     <ClInclude Include="TextureAtlasComponent.h">
-      <Filter>ECS\TextureComponent</Filter>
+      <Filter>ECS\Components\TextureComponent</Filter>
     </ClInclude>
     <ClInclude Include="TextureComponent.h">
-      <Filter>ECS\TextureComponent</Filter>
+      <Filter>ECS\Components\TextureComponent</Filter>
     </ClInclude>
     <ClInclude Include="TextureSlot.h">
-      <Filter>ECS\TextureComponent</Filter>
+      <Filter>ECS\Components\TextureComponent</Filter>
     </ClInclude>
     <ClInclude Include="ControllerComponent.h">
-      <Filter>ECS\ControllerComponent</Filter>
+      <Filter>ECS\Components\ControllerComponent</Filter>
     </ClInclude>
     <ClInclude Include="Controller.h">
-      <Filter>ECS\ControllerComponent</Filter>
+      <Filter>ECS\Components\ControllerComponent</Filter>
     </ClInclude>
     <ClInclude Include="DrawCall.h">
-      <Filter>ECS\TextureComponent</Filter>
+      <Filter>ECS\Components\TextureComponent</Filter>
     </ClInclude>
     <ClInclude Include="ColliderComponent.h">
-      <Filter>ECS\ColliderComponent</Filter>
+      <Filter>ECS\Components\ColliderComponent</Filter>
     </ClInclude>
     <ClInclude Include="LinkCommandBuilder.h">
       <Filter>Commands</Filter>
@@ -250,7 +217,7 @@
       <Filter>Links</Filter>
     </ClInclude>
     <ClInclude Include="Collision.h">
-      <Filter>ECS\ColliderComponent</Filter>
+      <Filter>ECS\Components\ColliderComponent</Filter>
     </ClInclude>
     <ClInclude Include="Menu.h">
       <Filter>GameStates</Filter>
@@ -265,25 +232,19 @@
       <Filter>GameStates\Combat</Filter>
     </ClInclude>
     <ClInclude Include="OptionsComponent.h">
-      <Filter>ECS\OptionsComponent</Filter>
+      <Filter>ECS\Components\OptionsComponent</Filter>
     </ClInclude>
     <ClInclude Include="Options.h">
-      <Filter>ECS\OptionsComponent</Filter>
+      <Filter>ECS\Components\OptionsComponent</Filter>
     </ClInclude>
     <ClInclude Include="KeyboardHandler.h">
-      <Filter>ECS\ControllerComponent</Filter>
+      <Filter>ECS\Components\ControllerComponent</Filter>
     </ClInclude>
     <ClInclude Include="GlyphAtlasComponent.h">
-      <Filter>ECS\GlyphAtlasComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="BitmapTexture.h">
-      <Filter>ECS\GlyphAtlasComponent</Filter>
+      <Filter>ECS\Components\GlyphAtlasComponent</Filter>
     </ClInclude>
     <ClInclude Include="BitmapFont.h">
-      <Filter>ECS\GlyphAtlasComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="PathHack.h">
-      <Filter>Navigation</Filter>
+      <Filter>ECS\Components\GlyphAtlasComponent</Filter>
     </ClInclude>
     <ClInclude Include="LinkBuilder.h">
       <Filter>Links</Filter>
@@ -300,11 +261,6 @@
     <ClInclude Include="MenuPresets.h">
       <Filter>Navigation\NavigationPresets</Filter>
     </ClInclude>
-    <ClInclude Include="ScriptComponent.h">
-      <Filter>ECS</Filter>
-    <ClInclude Include="AttackQueue.h">
-      <Filter>Queue</Filter>
-    </ClInclude>
     <ClInclude Include="AttackPresets.h">
       <Filter>Navigation\NavigationPresets</Filter>
     </ClInclude>
@@ -317,6 +273,99 @@
     <ClInclude Include="MenuPresets.h">
       <Filter>Navigation\NavigationPresets</Filter>
     </ClInclude>
+    <ClInclude Include="AttackPresets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPresets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPresets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Script.h">
+      <Filter>Navigation\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="CombatScripts.h">
+      <Filter>Navigation\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="Pathway.h">
+      <Filter>Navigation\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPresets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CombatInputCommands.h">
+      <Filter>Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPresets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPresets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BackgroundComponent.h">
+      <Filter>ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxComponent.h">
+      <Filter>ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components.h">
+      <Filter>ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="CursorComponent.h">
+      <Filter>ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="FadeComponent.h">
+      <Filter>ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuComponent.h">
+      <Filter>ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerComponent.h">
+      <Filter>ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="PromptComponent.h">
+      <Filter>ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptComponent.h">
+      <Filter>ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteComponent.h">
+      <Filter>ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformComponent.h">
+      <Filter>ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="WhiteRectComponent.h">
+      <Filter>ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ECS.h">
+      <Filter>ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>ECS\Components\GlyphAtlasComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPresets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Asset.h">
+      <Filter>Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="MiscAssets.h">
+      <Filter>Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPresets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuNavigation.h">
+      <Filter>Navigation</Filter>
+    </ClInclude>
+    <ClInclude Include="OverlayComponent.h">
+      <Filter>ECS\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -328,14 +377,8 @@
     <ClCompile Include="TextureManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AssetManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Vector2D.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ECS.cpp">
-      <Filter>ECS</Filter>
     </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>Source Files</Filter>
@@ -364,9 +407,6 @@
     <ClCompile Include="LoadAudioData.cpp">
       <Filter>Data\DataLoads</Filter>
     </ClCompile>
-    <ClCompile Include="Pathway.cpp">
-      <Filter>Navigation</Filter>
-    </ClCompile>
     <ClCompile Include="CommonNavigation.cpp">
       <Filter>Navigation</Filter>
     </ClCompile>
@@ -376,20 +416,14 @@
     <ClCompile Include="AudioNavigation.cpp">
       <Filter>Navigation</Filter>
     </ClCompile>
-    <ClCompile Include="CombatNavigation.cpp">
-      <Filter>Navigation</Filter>
-    </ClCompile>
-    <ClCompile Include="FadeComponent.cpp">
-      <Filter>ECS</Filter>
-    </ClCompile>
     <ClCompile Include="TextureAtlasComponent.cpp">
-      <Filter>ECS\TextureComponent</Filter>
+      <Filter>ECS\Components\TextureComponent</Filter>
     </ClCompile>
     <ClCompile Include="TextureComponent.cpp">
-      <Filter>ECS\TextureComponent</Filter>
+      <Filter>ECS\Components\TextureComponent</Filter>
     </ClCompile>
     <ClCompile Include="DrawCall.cpp">
-      <Filter>ECS\TextureComponent</Filter>
+      <Filter>ECS\Components\TextureComponent</Filter>
     </ClCompile>
     <ClCompile Include="Links.cpp">
       <Filter>Links</Filter>
@@ -403,20 +437,11 @@
     <ClCompile Include="Background.cpp">
       <Filter>GameStates\Combat</Filter>
     </ClCompile>
-    <ClCompile Include="OptionsComponent.cpp">
-      <Filter>ECS\OptionsComponent</Filter>
-    </ClCompile>
     <ClCompile Include="Collision.cpp">
-      <Filter>ECS\ColliderComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="BitmapTexture.cpp">
-      <Filter>ECS\GlyphAtlasComponent</Filter>
+      <Filter>ECS\Components\ColliderComponent</Filter>
     </ClCompile>
     <ClCompile Include="BitmapFont.cpp">
-      <Filter>ECS\GlyphAtlasComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="Options.cpp">
-      <Filter>ECS\OptionsComponent</Filter>
+      <Filter>ECS\Components\GlyphAtlasComponent</Filter>
     </ClCompile>
     <ClCompile Include="CombatPresets.cpp">
       <Filter>Navigation\NavigationPresets</Filter>
@@ -427,8 +452,71 @@
     <ClCompile Include="MenuPresets.cpp">
       <Filter>Navigation\NavigationPresets</Filter>
     </ClCompile>
+    <ClCompile Include="CombatNavigation.cpp">
+      <Filter>Navigation</Filter>
+    </ClCompile>
+    <ClCompile Include="Pathway.cpp">
+      <Filter>Navigation\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="CombatNavigation.cpp">
+      <Filter>Navigation</Filter>
+    </ClCompile>
+    <ClCompile Include="CombatInputCommands.cpp">
+      <Filter>Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Pathway.cpp">
+      <Filter>Navigation\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="CombatNavigation.cpp">
+      <Filter>Navigation</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="FadeComponent.cpp">
+      <Filter>ECS\Components</Filter>
+    </ClCompile>
     <ClCompile Include="ScriptComponent.cpp">
+      <Filter>ECS\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS.cpp">
       <Filter>ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>ECS\Components\GlyphAtlasComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Options.cpp">
+      <Filter>ECS\Components\OptionsComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionsComponent.cpp">
+      <Filter>ECS\Components\OptionsComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionsComponent.cpp">
+      <Filter>ECS\Components\OptionsComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Options.cpp">
+      <Filter>ECS\Components\OptionsComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Pathway.cpp">
+      <Filter>Navigation\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="MiscAssets.cpp">
+      <Filter>Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="Asset.cpp">
+      <Filter>Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionsComponent.cpp">
+      <Filter>ECS\Components\OptionsComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Options.cpp">
+      <Filter>ECS\Components\OptionsComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuNavigation.cpp">
+      <Filter>Navigation</Filter>
+    </ClCompile>
+    <ClCompile Include="OverlayComponent.cpp">
+      <Filter>ECS\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

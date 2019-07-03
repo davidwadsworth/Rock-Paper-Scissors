@@ -18,14 +18,14 @@ class GlyphAtlasComponent : public Component
 {
 	BitmapFont * bitmap_font_;
 	std::vector<Label*> labels_;
+	int texture_id_, font_id_;
 public:
 
-	GlyphAtlasComponent(): bitmap_font_(nullptr)
+	GlyphAtlasComponent(int texture_id): bitmap_font_(nullptr), texture_id_(texture_id)
 	{}
 
 	~GlyphAtlasComponent()
 	{}
-
 
 	void create_labels()
 	{
@@ -44,7 +44,7 @@ public:
 
 	void init() override
 	{
-		bitmap_font_ = entity->state->palette->get_bitmap_font();
+		bitmap_font_ = GameState::get_palette()->get_font(entity->get_component<OptionsComponent>().get_font());
 		create_labels();
 	}
 

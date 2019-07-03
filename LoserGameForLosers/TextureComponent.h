@@ -7,7 +7,7 @@ class TextureComponent : public Component
 	int texture_id_;
 	DrawCall call_;
 	SDL_Rect dest_, src_;
-	SDL_Texture * texture_;
+	Texture * texture_;
 public:
 	TextureComponent(int texture_id);
 	~TextureComponent() = default;

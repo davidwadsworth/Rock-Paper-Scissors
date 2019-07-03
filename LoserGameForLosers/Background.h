@@ -9,7 +9,8 @@ class Background
 public:
 	Background() = default;
 
-	Background(Entity * player1, Entity * player2, Entity * background) 
+	Background(Entity * player1, Entity * player2, Entity * background)
+		: p1_scale_(0), p2_scale_(0), bg_scale_(0)
 	{
 		p1_tc_ = &player1->get_component<TransformComponent>();
 		p2_tc_ = &player2->get_component<TransformComponent>();

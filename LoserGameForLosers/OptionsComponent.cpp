@@ -1,13 +1,13 @@
 #include "stdafx.h"
 
-OptionsComponent::OptionsComponent(const int options_id, const int x, const int y, const Vector2D align, const int pad)
-	: y_pos_(0), x_pos_(0), padding_(pad), alignment_(align), target_(nullptr), box {}, position{ x, y }, options_id_(options_id)
+OptionsComponent::OptionsComponent(const int font_id, const int options_id, const int x, const int y, const Vector2D align, const int pad)
+	: y_pos_(0), x_pos_(0), padding_(pad), alignment_(align), target_(nullptr), options_id_(options_id), box {}, position{ x, y }, font_id_(font_id)
 {}
 
 void OptionsComponent::init()
 {
-	data_ = &entity->state->bank->options_data.data[options_id_];
-	options_ = Options(data_, entity->state->palette);
+	data_ = &GameState::get_options_data()->data[options_id_];
+	options_ = Options(data_, GameState::get_palette()->get_font(font_id_));
 	current_links = options_.build_options(position.x, position.y, alignment_, padding_);
 	box = options_.box;
 }
@@ -53,6 +53,11 @@ int OptionsComponent::get_path() const
 Link * OptionsComponent::get_current_link()
 {
 	return current_links[x_pos_][y_pos_];
+}
+
+int OptionsComponent::get_font()
+{
+	return font_id_;
 }
 
 void OptionsComponent::make_selection()

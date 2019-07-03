@@ -1,7 +1,18 @@
 #pragma once
-
 #include <SDL.h>
-#include <SDL_mixer.h>
+
+enum Combat_State
+{
+	combat_state_single_player,
+	combat_state_multi_player,
+	combat_state_debug,
+};
+
+enum Combat_Difficulty
+{
+	combat_difficulty_easy,
+	combat_difficulty_hard
+};
 
 class Game
 {
@@ -19,6 +30,8 @@ public:
 
 	static SDL_Renderer *renderer;
 	static SDL_Event event;
+	static int combat_state;
+	static int combat_difficulty;
 
 	SDL_Window *window;
 
@@ -30,8 +43,8 @@ public:
 		group_players,
 		group_cursors,
 		group_wipes,
-		group_attacks
+		group_overlay
 	};
 
-private:
+	
 };

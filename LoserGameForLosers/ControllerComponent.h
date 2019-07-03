@@ -14,8 +14,8 @@ class ControllerComponent : public Component
 
 	std::vector<std::vector<SDL_Scancode>> player_keys_ =
 	{
-		{SDL_SCANCODE_W, SDL_SCANCODE_S, SDL_SCANCODE_A, SDL_SCANCODE_D, SDL_SCANCODE_I, SDL_SCANCODE_O, SDL_SCANCODE_P, SDL_SCANCODE_ESCAPE, SDL_SCANCODE_1, SDL_SCANCODE_2},
-		{SDL_SCANCODE_UP, SDL_SCANCODE_DOWN, SDL_SCANCODE_LEFT, SDL_SCANCODE_RIGHT, SDL_SCANCODE_KP_1, SDL_SCANCODE_KP_2, SDL_SCANCODE_KP_3, SDL_SCANCODE_KP_9, SDL_SCANCODE_KP_7, SDL_SCANCODE_KP_8}
+		{SDL_SCANCODE_W, SDL_SCANCODE_S, SDL_SCANCODE_A, SDL_SCANCODE_D, SDL_SCANCODE_Z, SDL_SCANCODE_X, SDL_SCANCODE_C, SDL_SCANCODE_ESCAPE, SDL_SCANCODE_1, SDL_SCANCODE_2},
+		{SDL_SCANCODE_UP, SDL_SCANCODE_DOWN, SDL_SCANCODE_LEFT, SDL_SCANCODE_RIGHT, SDL_SCANCODE_COMMA, SDL_SCANCODE_PERIOD, SDL_SCANCODE_SLASH, SDL_SCANCODE_KP_9, SDL_SCANCODE_KP_7, SDL_SCANCODE_KP_8}
 	};
 	std::vector<SDL_Scancode> keys_;
 
@@ -41,13 +41,13 @@ public:
 
 	void change_controller(const int new_controller)
 	{
-		data_ = &entity->state->bank->controller_data.data[new_controller];
+		data_ = &GameState::get_controller_data()->data[new_controller];
 		controller_ = Controller(data_);
 	}
 
 	void init() override
 	{
-		data_ = &entity->state->bank->controller_data.data[controller_id_];
+		data_ = &GameState::get_controller_data()->data[controller_id_];
 		keys_ = player_keys_[keys_owner_id_];
 
 		keyboard_ = new KeyboardHandler;

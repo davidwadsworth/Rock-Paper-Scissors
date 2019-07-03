@@ -52,6 +52,7 @@ AtlasCollection LoadAtlasData::load() const
 		atlas_data.data.push_back(sprite_data);
 	}
 
+	data.clear();
 	return atlas_data;
 }
 
@@ -65,5 +66,6 @@ const char * LoadAtlasData::image_source() const
 
 	data.parse<0>(&buffer[0]);
 
+	data.clear();
 	return data.first_node("TextureAtlas")->first_attribute("imagePath")->value();
 }

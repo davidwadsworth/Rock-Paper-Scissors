@@ -3,7 +3,7 @@
 #include <string>
 #include "SDL_image.h"
 #include "Game.h"
-#include "BitmapTexture.h" 
+#include "Texture.h" 
 
 /*This source code copyrighted by Lazy Foo' Productions (2004-2015)
 and may not be redistributed without written permission.*/
@@ -15,7 +15,7 @@ public:
 	BitmapFont();
 
 	//Generates the font
-	bool build_font(BitmapTexture * tex);
+	bool build_font(Texture * tex);
 
 	//Shows the text
 	void render_text(const int x, const int y, std::string text);
@@ -24,7 +24,7 @@ public:
 
 private:
 	//The font texture
-	BitmapTexture *map_bitmap_;
+	Texture *map_bitmap_;
 
 	void* map_pixels_;
 

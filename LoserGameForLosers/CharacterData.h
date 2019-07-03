@@ -10,7 +10,7 @@ struct AttackData
 	Uint32 hit_stun;
 	int damage;
 	int defense;
-	float op_distance;
+	int op_distance;
 };
 
 struct CharacterData

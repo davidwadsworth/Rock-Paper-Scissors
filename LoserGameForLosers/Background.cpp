@@ -117,21 +117,21 @@ void Background::scale_screen(const float scale_increment)
 
 	auto compare_scaling = p1_scale_ + player_sc_range;
 	p1_scale_ = SPRITE_SCALING_TARGET > compare_scaling ? SPRITE_SCALING_TARGET : SPRITE_SCALING < compare_scaling ? SPRITE_SCALING : compare_scaling; // sets the scaling to a number between the target and the starting
-	
 
-	auto scaling_offset_x = (p2_scale_ - p1_scale_) * SPRITE_LENGTH;
-	p1_position_.y += scaling_offset_x;
+
+	const auto scaling_offset = (p2_scale_ - p1_scale_) * SPRITE_LENGTH;
+
+	p1_position_.y += scaling_offset;
 
 	p2_scale_ =	p1_scale_;
-	p2_position_.x += scaling_offset_x;
-	p2_position_.y += scaling_offset_x;
+	p2_position_.x += scaling_offset;
+	p2_position_.y += scaling_offset;
 
 	const auto previous_scale_x = bg_scale_;
-
 	compare_scaling = bg_scale_ + background_sc_range;
 
 	bg_scale_ = BACKGROUND_SCALING_TARGET > compare_scaling ? BACKGROUND_SCALING_TARGET : BACKGROUND_SCALING < compare_scaling ? BACKGROUND_SCALING : compare_scaling; // sets the scaling to a number between the target and the starting
-	scaling_offset_x = previous_scale_x - bg_scale_;
+	const auto background_scaling_offset = previous_scale_x - bg_scale_;
 
 
 	// sets the center of scaling to be at a distance to the player with higher velocity
@@ -143,7 +143,7 @@ void Background::scale_screen(const float scale_increment)
 		center_of_scaling = SCREEN_WIDTH;
 
 	// the difference in scaling from new and old backgrounds * the background width * the center of scaling
-	bg_position_.x += scaling_offset_x * bg_tc_->width * (-bg_position_.x + center_of_scaling) / (BACKGROUND_WIDTH * bg_scale_);
-	bg_position_.y += scaling_offset_x * bg_tc_->height;
+	bg_position_.x += background_scaling_offset * bg_tc_->width * (-bg_position_.x + center_of_scaling) / (BACKGROUND_WIDTH * bg_scale_);
+	bg_position_.y += background_scaling_offset * bg_tc_->height;
 }
 

@@ -1,32 +1,45 @@
 #include "stdafx.h"
 #include "Menu.h"
-#include "PathHack.h"
+#include "MenuPresets.h"
+#include "Loads.h"
 
-
-
-Menu::Menu(LoadedCollections * collections)
-	: GameState(collections)
+Menu::Menu(Manager * manager)
+	: GameState(manager)
 {
-	palette = new AssetManager(&manager, this);
-	palette->add_texture(collections->atlas_data.path.c_str());
-	palette->add_texture("white_background.png");
-	palette->set_bit_map_font("lazyfont.png");
-	audio_player = new AudioQueue(&bank->audio_data);
+	screen_ = new Assets::MenuScreen(manager);
 
-	const auto menu = palette->create_menu_screen();
-	path = new Path();
+	auto atlas_load = LoadAtlasData("data_menu_textures-0.xml");
+	auto audio_load = LoadAudioData("data_audio_v2.xml");
+	auto controller_load = LoadControllerData("data_controllers_v2.xml");
+	auto options_load = LoadOptionsData("data_options_v2.xml");
 
-	auto hack = PathHack(this);
+	set_atlas_data(new AtlasCollection(atlas_load.load()));
+	set_audio_data(new AudioCollection(audio_load.load()));
+	set_controller_data(new ControllerCollection(controller_load.load()));
+	set_options_data(new OptionsCollection(options_load.load()));
 
-	path->add(hack.initiate_menu());
+	auto palette = new TextureManager();
+	palette->load_texture(get_atlas_data()->path.c_str());
+	palette->load_texture("white_background.png");
+	palette->load_font("lazyfont.png");
+	set_palette(palette);
 
+	set_audio_player(new AudioQueue(get_audio_data()));
+
+	screen_->create();
+
+	set_path(new Path());
+
+	auto menu_presets = MenuPresets::CreateMenuOptions(screen_->get_asset());
+	menu_presets.init();
+	get_path()->add(menu_presets.get_trunk());
 }
 
 
 void Menu::render()
 {
-	auto& background_group = manager.get_group(Game::group_background);
-	auto& cursor_group = manager.get_group(Game::group_cursors);
+	auto& background_group = get_manager()->get_group(Game::group_background);
+	auto& cursor_group = get_manager()->get_group(Game::group_cursors);
 
 	for (auto& b : background_group)
 	{
@@ -40,10 +53,10 @@ void Menu::render()
 
 void Menu::logic()
 {
-	path->navigate_path();
+	get_path()->navigate_path();
 
-	manager.refresh();
-	manager.update();
+	get_manager()->refresh();
+	get_manager()->update();
 }
 
 void Menu::handle_events()
@@ -63,16 +76,10 @@ void Menu::handle_events()
 
 void Menu::close()
 {
-	for (auto& b : manager.get_group(Game::group_background))
-	{
-		b->del_group(Game::group_background);
-		b->destroy();
-	}
-	for (auto& c : manager.get_group(Game::group_cursors))
-	{
-		c->del_group(Game::group_cursors);
-		c->destroy();
-	}
-
-	audio_player->stop_music();
+	get_path()->clear();
+	get_audio_player()->close();
+	get_palette()->free_textures();
+	screen_->destroy();
+	get_manager()->refresh();
+	get_manager()->update();
 }

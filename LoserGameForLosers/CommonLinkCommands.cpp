@@ -5,7 +5,6 @@ namespace LinkCommands
 {
 	void ChangeState::execute(Entity * entity)
 	{
-		previous_state_ = Game::state_id;
 		if (Game::state_id != state_)
 			Game::set_next_state(state_);
 	}
@@ -21,7 +20,7 @@ namespace LinkCommands
 		if (target_)
 		{
 			previous_attack_id_ = target_->get_component<PlayerComponent>().attack_id;
-			target_->get_component<PlayerComponent>().choose_attack(attack_id_);
+			target_->get_component<PlayerComponent>().choose_final_attack(attack_id_);
 		}
 	}
 
@@ -31,7 +30,7 @@ namespace LinkCommands
 
 	void SetGameMode::execute(Entity * entity)
 	{
-		
+		Game::combat_state = game_id_;
 	}
 }
 

@@ -3,6 +3,7 @@
 
 void ScriptComponent::init()
 {
+	attack_path_ = new Path();
 }
 
 void ScriptComponent::update()
@@ -25,4 +26,9 @@ void ScriptComponent::clear_add(PathTrunk * action) const
 void ScriptComponent::add(PathTrunk * action) const
 {
 	attack_path_->add(action);
+}
+
+void ScriptComponent::clear() const
+{
+	attack_path_->clear();
 }

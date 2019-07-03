@@ -157,8 +157,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AssetManager.h" />
+    <ClInclude Include="Asset.h" />
     <ClInclude Include="AtlasData.h" />
+    <ClInclude Include="MenuNavigation.h" />
+    <ClInclude Include="MiscAssets.h" />
+    <ClInclude Include="CombatInputCommands.h" />
+    <ClInclude Include="CombatScripts.h" />
+    <ClInclude Include="OverlayComponent.h" />
+    <ClInclude Include="Script.h" />
     <ClInclude Include="ScriptComponent.h" />
     <ClInclude Include="AttackPresets.h" />
     <ClInclude Include="AttackPresets.h" />
@@ -181,12 +187,11 @@
     <ClInclude Include="Navigation.h" />
     <ClInclude Include="NavigationPreset.h" />
     <ClInclude Include="Navigator.h" />
-    <ClInclude Include="PathHack.h" />
     <ClInclude Include="Pathway.h" />
     <ClInclude Include="LoadAtlasData.h" />
     <ClInclude Include="BackgroundComponent.h" />
     <ClInclude Include="Background.h" />
-    <ClInclude Include="BitmapTexture.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="BoxComponent.h" />
     <ClInclude Include="LoadAudioData.h" />
     <ClInclude Include="LoadCharacterData.h" />
@@ -241,17 +246,21 @@
     <ClInclude Include="WhiteRectComponent.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="Asset.cpp" />
     <ClCompile Include="AttackPresets.cpp" />
+    <ClCompile Include="MenuNavigation.cpp" />
+    <ClCompile Include="MiscAssets.cpp" />
+    <ClCompile Include="CombatInputCommands.cpp" />
     <ClCompile Include="CombatNavigation.cpp" />
     <ClCompile Include="CombatPresets.cpp" />
-    <ClCompile Include="CombatNavigation.cpp" />
     <ClCompile Include="CommonNavigation.cpp" />
     <ClCompile Include="DrawCall.cpp" />
     <ClCompile Include="FadeComponent.cpp" />
+    <ClCompile Include="GameState.cpp" />
     <ClCompile Include="LoadAtlasData.cpp" />
     <ClCompile Include="Background.cpp" />
-    <ClCompile Include="BitmapTexture.cpp" />
+    <ClCompile Include="OverlayComponent.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="LoadAudioData.cpp" />
     <ClCompile Include="LoadCharacterData.cpp" />
     <ClCompile Include="Collision.cpp" />
@@ -272,9 +281,6 @@
     <ClCompile Include="OptionsComponent.cpp" />
     <ClCompile Include="Pathway.cpp" />
     <ClCompile Include="ScriptComponent.cpp" />
-    <ClCompile Include="Options.cpp" />
-    <ClCompile Include="OptionsComponent.cpp" />
-    <ClCompile Include="Pathway.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

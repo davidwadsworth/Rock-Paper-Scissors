@@ -1,29 +1,60 @@
 
 #include "stdafx.h"
 #include "Combat.h"
-#include "PathHack.h"
+#include "CombatScripts.h"
+#include "Loads.h"
 
 Background * bg_logic;
 
-
-
-Combat::Combat(LoadedCollections * collections) : GameState(collections)
+Combat::Combat(Manager* manager) 
+	: GameState(manager)
 {
-	palette = new AssetManager(&manager, this);
-	palette->add_texture(collections->atlas_data.path.c_str());
-	palette->add_texture("white_background.png");
-	palette->set_bit_map_font("lazyfont.png");
-	audio_player = new AudioQueue(&bank->audio_data);
+	player_1_ = new Assets::PlayerLeft(manager);
+	player_2_ = new Assets::PlayerRight(manager);
+	background_ = new Assets::CombatBackground(manager);
+	left_overlay_ = new Assets::Overlay(manager);
+	right_overlay_ = new Assets::Overlay(manager);
 
-	const auto player_left = palette->create_left_player();
-	const auto player_right = palette->create_right_player();
-	const auto background = palette->create_combat_background();
+	auto atlas_load = LoadAtlasData("data_main_textures-0_v2.xml");
+	auto audio_load = LoadAudioData("data_audio_v2.xml");
+	auto controller_load = LoadControllerData("data_controllers_v2.xml");
+	auto options_load = LoadOptionsData("data_options_v2.xml");
+	auto character_load = LoadCharacterData("data_characters_v2.xml");
 
-	path = new Path();/*
-	auto hack = PathHack(this);
-	path->add(hack.initiateCombat(player_left, player_right, background));*/
+	set_atlas_data(new AtlasCollection(atlas_load.load()));
+	set_audio_data(new AudioCollection(audio_load.load()));
+	set_controller_data(new ControllerCollection(controller_load.load()));
+	set_options_data(new OptionsCollection(options_load.load()));
+	set_character_data(new CharacterCollection(character_load.load()));
 
-	bg_logic = new Background(player_left, player_right, background);
+	auto palette = new TextureManager();
+	palette->load_texture(get_atlas_data()->path);
+	palette->load_texture("gray_background.png");
+	palette->load_font("lazyfont.png");
+	set_palette(palette);
+
+	set_audio_player(new AudioQueue(get_audio_data()));
+
+	player_1_->create(controller_debug);
+	player_2_->create(controller_combat);
+	background_->create();
+	left_overlay_->create(ss_main_health_container, ss_main_health_bar, SDL_FLIP_NONE);
+	right_overlay_->create(ss_main_health_container, ss_main_health_bar, SDL_FLIP_HORIZONTAL);
+
+	switch (Game::combat_state)
+	{
+	case combat_state_single_player:
+		set_path(new CombatScripts::SinglePlayer(player_1_->get_asset(), player_2_->get_asset(), background_->get_asset(), Game::combat_difficulty));
+		break;
+	case combat_state_multi_player:
+		set_path(new CombatScripts::MultiPlayer(player_1_->get_asset(), player_2_->get_asset(), background_->get_asset()));
+		break;
+	default:
+		set_path(new CombatScripts::Debug());
+		break;
+	}
+
+	bg_logic = new Background(player_1_->get_asset(), player_2_->get_asset(), background_->get_asset());
 }
 
 Combat::~Combat()
@@ -32,20 +63,20 @@ Combat::~Combat()
 }
 
 void Combat::logic()
-{
-	path->navigate_path();
+{	
 	bg_logic->screen_change();
-
-	manager.refresh();
-	manager.update();
+	get_manager()->refresh();
+	get_manager()->update();
+	get_path()->navigate_path();
 }
 
 void Combat::render()
 {
-	auto& background_group = manager.get_group(Game::group_background);
-	auto& prompt_group = manager.get_group(Game::group_prompts);
-	auto& cursor_group = manager.get_group(Game::group_cursors);
-	auto& player_group = manager.get_group(Game::group_players);
+	auto& background_group = get_manager()->get_group(Game::group_background);
+	auto& prompt_group = get_manager()->get_group(Game::group_prompts);
+	auto& cursor_group = get_manager()->get_group(Game::group_cursors);
+	auto& player_group = get_manager()->get_group(Game::group_players);
+	auto& overlay_group = get_manager()->get_group(Game::group_overlay);
 
 	for (auto& b : background_group)
 	{
@@ -54,6 +85,10 @@ void Combat::render()
 	for (auto& p : player_group)
 	{
 		p->draw();
+	}
+	for (auto& o : overlay_group)
+	{
+		o->draw();
 	}
 	for (auto& pr : prompt_group)
 	{
@@ -82,25 +117,16 @@ void Combat::handle_events()
 
 void Combat::close()
 {
-	for (auto& b : manager.get_group(Game::group_background))
-	{
-		b->del_group(Game::group_background);
-		b->destroy();
-	}
-
-	for (auto& p : manager.get_group(Game::group_players))
-	{
-		p->del_group(Game::group_players);
-		p->destroy();
-	}
-
-	for (auto& pr : manager.get_group(Game::group_prompts))
-	{
-		pr->del_group(Game::group_prompts);
-		pr->destroy();
-	}
-
-	audio_player->stop_music();
+	get_path()->clear();
+	get_audio_player()->close();
+	get_palette()->free_textures();
+	player_1_->destroy();
+	player_2_->destroy();
+	background_->destroy();
+	left_overlay_->destroy();
+	right_overlay_->destroy();
+	get_manager()->refresh();
+	get_manager()->update();
 }
 
 

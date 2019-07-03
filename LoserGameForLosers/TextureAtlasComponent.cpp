@@ -2,7 +2,7 @@
 #include "LoadAtlasData.h"
 
 TextureAtlasComponent::TextureAtlasComponent()
-	: slot_count_(0)
+	: slot_count_(0), data_(nullptr), texture_(nullptr)
 {}
 
 TextureAtlasComponent::~TextureAtlasComponent()
@@ -12,9 +12,9 @@ TextureAtlasComponent::~TextureAtlasComponent()
 
 void TextureAtlasComponent::init()
 {
-	data_ = &entity->state->bank->atlas_data;
-	texture_ = entity->state->palette->get_texture(data_->texture_id);
-}
+	data_ = GameState::get_atlas_data();
+	texture_ = GameState::get_palette()->get_texture(data_->texture_id);
+}	
 
 int TextureAtlasComponent::create_image_slot(const int sprite_id, const int x, const int y, const int rotation, const SDL_RendererFlip flip, const int slot_id)
 {

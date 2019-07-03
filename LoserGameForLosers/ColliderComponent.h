@@ -1,51 +1,49 @@
 #pragma once
 #include "ECS.h"
 #include "SpriteComponent.h"
+#include "Collision.h"
 
 
 class ColliderComponent : public Component
 {
 	bool flipped_;
+	TransformComponent* transform_;
 public:
 	SDL_Rect collider{};
-	TransformComponent* transform;
 
 	float hit_box = 1.0;
 
 	ColliderComponent() = default;
 
 	explicit ColliderComponent(const float hit_box)
-		: flipped_(false), transform(nullptr), hit_box(hit_box)
+		: flipped_(false), transform_(nullptr), hit_box(hit_box)
 	{}
 
 	void init() override
 	{
-		transform = &entity->get_component<TransformComponent>();
+		transform_ = &entity->get_component<TransformComponent>();
 		flipped_ = entity->get_component<SpriteComponent>().sprite_flip;
 	}
 
-	void set_collider_hit_box(const float new_hit_box)
+	bool collides(Entity * other) const
 	{
-		hit_box = new_hit_box;
+		return Collision::aabb(collider, other->get_component<ColliderComponent>().collider);
 	}
 
 	void update() override
 	{
-		collider.x = transform->position.x;
+		collider.x = transform_->position.x;
 		if (flipped_)
-		{
-			collider.x = transform->position.x + std::round(SPRITE_LENGTH * transform->scale * 1-hit_box);
-		}
-		collider.y = transform->position.y;
-		collider.w = std::round(SPRITE_LENGTH * transform->scale * hit_box);
-		collider.h = std::round(SPRITE_LENGTH * transform->scale);
+			collider.x = transform_->position.x + std::round(SPRITE_LENGTH * transform_->scale * (1 - hit_box) );
+		collider.y = transform_->position.y;
+		collider.w = std::round(SPRITE_LENGTH * transform_->scale * hit_box);
+		collider.h = std::round(SPRITE_LENGTH * transform_->scale);
 
 	}
 
 	void draw() override
-	{
-		SDL_SetRenderDrawColor(Game::renderer, 0, 0, 0, 255);
-		SDL_RenderDrawRect(Game::renderer, &collider);
+	{/*
+		SDL_RenderDrawRect(Game::renderer, &collider);*/
 	}
 
 };

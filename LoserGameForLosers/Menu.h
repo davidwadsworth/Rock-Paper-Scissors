@@ -1,12 +1,11 @@
 #pragma once
 #include "GameState.h"
-#include "Constants.h"
-#include "Components.h" 
 
 class Menu : public GameState
 {
+	Assets::MenuScreen * screen_;
 public:
-	Menu(LoadedCollections * collections);
+	Menu(Manager * manager);
 	~Menu()
 	{}
 	void logic() override;

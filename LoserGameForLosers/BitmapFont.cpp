@@ -9,7 +9,7 @@ BitmapFont::BitmapFont()
 	map_space_ = 0;
 }
 
-bool BitmapFont::build_font(BitmapTexture* bitmap)
+bool BitmapFont::build_font(Texture* bitmap)
 {
 	bool success = true;
 

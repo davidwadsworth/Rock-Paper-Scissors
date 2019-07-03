@@ -2,14 +2,14 @@
 #include "DrawCall.h"
 #include "Vector2D.h"
 #include <vector>
-#include "TextureManager.h"
 
 class Slot
 {
 public:
-	explicit Slot(SDL_Texture * tex)
-		: texture(tex)
+	explicit Slot(Texture * tex)
+		: is_rotated(false), dest(), call(nullptr), width(0), height(0), texture(tex)
 	{}
+
 	virtual ~Slot() = default;
 
 	bool is_rotated;
@@ -18,11 +18,11 @@ public:
 	SDL_Rect dest;
 	DrawCall* call;
 	int width, height;
-	SDL_Texture * texture;
+	Texture* texture;
 
 	void set_call(AtlasData* sprite, const int rotation, const SDL_RendererFlip flip)
 	{
-		call = new DrawCall(sprite, texture, &dest, flip, rotation);
+		call = new DrawCall(sprite, &dest, flip, rotation);
 	}
 
 	void update_position_and_scaling(const Vector2D pos, const float sc)
@@ -73,7 +73,7 @@ public:
 
 	void draw() const
 	{
-		TextureManager::draw(call);
+		texture->render(call->src, call->dest, call->rotation, call->rotation_point, call->flip);
 	}
 };
 
@@ -91,7 +91,7 @@ public:
 class ImageSlot : public Slot
 {
 public:
-	explicit ImageSlot(SDL_Texture * texture, AtlasData * data, const int x, const int y, const int rotation, const SDL_RendererFlip flip)
+	explicit ImageSlot(Texture * texture, AtlasData * data, const int x, const int y, const int rotation, const SDL_RendererFlip flip)
 		: Slot(texture)
 	{
 		dest = SDL_Rect{ x,y, data->w, data->h };
@@ -127,8 +127,8 @@ public:
 	{
 		current_frame = frame_count;
 
-		if (frame_count < frames)
-			frame_count++;
+		if (frame_count < frames - 1)
+			frame_count += (SDL_GetTicks() - start_ticks_) / speed % 2;
 		return &calls[current_frame];
 	}
 
@@ -149,7 +149,7 @@ class AnimatedSlot : public Slot, public Animated
 	std::vector<AnimatedState> animated_states_;
 	AnimatedState* current_state_;
 public:
-	AnimatedSlot(SDL_Texture * texture, const int x, const int y)
+	AnimatedSlot(Texture * texture, const int x, const int y)
 		: Slot(texture)
 	{
 		dest = { x, y, 0, 0 };
@@ -164,7 +164,7 @@ public:
 		anim_state.locked = false;
 
 		for(auto sprite : frames)
-			anim_state.calls.push_back(DrawCall(sprite, texture, &dest, flip, rotation));
+			anim_state.calls.push_back(DrawCall(sprite, &dest, flip, rotation));
 
 		animated_states_.push_back(anim_state);
 		current_state_ = &animated_states_[0];
@@ -186,9 +186,7 @@ public:
 			call = current_state_->animate();
 		}
 		else
-		{
 			call = current_state_->locked_animation();
-		}
 	}
 
 	void unlock_animation() override
