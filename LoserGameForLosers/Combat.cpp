@@ -14,7 +14,6 @@ Combat::Combat(Manager* manager)
 	background_ = new Assets::CombatBackground(manager);
 	left_overlay_ = new Assets::Overlay(manager);
 	right_overlay_ = new Assets::Overlay(manager);
-
 	auto atlas_load = LoadAtlasData("data_main_textures-0_v2.xml");
 	auto audio_load = LoadAudioData("data_audio_v2.xml");
 	auto controller_load = LoadControllerData("data_controllers_v2.xml");
@@ -68,7 +67,7 @@ void Combat::logic()
 	get_manager()->refresh();
 	get_manager()->update();
 	get_path()->navigate_path();
-}
+{
 
 void Combat::render()
 {
@@ -128,7 +127,5 @@ void Combat::close()
 	get_manager()->refresh();
 	get_manager()->update();
 }
-
-
 
 

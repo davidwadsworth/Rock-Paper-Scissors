@@ -113,4 +113,27 @@ namespace CombatPresets
 		void init() override;
 
 	};
+
+	class MatchEnding : public NavigationPreset
+	{
+		Entity * player_;
+		GameState * state_;
+	public:
+		MatchEnding(Entity * player)
+			: player_(player), state_(player->state)
+		{}
+		void init() override;
+	};
+
+	class EnableMovement : public NavigationPreset
+	{
+		Entity * player_1_, *player_2_;
+	public:
+		EnableMovement(Entity * player_1, Entity * player_2)
+			: player_1_(player_1), player_2_(player_2)
+		{}
+
+		void init() override;
+
+	};
 }

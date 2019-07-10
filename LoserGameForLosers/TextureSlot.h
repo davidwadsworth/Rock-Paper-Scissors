@@ -5,6 +5,7 @@
 
 class Slot
 {
+	TransformComponent * transform_;
 public:
 	explicit Slot(Texture * tex)
 		: is_rotated(false), dest(), call(nullptr), width(0), height(0), texture(tex)
@@ -23,6 +24,7 @@ public:
 	void set_call(AtlasData* sprite, const int rotation, const SDL_RendererFlip flip)
 	{
 		call = new DrawCall(sprite, &dest, flip, rotation);
+		update_transform();
 	}
 
 	void update_position_and_scaling(const Vector2D pos, const float sc)
@@ -169,6 +171,8 @@ public:
 		animated_states_.push_back(anim_state);
 		current_state_ = &animated_states_[0];
 		call = &current_state_->calls[0];
+		update_transform();
+
 	}
 
 	void lock_animation(const int state) override
@@ -198,5 +202,6 @@ public:
 	{
 		current_state_ = &animated_states_[state];
 		call = current_state_->get_call(call_id);
+		update_transform();
 	}
 };
