@@ -14,6 +14,7 @@ Combat::Combat(Manager* manager)
 	background_ = new Assets::CombatBackground(manager);
 	left_overlay_ = new Assets::Overlay(manager);
 	right_overlay_ = new Assets::Overlay(manager);
+
 	auto atlas_load = LoadAtlasData("data_main_textures-0_v2.xml");
 	auto audio_load = LoadAudioData("data_audio_v2.xml");
 	auto controller_load = LoadControllerData("data_controllers_v2.xml");
@@ -34,16 +35,17 @@ Combat::Combat(Manager* manager)
 
 	set_audio_player(new AudioQueue(get_audio_data()));
 
-	player_1_->create(controller_debug);
-	player_2_->create(controller_combat);
 	background_->create();
 	left_overlay_->create(ss_main_health_container, ss_main_health_bar, SDL_FLIP_NONE);
 	right_overlay_->create(ss_main_health_container, ss_main_health_bar, SDL_FLIP_HORIZONTAL);
 
+	player_1_->create(controller_combat);
+	player_2_->create(controller_combat, Game::combat_difficulty);
+
 	switch (Game::combat_state)
 	{
 	case combat_state_single_player:
-		set_path(new CombatScripts::SinglePlayer(player_1_->get_asset(), player_2_->get_asset(), background_->get_asset(), Game::combat_difficulty));
+		set_path(new CombatScripts::SinglePlayer(player_1_->get_asset(), player_2_->get_asset(), background_->get_asset()));
 		break;
 	case combat_state_multi_player:
 		set_path(new CombatScripts::MultiPlayer(player_1_->get_asset(), player_2_->get_asset(), background_->get_asset()));
@@ -67,7 +69,7 @@ void Combat::logic()
 	get_manager()->refresh();
 	get_manager()->update();
 	get_path()->navigate_path();
-{
+}
 
 void Combat::render()
 {
@@ -127,5 +129,7 @@ void Combat::close()
 	get_manager()->refresh();
 	get_manager()->update();
 }
+
+
 
 

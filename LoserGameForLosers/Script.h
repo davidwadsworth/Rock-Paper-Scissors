@@ -1,24 +1,23 @@
 #pragma once
 #include "NavigationPreset.h"
 
-class Script : public Path
+class CircularScript : public Path
 {
-	PathTrunk * head_ = nullptr;
 	int current_pos_ = 0;
 	std::vector<NavigationPreset*> presets_;
 public:
-	virtual ~Script() 
+	virtual ~CircularScript() 
 	{
-		Script::close();
+		CircularScript::close();
 	}
 
 	void add_preset(NavigationPreset * preset)
 	{
-		if (!head_)
+		if (!get_head())
 		{
 			preset->init();
-			head_ = preset->get_trunk();
-			head_->current->init();
+			set_head(preset->get_trunk());
+			get_head()->current->init();
 		}
 
 		presets_.push_back(preset);
@@ -26,17 +25,17 @@ public:
 
 	void navigate_path() override
 	{
-		if (!head_)
+		if (!get_head())
 			return;
 
-		if (head_->has_current())
-			head_->current->navigate_path();
+		if (get_head()->has_current())
+			get_head()->current->navigate_path();
 		else
 		{
-			if (head_->next)
+			if (get_head()->next)
 			{
-				head_ = head_->next;
-				head_->current->init();
+				set_head(get_head()->next);
+				get_head()->current->init();
 				return;
 			}
 
@@ -44,8 +43,8 @@ public:
 				current_pos_ = 0;
 
 			presets_[current_pos_]->init();
-			head_ = presets_[current_pos_]->get_trunk();
-			head_->current->init();
+			set_head(presets_[current_pos_]->get_trunk());
+			get_head()->current->init();
 		}
 	}
 	
@@ -54,4 +53,23 @@ public:
 		for (auto p : presets_)
 			p->close();
 	}
+};
+
+class AIScript : public Path
+{
+
+public:
+	AIScript() = default;
+
+	void navigate_path() override
+	{
+		if (!get_head())
+			return;
+
+		if (get_head()->has_current())
+			get_head()->current->navigate_path();
+		else
+			get_head()->reset();
+	}
+
 };

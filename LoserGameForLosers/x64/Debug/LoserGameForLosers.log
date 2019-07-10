@@ -1,0 +1,126 @@
+﻿  stdafx.cpp
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\constants.h(45): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\constants.h(54): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\textureslot.h(162): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\commoninputcommands.h(35): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\commoninputcommands.h(73): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\commoninputcommands.h(97): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\linkbuilder.h(23): warning C4065: switch statement contains 'default' but no 'case' labels
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\backgroundcomponent.h(25): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\backgroundcomponent.h(26): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\backgroundcomponent.h(27): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\cursorcomponent.h(33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\spritecomponent.h(35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\collidercomponent.h(40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\collidercomponent.h(42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\collidercomponent.h(43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\collidercomponent.h(44): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\collidercomponent.h(45): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\keyboardhandler.h(24): warning C4200: nonstandard extension used: zero-sized array in struct/union
+  c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\keyboardhandler.h(24): note: This member will be ignored by a defaulted constructor or copy/move assignment operator
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\promptcomponent.h(19): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  AICommands.cpp
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\aicommands.cpp(51): warning C4018: '>': signed/unsigned mismatch
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\aicommands.cpp(57): warning C4018: '>': signed/unsigned mismatch
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\aicommands.cpp(80): warning C4018: '>': signed/unsigned mismatch
+  AIComponent.cpp
+  Asset.cpp
+  AttackPresets.cpp
+  AudioNavigation.cpp
+  Background.cpp
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\background.cpp(42): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
+  BitmapFont.cpp
+  Collision.cpp
+  Combat.cpp
+  CombatInputCommands.cpp
+  CombatNavigation.cpp
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\combatnavigation.cpp(287): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\combatnavigation.cpp(294): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\combatnavigation.cpp(305): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+  CombatPresets.cpp
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\combatpresets.cpp(141): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\combatpresets.cpp(153): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\combatpresets.cpp(175): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\combatpresets.cpp(184): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  CommonInputCommands.cpp
+  CommonLinkCommands.cpp
+  CommonNavigation.cpp
+  DrawCall.cpp
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\drawcall.cpp(6): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\drawcall.cpp(67): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\drawcall.cpp(67): warning C4244: 'initializing': conversion from 'int' to 'const float', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\drawcall.cpp(68): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\drawcall.cpp(68): warning C4244: 'initializing': conversion from 'int' to 'const float', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\drawcall.cpp(69): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\drawcall.cpp(69): warning C4244: 'initializing': conversion from 'int' to 'const float', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\drawcall.cpp(70): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\drawcall.cpp(70): warning C4244: 'initializing': conversion from 'int' to 'const float', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\drawcall.cpp(96): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\drawcall.cpp(97): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  ECS.cpp
+  FadeComponent.cpp
+  Game.cpp
+  GameState.cpp
+  Generating Code...
+  Compiling...
+  Links.cpp
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\links.cpp(16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\links.cpp(17): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  LoadAtlasData.cpp
+  LoadAudioData.cpp
+  LoadCharacterData.cpp
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\loadcharacterdata.cpp(27): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\loadcharacterdata.cpp(28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\loadcharacterdata.cpp(35): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\loadcharacterdata.cpp(38): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  LoadControllerData.cpp
+  LoadOptionsData.cpp
+  Main.cpp
+  Menu.cpp
+  MenuNavigation.cpp
+  MenuPresets.cpp
+  MiscAssets.cpp
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\ecs.h(95): warning C4244: 'argument': conversion from 'const int' to 'const float', possible loss of data
+  c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\miscassets.cpp(9): note: see reference to function template instantiation 'T &Entity::add_component<TransformComponent,const int&,const int&,const float&>(const int &,const int &,const float &)' being compiled
+          with
+          [
+              T=TransformComponent
+          ]
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\ecs.h(95): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\miscassets.cpp(67): note: see reference to function template instantiation 'T &Entity::add_component<OptionsComponent,FONTS,int&,float&,float&,Vector2D,const int&>(FONTS &&,int &,float &,float &,Vector2D &&,const int &)' being compiled
+          with
+          [
+              T=OptionsComponent
+          ]
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\ecs.h(95): warning C4244: 'argument': conversion from '_Ty' to 'const float', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+  c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\miscassets.cpp(85): note: see reference to function template instantiation 'T &Entity::add_component<TransformComponent,int&,int&,int&,int&,int>(int &,int &,int &,int &,int &&)' being compiled
+          with
+          [
+              T=TransformComponent
+          ]
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\ecs.h(95): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+  Options.cpp
+  OptionsComponent.cpp
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\optionscomponent.cpp(34): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\optionscomponent.cpp(43): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  OverlayComponent.cpp
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\overlaycomponent.cpp(27): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\overlaycomponent.cpp(39): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\dwads\onedrive\desktop\rock-paper-scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\losergameforlosers\overlaycomponent.cpp(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Pathway.cpp
+  ScriptComponent.cpp
+  Texture.cpp
+  TextureAtlasComponent.cpp
+  TextureComponent.cpp
+  TextureManager.cpp
+  Generating Code...
+  Compiling...
+  Timer.cpp
+  TransformationNavigation.cpp
+  Vector2D.cpp
+  Generating Code...
+  LoserGameForLosers.vcxproj -> C:\Users\dwads\OneDrive\Desktop\Rock-Paper-Scissors-11c36e3165dd7a94928b4f912bb1a4bb4bf719d7\x64\Debug\WhipJumpKickGrab.exe

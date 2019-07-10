@@ -15,5 +15,6 @@ public:
 	void empty_add(PathTrunk * action) const;
 	void clear_add(PathTrunk * action) const;
 	void add(PathTrunk * action) const;
+	bool is_empty();
 	void clear() const;
 };

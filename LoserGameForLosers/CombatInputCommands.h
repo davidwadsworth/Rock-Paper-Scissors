@@ -1,7 +1,11 @@
 #pragma once
 #include "InputCommand.h"
+#include "CombatNavigation.h"
 
-
+namespace Navigation
+{
+	class BlockPlayer;
+}
 
 namespace CombatCommands
 {
@@ -27,7 +31,8 @@ namespace CombatCommands
 
 	class ScriptBlock : public InputCommand
 	{
-		bool was_pressed_;
+		Navigation::BlockAndCrawl * block_;
+		bool was_pressed_ = true;
 	public:
 		ScriptBlock() = default;
 

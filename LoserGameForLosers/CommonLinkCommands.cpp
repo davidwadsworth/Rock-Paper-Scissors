@@ -26,6 +26,7 @@ namespace LinkCommands
 
 	void SetDifficulty::execute(Entity * entity)
 	{
+		Game::combat_difficulty = difficulty_id_;
 	}
 
 	void SetGameMode::execute(Entity * entity)

@@ -35,7 +35,7 @@ public:
 
 	float get_horizontal_distance(Entity * compare) const
 	{
-		return (this->position.x - compare->get_component<TransformComponent>().position.x) / scale;
+		return this->position.x - compare->get_component<TransformComponent>().position.x - this->width * this->scale;
 	}
 
 	void init() override

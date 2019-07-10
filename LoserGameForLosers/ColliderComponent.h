@@ -30,6 +30,11 @@ public:
 		return Collision::aabb(collider, other->get_component<ColliderComponent>().collider);
 	}
 
+	bool collides(Entity * other, const int padding) const
+	{
+		return Collision::aabb(collider, other->get_component<ColliderComponent>().collider, padding);
+	}
+
 	void update() override
 	{
 		collider.x = transform_->position.x;
@@ -42,8 +47,8 @@ public:
 	}
 
 	void draw() override
-	{/*
-		SDL_RenderDrawRect(Game::renderer, &collider);*/
+	{
+		//SDL_RenderDrawRect(Game::renderer, &collider);
 	}
 
 };

@@ -10,8 +10,10 @@ enum Combat_State
 
 enum Combat_Difficulty
 {
-	combat_difficulty_easy,
-	combat_difficulty_hard
+	combat_difficulty_none,
+	combat_difficulty_normal,
+	combat_difficulty_hard,
+	combat_difficulty_impossible
 };
 
 class Game

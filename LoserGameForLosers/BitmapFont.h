@@ -1,8 +1,6 @@
 #pragma once
 #include "SDL.h"
 #include <string>
-#include "SDL_image.h"
-#include "Game.h"
 #include "Texture.h" 
 
 /*This source code copyrighted by Lazy Foo' Productions (2004-2015)

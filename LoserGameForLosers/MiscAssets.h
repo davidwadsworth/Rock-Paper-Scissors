@@ -20,7 +20,7 @@ namespace Assets
 			: Asset(manager)
 		{}
 
-		void create(int controller_id);
+		void create(int controller_id, int difficulty);
 		void destroy() override;
 	};
 

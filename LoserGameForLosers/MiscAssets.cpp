@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "MiscAssets.h"
+#include "AIComponent.h"
 
 void Assets::PlayerLeft::create(int controller_id)
 {
@@ -21,7 +22,7 @@ void Assets::PlayerLeft::destroy()
 	get_asset()->destroy();
 }
 
-void Assets::PlayerRight::create(int controller_id)
+void Assets::PlayerRight::create(int controller_id, int difficulty)
 {
 	auto player_right = create_asset();
 	player_right->add_component<TransformComponent>(SPRITE_RIGHT_EDGE_OF_SCREEN, SPRITE_BOTTOM_OF_SCREEN, SPRITE_SCALING);
@@ -29,7 +30,12 @@ void Assets::PlayerRight::create(int controller_id)
 	player_right->add_component<SpriteComponent>(ss_main_animations_red_grab, SDL_FLIP_HORIZONTAL);
 	player_right->add_component<ColliderComponent>();
 	player_right->add_component<PlayerComponent>(order_player_2);
-	player_right->add_component<ControllerComponent>(controller_id, 1);
+	
+	if (difficulty)
+		player_right->add_component<AIComponent>(difficulty);
+	else
+		player_right->add_component<ControllerComponent>(controller_id, 1);
+
 	player_right->add_component<ScriptComponent>();
 	player_right->add_group(Game::group_players);
 }

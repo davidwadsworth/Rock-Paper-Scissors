@@ -13,6 +13,11 @@ void PathTrunk::add(PathTrunk * trunk_to_add)
 	next = trunk_to_add;
 }
 
+void PathTrunk::reset()
+{
+	current = root_;
+}
+
 
 void post_order_remove(PathBranch * branch)
 {

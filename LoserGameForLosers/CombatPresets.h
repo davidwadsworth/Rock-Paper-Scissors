@@ -24,8 +24,8 @@ namespace CombatPresets
 		int difficulty_;
 		Manager * manager_;
 	public:
-		SinglePlayerSelectAttack(Entity *player_1, Entity * player_2, int difficulty)
-			: player_1_(player_1), player_2_(player_2), difficulty_(difficulty)
+		SinglePlayerSelectAttack(Entity *player_1, Entity * player_2)
+			: player_1_(player_1), player_2_(player_2)
 		{
 			manager_ = GameState::get_manager();
 		}
@@ -52,8 +52,8 @@ namespace CombatPresets
 		int difficulty_;
 		Manager * manager_;
 	public:
-		SinglePlayerCombat(Entity *player_1, Entity * player_2, const int difficulty)
-			: player_1_(player_1), player_2_(player_2), difficulty_(difficulty)
+		SinglePlayerCombat(Entity *player_1, Entity * player_2)
+			: player_1_(player_1), player_2_(player_2)
 		{
 			manager_ = GameState::get_manager();
 		}
@@ -99,29 +99,6 @@ namespace CombatPresets
 		{
 			manager_ = GameState::get_manager();
 		}
-		void init() override;
-	};
-
-	class EnableMovement : public NavigationPreset
-	{
-		Entity * player_1_, *player_2_;
-	public:
-		EnableMovement(Entity * player_1, Entity * player_2)
-			: player_1_(player_1), player_2_(player_2)
-		{}
-
-		void init() override;
-
-	};
-
-	class MatchEnding : public NavigationPreset
-	{
-		Entity * player_;
-		GameState * state_;
-	public:
-		MatchEnding(Entity * player)
-			: player_(player), state_(player->state)
-		{}
 		void init() override;
 	};
 

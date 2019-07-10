@@ -28,6 +28,11 @@ void ScriptComponent::add(PathTrunk * action) const
 	attack_path_->add(action);
 }
 
+bool ScriptComponent::is_empty()
+{
+	return attack_path_->is_empty();
+}
+
 void ScriptComponent::clear() const
 {
 	attack_path_->clear();

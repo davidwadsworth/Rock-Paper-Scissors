@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:f3e42d8ebe22af916ef3213875b8cb05:39211bfce19e5567432346310671089b:cf11b1f2083924daac659feb53e12343$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+pX => x pos of the pivot point (relative to sprite width)
+pY => y pos of the pivot point (relative to sprite height)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+with polygon mode enabled:
+vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
+verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
+triangles  => sprite triangulation, 3 vertex indices per triangle
+-->
+<TextureAtlas id="menu_atlas" imagePath="atlas_menu_textures-0.png" width="1638" height="642" textureID="0">
+    <sprite n="cursors/cursor_box.png" x="1605" y="1" w="32" h="32"/>
+    <sprite n="menu/how_to_play.png" x="1" y="1" w="800" h="640"/>
+    <sprite n="menu/menu_title_screen.png" x="803" y="1" w="800" h="640"/>
+</TextureAtlas>
