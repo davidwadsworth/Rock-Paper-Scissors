@@ -283,6 +283,8 @@ void CombatPresets::MatchEnding::init()
 
 	if (players[1]->has_component<ControllerComponent>())
 		disable_controllers->add_navigator(new Navigation::DisableController(players[1]));
+	else
+		disable_controllers->add_navigator(new Navigation::DeactivateAI(players[1]));
 
 	end_match->current = disable_controllers;
 	set_trunk(end_match);
