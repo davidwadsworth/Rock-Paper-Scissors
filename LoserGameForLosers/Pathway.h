@@ -2,6 +2,13 @@
 #include "Navigator.h"
 #include <vector>
 
+/**
+ * @author David Wadsworth
+ *
+ * using the Tree pattern creates the outline for which patterns can be loaded in and using "Navigation" goes through the tree using pathway decisions on runtime
+ * 
+ * Used by GameState and ScriptComponent.
+*/
 
 class PathTrunk
 {
@@ -61,6 +68,7 @@ class Path
 public:
 
 	Path()
+		: head_(nullptr)
 	{}
 
 	virtual ~Path()

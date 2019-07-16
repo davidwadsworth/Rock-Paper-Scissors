@@ -7,13 +7,13 @@ Vector2D::Vector2D()
 	y = 0.0f;
 }
 
-Vector2D::Vector2D(const float x, const float y)
+Vector2D::Vector2D(const double x, const double y)
 {
 	this->x = x;
 	this->y = y;
 }
 
-Vector2D::Vector2D(const float xy)
+Vector2D::Vector2D(const double xy)
 {
 	this->x = xy;
 	this->y = xy;
@@ -91,35 +91,35 @@ Vector2D& Vector2D::operator/=(const Vector2D& vec)
 	return this->divide(vec);
 }
 
-Vector2D & Vector2D::operator+=(const float & vec)
+Vector2D & Vector2D::operator+=(const double & vec)
 {
 	this->x += vec;
 	this->y += vec;
 	return *this;
 }
 
-Vector2D & Vector2D::operator-=(const float & vec)
+Vector2D & Vector2D::operator-=(const double & vec)
 {
 	this->x -= vec;
 	this->y -= vec;
 	return *this;
 }
 
-Vector2D & Vector2D::operator*=(const float & vec)
+Vector2D & Vector2D::operator*=(const double & vec)
 {
 	this->x *= vec;
 	this->y *= vec;
 	return *this;
 }
 
-Vector2D & Vector2D::operator/=(const float & vec)
+Vector2D & Vector2D::operator/=(const double & vec)
 {
 	this->x /= vec;
 	this->y /= vec;
 	return *this;
 }
 
-Vector2D & Vector2D::operator=(const float & vec)
+Vector2D & Vector2D::operator=(const double & vec)
 {
 	this->x = vec;
 	this->y = vec;

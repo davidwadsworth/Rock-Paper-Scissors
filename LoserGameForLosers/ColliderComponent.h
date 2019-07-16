@@ -3,6 +3,11 @@
 #include "SpriteComponent.h"
 #include "Collision.h"
 
+/**
+ * @author David Wadsworth
+ * 
+ * keeps track of rectangle collision
+ */
 
 class ColliderComponent : public Component
 {
@@ -11,11 +16,11 @@ class ColliderComponent : public Component
 public:
 	SDL_Rect collider{};
 
-	float hit_box = 1.0;
+	double hit_box = 1.0;
 
 	ColliderComponent() = default;
 
-	explicit ColliderComponent(const float hit_box)
+	explicit ColliderComponent(const double hit_box)
 		: flipped_(false), transform_(nullptr), hit_box(hit_box)
 	{}
 
@@ -37,12 +42,12 @@ public:
 
 	void update() override
 	{
-		collider.x = transform_->position.x;
+		collider.x = static_cast<int>(std::round(transform_->position.x));
 		if (flipped_)
-			collider.x = transform_->position.x + std::round(SPRITE_LENGTH * transform_->scale * (1 - hit_box) );
-		collider.y = transform_->position.y;
-		collider.w = std::round(SPRITE_LENGTH * transform_->scale * hit_box);
-		collider.h = std::round(SPRITE_LENGTH * transform_->scale);
+			collider.x += static_cast<int>(std::round(SPRITE_LENGTH * transform_->scale * (1 - hit_box)));
+		collider.y = static_cast<int>(std::round(transform_->position.y));
+		collider.w = static_cast<int>(std::round(SPRITE_LENGTH * transform_->scale * hit_box));
+		collider.h = static_cast<int>(std::round(SPRITE_LENGTH * transform_->scale));
 
 	}
 

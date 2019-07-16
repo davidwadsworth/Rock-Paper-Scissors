@@ -1,6 +1,11 @@
 #pragma once
 #include "Pathway.h"
 
+/**
+ * @author David Wadsworth
+ *
+ * used to store nested tree pathways which certain game objects use for decisions.
+*/
 
 class NavigationPreset
 {

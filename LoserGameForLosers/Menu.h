@@ -1,5 +1,10 @@
 #pragma once
 #include "GameState.h"
+/**
+ * @author David Wadsworth
+ * 
+ * in charge of the Menu State
+ */
 
 class Menu : public GameState
 {

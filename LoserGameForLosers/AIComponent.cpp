@@ -3,7 +3,7 @@
 #include "AICommands.h"
 
 AIComponent::AIComponent(const int difficulty)
-	: difficulty_(difficulty)
+	: difficulty_(difficulty), select_attack_(nullptr), combat_(nullptr), active_(false)
 {}
 
 void AIComponent::init()

@@ -2,6 +2,13 @@
 #include "Navigator.h"
 #include "CommonNavigation.h"
 
+/**
+ * @author David Wadsworth
+ * 
+ * In charge of screen transforming navigation
+ */
+
+
 namespace Navigation
 {
 	class DisplayPrompt final : public Delay

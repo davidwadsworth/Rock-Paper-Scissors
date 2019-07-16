@@ -1,6 +1,13 @@
 #pragma once
 #include "GameState.h"
 #include "MiscAssets.h"
+
+/**
+ * @author David Wadsworth
+ *
+ * in charge of all combat entities and game state variable
+*/
+
 class Combat : public GameState
 {
 	Assets::PlayerLeft* player_1_;

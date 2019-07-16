@@ -4,22 +4,19 @@
 #include <vector>
 #include "LoadOptionsData.h"
 
-OptionsCollection LoadOptionsData::load() const
+OptionsCollection LoadOptionsData::load()
 {	
-	std::ifstream character_path(path);
-	rapidxml::xml_document<> data;
+	xml_path.open(path);
 
-	std::vector<char> buffer((std::istreambuf_iterator<char>(character_path)), std::istreambuf_iterator<char>());
+	buffer.assign((std::istreambuf_iterator<char>(xml_path)), std::istreambuf_iterator<char>());
 	buffer.push_back('\0');
 
 	data.parse<0>(&buffer[0]);
 
 	const auto option_maps_node = data.first_node("Option_Maps");
 
-	auto options_collection = OptionsCollection();
-
-	options_collection.id = option_maps_node->first_attribute("id")->value();
-	options_collection.path = option_maps_node->first_attribute("path")->value();
+	options_collection_.id = option_maps_node->first_attribute("id")->value();
+	options_collection_.path = option_maps_node->first_attribute("path")->value();
 
 	for (auto options_node = option_maps_node->first_node("Options"); options_node; options_node = options_node->next_sibling())
 	{
@@ -55,9 +52,9 @@ OptionsCollection LoadOptionsData::load() const
 			}
 			options_data.data.push_back(y_data);
 		}
-		options_collection.data.push_back(options_data);
+		options_collection_.data.push_back(options_data);
 	}
 
 	data.clear();
-	return options_collection;
+	return options_collection_;
 }

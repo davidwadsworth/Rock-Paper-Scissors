@@ -138,7 +138,7 @@ void CombatPresets::RoundEnding::init()
 	second_p1_attack_delay->add_navigator(new Navigation::Delay(ATTACK_DELAY));
 
 	auto second_p1_move_att = new PathBranch(round_ending, nullptr, second_p1_attack_delay);
-	second_p1_move_att->add_navigator(new Navigation::MovePlayerToCollision(player_1_, player_2_, player_1_attack_data->distance));
+	second_p1_move_att->add_navigator(new Navigation::MovePlayerToCollision(player_1_, player_2_, static_cast<int>(player_1_attack_data->distance)));
 
 	auto second_p1_att_animation = new PathBranch(round_ending, nullptr, second_p1_move_att);
 	second_p1_att_animation->add_navigator(new Navigation::ExecuteFinalAttack(player_1_, player_1_attack_data->encoding, 0));
@@ -150,7 +150,7 @@ void CombatPresets::RoundEnding::init()
 	second_p2_attack_delay->add_navigator(new Navigation::Delay(ATTACK_DELAY));
 
 	auto second_p2_move_att = new PathBranch(round_ending, nullptr, second_p2_attack_delay);
-	second_p2_move_att->add_navigator(new Navigation::MovePlayerToCollision(player_2_, player_1_, player_2_attack_data->distance));
+	second_p2_move_att->add_navigator(new Navigation::MovePlayerToCollision(player_2_, player_1_, static_cast<int>(player_2_attack_data->distance)));
 
 	auto second_p2_att_animation = new PathBranch(round_ending, nullptr, second_p2_move_att);
 	second_p2_att_animation->add_navigator(new Navigation::ExecuteFinalAttack(player_2_, player_2_attack_data->encoding, 0));
@@ -172,7 +172,7 @@ void CombatPresets::RoundEnding::init()
 	p2_attack_delay->add_navigator(new Navigation::Delay(ATTACK_DELAY));
 
 	auto p2_move_att = new PathBranch(round_ending, nullptr, p2_attack_delay);
-	p2_move_att->add_navigator(new Navigation::MovePlayerToCollision(player_2_, player_1_, player_2_attack_data->distance));
+	p2_move_att->add_navigator(new Navigation::MovePlayerToCollision(player_2_, player_1_, static_cast<int>(player_2_attack_data->distance)));
 
 	auto p2_att_animation = new PathBranch(round_ending, nullptr, p2_move_att);
 	p2_att_animation->add_navigator(new Navigation::ExecuteFinalAttack(player_2_, player_2_attack_data->encoding, 0));
@@ -181,7 +181,7 @@ void CombatPresets::RoundEnding::init()
 	p1_attack_delay->add_navigator(new Navigation::Delay(ATTACK_DELAY));
 
 	auto p1_move_att = new PathBranch(round_ending, nullptr, p1_attack_delay);
-	p1_move_att->add_navigator(new Navigation::MovePlayerToCollision(player_1_, player_2_, player_1_attack_data->distance));
+	p1_move_att->add_navigator(new Navigation::MovePlayerToCollision(player_1_, player_2_, static_cast<int>(player_1_attack_data->distance)));
 
 	auto p1_att_animation = new PathBranch(round_ending, nullptr, p1_move_att);
 	p1_att_animation->add_navigator(new Navigation::ExecuteFinalAttack(player_1_, player_1_attack_data->encoding, 0));

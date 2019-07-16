@@ -2,6 +2,11 @@
 #include "Audio.h"
 #include "AudioData.h"
 
+/**
+ * @author David Wadsworth
+ * 
+ * SDL implemented Audio player
+ */
 
 class AudioQueue : public Audio
 {

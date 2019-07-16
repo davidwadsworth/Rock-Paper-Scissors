@@ -166,6 +166,7 @@
     <ClInclude Include="AICommands.h" />
     <ClInclude Include="Asset.h" />
     <ClInclude Include="AtlasData.h" />
+    <ClInclude Include="LoadData.h" />
     <ClInclude Include="MenuNavigation.h" />
     <ClInclude Include="MiscAssets.h" />
     <ClInclude Include="CombatInputCommands.h" />
@@ -173,9 +174,6 @@
     <ClInclude Include="OverlayComponent.h" />
     <ClInclude Include="Script.h" />
     <ClInclude Include="ScriptComponent.h" />
-    <ClInclude Include="AttackPresets.h" />
-    <ClInclude Include="AttackPresets.h" />
-    <ClInclude Include="AttackQueue.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="AudioData.h" />
     <ClInclude Include="AudioQueue.h" />
@@ -186,9 +184,7 @@
     <ClInclude Include="ControllerData.h" />
     <ClInclude Include="Data.h" />
     <ClInclude Include="DataCollection.h" />
-    <ClInclude Include="DataManager.h" />
     <ClInclude Include="FadeComponent.h" />
-    <ClInclude Include="LinkNavigation.h" />
     <ClInclude Include="AudioNavigation.h" />
     <ClInclude Include="MenuPresets.h" />
     <ClInclude Include="Navigation.h" />
@@ -199,7 +195,6 @@
     <ClInclude Include="BackgroundComponent.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Texture.h" />
-    <ClInclude Include="BoxComponent.h" />
     <ClInclude Include="LoadAudioData.h" />
     <ClInclude Include="LoadCharacterData.h" />
     <ClInclude Include="ColliderComponent.h" />
@@ -219,7 +214,6 @@
     <ClInclude Include="Loads.h" />
     <ClInclude Include="DrawCall.h" />
     <ClInclude Include="ECS.h" />
-    <ClInclude Include="Font.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GlyphAtlasComponent.h" />

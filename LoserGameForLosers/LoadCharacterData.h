@@ -1,12 +1,17 @@
 #pragma once
 #include "CharacterData.h"
+#include "LoadData.h"
+
+/**
+ * @author David Wadsworth
+ */
 
 class LoadCharacterData : public LoadData
 {
+	CharacterCollection character_collection_;
 public:
-	LoadCharacterData(const std::string path) 
+	explicit LoadCharacterData(const std::string path) 
 		: LoadData(path)
 	{}
-	~LoadCharacterData() {}
-	CharacterCollection load() const;
+	CharacterCollection load();
 };

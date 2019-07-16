@@ -1,11 +1,16 @@
 #pragma once
 #include "AudioData.h"
 
+/**
+ * @author David Wadsworth
+ */
+
 class LoadAudioData : public LoadData
 {
+	AudioCollection audio_collection_;
 public:
-	LoadAudioData(const std::string path)
+	explicit LoadAudioData(const std::string path)
 		: LoadData(path)
 	{}
-	AudioCollection load() const;
+	AudioCollection load();
 };

@@ -1,6 +1,10 @@
 #pragma once
 #include "NavigationPreset.h"
-
+/**
+ * @author David Wadsworth
+ *
+ * compilations of menu phases
+*/
 namespace MenuPresets
 {
 	class CreateMenuOptions : public NavigationPreset

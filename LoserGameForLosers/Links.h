@@ -4,13 +4,19 @@
 #include "CommonLinkCommands.h"
 #include "BitmapFont.h"
 
+/**
+ * @author David Wadsworth
+ * 
+ * link designs for option boxes
+*/
 
 class CursorLeftLink : public Link
 {
 public:
 	explicit CursorLeftLink(BitmapFont* font, const int padding, Vector2D alignment, std::string asset, Command* command)
-		: font_(font), padding_(padding), alignment_(alignment), text_(asset), command_(command)
-	{}
+		: font_(font), pos_(), command_(command), padding_(padding), alignment_(alignment), text_(asset)
+	{
+	}
 
 	~CursorLeftLink()
 	{}

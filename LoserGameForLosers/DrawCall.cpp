@@ -2,17 +2,29 @@
 #include "DrawCall.h"
 
 
+DrawCall::DrawCall(): data_(nullptr), rotation_axis_(), is_rotated_(false), original_w_(0), original_h_(0), data_w_(0),
+                      data_h_(0),
+                      height(0), width(0),
+                      or_width(0),
+                      or_height(0),
+                      rotation_point(nullptr),
+                      src(nullptr),
+                      dest(nullptr)
+{}
+
 DrawCall::DrawCall(AtlasData * data, SDL_Rect * dest, const SDL_RendererFlip flip, const int rotation)
-	: data_(data), is_rotated_(data->is_rotated), original_w_(data->original_w), original_h_(data->original_h), data_w_(data->w), data_h_(data->h), data_offset_(data->offset_x, data->offset_y), other_offset_(0),
-	  height(data->h), width(data->w), or_width(data->original_w), or_height(data->original_h), rotation_point(nullptr), rotation(rotation), flip(flip), dest(dest)
+	: data_(data), rotation_axis_(), is_rotated_(data->is_rotated), original_w_(data->original_w), original_h_(data->original_h), data_w_(data->w), data_h_(data->h), data_offset_(data->offset_x, data->offset_y),
+	  other_offset_(0), height(data->h), width(data->w), or_width(data->original_w), or_height(data->original_h), rotation_point(nullptr), rotation(rotation), flip(flip), src(nullptr), dest(dest)
 {
 	init();
 }
 
 DrawCall::DrawCall(SDL_Rect* src, SDL_Rect * dest, const SDL_RendererFlip flip, const int rotation, SDL_Point * point)
-	: data_(nullptr), rotation_axis_(), is_rotated_(false), original_w_(0), original_h_(0), data_w_(0), data_h_(0), height(0), width(0),
+	: data_(nullptr), rotation_axis_(), is_rotated_(false), original_w_(0), original_h_(0), data_w_(0), data_h_(0),
+	  height(0), width(0), or_width(0), or_height(0),
 	  rotation_point(point), rotation(rotation), flip(flip), src(src), dest(dest)
-{}
+{
+}
 
 
 void DrawCall::init()
@@ -20,7 +32,7 @@ void DrawCall::init()
 	if (flip)
 	{
 		if (!is_rotated_)
-			data_offset_.x += SPRITE_LENGTH - data_->w;
+			data_offset_.x += static_cast<double>(SPRITE_LENGTH - data_->w);
 		else
 			rotation += 180;
 	}
@@ -64,10 +76,10 @@ void DrawCall::init()
 
 void DrawCall::find_rotation_point()
 {
-	const float w = data_w_;
-	const float h = data_h_;
-	const float x_off = data_->offset_x;
-	const float y_off = data_->offset_y;
+	const double w = data_w_;
+	const double h = data_h_;
+	const double x_off = data_->offset_x;
+	const double y_off = data_->offset_y;
 
 	// find mid points
 	const auto m1 = Vector2D{ (w + h + x_off) / 2,  (h + y_off) / 2 };
@@ -89,12 +101,12 @@ void DrawCall::find_rotation_point()
 	rotation_point = new SDL_Point{ rotation_axis_.x , rotation_axis_.y };
 }
 
-void DrawCall::update_rotation_point(const float scaling) const
+void DrawCall::update_rotation_point(const double scaling) const
 {
 	if (rotation_point)
 	{
-		rotation_point->x = round(rotation_axis_.x * scaling);
-		rotation_point->y = round(rotation_axis_.y * scaling);
+		rotation_point->x = static_cast<int>(round(rotation_axis_.x * scaling));
+		rotation_point->y = static_cast<int>(round(rotation_axis_.y * scaling));
 	}
 }
 

@@ -4,22 +4,19 @@
 #include <fstream>
 #include <vector>
 
-ControllerCollection LoadControllerData::load() const
+ControllerCollection LoadControllerData::load()
 {
-	std::ifstream character_path(path);
-	rapidxml::xml_document<> data;
+	xml_path.open(path);
 
-	std::vector<char> buffer((std::istreambuf_iterator<char>(character_path)), std::istreambuf_iterator<char>());
+	buffer.assign((std::istreambuf_iterator<char>(xml_path)), std::istreambuf_iterator<char>());
 	buffer.push_back('\0');
 
 	data.parse<0>(&buffer[0]);
 
 	const auto controllers_node = data.first_node("Controllers");
 
-	auto controller_collection = ControllerCollection();
-
-	controller_collection.id = controllers_node->first_attribute("id")->value();
-	controller_collection.path = controllers_node->first_attribute("path")->value();
+	controller_collection_.id = controllers_node->first_attribute("id")->value();
+	controller_collection_.path = controllers_node->first_attribute("path")->value();
 
 	for (auto controller_node = controllers_node->first_node("Controller"); controller_node; controller_node = controller_node->next_sibling())
 	{
@@ -37,8 +34,8 @@ ControllerCollection LoadControllerData::load() const
 			controller.data.push_back(input);
 		}
 
-		controller_collection.data.push_back(controller);
+		controller_collection_.data.push_back(controller);
 	}
 	data.clear();
-	return controller_collection;
+	return controller_collection_;
 }

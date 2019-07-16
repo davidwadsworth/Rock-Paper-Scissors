@@ -2,6 +2,12 @@
 
 #include "SDL.h"
 
+/**
+ * @author Let's Make Games
+ * @author David Wadsworth
+ * AABB collision
+ */
+
 class Collision{
 public:
 	static bool aabb(const SDL_Rect& rec_a, const SDL_Rect& rec_b);

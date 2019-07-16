@@ -5,6 +5,11 @@
 #include "Pathway.h"
 #include "TextureManager.h"
 
+/**
+ * @author David Wadsworth
+ *
+ * abstractly updates, draws, creates and closes the running entities of the current game
+*/
 
 class GameState
 {

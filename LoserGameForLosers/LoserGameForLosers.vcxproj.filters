@@ -102,9 +102,6 @@
     <ClInclude Include="Commands.h">
       <Filter>Commands</Filter>
     </ClInclude>
-    <ClInclude Include="Font.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="InputCommandBuilder.h">
       <Filter>Commands</Filter>
     </ClInclude>
@@ -159,9 +156,6 @@
     <ClInclude Include="Navigator.h">
       <Filter>Navigation</Filter>
     </ClInclude>
-    <ClInclude Include="LinkNavigation.h">
-      <Filter>Navigation</Filter>
-    </ClInclude>
     <ClInclude Include="CombatNavigation.h">
       <Filter>Navigation</Filter>
     </ClInclude>
@@ -182,9 +176,6 @@
     </ClInclude>
     <ClInclude Include="Loads.h">
       <Filter>Data\DataLoads</Filter>
-    </ClInclude>
-    <ClInclude Include="DataManager.h">
-      <Filter>Data</Filter>
     </ClInclude>
     <ClInclude Include="TextureAtlasComponent.h">
       <Filter>ECS\Components\TextureComponent</Filter>
@@ -279,9 +270,6 @@
     <ClInclude Include="AttackPresets.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AttackQueue.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="AttackPresets.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -310,9 +298,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BackgroundComponent.h">
-      <Filter>ECS\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="BoxComponent.h">
       <Filter>ECS\Components</Filter>
     </ClInclude>
     <ClInclude Include="Components.h">
@@ -389,6 +374,12 @@
     </ClInclude>
     <ClInclude Include="AICommand.h">
       <Filter>Commands\AICommands</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackPresets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadData.h">
+      <Filter>Data</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

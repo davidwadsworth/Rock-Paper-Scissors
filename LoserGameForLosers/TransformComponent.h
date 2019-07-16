@@ -2,6 +2,12 @@
 #include "Vector2D.h"
 #include "Game.h"
 
+/**
+ * @author David Wadsworth
+ *
+ * In charge of position scaling, velocity, height, width, and scaling of the entity
+*/
+
 class TransformComponent : public Component
 {
 public:
@@ -10,22 +16,22 @@ public:
 
 	int height = 32;
 	int width = 32;
-	float scale;
+	double scale;
 
 	int speed = 3;
 
-	explicit TransformComponent(const float sc)
+	explicit TransformComponent(const double sc)
 		: scale(sc)
 	{}
 
-	TransformComponent(const float x, const float y, const float sc)
+	TransformComponent(const double x, const double y, const double sc)
 		: scale(sc)
 	{
 		position.x = x;
 		position.y = y;
 	}
 
-	TransformComponent(const float x, const float y, const int h, const int w, const float sc)
+	TransformComponent(const double x, const double y, const int h, const int w, const double sc)
 		: height(h), width(w), scale(sc)
 	{
 		position.x = x;
@@ -33,7 +39,7 @@ public:
 	}
 
 
-	float get_horizontal_distance(Entity * compare) const
+	double get_horizontal_distance(Entity * compare) const
 	{
 		return this->position.x - compare->get_component<TransformComponent>().position.x - this->width * this->scale;
 	}

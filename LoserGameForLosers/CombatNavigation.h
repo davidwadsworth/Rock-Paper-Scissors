@@ -3,6 +3,13 @@
 #include "CommonNavigation.h"
 #include "AttackPresets.h"
 #include "CombatPresets.h"
+
+/**
+ * @author David Wadsworth
+ *
+ * updates and creates combat entities along the path
+*/
+
 namespace AttackPresets
 {
 	class KickHitStun;
@@ -45,11 +52,11 @@ namespace Navigation
 	{
 		Entity * player_;
 		int distance_moved_, total_distance_;
-		float scale_;
+		double scale_;
 		InputCommands::Move * move_, *stop_;
 	public:
 		MovePlayer(Entity * player, int distance);
-		MovePlayer(Entity * player, int distance, float scale);
+		MovePlayer(Entity * player, int distance, double scale);
 		void init() override;
 		int choose_path() override;
 		void close() override;
@@ -129,9 +136,9 @@ namespace Navigation
 	class BlockAndCrawl : public Navigator
 	{
 		Entity * blocker_;
-		float velocity_offset_;
+		double velocity_offset_;
 	public:
-		BlockAndCrawl(Entity * blocker, float velocity_offset);
+		BlockAndCrawl(Entity * blocker, double velocity_offset);
 
 		void init() override;
 		void close() override;

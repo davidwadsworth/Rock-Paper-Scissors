@@ -3,6 +3,12 @@
 #include "Vector2D.h"
 #include <vector>
 
+/**
+ * @author David Wadsworth
+ * 
+ * Slots which keep track of single to many atlas positions
+*/
+
 class Slot
 {
 public:
@@ -14,7 +20,7 @@ public:
 
 	bool is_rotated;
 	Vector2D position, data_offset;
-	float scale = 1.0f;
+	double scale = 1.0f;
 	SDL_Rect dest;
 	DrawCall* call;
 	int width, height;
@@ -25,7 +31,7 @@ public:
 		call = new DrawCall(sprite, &dest, flip, rotation);
 	}
 
-	void update_position_and_scaling(const Vector2D pos, const float sc)
+	void update_position_and_scaling(const Vector2D pos, const double sc)
 	{
 		position = pos;
 		scale = sc;
@@ -38,7 +44,7 @@ public:
 		position = pos;
 		update();
 	}
-	void update_scaling(const float sc)
+	void update_scaling(const double sc)
 	{
 		scale = sc;
 		call->update_rotation_point(scale);
@@ -105,16 +111,18 @@ private:
 	Uint32 start_ticks_;
 public:
 	AnimatedState()
-		: start_ticks_(SDL_GetTicks()), speed(0), frames(0), locked(false), current_frame(0), frame_count(0)
-	{}
+		: start_ticks_(SDL_GetTicks()), speed(0), frames(0), locked(false), current_frame(0), previous_frame(0),
+		  frame_count(0)
+	{
+	}
 
 	std::vector<DrawCall> calls;
 	int speed;
-	int frames;
+	unsigned frames;
 	bool locked;
 	int current_frame;
 	int previous_frame;
-	int frame_count;
+	unsigned frame_count;
 
 	DrawCall* animate()
 	{
@@ -150,16 +158,16 @@ class AnimatedSlot : public Slot, public Animated
 	AnimatedState* current_state_;
 public:
 	AnimatedSlot(Texture * texture, const int x, const int y)
-		: Slot(texture)
+		: Slot(texture), current_state_(nullptr)
 	{
-		dest = { x, y, 0, 0 };
+		dest = {x, y, 0, 0};
 	}
 
 	void add_animated_state(const int speed, std::vector<AtlasData*> frames, const int rotation, const SDL_RendererFlip flip) override
 	{
 		auto anim_state = AnimatedState();
 
-		anim_state.frames = frames.size();
+		anim_state.frames = static_cast<unsigned>(frames.size());
 		anim_state.speed = speed;
 		anim_state.locked = false;
 

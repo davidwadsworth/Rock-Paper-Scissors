@@ -1,5 +1,11 @@
 #pragma once
 #include "Asset.h"
+/**
+ * @author David Wadsworth
+ * 
+ * creates characters, backgrounds, prompts, option box, and more  
+ */
+
 
 namespace Assets
 {

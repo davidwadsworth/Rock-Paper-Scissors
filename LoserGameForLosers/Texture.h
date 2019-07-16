@@ -2,6 +2,13 @@
 #include <string>
 #include "SDL.h"
 
+/**
+ * @author David Wadsworth 
+ * @author LazyFooProductions
+ * 
+ * In charge of loading, updating, and deleting SDL_Textures
+ */
+
 class DrawCall;
 
 class Texture

@@ -8,15 +8,15 @@ Menu::Menu(Manager * manager)
 {
 	screen_ = new Assets::MenuScreen(manager);
 
-	auto atlas_load = LoadAtlasData("data_menu_textures-0.xml");
-	auto audio_load = LoadAudioData("data_audio_v2.xml");
-	auto controller_load = LoadControllerData("data_controllers_v2.xml");
-	auto options_load = LoadOptionsData("data_options_v2.xml");
+	auto atlas = new LoadAtlasData("data_menu_textures-0.xml");
+	auto audio = new LoadAudioData("data_audio_v2.xml");
+	auto controller = new LoadControllerData("data_controllers_v2.xml");
+	auto options = new LoadOptionsData("data_options_v2.xml");
 
-	set_atlas_data(new AtlasCollection(atlas_load.load()));
-	set_audio_data(new AudioCollection(audio_load.load()));
-	set_controller_data(new ControllerCollection(controller_load.load()));
-	set_options_data(new OptionsCollection(options_load.load()));
+	set_atlas_data(new AtlasCollection(atlas->load()));
+	set_audio_data(new AudioCollection(audio->load()));
+	set_controller_data(new ControllerCollection(controller->load()));
+	set_options_data(new OptionsCollection(options->load()));
 
 	auto palette = new TextureManager();
 	palette->load_texture(get_atlas_data()->path.c_str());
@@ -33,6 +33,11 @@ Menu::Menu(Manager * manager)
 	auto menu_presets = MenuPresets::CreateMenuOptions(screen_->get_asset());
 	menu_presets.init();
 	get_path()->add(menu_presets.get_trunk());
+
+	delete atlas;
+	delete audio;
+	delete controller;
+	delete options;
 }
 
 

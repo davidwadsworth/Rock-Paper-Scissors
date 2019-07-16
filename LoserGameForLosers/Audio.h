@@ -1,6 +1,12 @@
 #pragma once
 #include <SDL_mixer.h>
 
+/**
+ * @author David Wadsworth
+ * 
+ * abstract audio creation
+ */
+
 class Audio
 {
 public:

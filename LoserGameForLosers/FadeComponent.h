@@ -1,4 +1,9 @@
 #pragma once
+/**
+ * @author David Wadsworth
+ * 
+ * creates a "fading" effect for the image
+ */
 
 class FadeComponent : public Component
 {

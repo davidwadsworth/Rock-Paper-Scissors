@@ -1,6 +1,12 @@
 #pragma once
 #include "ECS.h"
 
+/**
+ * @author David Wadsworth
+ *
+ * in charge of creating and updating menu screen
+*/
+
 class MenuComponent : public Component
 {
 private:
@@ -10,7 +16,7 @@ private:
 public:
 
 	explicit MenuComponent(const int sprite_id)
-		: menu_id_(sprite_id)
+		: menu_id_(sprite_id), menu_slot_(0)
 	{}
 
 	~MenuComponent()

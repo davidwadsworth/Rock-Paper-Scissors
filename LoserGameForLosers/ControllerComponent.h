@@ -6,7 +6,11 @@
 #include "KeyboardHandler.h"
 #include "LoadControllerData.h"
 
-
+/**
+ * @author David Wadsworth
+ * 
+ * in charge of linking the keyboard to its loaded in command
+ */
 
 class ControllerComponent : public Component
 {

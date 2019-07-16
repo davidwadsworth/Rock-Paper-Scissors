@@ -4,6 +4,8 @@
 #include "InputCommand.h"
 
 /**
+ * @author David Wadsworth
+ * 
  * Commands that are bound to keys
  */
 
@@ -37,7 +39,7 @@ namespace InputCommands
 
 		}
 
-		Move(const float velocity_scale, const int anim_id)
+		Move(const double velocity_scale, const int anim_id)
 			: velocity_scale_(velocity_scale), anim_id_(anim_id)
 		{}
 
@@ -45,7 +47,7 @@ namespace InputCommands
 
 
 	private:
-		float velocity_scale_;
+		double velocity_scale_;
 		int anim_id_;
 	};
 
@@ -70,7 +72,7 @@ namespace InputCommands
 	{
 	public:
 		MoveCursorX(std::string x)
-			: was_pressed_(false), x_increment_(std::stof(x)), count_(0), frequency_(CURSOR_FREQUENCY)
+			: was_pressed_(false), x_increment_(std::stoi(x)), count_(0), frequency_(CURSOR_FREQUENCY)
 		{}
 
 		void execute(Entity * entity) override;
@@ -94,7 +96,7 @@ namespace InputCommands
 	{
 	public:
 		MoveCursorY(std::string y)
-			: was_pressed_(false), y_increment_(std::stof(y)), count_(0), frequency_(CURSOR_FREQUENCY)
+			: was_pressed_(false), y_increment_(std::stoi(y)), count_(0), frequency_(CURSOR_FREQUENCY)
 		{}
 
 		void execute(Entity * entity) override;
@@ -148,7 +150,9 @@ namespace InputCommands
 		bool was_pressed_;
 	public:
 
-		LoadData() = default;
+		LoadData()
+			: was_pressed_(false)
+		{}
 
 		void execute(Entity* entity) override;
 		void idle(Entity* entity) override;

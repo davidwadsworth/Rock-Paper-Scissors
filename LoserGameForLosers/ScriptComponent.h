@@ -1,12 +1,19 @@
 #pragma once
 #include "ECS.h"
 #include "Pathway.h"
-
+/**
+ * @author David Wadsworth
+ *
+ * Player scripts to load in attacks
+*/
 class ScriptComponent : public Component
 {
 	Path * attack_path_;
 public:
-	ScriptComponent() = default;
+	ScriptComponent()
+		: attack_path_(nullptr)
+	{}
+
 	~ScriptComponent() = default;
 
 	void init() override;

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-std::vector<std::vector<Link*>> Options::build_options(const int x, const int y, Vector2D alignment, const int padding)
+std::vector<std::vector<Link*>> Options::build_options(const int start_x, const int start_y, Vector2D alignment, const int padding)
 {
 	auto link_gen = LinkBuilder();
 	std::vector<std::vector<LinkData>> options_data = data_->data;
@@ -15,19 +15,19 @@ std::vector<std::vector<Link*>> Options::build_options(const int x, const int y,
 	//sets the starting position to the first option
 	Link* current_link = link_gen.create_link(font_, padding, alignment, &options_data[0][0]);
 
-	current_link->set_position(x, y);
+	current_link->set_position(start_x, start_y);
 	current_link->set_link_information();
 
 	// sets up the first rect to be used in alignment calculations
 	starting_rect = current_link->get_box_dimensions();
 
-	box.x = x;
-	box.y = y;
+	box.x = start_x;
+	box.y = start_y;
 
-	for (auto x = 0; x < options_data.size(); x++)
+	for (unsigned x = 0; x < options_data.size(); x++)
 	{
 		y_links.clear();
-		for (auto y = 0; y < options_data[x].size(); y++)
+		for (unsigned y = 0; y < options_data[x].size(); y++)
 		{
 			if (next_y_link)
 			{
@@ -44,13 +44,13 @@ std::vector<std::vector<Link*>> Options::build_options(const int x, const int y,
 
 
 			// setting up next y link position if it exists
-			if (y + 1 < options_data[x].size())
+			if (y + 1 < static_cast<unsigned>(options_data[x].size()))
 			{
 				next_y_link = link_gen.create_link(font_, padding, alignment, &options_data[x][y + 1]);
 				next_y_link->set_position(current_link->get_box_dimensions()->x, current_link->get_box_dimensions()->y + current_link->get_box_dimensions()->h);
 			}
 			// setting up next x link position if it exists
-			else if (x + 1 < options_data.size())
+			else if (x + 1 < static_cast<unsigned>(options_data.size()))
 			{
 				next_x_link = link_gen.create_link(font_, padding, alignment, &options_data[x + 1][y]);
 				next_x_link->set_position(current_link->get_box_dimensions()->x + current_link->get_box_dimensions()->w, current_link->get_box_dimensions()->y);

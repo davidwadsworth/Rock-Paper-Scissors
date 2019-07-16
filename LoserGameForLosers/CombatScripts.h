@@ -3,6 +3,12 @@
 #include "ECS.h"
 #include "CombatPresets.h"
 
+/**
+ * @author David Wadsworth
+ *
+ * Unique navigation patterns set by game states
+*/
+
 namespace CombatScripts
 {
 	class SinglePlayer : public CircularScript

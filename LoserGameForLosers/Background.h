@@ -2,7 +2,11 @@
 #include "Components.h"
 #include "Constants.h"
 
-
+/**
+ * @author David Wadsworth
+ *
+ * calculates how much the background and players have to scale/move to create the realism of movement once a player reaches the edge of the screen
+*/
 
 class Background
 {
@@ -26,8 +30,8 @@ public:
 	~Background() = default;
 
 	void screen_change();
-	void scroll_screen(float scroll_increment);
-	void scale_screen(float scale_increment);
+	void scroll_screen(double scroll_increment);
+	void scale_screen(double scale_increment);
 
 private:
 	TransformComponent * p1_tc_;
@@ -40,11 +44,11 @@ private:
 	ColliderComponent * p1_col_c_;
 	ColliderComponent * p2_col_c_;
 
-	float p1_scale_, p2_scale_, bg_scale_;
+	double p1_scale_, p2_scale_, bg_scale_;
 	Vector2D p1_position_, p2_position_, bg_position_;
 
 	const SDL_Rect LEFT_EDGE{ 0, 0, BACKGROUND_COLLIDER, BACKGROUND_HEIGHT };
 	const SDL_Rect RIGHT_EDGE{ BACKGROUND_WIDTH - BACKGROUND_COLLIDER, 0, BACKGROUND_COLLIDER, BACKGROUND_HEIGHT };
-	const float CENTER = 0.5;
+	const double CENTER = 0.5;
 
 };

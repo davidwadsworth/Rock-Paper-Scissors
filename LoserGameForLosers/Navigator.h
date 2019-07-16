@@ -1,10 +1,16 @@
 #pragma once
 
+/**
+ * @author David Wadsworth
+ * 
+ * A "guide" which chooses what path the user should go down next
+ */
+
 class PathBranch;
 class Navigator
 {
 public:
-	PathBranch * branch;
+	PathBranch * branch = nullptr;
 
 	virtual ~Navigator() {};
 	virtual void init() {}

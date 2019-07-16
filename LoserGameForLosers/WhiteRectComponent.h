@@ -1,6 +1,11 @@
 #pragma once
 #pragma once
 #include "ECS.h"
+/**
+ * @author David Wadsworth
+ * 
+ * draws a white rect with a block outline for the options to be placed over
+*/
 
 class WhiteRectComponent : public Component
 {

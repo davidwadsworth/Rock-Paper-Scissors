@@ -3,6 +3,11 @@
 #include <utility>
 #include "ECS.h"
 #include "BitmapFont.h"
+/**
+ * @author David Wadsworth
+ * 
+ * in charge of displaying text from a loaded in bitmap font
+ */
 
 struct Label
 {
@@ -21,11 +26,10 @@ class GlyphAtlasComponent : public Component
 	int texture_id_, font_id_;
 public:
 
-	GlyphAtlasComponent(int texture_id): bitmap_font_(nullptr), texture_id_(texture_id)
+	explicit GlyphAtlasComponent(const int texture_id): bitmap_font_(nullptr), texture_id_(texture_id), font_id_(0)
 	{}
 
-	~GlyphAtlasComponent()
-	{}
+	~GlyphAtlasComponent() = default;
 
 	void create_labels()
 	{

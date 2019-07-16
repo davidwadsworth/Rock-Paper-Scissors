@@ -58,22 +58,22 @@ bool Texture::load_editable_texture_from_file(std::string path)
 				SDL_LockTexture(new_texture, &formatted_surface->clip_rect, &map_pixels_, &map_pitch_);
 
 				//Copy loaded/formatted surface pixels
-				memcpy(map_pixels_, formatted_surface->pixels, formatted_surface->pitch * formatted_surface->h);
+				memcpy(map_pixels_, formatted_surface->pixels, static_cast<unsigned>(formatted_surface->pitch * formatted_surface->h));
 
 				//Get image dimensions
 				map_width_ = formatted_surface->w;
 				map_height_ = formatted_surface->h;
 
 				//Get pixel data in editable format
-				Uint32* pixels = (Uint32*)map_pixels_;
-				int pixelCount = (map_pitch_ / 4) * map_height_;
+				Uint32* pixels = static_cast<Uint32*>(map_pixels_);
+				const int pixelCount = (map_pitch_ / 4) * map_height_;
 
 				//Map colors				
-				Uint32 colorKey = SDL_MapRGB(formatted_surface->format, 0, 0xFF, 0xFF);
-				Uint32 transparent = SDL_MapRGBA(formatted_surface->format, 0x00, 0xFF, 0xFF, 0x00);
+				const Uint32 colorKey = SDL_MapRGB(formatted_surface->format, 0, 0xFF, 0xFF);
+				const Uint32 transparent = SDL_MapRGBA(formatted_surface->format, 0x00, 0xFF, 0xFF, 0x00);
 
 				//Color key pixels
-				for (int i = 0; i < pixelCount; ++i)
+				for (auto i = 0; i < pixelCount; ++i)
 				{
 					if (pixels[i] == colorKey)
 					{

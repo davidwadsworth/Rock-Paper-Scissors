@@ -11,10 +11,10 @@
 
 void Background::screen_change()
 {
-	auto scroll_inc = 0.0f;
-	auto scale_inc = 0.0f;
-	auto external_velocity_p1 = 0.0f;
-	auto external_velocity_p2 = 0.0f;
+	auto scroll_inc = 0.0;
+	auto scale_inc = 0.0;
+	auto external_velocity_p1 = 0.0;
+	auto external_velocity_p2 = 0.0;
 
 	p1_scale_ = p1_tc_->scale;
 	p2_scale_ = p2_tc_->scale;
@@ -61,8 +61,8 @@ void Background::screen_change()
 	}
 	if (Collision::aabb(p2_collider, RIGHT_EDGE)) // is player 2 colliding with the right side of the screen
 	{
-		if (p2_position_.x > RIGHT_EDGE.x + RIGHT_EDGE.w - SPRITE_LENGTH * p2_scale_)
-			p2_position_.x = RIGHT_EDGE.x + RIGHT_EDGE.w - SPRITE_LENGTH * p2_scale_;
+		if (p2_position_.x > static_cast<double>(RIGHT_EDGE.x + RIGHT_EDGE.w) - SPRITE_LENGTH * p2_scale_)
+			p2_position_.x = static_cast<double>(RIGHT_EDGE.x + RIGHT_EDGE.w) - SPRITE_LENGTH * p2_scale_;
 
 		if (p2_player_velocity_x > 0) // is player 2 moving towards the right edge 
 		{
@@ -101,7 +101,7 @@ void Background::screen_change()
 	bg_tc_->position = bg_position_;
 }
 
-void Background::scroll_screen(const float scroll_increment)
+void Background::scroll_screen(const double scroll_increment)
 {
 	bg_position_.x = (bg_position_.x - scroll_increment * bg_scale_ / SPRITE_SCALING);
 	if (!(bg_position_.x > -bg_tc_->width * bg_scale_ && bg_position_.x < bg_tc_->width * bg_scale_))
@@ -109,11 +109,11 @@ void Background::scroll_screen(const float scroll_increment)
 
 }
 
-void Background::scale_screen(const float scale_increment)
+void Background::scale_screen(const double scale_increment)
 {
 	// the difference between scale bounds / the possible distance traveled by a single character * stretch speed
-	const auto player_sc_range = (SPRITE_SCALING - SPRITE_SCALING_TARGET) / static_cast<float>(SCREEN_WIDTH - SPRITE_LENGTH * p1_scale_)* scale_increment * p1_scale_ / SPRITE_SCALING;
-	const auto background_sc_range = (BACKGROUND_SCALING - BACKGROUND_SCALING_TARGET) / static_cast<float>(SCREEN_WIDTH - SPRITE_LENGTH * bg_scale_) * scale_increment * bg_scale_ / BACKGROUND_SCALING;
+	const auto player_sc_range = (SPRITE_SCALING - SPRITE_SCALING_TARGET) / static_cast<double>(SCREEN_WIDTH - SPRITE_LENGTH * p1_scale_)* scale_increment * p1_scale_ / SPRITE_SCALING;
+	const auto background_sc_range = (BACKGROUND_SCALING - BACKGROUND_SCALING_TARGET) / static_cast<double>(SCREEN_WIDTH - SPRITE_LENGTH * bg_scale_) * scale_increment * bg_scale_ / BACKGROUND_SCALING;
 
 	auto compare_scaling = p1_scale_ + player_sc_range;
 	p1_scale_ = SPRITE_SCALING_TARGET > compare_scaling ? SPRITE_SCALING_TARGET : SPRITE_SCALING < compare_scaling ? SPRITE_SCALING : compare_scaling; // sets the scaling to a number between the target and the starting

@@ -2,6 +2,12 @@
 
 #include "Constants.h"
 
+/**
+ * @author David Wadsworth
+ *
+ * Creates the scaling and scrolling combat background
+*/
+
 class BackgroundComponent : public Component
 {
 	TransformComponent * transform_;
@@ -11,7 +17,8 @@ class BackgroundComponent : public Component
 public:
 
 	explicit BackgroundComponent(const int sprite_id)
-		: background_id_(sprite_id)
+		: transform_(nullptr), texture_(nullptr), background_id_(sprite_id), left_bg_slot_(0), mid_bg_slot_(0),
+		  right_bg_slot_(0)
 	{}
 
 	~BackgroundComponent()
@@ -22,9 +29,9 @@ public:
 		transform_ = &entity->get_component<TransformComponent>();
 		texture_ = &entity->get_component<TextureAtlasComponent>();
 
-		mid_bg_slot_ = texture_->create_image_slot(background_id_, transform_->position.x, SCREEN_HEIGHT - transform_->height * transform_->scale);
-		left_bg_slot_ = texture_->create_image_slot(background_id_, transform_->position.x - transform_->width * transform_->scale, SCREEN_HEIGHT - transform_->height * transform_->scale);
-		right_bg_slot_ = texture_->create_image_slot(background_id_, transform_->position.x + transform_->width * transform_->scale, SCREEN_HEIGHT - transform_->height * transform_->scale);
+		mid_bg_slot_ = texture_->create_image_slot(background_id_, static_cast<int>(transform_->position.x), static_cast<int>(SCREEN_HEIGHT - transform_->height * transform_->scale));
+		left_bg_slot_ = texture_->create_image_slot(background_id_, static_cast<int>(transform_->position.x - transform_->width * transform_->scale), static_cast<int>(SCREEN_HEIGHT - transform_->height * transform_->scale));
+		right_bg_slot_ = texture_->create_image_slot(background_id_, static_cast<int>(transform_->position.x + transform_->width * transform_->scale), static_cast<int>(SCREEN_HEIGHT - transform_->height * transform_->scale));
 	}
 
 	void update() override

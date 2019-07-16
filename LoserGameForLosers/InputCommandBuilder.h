@@ -2,6 +2,12 @@
 #include "Commands.h"
 #include "CombatInputCommands.h"
 
+/**
+ * @author David Wadsworth
+ * 
+ * creates commands from xml
+ */
+
 class InputCommandBuilder
 {
 public:

@@ -3,7 +3,11 @@
 #include "Constants.h"
 #include "SpriteComponent.h"
 
-
+/**
+ * @author David Wadsworth
+ *
+ * hub to for creating and updating the player and its attack values
+*/
 
 class PlayerComponent : public Component
 {
@@ -13,7 +17,7 @@ class PlayerComponent : public Component
 	SpriteComponent * sprite_;
 	bool is_priority_player_;
 	int final_attack_id_ = final_attack_whip;
-	float velocity_offset_;
+	double velocity_offset_;
 
 	static ANIMATIONS attack_to_animation(const int attack)
 	{
@@ -109,7 +113,7 @@ public:
 		num_wins++;
 	}
 
-	void set_velocity_offset(const float vel_o)
+	void set_velocity_offset(const double vel_o)
 	{
 		velocity_offset_ = vel_o;
 	}
@@ -119,7 +123,7 @@ public:
 		velocity_offset_ = 1.0f;
 	}
 
-	float get_velocity() const
+	double get_velocity() const
 	{
 		if (is_priority_player_)
 			return (data_->velocity + PLAYER_PRIORITY_INCREMENT) * velocity_offset_;

@@ -1,6 +1,12 @@
 #pragma once
 #include "ECS.h"
 
+/**
+ * @author David Wadsworth
+ * 
+ * abstract entity creation
+ */
+
 class Asset
 {
 	Manager * manager_;

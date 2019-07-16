@@ -1,13 +1,18 @@
 #pragma once
-#include "ECS.h"
-#include "CommonInputCommands.h"
 #include "InputCommandBuilder.h"
+
+/**
+ * @author David Wadsworth
+ * 
+ * creates a functional controller from controller data
+ */
 
 struct Input
 {
-	Input(const int keys)
-		: keys(keys)
+	explicit Input(const int keys)
+		: i_command(nullptr), keys(keys)
 	{}
+
 	InputCommand * i_command;
 	int keys;
 };

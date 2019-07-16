@@ -1,6 +1,12 @@
 #pragma once
 #include "NavigationPreset.h"
 
+/**
+ * @author David Wadsworth
+ *
+ * Unique pathway declarations
+*/
+
 class CircularScript : public Path
 {
 	int current_pos_ = 0;

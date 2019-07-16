@@ -24,9 +24,9 @@ namespace Navigation
 		p2_transform->scale = SPRITE_SCALING;
 		bg_transform->scale = BACKGROUND_SCALING;
 
-		p1_transform->position = Vector2D{ static_cast<float>(SPRITE_LEFT_EDGE_OF_SCREEN), static_cast<float>(SPRITE_BOTTOM_OF_SCREEN) };
-		p2_transform->position = Vector2D{ static_cast<float>(SPRITE_RIGHT_EDGE_OF_SCREEN), static_cast<float>(SPRITE_BOTTOM_OF_SCREEN) };
-		bg_transform->position = Vector2D{ static_cast<float>(BACKGROUND_X_OFFSET), static_cast<float>(BACKGROUND_Y_OFFSET) };
+		p1_transform->position = Vector2D{ static_cast<double>(SPRITE_LEFT_EDGE_OF_SCREEN), static_cast<double>(SPRITE_BOTTOM_OF_SCREEN) };
+		p2_transform->position = Vector2D{ static_cast<double>(SPRITE_RIGHT_EDGE_OF_SCREEN), static_cast<double>(SPRITE_BOTTOM_OF_SCREEN) };
+		bg_transform->position = Vector2D{ static_cast<double>(BACKGROUND_X_OFFSET), static_cast<double>(BACKGROUND_Y_OFFSET) };
 
 		return 1;
 	}
@@ -46,8 +46,10 @@ namespace Navigation
 	}
 
 	PushPlayer::PushPlayer(Entity * attacker, Entity *victim, const Uint32 attack_frames)
-		: Delay(attack_frames), attacker_(attacker), victim_(victim), slide_back_(new AttackPresets::PlayerSlideBack(victim, attacker)), used_(false)
-	{}
+		: Delay(attack_frames), attacker_(attacker), victim_(victim),
+		  slide_back_(new AttackPresets::PlayerSlideBack(victim, attacker)), move_(nullptr), used_(false)
+	{
+	}
 
 	void PushPlayer::init()
 	{
@@ -81,8 +83,10 @@ namespace Navigation
 	}
 
 	KickPlayer::KickPlayer(Entity * attacker, Entity * victim, const Uint32 attack_frames)
-		: Delay(attack_frames), attacker_(attacker), victim_(victim), stun_(new AttackPresets::KickHitStun(victim, attacker)), used_(false)
-	{}
+		: Delay(attack_frames), attacker_(attacker), victim_(victim),
+		  stun_(new AttackPresets::KickHitStun(victim, attacker)), move_(nullptr), used_(false)
+	{
+	}
 
 	void KickPlayer::init()
 	{
@@ -139,7 +143,7 @@ namespace Navigation
 		blocker_->get_component<PlayerComponent>().reset_character_hit_box();
 	}
 
-	BlockAndCrawl::BlockAndCrawl(Entity * blocker, float velocity_offset)
+	BlockAndCrawl::BlockAndCrawl(Entity * blocker, double velocity_offset)
 		: blocker_(blocker), velocity_offset_(velocity_offset)
 	{}
 
@@ -178,8 +182,9 @@ namespace Navigation
 	}
 
 	ReceiveDamage::ReceiveDamage(const int player, const int damage)
-		: player_(player), damage_(damage)
-	{}
+		: player_(player), overlay_(nullptr), damage_(damage)
+	{
+	}
 
 	void ReceiveDamage::init()
 	{
@@ -193,8 +198,9 @@ namespace Navigation
 	}
 
 	CheckRoundLoss::CheckRoundLoss(const int player)
-		: player_(player)
-	{}
+		: player_(player), overlay_(nullptr), match_end_(nullptr)
+	{
+	}
 
 	void CheckRoundLoss::init()
 	{
@@ -284,14 +290,14 @@ namespace Navigation
 	MovePlayer::MovePlayer(Entity * player, const int distance)
 		: player_(player), distance_moved_(0), total_distance_(std::abs(distance)), scale_(1.0f), stop_(new InputCommands::Move(0, animation_player_idle))
 	{
-		move_ = new InputCommands::Move((distance > 0) - (distance < 0), distance > 0 ? animation_player_walk_right : animation_player_walk_left);
+		move_ = new InputCommands::Move(static_cast<double>((distance > 0) - (distance < 0)), distance > 0 ? animation_player_walk_right : animation_player_walk_left);
 	}
 
-	MovePlayer::MovePlayer(Entity * player, const int distance, const float scale)
+	MovePlayer::MovePlayer(Entity * player, const int distance, const double scale)
 		: player_(player), distance_moved_(0), total_distance_(std::abs(distance)), stop_(new InputCommands::Move(0, animation_player_idle))
 	{
 		scale_ = scale;
-		move_ = new InputCommands::Move((distance > 0) - (distance < 0), distance > 0 ? animation_player_walk_right : animation_player_walk_left);
+		move_ = new InputCommands::Move(static_cast<double>((distance > 0) - (distance < 0)), distance > 0 ? animation_player_walk_right : animation_player_walk_left);
 	}
 
 	void MovePlayer::init()
@@ -302,7 +308,7 @@ namespace Navigation
 	int MovePlayer::choose_path()
 	{
 		move_->execute(player_);
-		distance_moved_ += player_->get_component<PlayerComponent>().get_velocity() * PLAYER_SPEED;
+		distance_moved_ += static_cast<int>(player_->get_component<PlayerComponent>().get_velocity() * PLAYER_SPEED);
 
 		if (distance_moved_ >= total_distance_)
 			return 1;

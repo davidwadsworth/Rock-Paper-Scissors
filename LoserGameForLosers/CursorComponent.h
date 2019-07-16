@@ -1,5 +1,10 @@
 #pragma once
 #include "ECS.h"
+/**
+ * @author David Wadsworth
+ *
+ * In charge of updating and creating option cursor
+*/
 
 class CursorComponent : public Component
 {
@@ -11,7 +16,8 @@ class CursorComponent : public Component
 public:
 
 	explicit CursorComponent(const int sprite_id)
-		: cursor_id_(sprite_id)
+		: options_(nullptr), current_link_(nullptr), texture_(nullptr), cursor_id_(sprite_id), cursor_slot_(0),
+		  cursor_texture_id_(0)
 	{}
 
 	~CursorComponent()

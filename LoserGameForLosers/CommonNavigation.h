@@ -4,6 +4,12 @@
 #include "GameState.h"
 #include "MiscAssets.h"
 
+/**
+ * @author David Wadsworth
+ * 
+ * creates globally used navigators to navigate the path
+ */
+
 namespace Navigation
 {
 	class Delay : public Navigator

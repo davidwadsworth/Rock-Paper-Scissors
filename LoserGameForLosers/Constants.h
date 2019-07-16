@@ -2,6 +2,12 @@
 #include "SDL.h"
 #include "Vector2D.h"
 
+/**
+ * @author David Wadsworth
+ * 
+ * static variables used throughout solution
+ */
+
 //inits
 static const int SCREEN_HEIGHT = 640;
 static const int SCREEN_WIDTH = 800;
@@ -32,17 +38,18 @@ static const int PROMPT_DELAY = 3000;
 static const int ROUND_TIME = 10000;
 static const int TRANSITION_SPEED = 3;
 
-//Runtime consts
-static const float BACKGROUND_SCALING_TARGET = 1.0f;
-static const float BACKGROUND_SCALING = 3.0f;
-static const float SPRITE_SCALING = 3.0f;
-static const float SPRITE_SCALING_TARGET = 1.0f;
 
-static const float PLAYER_PRIORITY_INCREMENT = -0.3f;
+//Runtime consts
+static const double BACKGROUND_SCALING_TARGET = 1.0f;
+static const double BACKGROUND_SCALING = 3.0f;
+static const double SPRITE_SCALING = 3.0f;
+static const double SPRITE_SCALING_TARGET = 1.0f;
+
+static const double PLAYER_PRIORITY_INCREMENT = -0.3f;
 static const int PLAYER_SPEED = 3;
 
 static const int SPRITE_LENGTH = 128;
-static const int SPRITE_SCALED = SPRITE_LENGTH * SPRITE_SCALING;
+static const int SPRITE_SCALED = static_cast<int>(SPRITE_LENGTH * SPRITE_SCALING);
 static const int SPRITE_RIGHT_EDGE_OF_SCREEN = SCREEN_WIDTH - SPRITE_SCALED;
 static const int SPRITE_BOTTOM_OF_SCREEN = SCREEN_HEIGHT - SPRITE_SCALED;
 static const int SPRITE_LEFT_EDGE_OF_SCREEN = 0;
@@ -51,15 +58,23 @@ static const int PLAYER_MAX_RANGE = 6;
 
 static const int CURSOR_FREQUENCY = 30;
 
-static const float SQUARE_VELOCITY = 0.6;
-static const float ARMS_VELOCITY = 1.0;
-
 static const int BACKGROUND_COLLIDER = 2;
+
+
+static const int BAR_HEIGHT = 20;
+static const int BAR_WIDTH = 337;
+static const Vector2D BAR_POSITION_LEFT{ 58, 43 };
+static const Vector2D BAR_POSITION_RIGHT{ 405, 43 };
+static const int BAR_LEFT_CONTAINER_X = 25;
+static const int BAR_LEFT_CONTAINER_Y = 0;
+static const int BAR_RIGHT_CONTAINER_X = 400;
+static const int BAR_RIGHT_CONTAINER_Y = 0;
+static const int BAR_OFFSET = 58;
+
+static const double HEALTH_TOTAL = 100.0;
 
 static const int PADDING = 5;
 static const int COMBAT_PADDING = 10;
-
-static const float MAX_DISTANCE = 672 - FLT_EPSILON;
 
 static const Vector2D P1_OPTIONS = Vector2D(0, SCREEN_HALF_HEIGHT);
 static const Vector2D P2_OPTIONS = Vector2D(SPRITE_RIGHT_EDGE_OF_SCREEN, SCREEN_HALF_HEIGHT );
@@ -67,16 +82,16 @@ static const Vector2D P2_OPTIONS = Vector2D(SPRITE_RIGHT_EDGE_OF_SCREEN, SCREEN_
 //Attack consts
 static const int ATTACK_LENGTH = 64;
 
-static const float WHIP_RANGE = 0.8f;
-static const float WHIP_DISTANCE = 0;
+static const double WHIP_RANGE = 0.8f;
+static const double WHIP_DISTANCE = 0;
 static const int WHIP_HEIGHT = 100;
 
-static const float JUMP_KICK_RANGE = 0.3f;
-static const float JUMP_KICK_DISTANCE = 1.0f;
+static const double JUMP_KICK_RANGE = 0.3f;
+static const double JUMP_KICK_DISTANCE = 1.0f;
 static const int JUMP_KICK_HEIGHT = SPRITE_LENGTH - ATTACK_LENGTH;
 
-static const float GRAB_RANGE = 0.3f;
-static const float GRAB_DISTANCE = 0.1f;
+static const double GRAB_RANGE = 0.3f;
+static const double GRAB_DISTANCE = 0.1f;
 static const int GRAB_HEIGHT = WHIP_HEIGHT;
 static const int GRAB_ARM_SEPERATION = GRAB_HEIGHT + ATTACK_LENGTH + PADDING;
 

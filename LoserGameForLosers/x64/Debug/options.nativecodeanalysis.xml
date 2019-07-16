@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers</FILEPATH>
+      <FILENAME>options.cpp</FILENAME>
+      <LINE>49</LINE>
+      <COLUMN>85</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>Options::build_options</FUNCTION>
+    <DECORATED>?build_options@Options@@QEAA?AV?$vector@V?$vector@PEAVLink@@V?$allocator@PEAVLink@@@std@@@std@@V?$allocator@V?$vector@PEAVLink@@V?$allocator@PEAVLink@@@std@@@std@@@2@@std@@HHVVector2D@@H@Z</DECORATED>
+    <FUNCLINE>3</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers</FILEPATH>
+      <FILENAME>options.cpp</FILENAME>
+      <LINE>55</LINE>
+      <COLUMN>82</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '+' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '+' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>Options::build_options</FUNCTION>
+    <DECORATED>?build_options@Options@@QEAA?AV?$vector@V?$vector@PEAVLink@@V?$allocator@PEAVLink@@@std@@@std@@V?$allocator@V?$vector@PEAVLink@@V?$allocator@PEAVLink@@@std@@@std@@@2@@std@@HHVVector2D@@H@Z</DECORATED>
+    <FUNCLINE>3</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

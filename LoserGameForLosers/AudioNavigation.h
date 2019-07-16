@@ -1,6 +1,12 @@
 #pragma once
 #include "Navigator.h"
 
+/**
+ * @author David Wadsworth
+ *
+ * Plays and stops sounds along the path
+*/
+
 namespace Navigation
 {
 	class PlaySound : public Navigator

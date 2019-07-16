@@ -63,7 +63,7 @@ void TextureAtlasComponent::update_image_slot(const int slot_id, const int updat
 	slots_[slot_id]->set_call(&data_->data[updated_tex], rotation, flip);
 }
 
-void TextureAtlasComponent::update_position_and_scaling(const int slot_id, const Vector2D position, const float scale)
+void TextureAtlasComponent::update_position_and_scaling(const int slot_id, const Vector2D position, const double scale)
 {
 	slots_[slot_id]->update_position_and_scaling(position, scale);
 }
@@ -74,7 +74,7 @@ void TextureAtlasComponent::update_position(const int slot_id, const Vector2D po
 
 }
 
-void TextureAtlasComponent::update_scaling(const int slot_id, const float scale)
+void TextureAtlasComponent::update_scaling(const int slot_id, const double scale)
 {
 	slots_[slot_id]->update_scaling(scale);
 }

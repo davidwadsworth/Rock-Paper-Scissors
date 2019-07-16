@@ -1,27 +1,31 @@
 #pragma once
 #include <vector>
 
+/**
+ * @author David Wadsworth
+ */
+
 struct AttackData
 {
-	int encoding;
-	float hit_box;
-	float distance;
-	Uint32 move_stun;
-	Uint32 hit_stun;
-	int damage;
-	int defense;
-	int op_distance;
+	int encoding = NULL;
+	double hit_box = NULL;
+	double distance = NULL;
+	Uint32 move_stun = NULL;
+	Uint32 hit_stun = NULL;
+	int damage = NULL;
+	int defense = NULL;
+	int op_distance = NULL;
 };
 
 struct CharacterData
 {
 	std::string id;
-	std::vector<AttackData> attack_data;
-	float velocity;
-	float hit_box;
+	std::vector<AttackData> attack_data{};
+	double velocity = NULL;
+	double hit_box = NULL;
 };
 
 struct CharacterCollection : DataCollection
 {
-	std::vector<CharacterData> data;
+	std::vector<CharacterData> data{};
 };

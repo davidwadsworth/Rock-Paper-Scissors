@@ -2,6 +2,12 @@
 
 #include "SDL.h"
 
+/**
+ * @author David Wadsworth
+ * 
+ * in charge of loaded in player sprites
+*/
+
 class SpriteComponent : public Component
 {
 	int speed_ = 200;
@@ -18,8 +24,10 @@ public:
 	bool animated = false;
 
 	explicit SpriteComponent(const int sprite_id, const SDL_RendererFlip flp = SDL_FLIP_NONE, const int rots = 0)
-		: animation_state_(0), sprite_rotation_(rots), sprite_id_(sprite_id), animated_(true), sprite_flip(flp)
-	{}
+		: transform_(nullptr), texture_(nullptr), slot_id_(0), animation_state_(0), sprite_rotation_(rots),
+		  sprite_id_(sprite_id), animated_(true), sprite_flip(flp)
+	{
+	}
 
 	~SpriteComponent()
 	{
@@ -32,7 +40,7 @@ public:
 		transform_ = &entity->get_component<TransformComponent>();
 		texture_ = &entity->get_component<TextureAtlasComponent>();
 
-		/* Idle       */slot_id_ = texture_->create_animated_slot(transform_->position.x, transform_->position.y, speed_, animation_frames_, sprite_id_ + animation_frames_ * 3, sprite_rotation_, sprite_flip);
+		/* Idle       */slot_id_ = texture_->create_animated_slot(static_cast<int>(transform_->position.x), static_cast<int>(transform_->position.y), speed_, animation_frames_, sprite_id_ + animation_frames_ * 3, sprite_rotation_, sprite_flip);
 		/* Walk Left  */texture_->add_animation_state(slot_id_, speed_, animation_frames_, sprite_id_ + animation_frames_ * 6, sprite_rotation_, sprite_flip);
 		/* Walk Right */texture_->add_animation_state(slot_id_, speed_, animation_frames_, sprite_id_ + animation_frames_ * 7, sprite_rotation_, sprite_flip);
 		/* Block      */texture_->add_animation_state(slot_id_, speed_, animation_frames_, sprite_id_ + animation_frames_, sprite_rotation_, sprite_flip);

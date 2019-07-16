@@ -2,6 +2,12 @@
 #include <SDL.h>
 #undef main
 
+/**
+ * @author David Wadsworth
+ * 
+ * keeps track of current keyboard state
+ */
+
 class KeyboardHandler
 {
 public:

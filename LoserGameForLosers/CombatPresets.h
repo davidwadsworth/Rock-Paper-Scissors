@@ -2,6 +2,12 @@
 #include "NavigationPreset.h"
 #include "ECS.h"
 
+/**
+ * @author David Wadsworth
+ *
+ * compilations of combat phases
+*/
+
 namespace CombatPresets
 {
 	class ResetCombat : public NavigationPreset
@@ -25,10 +31,11 @@ namespace CombatPresets
 		Manager * manager_;
 	public:
 		SinglePlayerSelectAttack(Entity *player_1, Entity * player_2)
-			: player_1_(player_1), player_2_(player_2)
+			: player_1_(player_1), player_2_(player_2), difficulty_(0)
 		{
 			manager_ = GameState::get_manager();
 		}
+
 		void init() override;
 	};
 
@@ -53,7 +60,7 @@ namespace CombatPresets
 		Manager * manager_;
 	public:
 		SinglePlayerCombat(Entity *player_1, Entity * player_2)
-			: player_1_(player_1), player_2_(player_2)
+			: player_1_(player_1), player_2_(player_2), difficulty_(0)
 		{
 			manager_ = GameState::get_manager();
 		}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\dwads\documents\github\rock-paper-scissors\rapidxml</FILEPATH>
+      <FILENAME>rapidxml.hpp</FILENAME>
+      <LINE>810</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'rapidxml::xml_attribute&lt;char&gt;::m_prev_attribute' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>rapidxml::xml_attribute&lt;char&gt;::{ctor}</FUNCTION>
+    <DECORATED>??0?$xml_attribute@D@rapidxml@@QEAA@XZ</DECORATED>
+    <FUNCLINE>810</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\dwads\documents\github\rock-paper-scissors\rapidxml</FILEPATH>
+      <FILENAME>rapidxml.hpp</FILENAME>
+      <LINE>810</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'rapidxml::xml_attribute&lt;char&gt;::m_next_attribute' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>rapidxml::xml_attribute&lt;char&gt;::{ctor}</FUNCTION>
+    <DECORATED>??0?$xml_attribute@D@rapidxml@@QEAA@XZ</DECORATED>
+    <FUNCLINE>810</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

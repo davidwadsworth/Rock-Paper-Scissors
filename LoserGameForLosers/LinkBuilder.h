@@ -3,6 +3,12 @@
 #include "Data.h"
 #include "LinkCommandBuilder.h"
 
+/**
+ * @author David Wadsworth
+ *
+ * converting xml to the correct link design 
+*/
+
 class LinkBuilder
 {
 public:
@@ -17,6 +23,9 @@ public:
 
 		switch (data->link_id)
 		{
+		case 0:
+			link = new CursorLeftLink(font, padding, alignment, data->text, command);
+			break;
 		default:
 			link = new CursorLeftLink(font, padding, alignment, data->text, command);
 			break;

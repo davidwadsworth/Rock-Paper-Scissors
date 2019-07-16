@@ -2,7 +2,11 @@
 #include "ECS.h"
 #include "Link.h"
 #include "Options.h"
-
+/**
+ * @author David Wadsworth
+ * 
+ * Hub class for other components to get information from a dynamically created option box
+ */
 class OptionsComponent : public Component
 {
 	int y_pos_, x_pos_, padding_;

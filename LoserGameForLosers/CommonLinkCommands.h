@@ -3,6 +3,8 @@
 #include "Command.h"
 
 /**
+ * @author David Wadsworth
+ *
  * Commands that are bound to OptionBoxes
  */
 
@@ -27,9 +29,10 @@ namespace LinkCommands
 		int attack_id_, previous_attack_id_;
 		Entity * target_, *entity_;
 	public:
-		SelectAttack(const std::string command_val)
-			: attack_id_(stoi(command_val)), target_(nullptr)
+		explicit SelectAttack(const std::string command_val)
+			: attack_id_(stoi(command_val)), previous_attack_id_(0), target_(nullptr), entity_(nullptr)
 		{}
+
 		void change_target(Entity* target) override;
 
 		void execute(Entity * entity) override;
@@ -41,9 +44,11 @@ namespace LinkCommands
 		Entity * entity_;
 		int character_id_, previous_id_;
 	public:
-		ChooseCharacter(const std::string command_value)
-			: character_id_(stoi(command_value)), entity_(nullptr)
-		{}
+		explicit ChooseCharacter(const std::string command_value)
+			: character_id_(stoi(command_value)), previous_id_(0), entity_(nullptr)
+		{
+		}
+
 		void execute(Entity* entity) override{}
 	};
 
@@ -63,9 +68,10 @@ namespace LinkCommands
 		int difficulty_id_;
 		Entity * entity_;
 	public:
-		SetDifficulty(const std::string command_value)
-			: difficulty_id_(stoi(command_value))
-		{}
+		explicit SetDifficulty(const std::string command_value)
+			: difficulty_id_(stoi(command_value)), entity_(nullptr)
+		{
+		}
 
 		void execute(Entity* entity) override;
 	};

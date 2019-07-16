@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers</FILEPATH>
+      <FILENAME>keyboardhandler.h</FILENAME>
+      <LINE>9</LINE>
+      <COLUMN>1</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'KeyboardHandler::key_events' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>KeyboardHandler::{ctor}</FUNCTION>
+    <DECORATED>??0KeyboardHandler@@QEAA@XZ</DECORATED>
+    <FUNCLINE>9</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\dwads\documents\github\rock-paper-scissors\rapidxml</FILEPATH>
+      <FILENAME>rapidxml.hpp</FILENAME>
+      <LINE>390</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'rapidxml::memory_pool&lt;char&gt;::m_static_memory' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>rapidxml::memory_pool&lt;char&gt;::{ctor}</FUNCTION>
+    <DECORATED>??0?$memory_pool@D@rapidxml@@QEAA@XZ</DECORATED>
+    <FUNCLINE>390</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\dwads\documents\github\rock-paper-scissors\rapidxml</FILEPATH>
+      <FILENAME>rapidxml.hpp</FILENAME>
+      <LINE>390</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'rapidxml::memory_pool&lt;char&gt;::m_ptr' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>rapidxml::memory_pool&lt;char&gt;::{ctor}</FUNCTION>
+    <DECORATED>??0?$memory_pool@D@rapidxml@@QEAA@XZ</DECORATED>
+    <FUNCLINE>390</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\dwads\documents\github\rock-paper-scissors\rapidxml</FILEPATH>
+      <FILENAME>rapidxml.hpp</FILENAME>
+      <LINE>390</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'rapidxml::memory_pool&lt;char&gt;::m_begin' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>rapidxml::memory_pool&lt;char&gt;::{ctor}</FUNCTION>
+    <DECORATED>??0?$memory_pool@D@rapidxml@@QEAA@XZ</DECORATED>
+    <FUNCLINE>390</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\dwads\documents\github\rock-paper-scissors\rapidxml</FILEPATH>
+      <FILENAME>rapidxml.hpp</FILENAME>
+      <LINE>390</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'rapidxml::memory_pool&lt;char&gt;::m_end' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>rapidxml::memory_pool&lt;char&gt;::{ctor}</FUNCTION>
+    <DECORATED>??0?$memory_pool@D@rapidxml@@QEAA@XZ</DECORATED>
+    <FUNCLINE>390</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\dwads\documents\github\rock-paper-scissors\rapidxml</FILEPATH>
+      <FILENAME>rapidxml.hpp</FILENAME>
+      <LINE>901</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'rapidxml::xml_node&lt;char&gt;::m_last_node' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>rapidxml::xml_node&lt;char&gt;::{ctor}</FUNCTION>
+    <DECORATED>??0?$xml_node@D@rapidxml@@QEAA@W4node_type@1@@Z</DECORATED>
+    <FUNCLINE>901</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\dwads\documents\github\rock-paper-scissors\rapidxml</FILEPATH>
+      <FILENAME>rapidxml.hpp</FILENAME>
+      <LINE>901</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'rapidxml::xml_node&lt;char&gt;::m_last_attribute' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>rapidxml::xml_node&lt;char&gt;::{ctor}</FUNCTION>
+    <DECORATED>??0?$xml_node@D@rapidxml@@QEAA@W4node_type@1@@Z</DECORATED>
+    <FUNCLINE>901</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\dwads\documents\github\rock-paper-scissors\rapidxml</FILEPATH>
+      <FILENAME>rapidxml.hpp</FILENAME>
+      <LINE>901</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'rapidxml::xml_node&lt;char&gt;::m_prev_sibling' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>rapidxml::xml_node&lt;char&gt;::{ctor}</FUNCTION>
+    <DECORATED>??0?$xml_node@D@rapidxml@@QEAA@W4node_type@1@@Z</DECORATED>
+    <FUNCLINE>901</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\dwads\documents\github\rock-paper-scissors\rapidxml</FILEPATH>
+      <FILENAME>rapidxml.hpp</FILENAME>
+      <LINE>901</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'rapidxml::xml_node&lt;char&gt;::m_next_sibling' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>rapidxml::xml_node&lt;char&gt;::{ctor}</FUNCTION>
+    <DECORATED>??0?$xml_node@D@rapidxml@@QEAA@W4node_type@1@@Z</DECORATED>
+    <FUNCLINE>901</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\dwads\documents\github\rock-paper-scissors\rapidxml</FILEPATH>
+      <FILENAME>rapidxml.hpp</FILENAME>
+      <LINE>657</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'rapidxml::xml_base&lt;char&gt;::m_name_size' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>rapidxml::xml_base&lt;char&gt;::{ctor}</FUNCTION>
+    <DECORATED>??0?$xml_base@D@rapidxml@@QEAA@XZ</DECORATED>
+    <FUNCLINE>657</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\dwads\documents\github\rock-paper-scissors\rapidxml</FILEPATH>
+      <FILENAME>rapidxml.hpp</FILENAME>
+      <LINE>657</LINE>
+      <COLUMN>8</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'rapidxml::xml_base&lt;char&gt;::m_value_size' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>rapidxml::xml_base&lt;char&gt;::{ctor}</FUNCTION>
+    <DECORATED>??0?$xml_base@D@rapidxml@@QEAA@XZ</DECORATED>
+    <FUNCLINE>657</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

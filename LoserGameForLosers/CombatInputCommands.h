@@ -2,6 +2,13 @@
 #include "InputCommand.h"
 #include "CombatNavigation.h"
 
+/**
+ * @autho David Wadsworth
+ * 
+ * implemented Combat Commands
+ */
+
+
 namespace Navigation
 {
 	class BlockPlayer;
@@ -13,7 +20,9 @@ namespace CombatCommands
 	{
 		bool was_pressed_;
 	public:
-		ScriptPush() = default;
+		ScriptPush()
+			: was_pressed_(true)
+		{}
 
 		void idle(Entity* entity) override;
 		void execute(Entity* entity) override;
@@ -23,7 +32,9 @@ namespace CombatCommands
 	{
 		bool was_pressed_;
 	public:
-		ScriptKick() = default;
+		ScriptKick()
+			: was_pressed_(true)
+		{}
 
 		void idle(Entity* entity) override;
 		void execute(Entity* entity) override;
@@ -32,19 +43,22 @@ namespace CombatCommands
 	class ScriptBlock : public InputCommand
 	{
 		Navigation::BlockAndCrawl * block_;
-		bool was_pressed_ = true;
+		bool was_pressed_;
 	public:
-		ScriptBlock() = default;
-
+		ScriptBlock()
+			: block_(nullptr), was_pressed_(true)
+		{}
 		void idle(Entity* entity) override;
 		void execute(Entity* entity) override;
 	};
 
 	class EndCombat : public InputCommand
 	{
-		bool was_pressed_ = false;
+		bool was_pressed_;
 	public:
-		EndCombat() = default;
+		EndCombat()
+			: was_pressed_(false)
+		{}
 
 		void idle(Entity* entity) override;
 		void execute(Entity* entity) override;
@@ -54,7 +68,9 @@ namespace CombatCommands
 	{
 		bool was_pressed_;
 	public:
-		SelectAttack() = default;
+		SelectAttack()
+			: was_pressed_(false)
+		{}
 
 		void idle(Entity* entity) override;
 		void execute(Entity* entity) override;

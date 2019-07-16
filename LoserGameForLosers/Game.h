@@ -1,6 +1,15 @@
 #pragma once
 #include <SDL.h>
 
+/**
+ * @author David Wadsworth
+ * 
+ * main abstract template. In charge of getting and setting current game states.
+ * 
+ * Due to time constraints also in charge of combat_state and combat_difficulty
+ */
+
+
 enum Combat_State
 {
 	combat_state_single_player,

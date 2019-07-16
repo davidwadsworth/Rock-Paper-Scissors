@@ -1,6 +1,13 @@
 #pragma once
 #include "AICommand.h"
 
+/**
+ * @author David Wadsworth
+ * 
+ * commands that are bound to robots
+ */
+
+
 namespace AICommands
 {
 	class RandomSelectAttack : public AICommand
@@ -33,7 +40,7 @@ namespace AICommands
 
 		Timer * block_time_, * move_left_time_,* move_right_time_;
 		Entity * player_, * bot_;
-		int block_rand_range_, kick_rand_range_, push_rand_range_, block_time_total_, move_left_time_total_, move_right_time_total_;
+		Uint32 block_rand_range_, kick_rand_range_, push_rand_range_, block_time_total_, move_left_time_total_, move_right_time_total_;
 		InputCommands::Move * left_,* right_;
 		Navigation::BlockAndCrawl * block_;
 		AttackPresets::KickPreset * kick_;

@@ -5,6 +5,12 @@
 #include "Texture.h"
 #include "BitmapFont.h"
 
+/**
+ * @author David Wadsworth
+ * 
+ * All texture storage done here
+ */
+
 class TextureManager
 {
 	std::vector<Texture*> textures_;

@@ -1,5 +1,11 @@
 #pragma once
 
+/**
+ * @author David Wadsworth
+ * 
+ * controls for the difficulty bot to follow
+ */
+
 class AICommand
 {
 public:

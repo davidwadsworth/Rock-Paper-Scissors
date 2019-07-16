@@ -1,15 +1,21 @@
 #pragma once
 #include <iostream>
 
+/**
+ * @author Lets Make Games and David Wadsworth
+ * 
+ * generic type for keeping track of 2D objects
+ */
+
 class Vector2D
 {
 public:
-	float x;
-	float y;
+	double x;
+	double y;
 
 	Vector2D();
-	Vector2D(float x, float y);
-	Vector2D(float xy);
+	Vector2D(double x, double y);
+	Vector2D(double xy);
 
 	Vector2D& add(const Vector2D& vec);
 	Vector2D& subtract(const Vector2D& vec);
@@ -26,11 +32,11 @@ public:
 	Vector2D& operator*=(const Vector2D& vec);
 	Vector2D& operator/=(const Vector2D& vec);
 
-	Vector2D& operator+=(const float& vec);
-	Vector2D& operator-=(const float& vec);
-	Vector2D& operator*=(const float& vec);
-	Vector2D& operator/=(const float &vec);
-	Vector2D& operator=(const float& vec);
+	Vector2D& operator+=(const double& vec);
+	Vector2D& operator-=(const double& vec);
+	Vector2D& operator*=(const double& vec);
+	Vector2D& operator/=(const double &vec);
+	Vector2D& operator=(const double& vec);
 
 	friend bool operator>=(const Vector2D& v1, const Vector2D& v2);
 

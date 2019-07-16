@@ -3,8 +3,9 @@
 
 
 PathTrunk::PathTrunk(PathBranch * root, PathTrunk * next)
-	: root_(root), next(next), current(root)
-{}
+	: root_(root), active_(false), next(next), current(root)
+{
+}
 
 
 void PathTrunk::add(PathTrunk * trunk_to_add)

@@ -31,7 +31,7 @@ void OptionsComponent::next_x(const int x_inc)
 {
 	x_pos_ += x_inc;
 	if (x_pos_ < 0)
-		x_pos_ = current_links.size() - 1;
+		x_pos_ = static_cast<int>(current_links.size()) - 1;
 	if (x_pos_ > current_links.size() - 1)
 		x_pos_ = 0;
 }
@@ -40,7 +40,7 @@ void OptionsComponent::next_y(const int y_inc)
 {
 	y_pos_ += y_inc;
 	if (y_pos_ < 0)
-		y_pos_ = current_links[x_pos_].size() - 1;
+		y_pos_ = static_cast<int>(current_links[x_pos_].size()) - 1;
 	if (y_pos_ > current_links[x_pos_].size() - 1)
 		y_pos_ = 0;
 }

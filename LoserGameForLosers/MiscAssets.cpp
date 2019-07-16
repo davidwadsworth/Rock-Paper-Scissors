@@ -31,7 +31,7 @@ void Assets::PlayerRight::create(int controller_id, int difficulty)
 	player_right->add_component<ColliderComponent>();
 	player_right->add_component<PlayerComponent>(order_player_2);
 	
-	if (difficulty)
+	if (!Game::combat_state)
 		player_right->add_component<AIComponent>(difficulty);
 	else
 		player_right->add_component<ControllerComponent>(controller_id, 1);
@@ -64,7 +64,7 @@ void Assets::CombatBackground::destroy()
 void Assets::OptionBox::create(int glyph_id, int cursor_id, int options_id, int controller_id, Vector2D position, int input_id)
 {
 	auto options = create_asset();
-	options->add_component<OptionsComponent>(font_lazy_foo, options_id, position.x, position.y, Vector2D(0, 0), PADDING);
+	options->add_component<OptionsComponent>(font_lazy_foo, options_id, static_cast<int>(position.x), static_cast<int>(position.y), Vector2D(0, 0), PADDING);
 	options->add_component<WhiteRectComponent>();
 	options->add_component<GlyphAtlasComponent>(glyph_id);
 	options->add_component<TextureAtlasComponent>();

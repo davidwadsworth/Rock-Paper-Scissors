@@ -78,8 +78,9 @@ namespace InputCommands
 	{
 		if (was_pressed_)
 		{
-			auto character_data = LoadCharacterData("data_characters_v2.xml");
-			GameState::set_character_data(new CharacterCollection(character_data.load()));
+			auto character_data = new LoadCharacterData("data_characters_v2.xml");
+			GameState::set_character_data(new CharacterCollection(character_data->load()));
+			delete character_data;
 		}
 	}
 

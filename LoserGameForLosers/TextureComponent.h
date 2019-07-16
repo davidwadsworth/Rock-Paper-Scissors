@@ -2,6 +2,12 @@
 #include "ECS.h"
 #include "DrawCall.h"
 
+/**
+ * @author David Wadsworth
+ *
+ * keeps track of non atlas textures
+ */
+
 class TextureComponent : public Component
 {
 	int texture_id_;

@@ -1,6 +1,11 @@
 #pragma once
 #include "Command.h"
 
+/**
+ * @author David Wadsworth
+ *
+ * abstract design of how a link will appear on screen
+*/
 
 class Link
 {

@@ -4,21 +4,19 @@
 #include <fstream>
 #include <vector>
 
-CharacterCollection LoadCharacterData::load() const
+CharacterCollection LoadCharacterData::load()
 {
-	std::ifstream character_path(path);
-	rapidxml::xml_document<> data;
-	rapidxml::xml_node<> * characters_node;
+	xml_path.open(path);
 
-	std::vector<char> buffer((std::istreambuf_iterator<char>(character_path)), std::istreambuf_iterator<char>());
+	buffer.assign((std::istreambuf_iterator<char>(xml_path)), std::istreambuf_iterator<char>());
 	buffer.push_back('\0');
 
 	data.parse<0>(&buffer[0]);
 
-	characters_node = data.first_node("Characters");
-	auto character_collection = CharacterCollection();
-	character_collection.id = characters_node->first_attribute("id")->value();
-	character_collection.path = characters_node->first_attribute("path")->value();
+	const auto characters_node = data.first_node("Characters");
+
+	character_collection_.id = characters_node->first_attribute("id")->value();
+	character_collection_.path = characters_node->first_attribute("path")->value();
 	
 	for (auto character_node = characters_node->first_node("Character"); character_node; character_node = character_node->next_sibling())
 	{
@@ -55,9 +53,9 @@ CharacterCollection LoadCharacterData::load() const
 			character_data.attack_data.push_back(attack_data);
 		}
 		
-		character_collection.data.push_back(character_data);
+		character_collection_.data.push_back(character_data);
 	}
 
 	data.clear();
-	return character_collection;
+	return character_collection_;
 }

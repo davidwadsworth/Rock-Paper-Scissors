@@ -1,6 +1,12 @@
 #pragma once
 #include "SDL.h"
 
+/**
+ * @author LazyfooProductions
+ * 
+ * Simple SDL timer
+ */
+
 class Timer
 {
 public:

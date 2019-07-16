@@ -1,6 +1,10 @@
 #pragma once
 #include "ECS.h"
-
+/**
+ * @author David Wadsworth
+ *
+ * in charge of character health bars
+*/
 class OverlayComponent : public Component
 {
 	int container_id_, bar_id_, container_slot_{}, bar_slot_{}, remaining_health_, original_bar_width_, bar_width_, bar_height_;

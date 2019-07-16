@@ -15,17 +15,17 @@ Combat::Combat(Manager* manager)
 	left_overlay_ = new Assets::Overlay(manager);
 	right_overlay_ = new Assets::Overlay(manager);
 
-	auto atlas_load = LoadAtlasData("data_main_textures-0_v2.xml");
-	auto audio_load = LoadAudioData("data_audio_v2.xml");
-	auto controller_load = LoadControllerData("data_controllers_v2.xml");
-	auto options_load = LoadOptionsData("data_options_v2.xml");
-	auto character_load = LoadCharacterData("data_characters_v2.xml");
+	auto atlas = new LoadAtlasData("data_main_textures-0_v2.xml");
+	auto audio = new LoadAudioData("data_audio_v2.xml");
+	auto controller = new LoadControllerData("data_controllers_v2.xml");
+	auto options = new LoadOptionsData("data_options_v2.xml");
+	auto character = new LoadCharacterData("data_characters_v2.xml");
 
-	set_atlas_data(new AtlasCollection(atlas_load.load()));
-	set_audio_data(new AudioCollection(audio_load.load()));
-	set_controller_data(new ControllerCollection(controller_load.load()));
-	set_options_data(new OptionsCollection(options_load.load()));
-	set_character_data(new CharacterCollection(character_load.load()));
+	set_atlas_data(new AtlasCollection(atlas->load()));
+	set_audio_data(new AudioCollection(audio->load()));
+	set_controller_data(new ControllerCollection(controller->load()));
+	set_options_data(new OptionsCollection(options->load()));
+	set_character_data(new CharacterCollection(character->load()));
 
 	auto palette = new TextureManager();
 	palette->load_texture(get_atlas_data()->path);
@@ -54,8 +54,15 @@ Combat::Combat(Manager* manager)
 		set_path(new CombatScripts::Debug());
 		break;
 	}
+	 
 
 	bg_logic = new Background(player_1_->get_asset(), player_2_->get_asset(), background_->get_asset());
+
+	delete atlas;
+	delete audio;
+	delete controller;
+	delete options;
+	delete character;
 }
 
 Combat::~Combat()

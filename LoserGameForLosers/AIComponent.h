@@ -1,7 +1,11 @@
 #pragma once
 #include "ECS.h"
 #include "AICommand.h"
-
+/**
+ * @author David Wadsworth
+ *
+ * creates controller for the AI
+*/
 class AIComponent : public Component
 {
 	int difficulty_;

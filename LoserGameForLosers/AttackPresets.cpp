@@ -4,7 +4,7 @@
 #include "AudioNavigation.h"
 
 AttackPresets::PlayerSlideBack::PlayerSlideBack(Entity * victim, Entity * attacker)
-	: victim_(victim), attacker_(attacker)
+	: victim_(victim), attacker_(attacker), damage_(0)
 {}
 
 

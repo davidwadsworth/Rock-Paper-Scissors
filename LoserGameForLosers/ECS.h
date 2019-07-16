@@ -8,6 +8,10 @@
 #include <bitset>
 #include <array>
 
+/**
+ * @author Let's Play Games
+*/
+
 class Component;
 class Entity;
 class Manager;
@@ -40,7 +44,7 @@ using ComponentArray = std::array<Component*, maxComponents>;
 class Component
 {
 public: 
-	Entity * entity;
+	Entity * entity = nullptr;
 
 	virtual void init() {}
 	virtual void update() {}

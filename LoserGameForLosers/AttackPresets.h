@@ -2,6 +2,13 @@
 #include "NavigationPreset.h"
 #include "CombatNavigation.h"
 
+/**
+ * @author David Wadsworth
+ * 
+ * compilation of attack requests
+ */
+
+
 namespace AttackPresets
 {
 	class PlayerSlideBack : public NavigationPreset

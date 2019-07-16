@@ -1,5 +1,11 @@
 #pragma once
 #include "Commands.h"
+/**
+ * @author David Wadsworth
+ * 
+ * creates link commands from xml 
+ */
+
 using namespace LinkCommands;
 
 class LinkCommandBuilder
