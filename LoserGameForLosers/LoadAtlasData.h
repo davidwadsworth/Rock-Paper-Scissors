@@ -1,7 +1,6 @@
 #pragma once
 
 #include "AtlasData.h"
-#include "DataManager.h"
 
 /**
  * @author David Wadsworth

@@ -1,54 +1,6 @@
-﻿  stdafx.cpp
-c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers\keyboardhandler.h(24): warning C4200: nonstandard extension used: zero-sized array in struct/union
-  c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers\keyboardhandler.h(24): note: This member will be ignored by a defaulted constructor or copy/move assignment operator
-  AICommands.cpp
-  AIComponent.cpp
-  Asset.cpp
-  AttackPresets.cpp
-  AudioNavigation.cpp
-  Background.cpp
-  BitmapFont.cpp
-  Collision.cpp
-  Combat.cpp
-  CombatInputCommands.cpp
-  CombatNavigation.cpp
-  CombatPresets.cpp
-  CommonInputCommands.cpp
-  CommonLinkCommands.cpp
-  CommonNavigation.cpp
-  DrawCall.cpp
-  ECS.cpp
-  FadeComponent.cpp
-  Game.cpp
-  GameState.cpp
-  Compiling...
-  Links.cpp
-  LoadAtlasData.cpp
-  LoadAudioData.cpp
-  LoadCharacterData.cpp
-  LoadControllerData.cpp
-  LoadOptionsData.cpp
-  Main.cpp
-  Menu.cpp
-  MenuNavigation.cpp
-  MenuPresets.cpp
-  MiscAssets.cpp
-  Options.cpp
-  OptionsComponent.cpp
-  OverlayComponent.cpp
-c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers\overlaycomponent.cpp(5): warning C4244: 'initializing': conversion from 'const double' to 'int', possible loss of data
-  Pathway.cpp
-  ScriptComponent.cpp
-  Texture.cpp
-  TextureAtlasComponent.cpp
-  TextureComponent.cpp
-  TextureManager.cpp
-  Compiling...
-  Timer.cpp
-  TransformationNavigation.cpp
-  Vector2D.cpp
+﻿  Combat.cpp
   Generating code
-  0 of 3445 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+  4 of 3448 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

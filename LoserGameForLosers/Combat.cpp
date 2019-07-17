@@ -39,7 +39,11 @@ Combat::Combat(Manager* manager)
 	left_overlay_->create(ss_main_health_container, ss_main_health_bar, SDL_FLIP_NONE);
 	right_overlay_->create(ss_main_health_container, ss_main_health_bar, SDL_FLIP_HORIZONTAL);
 
-	player_1_->create(controller_combat);
+	if (Game::combat_state == combat_state_debug)
+		player_1_->create(controller_debug);
+	else
+		player_1_->create(controller_combat);
+
 	player_2_->create(controller_combat, Game::combat_difficulty);
 
 	switch (Game::combat_state)

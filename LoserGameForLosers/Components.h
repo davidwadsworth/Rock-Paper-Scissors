@@ -5,7 +5,6 @@
 #include "TextureComponent.h"
 #include "OptionsComponent.h"
 #include "BackgroundComponent.h"
-#include "BoxComponent.h"
 #include "CursorComponent.h"
 #include "MenuComponent.h"
 #include "ColliderComponent.h"
