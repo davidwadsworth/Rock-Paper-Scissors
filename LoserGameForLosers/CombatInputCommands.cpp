@@ -83,17 +83,20 @@ void CombatCommands::EndCombat::idle(Entity * entity)
 	{
 		auto& players = GameState::get_manager()->get_group(Game::group_players);
 		auto& backgrounds = GameState::get_manager()->get_group(Game::group_background);
+		auto disable_movement = CombatPresets::DisableMovement(players[0], players[1]);
 		auto round_ending = CombatPresets::RoundEnding(players[0], players[1]);
 		auto reset_match = CombatPresets::ResetCombat(players[0], players[1], backgrounds[0]);
 		auto enable_controller = CombatPresets::EnableMovement(players[0], players[1]);
 
+		disable_movement.init();
 		round_ending.init();
 		reset_match.init();
 		enable_controller.init();
 
+		disable_movement.get_trunk()->add(round_ending.get_trunk());
 		round_ending.get_trunk()->add(reset_match.get_trunk());
 		reset_match.get_trunk()->add(enable_controller.get_trunk());
-		GameState::get_path()->add(round_ending.get_trunk());
+		GameState::get_path()->add(disable_movement.get_trunk());
 		was_pressed_ = false;
 	}
 }
@@ -108,10 +111,18 @@ void CombatCommands::SelectAttack::idle(Entity* entity)
 	if (was_pressed_)
 	{
 		auto& players = GameState::get_manager()->get_group(Game::group_players);
+		auto disable_movement = CombatPresets::DisableMovement(players[0], players[1]);
 		auto select_attack = CombatPresets::MultiPlayerSelectAttack(players[0], players[1]);
-		select_attack.init();
+		auto enable_movement = CombatPresets::EnableMovement(players[0], players[1]);
 
-		GameState::get_path()->add(select_attack.get_trunk());
+		disable_movement.init();
+		select_attack.init();
+		enable_movement.init();
+
+		disable_movement.get_trunk()->add(select_attack.get_trunk());
+		select_attack.get_trunk()->add(enable_movement.get_trunk());
+
+		GameState::get_path()->add(disable_movement.get_trunk());
 		was_pressed_ = false;
 	}
 }

@@ -120,4 +120,16 @@ namespace CombatPresets
 		void init() override;
 
 	};
+
+	class DisableMovement : public NavigationPreset
+	{
+		Entity * player_1_, *player_2_;
+	public:
+		DisableMovement(Entity * player_1, Entity * player_2)
+			: player_1_(player_1), player_2_(player_2)
+		{}
+
+		void init() override;
+
+	};
 }

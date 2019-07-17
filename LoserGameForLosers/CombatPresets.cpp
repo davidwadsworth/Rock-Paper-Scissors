@@ -293,6 +293,7 @@ void CombatPresets::MatchEnding::init()
 void CombatPresets::EnableMovement::init()
 {
 	const auto enable_controller = new PathTrunk();
+
 	auto reset_controllers = new PathBranch(enable_controller, nullptr, nullptr);
 	reset_controllers->add_navigator(new Navigation::EnableController(player_1_));
 	reset_controllers->add_navigator(new Navigation::EnableController(player_2_));
@@ -300,4 +301,20 @@ void CombatPresets::EnableMovement::init()
 	enable_controller->current = reset_controllers;
 	set_trunk(enable_controller);
 
+}
+
+void CombatPresets::DisableMovement::init()
+{
+	const auto disable_movement = new PathTrunk();
+
+	auto disable_controller = new PathBranch(disable_movement, nullptr, nullptr);
+	disable_controller->add_navigator(new Navigation::DisableController(player_1_));
+	disable_controller->add_navigator(new Navigation::DisableController(player_2_));
+	disable_controller->add_navigator(new Navigation::ResetVelocity(player_1_));
+	disable_controller->add_navigator(new Navigation::ResetVelocity(player_2_));
+	disable_controller->add_navigator(new Navigation::ResetAnimations(player_1_));
+	disable_controller->add_navigator(new Navigation::ResetAnimations(player_2_));
+
+	disable_movement->current = disable_controller;
+	set_trunk(disable_movement);
 }
