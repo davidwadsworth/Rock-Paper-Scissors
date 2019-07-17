@@ -19,7 +19,7 @@ void AIComponent::init()
 		combat_ = new AICommands::RandRangeCombat(entity, GameState::get_manager()->get_group(Game::group_players)[0], 20, 100, 80);
 	case 3:
 		select_attack_ = new AICommands::SelectWinner(entity, GameState::get_manager()->get_group(Game::group_players)[0]);
-		combat_ = new AICommands::RandRangeCombat(entity, GameState::get_manager()->get_group(Game::group_players)[0], 0, 1000, 500);
+		combat_ = new AICommands::RandRangeCombat(entity, GameState::get_manager()->get_group(Game::group_players)[0], 0, 1000, 250);
 	default: ;
 	}
 }

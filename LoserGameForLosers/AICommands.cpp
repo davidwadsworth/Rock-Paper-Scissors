@@ -37,8 +37,8 @@ AICommands::RandRangeCombat::RandRangeCombat(Entity * bot, Entity* player, const
 }
 
 
-int AICommands::RandRangeCombat::PUSH_LENGTH = static_cast<int>(0.2 * SPRITE_LENGTH * SPRITE_SCALING);
-int AICommands::RandRangeCombat::KICK_LENGTH = static_cast<int>(0.2 * SPRITE_LENGTH * SPRITE_SCALING);
+int AICommands::RandRangeCombat::PUSH_LENGTH = static_cast<int>(0.175 * SPRITE_LENGTH * SPRITE_SCALING);
+int AICommands::RandRangeCombat::KICK_LENGTH = static_cast<int>(0.1 * SPRITE_LENGTH * SPRITE_SCALING);
 
 void AICommands::RandRangeCombat::execute()
 {
