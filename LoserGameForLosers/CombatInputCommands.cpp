@@ -82,20 +82,19 @@ void CombatCommands::EndCombat::idle(Entity * entity)
 	if (was_pressed_)
 	{
 		auto& players = GameState::get_manager()->get_group(Game::group_players);
-		auto& backgrounds = GameState::get_manager()->get_group(Game::group_background);
 		auto disable_movement = CombatPresets::DisableMovement(players[0], players[1]);
 		auto round_ending = CombatPresets::RoundEnding(players[0], players[1]);
-		auto reset_match = CombatPresets::ResetCombat(players[0], players[1], backgrounds[0]);
+		auto disable_movement_2 = CombatPresets::DisableMovement(players[0], players[1]);
 		auto enable_controller = CombatPresets::EnableMovement(players[0], players[1]);
 
 		disable_movement.init();
 		round_ending.init();
-		reset_match.init();
+		disable_movement_2.init();
 		enable_controller.init();
 
 		disable_movement.get_trunk()->add(round_ending.get_trunk());
-		round_ending.get_trunk()->add(reset_match.get_trunk());
-		reset_match.get_trunk()->add(enable_controller.get_trunk());
+		round_ending.get_trunk()->add(disable_movement_2.get_trunk());
+		disable_movement_2.get_trunk()->add(enable_controller.get_trunk());
 		GameState::get_path()->add(disable_movement.get_trunk());
 		was_pressed_ = false;
 	}
