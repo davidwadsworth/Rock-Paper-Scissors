@@ -1,4 +1,4 @@
-# Rock-Paper-Scissors
+# Whip-Jump-Kick-Grab
 Rock Paper Scissors Game with realtime movement
 
 Dependencies
