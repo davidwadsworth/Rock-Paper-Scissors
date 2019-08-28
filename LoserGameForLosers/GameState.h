@@ -4,6 +4,7 @@
 #include "AudioQueue.h"
 #include "Pathway.h"
 #include "TextureManager.h"
+#include "AIData.h"
 
 /**
  * @author David Wadsworth
@@ -18,6 +19,7 @@ class GameState
 	static ControllerCollection* controller_data_;
 	static OptionsCollection* options_data_;
 	static AudioCollection* audio_data_;
+	static AICollection* ai_data_;
 
 	static TextureManager* palette_;
 	static AudioQueue* audio_player_;
@@ -40,6 +42,9 @@ public:
 	
 	static AudioCollection* get_audio_data() { return audio_data_; }
 	static void set_audio_data(AudioCollection * data) { audio_data_ = data; }
+
+	static AICollection* get_ai_data() { return ai_data_; }
+	static void set_ai_data(AICollection * data) { ai_data_ = data; }
 
 	static TextureManager* get_palette() { return palette_; }
 	static void set_palette(TextureManager * palette) { palette_ = palette; }

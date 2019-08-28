@@ -1,3 +1,2 @@
-﻿  OverlayComponent.cpp
-c:\users\dwads\documents\github\rock-paper-scissors\losergameforlosers\overlaycomponent.cpp(5): warning C4244: 'initializing': conversion from 'const double' to 'int', possible loss of data
+﻿  AIComponent.cpp
   LoserGameForLosers.vcxproj -> C:\Users\dwads\Documents\GitHub\Rock-Paper-Scissors\x64\Debug\WhipJumpKickGrab.exe

@@ -9,7 +9,7 @@
 		<Attack encoding="4" hitbox="0.7" move_stun="1000" hit_stun="1000" damage="8"/>
 	</Character>
 
-	<Character id="red_guy" velocity="1.0" hitbox="0.7">
+	<Character id="red_guy" velocity="1.0" hitbox="0.6">
 		<Attack encoding="7" hitbox="1.3" damage="25" />
 		<Attack encoding="8" hitbox="1.0" distance="300" damage="25" />
 		<Attack encoding="9" hitbox="0.9" distance="200" damage="25" />

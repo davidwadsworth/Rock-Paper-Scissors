@@ -1,0 +1,5 @@
+<AI id="data_AI" path="data_ai_v2.xml">
+	<Bot id="normal" block_rand_range="50" kick_rand_range="5" push_rand_range="5" block_range="50" kick_range="38.4" push_range="42" move_left_range_min="500" move_left_range_max="2000" move_right_range_min="500" move_right_range_max="2000" block_range_min="500" block_range_max="2000"  />
+	<Bot id="hard" block_rand_range="20" kick_rand_range="100" push_rand_range="80" block_range="38.4" kick_range="3" push_range="40" move_left_range_min="500" move_left_range_max="2000" move_right_range_min="500" move_right_range_max="2000" block_range_min="500" block_range_max="2000"  />
+	<Bot id="impossible" block_rand_range="2" kick_rand_range="1000" push_rand_range="100" block_range="80" kick_range="38.4" push_range="76.8" move_left_range_min="500" move_left_range_max="2000" move_right_range_min="500" move_right_range_max="2000" block_range_min="500" block_range_max="2000" />
+</AI>

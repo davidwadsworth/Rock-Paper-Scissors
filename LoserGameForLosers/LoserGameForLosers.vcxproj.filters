@@ -243,9 +243,6 @@
     <ClInclude Include="LinkBuilder.h">
       <Filter>Links</Filter>
     </ClInclude>
-    <ClInclude Include="AttackPresets.h">
-      <Filter>Navigation\NavigationPresets</Filter>
-    </ClInclude>
     <ClInclude Include="NavigationPreset.h">
       <Filter>Navigation\NavigationPresets</Filter>
     </ClInclude>
@@ -380,6 +377,12 @@
     </ClInclude>
     <ClInclude Include="LoadData.h">
       <Filter>Data</Filter>
+    </ClInclude>
+    <ClInclude Include="AIData.h">
+      <Filter>Data\DataCollections</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadAIData.h">
+      <Filter>Data\DataLoads</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -538,6 +541,9 @@
     </ClCompile>
     <ClCompile Include="AIComponent.cpp">
       <Filter>ECS\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadAIData.cpp">
+      <Filter>Data\DataLoads</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

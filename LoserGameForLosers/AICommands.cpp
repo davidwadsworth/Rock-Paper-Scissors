@@ -22,9 +22,8 @@ void AICommands::SelectWinner::execute()
 }
 
 
-AICommands::RandRangeCombat::RandRangeCombat(Entity * bot, Entity* player, const int block_rand, const int kick_rand, const int push_rand)
-	: player_(player), bot_(bot), block_rand_range_(block_rand), kick_rand_range_(kick_rand),
-	  push_rand_range_(push_rand), block_time_total_(0), move_left_time_total_(0), move_right_time_total_(0)
+AICommands::RandRangeCombat::RandRangeCombat(Entity * bot, Entity* player, AIData * data)
+	: player_(player), bot_(bot), data_(data), block_time_total_(0), move_left_time_total_(0), move_right_time_total_(0)
 {
 	left_ = new InputCommands::Move(-1, animation_player_walk_left);
 	right_ = new InputCommands::Move(1, animation_player_walk_right);
@@ -37,8 +36,6 @@ AICommands::RandRangeCombat::RandRangeCombat(Entity * bot, Entity* player, const
 }
 
 
-int AICommands::RandRangeCombat::PUSH_LENGTH = static_cast<int>(0.175 * SPRITE_LENGTH * SPRITE_SCALING);
-int AICommands::RandRangeCombat::KICK_LENGTH = static_cast<int>(0.1 * SPRITE_LENGTH * SPRITE_SCALING);
 
 void AICommands::RandRangeCombat::execute()
 {
@@ -63,48 +60,50 @@ void AICommands::RandRangeCombat::execute()
 			if (rand() % 2)
 			{
 				move_left_time_->start();
-				move_left_time_total_ = rand() % 2000 + 500;
+				move_left_time_total_ = rand() % data_->move_left_range_max + data_->move_left_range_min;
 			}
 			else
 			{
 				move_right_time_->start();
-				move_right_time_total_ = rand() % 1000 + 500;
+				move_right_time_total_ = rand() % data_->move_right_range_max + data_->move_right_range_min;
 			}
 		}
 
-
-		if (bot_->get_component<TransformComponent>().get_horizontal_distance(player_) < PUSH_LENGTH)
+		if (block_time_->is_started())
 		{
-			if (block_time_->is_started())
+			if (block_time_->get_ticks() > block_time_total_)
 			{
-				if (block_time_->get_ticks() > block_time_total_)
-				{
-					block_->close();
-					block_time_->stop();
-				}
+				block_->close();
+				block_time_->stop();
 			}
-			else if (static_cast<Uint32>(rand() % 1000) < block_rand_range_)
-			{
-				block_->init();
-				block_time_->start();
-				block_time_total_ = rand() % 1000 + 500;
-			}
-
-			if (static_cast<Uint32>(rand() % 1000) < push_rand_range_)
+		}
+		if (bot_->get_component<TransformComponent>().get_horizontal_distance(player_) < data_->push_range)
+		{
+			if (static_cast<Uint32>(rand() % RAND_CONSTANT) < data_->push_rand_range)
 			{
 				push_->init();
 				bot_->get_component<ScriptComponent>().empty_add(push_->get_trunk());
 			}
-			
-			if (bot_->get_component<TransformComponent>().get_horizontal_distance(player_) < KICK_LENGTH)
+		}
+		if (bot_->get_component<TransformComponent>().get_horizontal_distance(player_) < data_->block_range)
+		{
+			if (static_cast<Uint32>(rand() % RAND_CONSTANT) < data_->block_rand_range)
 			{
-				if (static_cast<Uint32>(rand() % 1000) < kick_rand_range_)
-				{
-					kick_->init();
-					bot_->get_component<ScriptComponent>().empty_add(kick_->get_trunk());
-				}
+				block_->init();
+				block_time_->start();
+				block_time_total_ = rand() % data_->block_range_max + data_->block_range_min;
 			}
 		}
+		if (bot_->get_component<TransformComponent>().get_horizontal_distance(player_) < data_->kick_range)
+		{
+			if (static_cast<Uint32>(rand() % RAND_CONSTANT) < data_->kick_rand_range)
+			{
+				kick_->init();
+				bot_->get_component<ScriptComponent>().empty_add(kick_->get_trunk());
+			}
+
+		}
+		
 	}
 
 }

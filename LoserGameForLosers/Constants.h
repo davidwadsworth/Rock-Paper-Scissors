@@ -59,6 +59,7 @@ static const int PLAYER_MAX_RANGE = 6;
 static const int CURSOR_FREQUENCY = 30;
 
 static const int BACKGROUND_COLLIDER = 2;
+static const int RAND_CONSTANT = 1000;
 
 
 static const int BAR_HEIGHT = 20;

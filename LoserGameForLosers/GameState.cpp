@@ -6,6 +6,7 @@ CharacterCollection* GameState::character_data_ = nullptr;
 ControllerCollection* GameState::controller_data_ = nullptr;
 OptionsCollection* GameState::options_data_ = nullptr;
 AudioCollection* GameState::audio_data_ = nullptr;
+AICollection* GameState::ai_data_ = nullptr;
 
 TextureManager* GameState::palette_ = nullptr;
 Path* GameState::path_ = nullptr;

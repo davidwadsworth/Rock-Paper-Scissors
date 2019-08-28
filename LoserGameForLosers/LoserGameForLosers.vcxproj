@@ -164,8 +164,10 @@
     <ClInclude Include="AICommand.h" />
     <ClInclude Include="AIComponent.h" />
     <ClInclude Include="AICommands.h" />
+    <ClInclude Include="AIData.h" />
     <ClInclude Include="Asset.h" />
     <ClInclude Include="AtlasData.h" />
+    <ClInclude Include="LoadAIData.h" />
     <ClInclude Include="LoadData.h" />
     <ClInclude Include="MenuNavigation.h" />
     <ClInclude Include="MiscAssets.h" />
@@ -251,6 +253,7 @@
     <ClCompile Include="AIComponent.cpp" />
     <ClCompile Include="Asset.cpp" />
     <ClCompile Include="AttackPresets.cpp" />
+    <ClCompile Include="LoadAIData.cpp" />
     <ClCompile Include="MenuNavigation.cpp" />
     <ClCompile Include="MiscAssets.cpp" />
     <ClCompile Include="CombatInputCommands.cpp" />

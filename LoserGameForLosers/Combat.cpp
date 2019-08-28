@@ -20,12 +20,14 @@ Combat::Combat(Manager* manager)
 	auto controller = new LoadControllerData("data_controllers_v2.xml");
 	auto options = new LoadOptionsData("data_options_v2.xml");
 	auto character = new LoadCharacterData("data_characters_v2.xml");
+	auto ai = new LoadAIData("data_ai_v2.xml");
 
 	set_atlas_data(new AtlasCollection(atlas->load()));
 	set_audio_data(new AudioCollection(audio->load()));
 	set_controller_data(new ControllerCollection(controller->load()));
 	set_options_data(new OptionsCollection(options->load()));
 	set_character_data(new CharacterCollection(character->load()));
+	set_ai_data(new AICollection(ai->load()));
 
 	auto palette = new TextureManager();
 	palette->load_texture(get_atlas_data()->path);
@@ -67,6 +69,7 @@ Combat::Combat(Manager* manager)
 	delete controller;
 	delete options;
 	delete character;
+	delete ai;
 }
 
 Combat::~Combat()
