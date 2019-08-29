@@ -174,6 +174,7 @@
     <ClInclude Include="CombatInputCommands.h" />
     <ClInclude Include="CombatScripts.h" />
     <ClInclude Include="OverlayComponent.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Script.h" />
     <ClInclude Include="ScriptComponent.h" />
     <ClInclude Include="Audio.h" />
@@ -301,6 +302,7 @@
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\..\OneDrive\Desktop\Dreams\Fighter.png" />
     <Image Include="atlas_sample.png" />
     <Image Include="Background.png" />
     <Image Include="backgroundTake2.png" />
@@ -309,8 +311,11 @@
     <Image Include="Background_take5.png" />
     <Image Include="cursor.png" />
     <Image Include="Fighter.png" />
+    <Image Include="fighter_8rC_icon.ico" />
     <Image Include="Fighter_full.png" />
     <Image Include="hipsterBackground.png" />
+    <Image Include="icon1.ico" />
+    <Image Include="icon3.ico" />
     <Image Include="lazyfont.png" />
     <Image Include="LongArms_full.png" />
     <Image Include="miss.png" />
@@ -329,6 +334,9 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="GIL_____.TTF" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WhipJumpKickGrab.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

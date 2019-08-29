@@ -9,7 +9,6 @@ AttackPresets::PlayerSlideBack::PlayerSlideBack(Entity * victim, Entity * attack
 
 
 void AttackPresets::PlayerSlideBack::init()
-
 {
 	const auto pushed = new PathTrunk();
 	const auto attacker_data = attacker_->get_component<PlayerComponent>().get_attack(attack_push);

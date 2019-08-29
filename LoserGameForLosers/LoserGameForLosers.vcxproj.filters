@@ -252,9 +252,6 @@
     <ClInclude Include="MenuPresets.h">
       <Filter>Navigation\NavigationPresets</Filter>
     </ClInclude>
-    <ClInclude Include="AttackPresets.h">
-      <Filter>Navigation\NavigationPresets</Filter>
-    </ClInclude>
     <ClInclude Include="NavigationPreset.h">
       <Filter>Navigation\NavigationPresets</Filter>
     </ClInclude>
@@ -383,6 +380,9 @@
     </ClInclude>
     <ClInclude Include="LoadAIData.h">
       <Filter>Data\DataLoads</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -622,10 +622,27 @@
     <Image Include="stop.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="..\..\..\..\OneDrive\Desktop\Dreams\Fighter.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="fighter_8rC_icon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="icon1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="icon3.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="GIL_____.TTF">
       <Filter>Resource Files</Filter>
     </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WhipJumpKickGrab.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
