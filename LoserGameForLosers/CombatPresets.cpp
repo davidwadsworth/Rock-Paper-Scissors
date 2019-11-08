@@ -41,7 +41,7 @@ void CombatPresets::SinglePlayerSelectAttack::init()
 	ai_choose_attack->add_navigator(new Navigation::SelectAttackAI(player_2_));
 
 	auto choose_attack = new PathBranch(select_attack, nullptr, ai_choose_attack);
-	choose_attack->add_navigator(new Navigation::CreateOptionBox(manager_, order_texture_combat_glyph_atlas, ss_main_cursor_box, options_choose_attack, input_controller_player_1, controller_combat_options, P1_OPTIONS, player_1_));
+	choose_attack->add_navigator(new Navigation::CreateOptionBox(manager_, order_texture_combat_glyph_atlas, ss_main_cursor_box, options_choose_attack, input_controller_player_1_single, controller_combat_options, P1_OPTIONS, player_1_));
 
 	auto display_select_attack = new PathBranch(select_attack, nullptr, choose_attack);
 	display_select_attack->add_navigator(new Navigation::DisplayPrompt(manager_, PROMPT_DELAY, ss_main_prompt_select_attack));

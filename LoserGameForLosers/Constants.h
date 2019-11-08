@@ -295,7 +295,8 @@ enum TEXTURE_ORDER
 enum INPUT_CONTROLLER_ORDER
 {
 	input_controller_player_1,
-	input_controller_player_2
+	input_controller_player_2,
+	input_controller_player_1_single
 };
 
 enum DATA

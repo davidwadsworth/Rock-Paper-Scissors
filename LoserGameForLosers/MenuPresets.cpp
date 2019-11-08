@@ -22,10 +22,10 @@ void MenuPresets::CreateMenuOptions::init()
 	how_to_play->add_navigator(new Navigation::ChangeScreen(screen_, ss_menu_how_to_play));
 
 	auto choose_difficulty = new PathBranch(menu, nullptr, set_state_combat);
-	choose_difficulty->add_navigator(new Navigation::CreateOptionBox(manager_, order_texture_menu_glyph_atlas, ss_menu_cursor, options_choose_difficulty, input_controller_player_1, controller_menu_options, P1_OPTIONS));
+	choose_difficulty->add_navigator(new Navigation::CreateOptionBox(manager_, order_texture_menu_glyph_atlas, ss_menu_cursor, options_choose_difficulty, input_controller_player_1_single, controller_menu_options, P1_OPTIONS));
 
 	auto path_menu = new PathBranch(menu, how_to_play, choose_difficulty);
-	path_menu->add_navigator(new Navigation::CreateOptionBox(manager_, order_texture_menu_glyph_atlas, ss_menu_cursor, options_start_menu, input_controller_player_1, controller_menu_options, P1_OPTIONS));
+	path_menu->add_navigator(new Navigation::CreateOptionBox(manager_, order_texture_menu_glyph_atlas, ss_menu_cursor, options_start_menu, input_controller_player_1_single, controller_menu_options, P1_OPTIONS));
 
 	auto play_menu_music = new PathBranch(menu, nullptr, path_menu);
 	play_menu_music->add_navigator(new Navigation::PlayMusic(GameState::get_audio_player(), music_title_theme, -1));

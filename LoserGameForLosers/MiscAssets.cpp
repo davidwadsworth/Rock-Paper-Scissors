@@ -11,7 +11,10 @@ void Assets::PlayerLeft::create(int controller_id)
 	player_left->add_component<SpriteComponent>(ss_main_animations_blue_grab);
 	player_left->add_component<ColliderComponent>();
 	player_left->add_component<PlayerComponent>(order_player_1);
-	player_left->add_component<ControllerComponent>(controller_id, 0);
+	if (Game::combat_state == combat_state_single_player)
+		player_left->add_component<ControllerComponent>(controller_id, input_controller_player_1_single);
+	else
+		player_left->add_component<ControllerComponent>(controller_id, input_controller_player_1);
 	player_left->add_component<ScriptComponent>();
 	player_left->add_group(Game::group_players);
 }
@@ -34,7 +37,7 @@ void Assets::PlayerRight::create(int controller_id, int difficulty)
 	if (!Game::combat_state)
 		player_right->add_component<AIComponent>(difficulty);
 	else
-		player_right->add_component<ControllerComponent>(controller_id, 1);
+		player_right->add_component<ControllerComponent>(controller_id, input_controller_player_2);
 
 	player_right->add_component<ScriptComponent>();
 	player_right->add_group(Game::group_players);
